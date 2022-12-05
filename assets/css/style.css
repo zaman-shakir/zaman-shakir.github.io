@@ -16,7 +16,7 @@
   aspect-ratio: 1;
   width: 100%;
   height: auto;
-  transition: transform .7s ease-in-out;
+  transition: transform .3s ease-in-out;
 }
 
 .profile-pic:hover {
