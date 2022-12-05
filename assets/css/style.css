@@ -19,8 +19,12 @@
 .profile-pic img {
   width: 100%;
   height: auto;
+  transition: transform .7s ease-in-out;
 }
 
+.profile-pic img:hover {
+  transform: rotate(360deg);
+}
 .tracker {
   /* visibility: hidden; */
   position: fixed;
