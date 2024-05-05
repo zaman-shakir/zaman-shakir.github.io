@@ -18,7 +18,10 @@
   height: auto;
   transition: transform .3s ease-in-out;
 }
-
+.quote-sec{
+    font-weight: 500 !important;
+    font-style: italic;
+}
 .profile-pic:hover {
   transform: rotate(360deg);
 }
@@ -35,6 +38,7 @@
   margin: 0 auto;
   width: auto;
   text-align: inherit;
+  margin-bottom: 20px;
   /* padding: 10px; */
 }
 
