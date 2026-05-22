@@ -452,12 +452,10 @@
   #snCanvas.on{display:block}
 
   /* snake score pill inside header icons */
-  .snake-pill{display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#fff7e6,#fff);border:1px solid #ff9900;color:#9a4d00;padding:6px 12px;border-radius:99px;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;cursor:default;transition:transform .15s}
-  .snake-pill:hover{transform:translateY(-1px)}
-  .snake-pill b{font-family:'Fraunces',serif;font-weight:700;font-size:14px;color:#ff7700}
-  .snake-pill-dot{width:7px;height:7px;border-radius:50%;background:#ff9900;animation:pulse 1.4s infinite;box-shadow:0 0 6px #ff9900}
-  .snake-pill-sep{color:#c9a87a;opacity:.6}
-  @media(max-width:560px){.snake-pill span:last-of-type,.snake-pill-sep{display:none}}
+  .snake-pill{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#fff7e6,#fff);border:1px solid #ff9900;color:#9a4d00;padding:5px 11px;border-radius:99px;font-family:'Inter',sans-serif;font-size:11.5px;font-weight:600;cursor:default;white-space:nowrap;line-height:1}
+  .snake-pill b{font-family:'Fraunces',serif;font-weight:700;font-size:13px;color:#ff7700}
+  .snake-pill-dot{width:6px;height:6px;border-radius:50%;background:#ff9900;animation:pulse 1.4s infinite;box-shadow:0 0 6px #ff9900;flex-shrink:0}
+  @media(max-width:780px){.snake-pill{display:none}}
 
   /* eaten + target letter styling */
   .snake-eaten{background:linear-gradient(180deg,transparent 60%,rgba(255,153,0,.45) 60%);padding:0 1px;border-radius:2px;animation:eatFlash .35s ease}
@@ -1489,7 +1487,7 @@
     const GOAL=30,CELL=24;
     const SNAKE='#ff9900',SNAKE_DIM='rgba(255,153,0,',FOOD='#ff5fa2';
     let W=0,H=0,cols=0,rows=0;
-    let snake=[],dir={x:1,y:0},food=null,score=+(localStorage.getItem('snake-score')||0),raf=0,lastTick=0,speed=130;
+    let snake=[],dir={x:1,y:0},food=null,score=Math.min(GOAL,+(localStorage.getItem('snake-score')||0)),raf=0,lastTick=0,speed=130;
     const scoreEl=document.getElementById('snScore');
     if(scoreEl)scoreEl.textContent=score;
 
@@ -1638,7 +1636,7 @@
       }
       snake.unshift(head);
       if(food && Math.abs(head.x-food.x)<=1 && Math.abs(head.y-food.y)<=1){
-        score++;localStorage.setItem('snake-score',score);
+        score=Math.min(GOAL,score+1);localStorage.setItem('snake-score',score);
         if(scoreEl)scoreEl.textContent=score;
         if(food.span && food.span.isConnected){food.span.className='snake-eaten';food.span=null}
         spawnFood();
