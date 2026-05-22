@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Portfolio variants — pick one — Shakir Uz Zaman</title>
+<link rel="icon" href="/assets/img/favicon/favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0e0f12;--paper:#15171c;--ink:#f1ebe1;--muted:#8b8a86;--line:#22252b;--acc:#ffc944;--g:#7cea9c;--p:#ff7eb6}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.55;min-height:100vh;-webkit-font-smoothing:antialiased}
+  body{background-image:radial-gradient(circle at 10% 10%,rgba(255,201,68,.05),transparent 50%),radial-gradient(circle at 90% 90%,rgba(124,234,156,.04),transparent 50%);background-attachment:fixed}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
+  .serif{font-family:'Fraunces',serif}
+
+  header{padding:48px 40px 24px;border-bottom:1px solid var(--line);max-width:1400px;margin:0 auto}
+  @media(max-width:780px){header{padding:32px 20px 18px}}
+  header .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+  header .top b{color:var(--ink)}
+  header h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(40px,5.5vw,72px);line-height:.98;letter-spacing:-2px;margin-bottom:16px}
+  header h1 em{font-style:italic;color:var(--acc)}
+  header .deck{color:var(--muted);font-size:18px;max-width:720px;line-height:1.5}
+  header .deck b{color:var(--ink)}
+
+  main{padding:48px 40px 80px;max-width:1400px;margin:0 auto}
+  @media(max-width:780px){main{padding:32px 20px 64px}}
+
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+  @media(max-width:980px){.grid{grid-template-columns:1fr}}
+
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:0;overflow:hidden;transition:border-color .25s,transform .25s;position:relative;display:flex;flex-direction:column;min-height:560px}
+  .card:hover{border-color:var(--acc);transform:translateY(-4px)}
+  .card .preview{height:340px;background:#000;overflow:hidden;position:relative;border-bottom:1px solid var(--line)}
+  .card .preview iframe{width:200%;height:200%;border:0;transform:scale(.5);transform-origin:0 0;pointer-events:none}
+  .card .preview .over{position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,var(--paper) 100%);pointer-events:none}
+  .card .preview .badge{position:absolute;top:14px;left:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:6px 12px;border-radius:99px;background:rgba(0,0,0,.6);color:var(--acc);font-weight:700;backdrop-filter:blur(6px);border:1px solid rgba(255,201,68,.3)}
+  .card .preview .badge.live{color:var(--g);border-color:rgba(124,234,156,.3)}
+
+  .card .meta{padding:24px 26px;flex:1;display:flex;flex-direction:column}
+  .card .num{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:1.8px;color:var(--acc);font-weight:700;margin-bottom:8px;text-transform:uppercase}
+  .card h2{font-family:'Fraunces',serif;font-weight:500;font-size:32px;letter-spacing:-1px;line-height:1.05;margin-bottom:10px}
+  .card h2 em{font-style:italic;color:var(--acc)}
+  .card .sub{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-bottom:14px}
+  .card p{color:var(--muted);font-size:14.5px;line-height:1.6;margin-bottom:18px;flex:1}
+  .card p b{color:var(--ink)}
+  .card .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+  .card .tags span{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;padding:4px 9px;border:1px solid var(--line);color:var(--muted);border-radius:99px}
+  .card .actions{display:flex;gap:10px;padding-top:18px;border-top:1px solid var(--line)}
+  .card .btn{flex:1;padding:12px 16px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;text-align:center;transition:all .15s;border:1px solid var(--line);color:var(--ink)}
+  .card .btn:hover{background:var(--acc);color:var(--bg);border-color:var(--acc)}
+  .card .btn.pri{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .card .btn.pri:hover{background:var(--acc);border-color:var(--acc)}
+
+  /* card variants — distinctive backgrounds per preview */
+  .card.live .preview{background:#fafaf7}
+  .card.v1 .preview{background:#f6f3ec}
+  .card.v2 .preview{background:#0e0e0c}
+  .card.v3 .preview{background:#0b1015}
+
+  footer{padding:32px 40px;border-top:1px solid var(--line);max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+  footer b{color:var(--ink)}
+  footer a{color:var(--acc)}
+
+  .pick-note{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--acc);padding:20px 24px;margin-bottom:32px;font-size:14.5px;color:var(--ink);line-height:1.6}
+  .pick-note b{color:var(--acc)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="top">
+    <span><b>Shakir Uz Zaman</b> · Portfolio Variants</span>
+    <span>Built overnight · 23 May 2026 · Reply with the one you want →</span>
+  </div>
+  <h1>Pick a portfolio.<br><em>Four directions, same content.</em></h1>
+  <p class="deck">Each variant tells the same story — independent CMS migration practice, ten years, fifty migrations, zero failures — in a completely different aesthetic. Pick whichever <b>you would trust to spend €15k with</b>. That's the one we'll ship to the root domain.</p>
+</header>
+
+<main>
+  <div class="pick-note">
+    <b>How to choose →</b> Open each one full-page. Read it like a prospective client who has never met you. Which one would make a Danish merchant pick up the phone? Reply with the variant number and we'll wire it to the root URL + delete the rest.
+  </div>
+
+  <div class="grid">
+
+    <article class="card live">
+      <div class="preview">
+        <span class="badge live">● live · current</span>
+        <iframe src="/index.html" loading="lazy" sandbox=""></iframe>
+        <div class="over"></div>
+      </div>
+      <div class="meta">
+        <div class="num">v0 · current site</div>
+        <h2>Shopify <em>PDP</em> parody</h2>
+        <div class="sub">Playful · light theme · gamified · snake game</div>
+        <p>The current live site. Portfolio framed as a Shopify product detail page. Snake mini-game in the header. Catalog browser of past work. <b>Fun, distinctive, memorable.</b> Risk: reads as a side-project rather than a senior practice.</p>
+        <div class="tags"><span>Shopify parody</span><span>Snake game</span><span>Light theme</span><span>Gamified</span></div>
+        <div class="actions">
+          <a class="btn" href="/index.html" target="_blank">View full →</a>
+          <a class="btn pri" href="mailto:zaman.shakirdev@gmail.com?subject=Ship V0 (current)">Pick V0</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card v1">
+      <div class="preview">
+        <span class="badge">v1 · editorial</span>
+        <iframe src="/v1.html" loading="lazy" sandbox=""></iframe>
+        <div class="over"></div>
+      </div>
+      <div class="meta">
+        <div class="num">v1 · the ledger</div>
+        <h2>Newspaper of <em>record.</em></h2>
+        <div class="sub">Editorial · cream paper · drop-caps · pull-quotes</div>
+        <p>Magazine-grade aesthetic. Fraunces serif, multi-column masthead, drop-caps, real testimonials styled as bylines, NYT-grade case studies. <b>Reads like a feature in the FT.</b> Best for European merchants who associate "credibility" with editorial gravity.</p>
+        <div class="tags"><span>Fraunces</span><span>Drop caps</span><span>Case studies</span><span>Pull quotes</span><span>Cream paper</span></div>
+        <div class="actions">
+          <a class="btn" href="/v1.html" target="_blank">View full →</a>
+          <a class="btn pri" href="mailto:zaman.shakirdev@gmail.com?subject=Ship V1 (editorial)">Pick V1</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card v2">
+      <div class="preview">
+        <span class="badge">v2 · studio</span>
+        <iframe src="/v2.html" loading="lazy" sandbox=""></iframe>
+        <div class="over"></div>
+      </div>
+      <div class="meta">
+        <div class="num">v2 · the studio</div>
+        <h2>Pentagram-grade <em>practice.</em></h2>
+        <div class="sub">Dark · Instrument Serif · Geist · big numbers</div>
+        <p>Bold studio energy. Massive italic display type, work-first grid, marquee of clients, full-bleed testimonials. <b>Looks like a €30k/project agency homepage.</b> Best for ambitious clients who buy on visual confidence.</p>
+        <div class="tags"><span>Instrument Serif</span><span>Geist</span><span>Dark</span><span>Big type</span><span>Grid layout</span></div>
+        <div class="actions">
+          <a class="btn" href="/v2.html" target="_blank">View full →</a>
+          <a class="btn pri" href="mailto:zaman.shakirdev@gmail.com?subject=Ship V2 (studio)">Pick V2</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card v3">
+      <div class="preview">
+        <span class="badge">v3 · engineering</span>
+        <iframe src="/v3.html" loading="lazy" sandbox=""></iframe>
+        <div class="over"></div>
+      </div>
+      <div class="meta">
+        <div class="num">v3 · the engineer</div>
+        <h2>Engineering <em>log.</em></h2>
+        <div class="sub">Terminal · JetBrains Mono · code samples · perf graphs</div>
+        <p>IDE-meets-portfolio. Tab bar, file explorer sidebar, real code samples, performance benchmark bars, git-styled testimonials, ASCII hero. <b>Buys instant trust from CTOs and senior dev hires.</b> Best for technical buyers (Triple-A, Hill Times type clients).</p>
+        <div class="tags"><span>JetBrains Mono</span><span>Terminal</span><span>Code samples</span><span>Perf bench</span><span>Dark</span></div>
+        <div class="actions">
+          <a class="btn" href="/v3.html" target="_blank">View full →</a>
+          <a class="btn pri" href="mailto:zaman.shakirdev@gmail.com?subject=Ship V3 (engineering)">Pick V3</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<footer>
+  <span>© 2026 <b>Shakir Uz Zaman</b> · Variants live until you pick one</span>
+  <span>v0 = /index.html · v1 = /v1.html · v2 = /v2.html · v3 = /v3.html</span>
+  <span><a href="mailto:zaman.shakirdev@gmail.com">zaman.shakirdev@gmail.com</a></span>
+</footer>
+
+</body>
+</html>
