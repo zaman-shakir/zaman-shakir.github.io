@@ -1,984 +1,1601 @@
-<!-- <!DOCTYPE html> -->
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- <base href="http://localhost:8888/Devxlab/zaman-shakir.github.io/" target="_blank"> -->
-  <!-- changeed href="/a to href="/a
-  src="/a to  src="/a -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shakir Uz Zaman — Migration Expert · DanDomain → Shopify · WordPress → Shopify · DanDomain → WordPress</title>
+<meta name="description" content="CMS migration expert. DanDomain to Shopify, DanDomain to WordPress, WordPress to Shopify — SEO equity preserved, zero downtime, fixed timeline. WP cache expert: any WordPress site under 1s. 10+ years.">
+<meta name="keywords" content="DanDomain to Shopify migration, DanDomain to WordPress migration, WordPress to Shopify migration, Shopify migration expert, WP cache expert, WordPress speed optimization, WooCommerce migration, Liquid developer, Denmark Shopify">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fafaf7; --paper:#fff; --ink:#1a1a1a; --muted:#6b7280;
+    --line:#e5e5e5; --shop:#008060; --shop-dark:#005c47; --shop-soft:#e3f1ec;
+    --wp:#21759b; --wp-soft:#e0edf3; --dd:#d9272d; --dd-soft:#fce6e7;
+    --accent:#202e25; --gold:#f59e0b; --pulse:#7adfb3;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+  a{color:var(--ink);text-decoration:none}
+  a:hover{color:var(--shop)}
+  svg{display:block}
 
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PGZH8HT');</script>
-  <!-- End Google Tag Manager -->
+  /* reveal on scroll */
+  .rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+  .rv.on{opacity:1;transform:translateY(0)}
 
-  <!-- Materialize - Compiled and minified CSS-->
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
-  <!-- Font Awesome Icon - CSS-->
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
-  <!-- Custom Styles-->
-  <link rel="stylesheet" href="/assets/css/style.css" />
-  <title>Shakir Uz Zaman | A Web Ninja </title>
+  .announce{background:var(--accent);color:#fff;text-align:center;padding:10px 18px;font-size:12.5px;letter-spacing:.3px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+  .announce b{color:#7adfb3}
+  .announce .pin{display:inline-flex;align-items:center;gap:6px}
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126939217-2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+  header{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+  .nav{max-width:1240px;margin:0 auto;padding:14px 24px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:18px}
+  .brand{font-family:'Fraunces',serif;font-weight:700;font-size:22px;letter-spacing:-.5px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+  .brand .dot{color:var(--shop)}
+  .brand .bag{color:var(--shop)}
+  .menu{display:flex;gap:4px;justify-content:center;flex-wrap:wrap}
+  .menu a{font-size:13px;font-weight:500;color:#333;padding:8px 12px;border-radius:8px;display:inline-flex;align-items:center;gap:6px;transition:all .15s}
+  .menu a:hover{background:#f0efea;color:var(--shop)}
+  .menu a.on{color:var(--shop);background:var(--shop-soft)}
+  .icons{display:flex;gap:6px;justify-content:flex-end;align-items:center;color:#444}
+  .icobtn{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:99px;border:1px solid var(--line);background:#fff;font-family:inherit;font-size:12.5px;font-weight:500;color:#333;cursor:pointer;text-decoration:none;transition:all .15s}
+  .icobtn:hover{border-color:var(--shop);color:var(--shop);transform:translateY(-1px)}
+  .icobtn.shop{background:var(--shop);color:#fff;border-color:var(--shop)}
+  .icobtn.shop:hover{background:var(--shop-dark);color:#fff}
+  .cart-pill .badge{background:#fff;color:var(--shop);font-size:10px;font-weight:700;border-radius:99px;padding:1px 6px;margin-left:4px}
 
-    gtag('config', 'UA-126939217-2');
-  </script>
+  /* search modal */
+  .modal{position:fixed;inset:0;background:rgba(15,20,18,.6);backdrop-filter:blur(6px);z-index:200;display:none;align-items:flex-start;justify-content:center;padding:80px 20px}
+  .modal.on{display:flex;animation:fade .2s ease}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .modal .box{background:#fff;border-radius:16px;padding:24px;width:100%;max-width:560px;box-shadow:0 30px 80px rgba(0,0,0,.4);animation:slidein .3s ease}
+  @keyframes slidein{from{transform:translateY(-20px);opacity:0}to{transform:translateY(0);opacity:1}}
+  .modal h3{font-family:'Fraunces',serif;font-size:22px;margin:0 0 12px}
+  .modal input{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:12px;font-size:15px;font-family:inherit}
+  .modal input:focus{outline:none;border-color:var(--shop)}
+  .modal .sugg{margin-top:14px;font-size:12px;color:var(--muted)}
+  .modal .sugg a{display:inline-block;padding:5px 10px;background:#f3f1eb;border-radius:99px;margin:4px 4px 0 0;font-size:12px;color:#333}
+  .modal .sugg a:hover{background:var(--shop-soft);color:var(--shop-dark)}
+  .modal .close{float:right;background:none;border:none;font-size:20px;cursor:pointer;color:#999}
 
-  <!-- Open Graph-->
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Shakir Uz Zaman | A Web Ninja" />
-  <meta property="og:description" content="A Web Ninjar" />
-  <meta property="og:url" content="https://zaman-shakir.github.io/" />
-  <meta property="og:site_name" content="Shakir Uz Zaman | Software Developer" />
-  <meta property="article:publisher" content="https://zaman-shakir.github.io/" />
-  <meta property="og:image" content="https://zaman-shakir.github.io/examples/preview.JPG" />
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary" />
-  <!-- <meta name="twitter:site" content="@shakir_bhogayata" /> -->
-  <!-- <meta name="twitter:title" content="Coder | Technofreak | Explorer | Minimalist | Humane" /> -->
-  <!-- <meta name="twitter:description" content="Software Developer" /> -->
-  <!-- <meta name="twitter:url" content="https://twitter.com/shakir_bhogayata" /> -->
-  <meta name="author" content="Shakir Uz Zaman" />
-  <meta name="description" content="Software Developer with a passion  web development. PHP Wordpress and Javascript" />
-  <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicon/apple-icon-57x57.png" />
-  <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicon/apple-icon-60x60.png" />
-  <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicon/apple-icon-72x72.png" />
-  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicon/apple-icon-76x76.png" />
-  <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicon/apple-icon-114x114.png" />
-  <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicon/apple-icon-120x120.png" />
-  <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicon/apple-icon-144x144.png" />
-  <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicon/apple-icon-152x152.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-icon-180x180.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicon/android-icon-192x192.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicon/favicon-96x96.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon/favicon-16x16.png" />
-  <link rel="manifest" href="/assets/img/favicon/manifest.json" />
-  <meta name="msapplication-TileColor" content="#ffffff" />
-  <meta name="msapplication-TileImage" content="/assets/img/favicon/ms-icon-144x144.png" />
-  <meta name="theme-color" content="#ffffff" />
-  <meta name="robots" content="index, follow" />
-  <!-- Google Site Verification for indexing -->
-  <!-- <meta name="google-site-verification" content="_qxK8tePiU2fhnwlwnJ7pkDFnj1k2EiKq_cYGy1Cb84" /> -->
+  .container{max-width:1240px;margin:0 auto;padding:0 24px}
+
+  .crumb{padding:18px 0 6px;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .crumb a{color:var(--muted)}
+  .crumb a:hover{color:var(--ink)}
+  .crumb b{color:var(--ink);font-weight:500}
+  .crumb svg{color:#ccc}
+
+  /* PDP */
+  .pdp{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;padding:18px 0 60px}
+  @media(max-width:900px){.pdp{grid-template-columns:1fr;gap:28px}}
+
+  .main-img{aspect-ratio:4/5;background:#eee;border-radius:18px;overflow:hidden;position:relative;box-shadow:0 12px 40px rgba(0,0,0,.08)}
+  .main-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+  .main-img:hover img{transform:scale(1.03)}
+  .main-img .tags{position:absolute;top:16px;left:16px;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+  .main-img .tag{background:#fff;color:var(--ink);font-size:11px;font-weight:700;padding:6px 12px;border-radius:999px;box-shadow:0 2px 8px rgba(0,0,0,.08);letter-spacing:.5px;display:inline-flex;align-items:center;gap:5px;animation:slidein .5s ease both}
+  .main-img .tag:nth-child(1){animation-delay:.1s}
+  .main-img .tag:nth-child(2){animation-delay:.2s}
+  .main-img .tag:nth-child(3){animation-delay:.3s}
+  .main-img .tag:nth-child(4){animation-delay:.4s}
+  .main-img .tag.shop{background:var(--shop);color:#fff}
+  .main-img .tag.wp{background:var(--wp);color:#fff}
+  .main-img .tag.dd{background:var(--dd);color:#fff}
+  .main-img .verified{position:absolute;bottom:16px;left:16px;background:rgba(0,0,0,.7);color:#fff;padding:8px 14px;border-radius:999px;font-size:11px;font-weight:600;backdrop-filter:blur(8px);display:flex;align-items:center;gap:6px}
+  .main-img .stock{position:absolute;bottom:16px;right:16px;background:var(--pulse);color:#063a26;padding:6px 12px;border-radius:99px;font-size:10.5px;font-weight:700;letter-spacing:1px;display:flex;align-items:center;gap:5px}
+  .main-img .stock::before{content:"";width:6px;height:6px;border-radius:50%;background:#063a26;animation:pulse 1.4s infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(1.4)}}
+
+  .info .vendor{font-size:11px;color:var(--shop);letter-spacing:1.5px;text-transform:uppercase;font-weight:700;display:flex;align-items:center;gap:8px}
+  .info .vendor .pip{width:5px;height:5px;background:var(--shop);border-radius:50%;animation:pulse 1.5s infinite}
+  .info h1{font-family:'Fraunces',serif;font-weight:600;font-size:44px;letter-spacing:-1.2px;line-height:1.05;margin:10px 0 8px;color:var(--ink)}
+  .info .role{font-size:15px;color:#444;margin-bottom:14px;line-height:1.55}
+  .info .role b{color:var(--shop);font-weight:600}
+  .reviews{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);margin-bottom:18px;flex-wrap:wrap}
+  .stars{color:var(--gold);letter-spacing:2px;font-size:14px}
+  .pipe{color:#ddd}
+
+  .price-row{display:flex;align-items:baseline;gap:10px;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .price-row .price{font-family:'Fraunces',serif;font-size:30px;font-weight:600;color:var(--ink)}
+  .price-row .was{font-size:14px;color:var(--muted);text-decoration:line-through}
+  .price-row .save{margin-left:auto;background:var(--shop-soft);color:var(--shop-dark);font-size:11px;font-weight:600;padding:5px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:5px}
+
+  .field{margin-top:22px}
+  .field .label{font-size:13px;font-weight:600;color:#333;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+  .field .label .picked{color:var(--muted);font-weight:400}
+  .pills{display:flex;flex-wrap:wrap;gap:8px}
+  .pill{font-size:13px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:999px;cursor:pointer;transition:all .15s;color:#333;font-weight:500;font-family:inherit;display:inline-flex;align-items:center;gap:6px}
+  .pill:hover{border-color:#999;transform:translateY(-1px)}
+  .pill.on{border-color:var(--ink);background:var(--ink);color:#fff}
+  .pill .sub{color:inherit;opacity:.6;font-size:11px;margin-left:3px;font-weight:400}
+  .pill .glow{width:6px;height:6px;border-radius:50%;background:var(--shop);box-shadow:0 0 6px var(--shop)}
+  .pill.hot::after{content:"HOT";font-size:9px;background:var(--dd);color:#fff;padding:1px 5px;border-radius:3px;letter-spacing:1px;margin-left:4px;font-weight:700}
+
+  .buy{display:grid;grid-template-columns:130px 1fr;gap:10px;margin-top:24px}
+  @media(max-width:480px){.buy{grid-template-columns:1fr}}
+  .qty{display:flex;border:1px solid var(--line);border-radius:999px;align-items:center;justify-content:space-between;padding:0 8px;background:#fff}
+  .qty button{background:none;border:none;font-size:18px;width:34px;height:46px;cursor:pointer;color:#333}
+  .qty input{border:none;text-align:center;width:40px;font-family:inherit;font-size:14px;font-weight:600;background:transparent;outline:none}
+  .add{background:var(--ink);color:#fff;border:none;border-radius:999px;padding:14px 22px;font-weight:600;font-size:14px;cursor:pointer;letter-spacing:.3px;transition:transform .12s,background .12s;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+  .add:hover{background:#000;transform:translateY(-1px)}
+  .buy-now{margin-top:10px;background:var(--shop);color:#fff;border:none;border-radius:999px;padding:14px 22px;font-weight:600;font-size:14px;cursor:pointer;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .12s;text-decoration:none}
+  .buy-now:hover{background:var(--shop-dark)}
+
+  .trust{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px;padding:16px;background:var(--paper);border:1px solid var(--line);border-radius:12px}
+  @media(max-width:520px){.trust{grid-template-columns:1fr}}
+  .trust .item{display:flex;gap:10px;align-items:flex-start;font-size:12px;color:#444}
+  .trust .item svg{flex-shrink:0;color:var(--shop)}
+  .trust .item b{display:block;font-size:12px;font-weight:600;color:var(--ink);margin-bottom:2px}
+
+  .desc{margin-top:24px;font-family:'Fraunces',serif;font-size:16px;line-height:1.65;color:#333}
+  .desc::first-letter{font-size:48px;float:left;line-height:1;font-weight:600;padding:4px 8px 0 0;color:var(--shop)}
+
+  .acc{margin-top:24px;border-top:1px solid var(--line)}
+  .acc details{border-bottom:1px solid var(--line)}
+  .acc summary{cursor:pointer;padding:16px 0;font-size:14px;font-weight:600;color:var(--ink);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .acc summary::-webkit-details-marker{display:none}
+  .acc summary .left{display:inline-flex;align-items:center;gap:10px}
+  .acc summary .chev{font-size:22px;font-weight:400;color:#999;transition:transform .2s}
+  .acc details[open] .chev{transform:rotate(45deg);color:var(--shop)}
+  .acc .body{padding:0 0 20px;font-size:14px;color:#555;line-height:1.7}
+  .acc .body table{width:100%;border-collapse:collapse}
+  .acc .body td{padding:6px 8px 6px 0}
+  .acc .body td:first-child{color:#333;width:35%;font-weight:500}
+  .acc .body .bar-wrap{background:#f0efea;border-radius:99px;height:6px;width:100%;max-width:160px;display:inline-block;vertical-align:middle;margin-right:8px}
+  .acc .body .bar{display:block;height:100%;background:var(--shop);border-radius:99px}
+
+  /* MIGRATION */
+  .migrate{margin:60px 0;background:linear-gradient(135deg,#fffaf3 0%,#fef3e7 50%,#fce6e7 100%);border:1px solid var(--line);border-radius:24px;padding:48px;overflow:hidden;position:relative}
+  @media(max-width:780px){.migrate{padding:28px}}
+  .migrate::before{content:"";position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(217,39,45,.08),transparent 70%);animation:float 8s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,20px)}}
+  .migrate .eyebrow{font-size:11px;color:var(--dd);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:10px;position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px}
+  .migrate h2{font-family:'Fraunces',serif;font-size:42px;line-height:1.05;letter-spacing:-1.5px;margin:0 0 14px;color:var(--ink);max-width:780px;position:relative;z-index:1}
+  .migrate h2 .hl{background:linear-gradient(180deg,transparent 60%,rgba(0,128,96,.25) 60%);padding:0 2px}
+  .migrate .lead{font-size:16px;line-height:1.65;color:#444;max-width:680px;margin:0 0 28px;position:relative;z-index:1}
+  .lanes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;position:relative;z-index:1}
+  @media(max-width:780px){.lanes{grid-template-columns:1fr}}
+  .lane{background:#fff;border-radius:16px;padding:24px;border:1px solid rgba(0,0,0,.04);transition:transform .15s,box-shadow .15s;text-decoration:none;color:inherit;display:flex;flex-direction:column;position:relative}
+  .lane:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.08)}
+  .lane.bestseller{border:2px solid var(--shop)}
+  .lane.bestseller::before{content:"★ BESTSELLER";position:absolute;top:-10px;left:20px;background:var(--shop);color:#fff;font-size:10px;font-weight:700;letter-spacing:1px;padding:3px 10px;border-radius:6px}
+  .lane .flow{display:flex;align-items:center;gap:8px;margin-bottom:14px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;flex-wrap:wrap}
+  .lane .flow .from{background:var(--dd-soft);color:var(--dd);padding:4px 9px;border-radius:6px}
+  .lane .flow .from.wp{background:var(--wp-soft);color:var(--wp)}
+  .lane .flow .to.shop{background:var(--shop-soft);color:var(--shop-dark);padding:4px 9px;border-radius:6px}
+  .lane .flow .to.wp{background:var(--wp-soft);color:var(--wp);padding:4px 9px;border-radius:6px}
+  .lane .arr{color:#999;font-size:13px}
+  .lane h3{font-family:'Fraunces',serif;font-size:21px;margin:0 0 8px;line-height:1.2;color:var(--ink)}
+  .lane p{font-size:13px;color:#555;line-height:1.55;margin:0 0 14px;flex:1}
+  .lane ul{margin:0 0 16px;padding-left:18px;font-size:12px;color:#444;line-height:1.7}
+  .lane ul li::marker{color:var(--shop)}
+  .lane .priceblock{padding:12px 14px;background:#fafafa;border-radius:10px;border:1px dashed var(--line);margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;font-size:12px}
+  .lane .priceblock .from-l{color:var(--muted);font-weight:500}
+  .lane .priceblock .num{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--ink)}
+  .lane .priceblock .num small{font-size:11px;color:var(--muted);font-weight:400}
+  .lane .ctapill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#fff;padding:10px 14px;background:var(--ink);border-radius:99px;justify-content:center}
+  .lane.bestseller .ctapill{background:var(--shop)}
+
+  .migrate .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:28px;padding-top:24px;border-top:1px dashed rgba(0,0,0,.1);position:relative;z-index:1}
+  @media(max-width:780px){.migrate .stats{grid-template-columns:repeat(2,1fr)}}
+  .migrate .stats .stat .num{font-family:'Fraunces',serif;font-size:34px;font-weight:600;color:var(--shop);line-height:1}
+  .migrate .stats .stat .lbl{font-size:11px;color:#666;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin-top:4px}
+
+  /* WP CACHE SPECIALTY BANNER */
+  .cache{margin:60px 0;background:linear-gradient(135deg,#0c2340 0%,#1d3557 50%,#06b6d4 130%);color:#fff;border-radius:24px;padding:48px;display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center;overflow:hidden;position:relative}
+  @media(max-width:900px){.cache{grid-template-columns:1fr;padding:28px}}
+  .cache::before{content:"";position:absolute;left:-100px;bottom:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(6,182,212,.3),transparent 70%);animation:float 10s ease-in-out infinite}
+  .cache .eb{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:2px;color:#67e8f9;font-weight:700;text-transform:uppercase;margin-bottom:14px;position:relative;z-index:1;padding:5px 12px;background:rgba(103,232,249,.1);border-radius:99px}
+  .cache h2{font-family:'Fraunces',serif;font-size:36px;line-height:1.1;letter-spacing:-1px;margin:0 0 12px;position:relative;z-index:1}
+  .cache h2 .hl{color:#67e8f9}
+  .cache p{font-size:14.5px;color:#cbd5e1;line-height:1.65;margin:0 0 18px;position:relative;z-index:1;max-width:520px}
+  .cache .speedo{position:relative;z-index:1;background:rgba(255,255,255,.05);border:1px solid rgba(103,232,249,.2);border-radius:18px;padding:24px;backdrop-filter:blur(10px)}
+  .cache .speedo .row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:13px}
+  .cache .speedo .row:last-child{border:none;padding-top:14px;margin-top:6px;border-top:1px solid rgba(255,255,255,.2)}
+  .cache .speedo .row .k{color:#94a3b8}
+  .cache .speedo .row .bef{color:#fca5a5}
+  .cache .speedo .row .aft{color:#7adfb3;font-weight:700;display:inline-flex;align-items:center;gap:4px}
+  .cache .speedo .gauge{height:8px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden;margin-top:6px;width:100%}
+  .cache .speedo .gauge::after{content:"";display:block;height:100%;background:linear-gradient(90deg,#7adfb3,#67e8f9);border-radius:99px;animation:fill 2s ease-out both;width:95%}
+  @keyframes fill{from{width:0}}
+  .cache .stack{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;position:relative;z-index:1}
+  .cache .stack span{font-size:10.5px;background:rgba(255,255,255,.08);color:#cbd5e1;padding:4px 10px;border-radius:99px;border:1px solid rgba(255,255,255,.1);font-weight:500;letter-spacing:.3px}
+  .cache .cta{display:inline-flex;align-items:center;gap:8px;background:#fff;color:#0c2340;padding:10px 18px;border-radius:99px;font-weight:700;font-size:13px;text-decoration:none;margin-top:18px;position:relative;z-index:1}
+  .cache .cta:hover{background:#67e8f9}
+
+  /* now shipping */
+  .building{margin:30px 0 70px;background:linear-gradient(135deg,#0f1a14 0%,#1e3a2e 100%);color:#fff;border-radius:18px;padding:38px;display:grid;grid-template-columns:1.4fr 1fr;gap:30px;align-items:center;overflow:hidden;position:relative}
+  @media(max-width:780px){.building{grid-template-columns:1fr;padding:28px}}
+  .building::before{content:"";position:absolute;top:-50px;right:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(122,223,179,.2),transparent 70%);animation:float 7s ease-in-out infinite}
+  .building .live{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:2px;color:#7adfb3;font-weight:600;text-transform:uppercase;margin-bottom:12px;position:relative;z-index:1}
+  .building .live::before{content:"";width:8px;height:8px;border-radius:50%;background:#7adfb3;box-shadow:0 0 0 4px rgba(122,223,179,.2);animation:pulse 1.6s infinite}
+  .building h2{font-family:'Fraunces',serif;font-size:30px;line-height:1.1;letter-spacing:-.5px;margin:0 0 10px;position:relative;z-index:1}
+  .building p{color:#cfe5d8;font-size:14px;line-height:1.65;margin:0 0 16px;position:relative;z-index:1;max-width:520px}
+  .building .meta{display:flex;flex-wrap:wrap;gap:16px;font-size:12px;color:#9bc7b1;position:relative;z-index:1}
+  .building .meta b{color:#fff;font-weight:500}
+  .building .stat{background:rgba(255,255,255,.05);border:1px solid rgba(122,223,179,.2);border-radius:14px;padding:20px;position:relative;z-index:1}
+  .building .stat .row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:13px}
+  .building .stat .row:last-child{border:none}
+  .building .stat .row span:first-child{color:#9bc7b1}
+  .building .stat .row span:last-child{color:#fff;font-weight:600}
+  .building .stat .row .ok{color:#7adfb3}
+
+  /* process */
+  .process{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:step;position:relative}
+  @media(max-width:900px){.process{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.process{grid-template-columns:1fr}}
+  .step{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px 18px;position:relative;counter-increment:step;display:flex;flex-direction:column;transition:transform .2s}
+  .step:hover{transform:translateY(-3px)}
+  .step::before{content:"0" counter(step);position:absolute;top:14px;right:16px;font-family:'Fraunces',serif;font-size:30px;font-weight:600;color:var(--shop-soft);line-height:1}
+  .step h3{font-family:'Fraunces',serif;font-size:17px;margin:0 0 6px;color:var(--ink)}
+  .step p{font-size:12.5px;color:#555;line-height:1.55;margin:0;flex:1}
+  .step .icon{width:36px;height:36px;border-radius:10px;background:var(--shop-soft);color:var(--shop-dark);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+  .step .dur{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;letter-spacing:1px;color:var(--shop);font-weight:700;text-transform:uppercase;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+
+  .sec-head{margin:50px 0 22px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;border-bottom:1px solid var(--line);padding-bottom:14px}
+  .sec-head h2{font-family:'Fraunces',serif;font-size:30px;font-weight:600;letter-spacing:-.5px;margin:0;color:var(--ink);display:inline-flex;align-items:center;gap:10px}
+  .sec-head h2 .eyetag{font-size:10px;letter-spacing:1.5px;color:var(--shop);background:var(--shop-soft);padding:3px 8px;border-radius:99px;font-family:'Inter',sans-serif;font-weight:700}
+  .sec-head .sub{font-size:13px;color:var(--muted);max-width:480px;text-align:right}
+  @media(max-width:600px){.sec-head{flex-direction:column;align-items:flex-start}.sec-head .sub{text-align:left}}
+
+  .tabs{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap}
+  .tab{font-size:13px;padding:8px 16px;border:1px solid var(--line);background:#fff;border-radius:999px;cursor:pointer;font-weight:500;color:#444;font-family:inherit;display:inline-flex;align-items:center;gap:6px}
+  .tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .tab .count{margin-left:5px;color:inherit;opacity:.6;font-size:11px}
+
+  .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:900px){.projects{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.projects{grid-template-columns:1fr}}
+  .pcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .15s,box-shadow .15s;cursor:pointer;display:flex;flex-direction:column;text-decoration:none;color:inherit}
+  .pcard:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.06)}
+  .pcard .image{aspect-ratio:5/4;background:linear-gradient(135deg,#e3f1ec,#cfe5d8);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .pcard .image .glyph{font-family:'Fraunces',serif;font-size:62px;font-weight:600;color:var(--shop-dark);opacity:.4;line-height:1}
+  .pcard .image .pill{position:absolute;top:12px;left:12px;background:#fff;padding:5px 10px;border-radius:999px;font-size:11px;font-weight:600;color:var(--ink);letter-spacing:.4px;display:inline-flex;align-items:center;gap:5px}
+  .pcard .image .platform{position:absolute;top:12px;right:12px;font-size:10px;font-weight:700;padding:4px 8px;border-radius:4px;letter-spacing:1px;display:inline-flex;align-items:center;gap:4px}
+  .pcard .image .platform.shopify{background:var(--shop);color:#fff}
+  .pcard .image .platform.wp{background:var(--wp);color:#fff}
+  .pcard .image .platform.plugin{background:#7c3aed;color:#fff}
+  .pcard .image .fav{position:absolute;bottom:12px;right:12px;background:#fff;border-radius:8px;padding:5px;box-shadow:0 2px 8px rgba(0,0,0,.1);width:36px;height:36px;display:flex;align-items:center;justify-content:center}
+  .pcard .image .fav img{width:24px;height:24px;border-radius:4px}
+  .pcard.shopify .image{background:linear-gradient(135deg,#d4f0e2,#a9e2c5)}
+  .pcard.shopify .image .glyph{color:var(--shop-dark)}
+  .pcard.wp .image{background:linear-gradient(135deg,#d6e8f1,#a9d0e2)}
+  .pcard.wp .image .glyph{color:#1d4f6c}
+  .pcard.plugin .image{background:linear-gradient(135deg,#e9d5ff,#d8b4fe)}
+  .pcard.plugin .image .glyph{color:#6b21a8}
+  .pcard .body{padding:18px;flex:1;display:flex;flex-direction:column}
+  .pcard .body h3{font-family:'Fraunces',serif;font-size:18px;font-weight:600;margin:0 0 4px;line-height:1.2;color:var(--ink)}
+  .pcard .body .yr{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;margin-bottom:10px}
+  .pcard .body p{font-size:13px;color:#555;line-height:1.55;margin:0 0 14px;flex:1}
+  .pcard .stack{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+  .pcard .stack span{font-size:10px;background:#f3f1eb;color:#555;padding:3px 8px;border-radius:999px;font-weight:500;letter-spacing:.3px}
+  .pcard .meta-row{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:12px;font-size:12px;color:var(--muted)}
+  .pcard .meta-row b{color:var(--ink);font-weight:600}
+  .pcard .link{color:var(--shop);font-weight:600;font-size:12px;display:inline-flex;align-items:center;gap:4px}
+
+  /* trusted by w/ favicons */
+  .trusted-by{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  @media(max-width:900px){.trusted-by{grid-template-columns:repeat(2,1fr)}}
+  .tbcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;transition:transform .15s,box-shadow .15s;text-decoration:none;color:inherit;display:flex;flex-direction:column;justify-content:space-between;min-height:160px;position:relative}
+  .tbcard:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.05)}
+  .tbcard .topr{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+  .tbcard .left-l{display:flex;gap:10px;align-items:center}
+  .tbcard .fav{width:34px;height:34px;border-radius:8px;background:#fafafa;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;border:1px solid var(--line)}
+  .tbcard .fav img{width:22px;height:22px;border-radius:4px}
+  .tbcard .fav.placeholder{background:var(--shop-soft);color:var(--shop-dark);font-family:'Fraunces',serif;font-weight:700;font-size:15px}
+  .tbcard .name-block{flex:1;min-width:0}
+  .tbcard .logo{font-family:'Fraunces',serif;font-size:18px;font-weight:700;color:var(--ink);letter-spacing:-.3px;line-height:1.1}
+  .tbcard .country{font-size:10px;color:var(--muted);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+  .tbcard .role{font-size:12px;color:#555;line-height:1.5;margin-top:10px;flex:1}
+  .tbcard .bot{display:flex;justify-content:space-between;align-items:center;margin-top:14px;flex-wrap:wrap;gap:6px}
+  .tbcard .stat{font-size:11px;color:var(--shop);font-weight:700;letter-spacing:.5px}
+  .tbcard .badge{font-size:9px;font-weight:700;padding:2px 7px;border-radius:4px;letter-spacing:1px;display:inline-flex;align-items:center;gap:4px}
+  .tbcard .badge.shopify{background:var(--shop-soft);color:var(--shop-dark)}
+  .tbcard .badge.wp{background:var(--wp-soft);color:var(--wp)}
+  .tbcard.active{border-color:var(--shop);background:linear-gradient(180deg,var(--shop-soft) 0%,#fff 100%)}
+
+  /* work history */
+  .timeline{position:relative;padding-left:34px}
+  .timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .role-item{position:relative;padding-bottom:28px}
+  .role-item::before{content:"";position:absolute;left:-28px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:3px solid var(--shop)}
+  .role-item.archived::before{border-color:#cbd5cf}
+  .role-item .yr{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:1.5px;text-transform:uppercase}
+  .role-item h3{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--ink);margin:4px 0 4px;line-height:1.25}
+  .role-item .at{font-size:13px;color:var(--shop);font-weight:600;margin-bottom:10px}
+  .role-item ul{margin:0;padding-left:18px;color:#444;font-size:13px;line-height:1.65}
+  .role-item .stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .role-item .stack span{font-size:10px;background:#f3f1eb;color:#555;padding:3px 8px;border-radius:999px;font-weight:500}
+
+  /* skills grouped */
+  .skillgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:780px){.skillgrid{grid-template-columns:1fr}}
+  .skillcol{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px}
+  .skillcol h3{font-family:'Fraunces',serif;font-size:18px;margin:0 0 4px;display:flex;align-items:center;gap:8px}
+  .skillcol .blurb{font-size:12px;color:var(--muted);margin-bottom:16px}
+  .skillcol .row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+  .skillcol .row:last-child{border:none}
+  .skillcol .row .name{font-weight:500;display:inline-flex;align-items:center;gap:6px}
+  .skillcol .row .lvl{font-size:11px;color:var(--shop);background:var(--shop-soft);padding:2px 8px;border-radius:99px;font-weight:600}
+  .skillcol.strong .row .lvl{color:#92400e;background:#fef3c7}
+  .skillcol.learning .row .lvl{color:#1e40af;background:#dbeafe}
+  .skillcol .tag{font-size:10px;color:var(--shop);background:var(--shop-soft);padding:3px 8px;border-radius:99px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+
+  /* metrics */
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:30px}
+  @media(max-width:780px){.metrics{grid-template-columns:repeat(2,1fr)}}
+  .metric{text-align:center;border-right:1px solid var(--line);padding:0 10px}
+  .metric:last-child{border:none}
+  @media(max-width:780px){.metric{border:none;padding:14px 0;border-bottom:1px solid var(--line)}.metric:last-child{border:none}}
+  .metric .big{font-family:'Fraunces',serif;font-size:46px;font-weight:600;color:var(--shop);line-height:1}
+  .metric .lbl{font-size:11px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin-top:8px}
+  .metric .blurb{font-size:12px;color:#555;margin-top:6px}
+
+  /* FAQ */
+  .faq details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:10px;padding:0 20px;transition:border-color .15s}
+  .faq details[open]{border-color:var(--shop)}
+  .faq summary{cursor:pointer;padding:18px 0;font-size:15px;font-weight:600;color:var(--ink);list-style:none;display:flex;justify-content:space-between;align-items:center;font-family:'Fraunces',serif;gap:10px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary .q{display:inline-flex;align-items:center;gap:10px;flex:1}
+  .faq summary .q .qnum{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--shop);background:var(--shop-soft);padding:3px 8px;border-radius:6px}
+  .faq summary::after{content:"+";font-size:22px;color:var(--shop);font-weight:400}
+  .faq details[open] summary::after{content:"−"}
+  .faq .body{padding:0 0 20px;font-size:14px;color:#555;line-height:1.7}
+
+  .edu{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px 30px;display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center}
+  @media(max-width:680px){.edu{grid-template-columns:1fr;text-align:left}}
+  .edu .crest{width:60px;height:60px;border-radius:50%;background:var(--shop-soft);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;color:var(--shop-dark);font-size:20px}
+  .edu h3{font-family:'Fraunces',serif;font-size:20px;font-weight:600;margin:0 0 4px;color:var(--ink)}
+  .edu .where{font-size:13px;color:#555}
+  .edu .yrs{font-size:13px;color:var(--muted);font-weight:500;display:inline-flex;align-items:center;gap:6px}
+
+  /* GAME — "Migrate the Cart" */
+  .game{margin:60px 0;background:linear-gradient(135deg,#1a1a1a 0%,#2a2a2a 100%);color:#fff;border-radius:24px;padding:40px;position:relative;overflow:hidden}
+  @media(max-width:780px){.game{padding:24px}}
+  .game::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(circle at 20% 30%,rgba(0,128,96,.15),transparent 50%),
+    radial-gradient(circle at 80% 70%,rgba(217,39,45,.1),transparent 50%);
+    pointer-events:none}
+  .game .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;position:relative;z-index:1;flex-wrap:wrap;gap:10px}
+  .game .head .ttl{display:flex;align-items:center;gap:12px}
+  .game .head h2{font-family:'Fraunces',serif;font-size:28px;margin:0;letter-spacing:-.5px}
+  .game .head .ttl .badge{font-size:10px;background:var(--shop);color:#fff;padding:3px 8px;border-radius:99px;letter-spacing:1px;font-weight:700}
+  .game .head .scores{display:flex;gap:18px;font-size:13px;font-family:'Inter',sans-serif}
+  .game .head .scores div{background:rgba(255,255,255,.06);padding:8px 14px;border-radius:99px;border:1px solid rgba(255,255,255,.1)}
+  .game .head .scores b{color:#7adfb3;font-family:'Fraunces',serif;font-weight:700;margin-left:4px}
+  .game .stage{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;height:340px;position:relative;overflow:hidden;cursor:crosshair;z-index:1}
+  @media(max-width:520px){.game .stage{height:280px}}
+  .game .stage .legend{position:absolute;top:14px;left:14px;font-size:11px;color:#94a3b8;letter-spacing:1px;text-transform:uppercase;z-index:2;pointer-events:none}
+  .game .stage .player{position:absolute;bottom:14px;left:0;width:60px;height:36px;background:var(--shop);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#fff;transition:transform .05s;z-index:3;box-shadow:0 4px 12px rgba(0,128,96,.4)}
+  .game .stage .player::before{content:"";position:absolute;bottom:-6px;left:8px;width:12px;height:12px;background:#222;border-radius:50%}
+  .game .stage .player::after{content:"";position:absolute;bottom:-6px;right:8px;width:12px;height:12px;background:#222;border-radius:50%}
+  .game .stage .item{position:absolute;top:-30px;width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;z-index:2;box-shadow:0 4px 10px rgba(0,0,0,.3)}
+  .game .stage .item.good{background:var(--shop)}
+  .game .stage .item.bad{background:var(--dd)}
+  .game .stage .item.bonus{background:#f59e0b}
+  .game .stage .gameover{position:absolute;inset:0;background:rgba(0,0,0,.85);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;z-index:5;backdrop-filter:blur(4px)}
+  .game .stage .gameover h3{font-family:'Fraunces',serif;font-size:32px;margin:0 0 6px}
+  .game .stage .gameover p{color:#94a3b8;font-size:14px;margin:0 0 20px}
+  .game .stage .gameover button{background:var(--shop);color:#fff;border:none;padding:12px 22px;border-radius:99px;font-weight:700;cursor:pointer;font-family:inherit;font-size:13px}
+  .game .stage .gameover button:hover{background:var(--shop-dark)}
+  .game .legend2{display:flex;gap:18px;margin-top:14px;font-size:12px;color:#94a3b8;flex-wrap:wrap;position:relative;z-index:1}
+  .game .legend2 .lk{display:inline-flex;align-items:center;gap:6px}
+  .game .legend2 .sw{width:14px;height:14px;border-radius:4px}
+  .game .legend2 .sw.g{background:var(--shop)}
+  .game .legend2 .sw.b{background:var(--dd)}
+  .game .legend2 .sw.bn{background:#f59e0b}
+  .game .start{margin-top:14px;display:flex;gap:10px;align-items:center;position:relative;z-index:1;flex-wrap:wrap}
+  .game .start button{background:var(--shop);color:#fff;border:none;padding:10px 18px;border-radius:99px;font-weight:600;cursor:pointer;font-family:inherit;font-size:13px;display:inline-flex;align-items:center;gap:6px}
+  .game .start button:hover{background:var(--shop-dark)}
+  .game .start .hint{font-size:11.5px;color:#94a3b8}
+  .game .start .hint kbd{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:4px;padding:1px 6px;font-family:monospace;font-size:11px;color:#cbd5e1}
+
+  /* CHECKOUT */
+  .checkout{display:grid;grid-template-columns:1.3fr 1fr;gap:0;margin:30px 0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}
+  @media(max-width:900px){.checkout{grid-template-columns:1fr}}
+  .ck-form{padding:36px}
+  .ck-summary{background:linear-gradient(180deg,#f6f5f1 0%,#fafaf7 100%);padding:36px;border-left:1px solid var(--line)}
+  @media(max-width:900px){.ck-summary{border-left:none;border-top:1px solid var(--line)}}
+  .ck-stage{font-size:11px;letter-spacing:2px;color:var(--shop);text-transform:uppercase;font-weight:700;margin-bottom:6px;display:inline-flex;align-items:center;gap:6px}
+  .ck-form h2{font-family:'Fraunces',serif;font-size:28px;font-weight:600;margin:0 0 6px;letter-spacing:-.5px}
+  .ck-form .lead{color:#555;font-size:13.5px;line-height:1.55;margin-bottom:22px}
+  .ck-section{margin-bottom:24px}
+  .ck-section h3{font-size:13px;font-weight:600;color:#333;margin:0 0 10px;display:flex;justify-content:space-between;align-items:center}
+  .ck-section h3 .step-n{font-size:11px;color:var(--muted);font-weight:500}
+  .ck-method{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .ck-method label{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid var(--line);border-radius:12px;cursor:pointer;font-size:13px;font-weight:500;background:#fff;transition:all .15s}
+  .ck-method label:hover{border-color:var(--shop)}
+  .ck-method label.on{border-color:var(--shop);background:var(--shop-soft)}
+  .ck-method input{accent-color:var(--shop)}
+  .ck-method .ml b{display:block;font-size:13.5px;color:var(--ink)}
+  .ck-method .ml small{font-size:11px;color:var(--muted);font-weight:400}
+  .ck-channels{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .ch{display:flex;align-items:center;gap:10px;padding:13px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);font-size:13px;font-weight:600;text-decoration:none;transition:all .15s}
+  .ch:hover{border-color:var(--ink);transform:translateY(-1px)}
+  .ch .ico{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0}
+  .ch .ico.wa{background:#25d366}
+  .ch .ico.tg{background:#229ed9}
+  .ch .ico.em{background:var(--shop)}
+  .ch .ico.li{background:#0a66c2}
+  .ch .ico.gh{background:#181717}
+  .ch .ico.lc{background:#f59e0b}
+  .ch .vv{display:flex;flex-direction:column;gap:1px}
+  .ch .vv small{color:var(--muted);font-weight:400;font-size:11px}
+  .ck-link{display:flex;align-items:center;gap:10px;padding:12px;border:1px dashed var(--line);border-radius:10px;font-size:12.5px;color:#555;background:#fafafa;margin-top:10px}
+  .ck-link svg{color:var(--shop);flex-shrink:0}
+  .ck-link b{color:var(--ink);font-weight:600}
+  .ck-summary h3{font-family:'Fraunces',serif;font-size:22px;font-weight:600;margin:0 0 16px;letter-spacing:-.3px;display:flex;justify-content:space-between;align-items:center}
+  .ck-summary h3 .pill-sm{font-size:10px;color:var(--shop);background:var(--shop-soft);padding:3px 8px;border-radius:99px;font-weight:700;letter-spacing:1px;font-family:'Inter',sans-serif}
+  .li{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+  .li:last-of-type{border:none}
+  .li .thumb{width:48px;height:48px;border-radius:8px;background:var(--shop-soft);display:flex;align-items:center;justify-content:center;color:var(--shop-dark);font-family:'Fraunces',serif;font-weight:700;flex-shrink:0;position:relative}
+  .li .thumb .q{position:absolute;top:-6px;right:-6px;background:var(--ink);color:#fff;font-size:10px;font-weight:700;border-radius:99px;width:18px;height:18px;display:flex;align-items:center;justify-content:center}
+  .li .body{flex:1;font-size:13px;line-height:1.4}
+  .li .body .n{font-weight:600;color:var(--ink)}
+  .li .body .v{color:var(--muted);font-size:11.5px;margin-top:2px}
+  .li .price{font-size:12.5px;color:#555;text-align:right;white-space:nowrap}
+  .li .price b{display:block;color:var(--ink);font-family:'Fraunces',serif;font-weight:600;font-size:14px}
+  .discount{display:flex;gap:6px;margin:14px 0 10px}
+  .discount input{flex:1;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-family:inherit;font-size:13px;background:#fff}
+  .discount input:focus{outline:none;border-color:var(--shop)}
+  .discount button{background:var(--ink);color:#fff;border:none;border-radius:10px;padding:0 16px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:inherit}
+  .totals{font-size:13px;color:#555;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+  .totals .row{display:flex;justify-content:space-between;padding:5px 0}
+  .totals .row.total{padding-top:14px;margin-top:6px;border-top:1px solid var(--line);font-size:18px;font-weight:600;color:var(--ink);font-family:'Fraunces',serif}
+  .totals .row.total .num{color:var(--shop)}
+  .totals .pp{font-size:11px;color:var(--muted);margin-top:4px;text-align:right}
+  .pay-btn{margin-top:18px;width:100%;background:var(--shop);color:#fff;border:none;border-radius:12px;padding:16px;font-weight:700;font-size:14px;cursor:pointer;text-decoration:none;text-align:center;letter-spacing:.3px;display:flex;align-items:center;justify-content:center;gap:8px}
+  .pay-btn:hover{background:var(--shop-dark)}
+  .secure{display:flex;align-items:center;gap:8px;justify-content:center;font-size:11px;color:var(--muted);margin-top:12px}
+
+  footer{background:var(--accent);color:#cfe5d8;padding:40px 24px 20px;margin-top:40px}
+  footer .ft{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:30px}
+  @media(max-width:780px){footer .ft{grid-template-columns:1fr 1fr}}
+  @media(max-width:480px){footer .ft{grid-template-columns:1fr}}
+  footer .brand{color:#fff;font-family:'Fraunces',serif;font-size:24px;font-weight:600}
+  footer .brand .dot{color:#7adfb3}
+  footer .blurb{font-size:13px;color:#9bc7b1;margin-top:8px;line-height:1.6;max-width:280px}
+  footer h4{font-size:11px;color:#7adfb3;letter-spacing:2px;text-transform:uppercase;margin:0 0 14px;font-weight:700}
+  footer ul{list-style:none;padding:0;margin:0;font-size:13px;line-height:2}
+  footer ul a{color:#cfe5d8;display:inline-flex;align-items:center;gap:6px}
+  footer ul a:hover{color:#fff}
+  footer .copy{max-width:1240px;margin:30px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);font-size:12px;color:#9bc7b1;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  .scroll-hint{position:fixed;bottom:20px;right:20px;background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-size:12px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.15);cursor:pointer;opacity:0;transform:translateY(20px);transition:all .2s;border:none;font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:6px;z-index:40}
+  .scroll-hint.on{opacity:1;transform:translateY(0)}
+</style>
+
+<!-- SEO: JSON-LD Person + Service + FAQPage -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Person",
+  "name":"Shakir Uz Zaman",
+  "url":"https://zaman-shakir.github.io/",
+  "image":"https://zaman-shakir.github.io/shakir-pp1.png",
+  "jobTitle":"CMS Migration Expert — Shopify & WordPress",
+  "email":"mailto:zaman.shakirdev@gmail.com",
+  "telephone":"+8801738790641",
+  "address":{"@type":"PostalAddress","addressLocality":"Dhaka","addressCountry":"BD"},
+  "sameAs":["https://github.com/zaman-shakir","https://linkedin.com/in/shakir-uz-zaman","https://leetcode.com/shakir-uz-zaman"],
+  "knowsAbout":["Shopify","WordPress","WooCommerce","Liquid","DanDomain to Shopify migration","DanDomain to WordPress migration","WordPress to Shopify migration","WP cache optimization","PHP","Laravel","React","SvelteKit"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Service",
+  "serviceType":"DanDomain to Shopify Migration",
+  "provider":{"@type":"Person","name":"Shakir Uz Zaman"},
+  "areaServed":["Denmark","EU","Singapore","Canada","Worldwide"],
+  "description":"DanDomain to Shopify, DanDomain to WordPress and WordPress to Shopify migrations with SEO equity preservation, zero downtime cutovers and fixed-scope pricing."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"How long does a DanDomain to Shopify migration take?","acceptedAnswer":{"@type":"Answer","text":"1–6 weeks depending on catalog size, integrations and design complexity."}},
+    {"@type":"Question","name":"Will my SEO rankings survive a DanDomain to WordPress migration?","acceptedAnswer":{"@type":"Answer","text":"Yes — URL-for-URL 301 redirect map, preserved title/meta/schema, ported sitemap."}},
+    {"@type":"Question","name":"Can you handle WordPress to Shopify migrations with custom plugins?","acceptedAnswer":{"@type":"Answer","text":"Yes. WooCommerce custom logic maps to Shopify apps, metafields, Shopify Functions or custom theme code."}},
+    {"@type":"Question","name":"How fast can you make my WordPress site?","acceptedAnswer":{"@type":"Answer","text":"Sub-1-second First Contentful Paint on most WP sites — proper caching strategy (page cache, object cache, edge cache, fragment cache) tuned to the stack."}}
+  ]
+}
+</script>
 </head>
-
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGZH8HT"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe>
-  </noscript>
 
-  <!-- Navigation Menu-->
-  <!-- Nav class 1 -->
-  <nav class="hide-on-small-only">
-    <ul class="side-nav fixed section table-of-contents">
+<div class="announce">
+  <span class="pin">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Dhaka → Denmark · Singapore · Canada
+  </span>
+  ·
+  <span><b>2 migration slots open · Q2 2026</b></span>
+</div>
 
-      <li class="logo">
-        <a id="logo-container" aria-label="Navigate to the beginning of the page" href="#intro"
-          class="brand-logo grey-blue-text">
-          <img src="/assets/img/shakir_passport.jpg" class="circle img-responsive profile-pic" alt="avatar">
-        </a>
-      </li>
-
-      <li class="bold">
-        <a aria-label="Navigate to the About section" href="#about" class="waves-effect waves-dark teal-text"><i
-            class="mdi-social-person small"></i><span>About</span></a>
-      </li>
-      <li class="bold">
-        <a aria-label="Navigate to the Experience section" href="#experience"
-          class="waves-effect waves-dark teal-text"><i
-            class="mdi-action-trending-up small"></i><span>Experience</span></a>
-      </li>
-
-      <li class="bold">
-        <!-- mdi-av-web small
-             mdi-av-my-library-books small-->
-        <a aria-label="Navigate to the Projects section" href="#projects" class="waves-effect waves-dark teal-text"><i
-            class="mdi-av-my-library-books small"></i><span>Projects</span></a>
-      </li>
-
-      <li class="bold">
-        <!--
-        ICONS:
-        mdi-action-assessment
-        mdi-social-poll
-        mdi-av-equalizer
-        -->
-        <a aria-label="Navigate to the Skills section" href="#skills" class="waves-effect waves-dark teal-text"><i
-            class="mdi-action-assessment small"></i><span>Skills</span></a>
-      </li>
-
-      <li class="bold">
-        <!--
-        ICONS:
-        -->
-        <a aria-label="Navigate to the Education section" href="#education" class="waves-effect waves-dark teal-text"><i
-            class="mdi-social-school small"></i><span>Education</span></a>
-      </li>
-
-      <li class="bold">
-        <!--
-        1. mdi-communication-contacts
-        2. mdi-content-mail
-        3. mdi-communication-email
-        -->
-        <a aria-label="Navigate to the Contact section" href="#contact" class="waves-effect waves-dark teal-text"><i
-            class="mdi-content-mail small"></i><span>Contact</span></a>
-      </li>
-
-      <li class="bold">
-        <!--
-        ICONS:
-        1. mdi-action-description
-        2. mdi-file-folder
-        3. mdi-file-folder-open
-        4. mdi-file-attachment
-        5. mdi-file-folder-shared
-        -->
-        <!-- <a aria-label="Open Shakir's resume in a new tab" href="#resume" target="_blank"
-          onclick="window.open('https://drive.google.com/file/d/1vYi-bMyIsZPve0x_clxY8xsDtiHiOMd3/view?usp=sharing')"
-          class="waves-effect waves-dark teal-text"><i class="mdi-file-folder-open small"></i><span>Resume</span></a> -->
-        <a aria-label="Open Shakir's resume in a new tab" href="https://drive.google.com/file/d/1dvUFRrQYnKIBdIjQaaaQqZn8DUwCcPjK/view" target="_blank"
-        class="waves-effect waves-dark teal-text"><i class="mdi-file-folder-open small"></i><span>Resume</span></a>
-      </li>
-    </ul>
-  </nav>
-
-  <!-- Nav class 2 -->
-  <nav class="hide-on-large only trigger z-depth-1">
-    <a aria-label="Toggle visibility of the mobile navbar" href="#" data-activates="slide-out"
-      class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-    <div class="name-title">
-      <a id="name" aria-label="Navigate to the beginning of the page" href="#" class="teal-text">Shakir Uz Zaman</a><span class="black-text">Software Developer</span>
+<header>
+  <div class="nav">
+    <a href="#" class="brand">
+      <svg class="bag" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg>
+      shakir<span class="dot">.</span>store
+    </a>
+    <nav class="menu">
+      <a href="#" class="on">Home</a>
+      <a href="#migration">Migration</a>
+      <a href="#cache">Cache</a>
+      <a href="#projects">Catalog</a>
+      <a href="#game">Mini-game</a>
+      <a href="#history">About</a>
+      <a href="#checkout">Contact</a>
+    </nav>
+    <div class="icons">
+      <button class="icobtn" id="searchBtn" aria-label="Search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        Search
+      </button>
+      <a class="icobtn" href="https://linkedin.com/in/shakir-uz-zaman" target="_blank" rel="noopener" aria-label="Account">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></svg>
+        Account
+      </a>
+      <a class="icobtn shop cart-pill" href="#checkout" aria-label="Checkout">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg>
+        Cart <span class="badge">1</span>
+      </a>
     </div>
-  </nav>
+  </div>
+</header>
 
-  <!-- Nav class 3 -->
-  <nav class="hide-on-large only">
-    <ul id="slide-out" class="side-nav">
-      <li class="bold">
-        <a aria-label="Navigate to the About section" href="#about" class="waves-effect waves-dark teal-text"><i
-            class="mdi-social-person small"></i><span>About</span></a>
-      </li>
-      <li class="bold">
-        <a aria-label="Navigate to the Experience section" href="#experience"
-          class="waves-effect waves-dark teal-text"><i
-            class="mdi-action-trending-up small"></i><span>Experience</span></a>
-      </li>
-      <li class="bold">
-        <a aria-label="Navigate to the Projects section" href="#projects" class="waves-effect waves-dark teal-text"><i
-            class="mdi-av-my-library-books small"></i><span>Projects</span></a>
-      </li>
-      <li class="bold">
-        <a aria-label="Navigate to the Skills section" href="#skills" class="waves-effect waves-dark teal-text"><i
-            class="mdi-action-assessment small"></i><span>Skills</span></a>
-      </li>
+<div class="modal" id="searchModal">
+  <div class="box">
+    <button class="close" id="closeSearch">✕</button>
+    <h3>What can I migrate for you?</h3>
+    <input type="text" placeholder="Try: DanDomain to Shopify, WP cache, theme rebuild…" id="searchInput">
+    <div class="sugg">Popular:
+      <a href="#migration">DanDomain → Shopify</a>
+      <a href="#migration">DanDomain → WordPress</a>
+      <a href="#migration">WordPress → Shopify</a>
+      <a href="#cache">WP cache optimization</a>
+      <a href="#game">Play mini-game</a>
+    </div>
+  </div>
+</div>
 
-      <li class="bold">
-        <a aria-label="Navigate to the Education section" href="#education" class="waves-effect waves-dark teal-text"><i
-            class="mdi-social-school small"></i><span>Education</span></a>
-      </li>
-      <li class="bold">
-        <a aria-label="Navigate to the Contact section" href="#contact" class="waves-effect waves-dark teal-text"><i
-            class="mdi-content-mail small"></i><span>Contact</span></a>
-      </li>
-      <li class="bold">
-        <a aria-label="Open Shakir's Resume in a new tab"
-          href="https://drive.google.com/file/d/1x_mL_nXtIy_7guj6thcBklgVT1hZ2S03/view?usp=share_link" target="_blank"
-          class="waves-effect waves-dark teal-text"><i class="mdi-file-folder-open small"></i><span>Resume</span></a>
-      </li>
-    </ul>
-  </nav>
+<div class="container">
 
-  <!-- Main Content-->
-  <main>
-    <!-- First Section: Heading lines and image -->
-    <section id="intro" class="section scrollspy full-height">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="col-md-9">
-          <div class="content section-padding valign" style="margin-left: 10%; margin-top: 50px;">
-            <div class="caption">
-              <h2>Hi, I'm <span class="teal">Shakir Uz Zaman</span>.</h2>
-              <h5 style="color:#fff">A <span class="typing" style="font-weight: 300; color:#004d40"></span></h5>
-              <!-- <h5 style="color:#00796b">A <span class="typing" style="font-weight: 300; color:#fff"></span></h5> -->
-              <h5>I love to think about problems and their possible solutions. I am focused and do not get distracted easily by other things while I am trying to concentrate on something. Patience and smart working is my coding way.
+  <div class="crumb">
+    <a href="#">Home</a>
+    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+    <a href="#">CMS Experts</a>
+    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+    <a href="#">Shopify &amp; WordPress</a>
+    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+    <b>Shakir Uz Zaman</b>
+  </div>
 
-                <br><br>I love coding and have experience on WordPress, PHP, Javascript. I have experience to deliver quality products. I can work indepently and also fit well with others as a team member.
+  <section class="pdp">
+    <div class="main-img">
+      <div class="tags">
+        <span class="tag">⭐ BESTSELLER</span>
+        <span class="tag shop">SHOPIFY MIGRATION</span>
+        <span class="tag wp">WORDPRESS MIGRATION</span>
+        <span class="tag dd">DANDOMAIN SPECIALIST</span>
+      </div>
+      <img src="shakir-pp1.png" alt="Shakir Uz Zaman — Shopify and WordPress migration developer">
+      <div class="verified">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#7adfb3" stroke="#063a26" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+        Verified · 10+ yrs CMS expert
+      </div>
+      <div class="stock">In stock</div>
+    </div>
 
-                <br><br>The best thing in software engineering is <strong class="quote-sec">"Any problem has solution, you just have to find it"</strong>. That motivates me to keep looking for the next possible solution.</h5>
-                <br>
-              </div>
-            <div class="social">
-              <!-- <p id="leetcode_text" style="display:none;">Open Shakir's leetcode profile</p> -->
+    <div class="info">
+      <div class="vendor"><span class="pip"></span>CMS MIGRATION SPECIALIST · IN STOCK · SHIPS WORLDWIDE</div>
+      <h1>Shakir Uz Zaman</h1>
+      <div class="role">
+        <b>Migration Expert</b> — WordPress&nbsp;→&nbsp;Shopify · DanDomain&nbsp;→&nbsp;Shopify · DanDomain&nbsp;→&nbsp;WordPress.<br>
+        WP <b>cache expert</b> (any WP site &lt; 1s), Liquid themes, WooCommerce plugins (800+ installs). SEO equity protected.
+      </div>
+      <div class="reviews">
+        <span class="stars">★★★★★</span>
+        <span><b style="color:var(--ink)">5.0 / 5</b> · 10+ years experience</span>
+        <span class="pipe">|</span>
+        <span>Zero failed migrations</span>
+      </div>
 
-              <a href="http://linkedin.com/in/shakir-uz-zaman" target="_blank">
-                <button class="icon-btn linkedin">
-                  <i class="fa fa-linkedin"></i>
-                </button>
-              </a>
-              <a href="https://github.com/zaman-shakir/" target="_blank">
-                <button class="icon-btn github">
-                  <i class="fa fa-github"></i>
-                </button>
-              </a>
-              <a href="https://leetcode.com/shakir-uz-zaman/"  target="_blank">
+      <div class="price-row">
+        <span class="price">$Available</span>
+        <span class="was">$Booked</span>
+        <span class="save">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          GMT+6 · Denmark hours OK
+        </span>
+      </div>
 
-                <button class="icon-btn leetcode">
-                  <img style="width: 19px;" src="/assets/img/leetcode_cropped.png" id="leetcode">
-                </button>
-              </a>
-
-
-              <!-- <a href="https://angel.co/u/shakir_bhogayata" target="_blank">
-                <button class="icon-btn angellist">
-                  <i class="fa fa-angellist"></i>
-                </button>
-              </a> -->
-
-              <!-- <a href="http://linkedin.com/in/zaman-shakir" target="_blank">
-                  <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-
-                  </span>
-              </a> -->
-            </div>
-            <div class='buttons'>
-              <a href="#about" class="readme">Read More</a>
-              <a href="#contact" class="contactme">Contact Me</a>
-            </div>
-          </div>
+      <div class="field">
+        <div class="label"><span>Migration type</span><span class="picked">DanDomain → Shopify selected</span></div>
+        <div class="pills" data-group="migration">
+          <span class="pill on hot">DanDomain → Shopify</span>
+          <span class="pill">DanDomain → WordPress</span>
+          <span class="pill">WordPress → Shopify</span>
+          <span class="pill">Shopify → WordPress</span>
+          <span class="pill">WooCommerce → Shopify</span>
+          <span class="pill">New build</span>
         </div>
       </div>
-    </section>
 
-    <!-- Second Section: About -->
-    <section id="about" class="section scrollspy">
-      <h3 class="page-title white-text teal">About</h3>
-      <div class="container flow-text">
-        <!-- <blockquote>
-          <h2>
-            A Software Developer with a passion for Backend Development and Artificial Intelligence.
-
-          </h2>
-        </blockquote> -->
-        <p>
-            Working with Web development for mosre than last 5 years. I have expertise on PHP, Wordpress, Javascript, MySQL and pixed perfect design.
-        </p>
-        <p>
-          <ul>
-            <li><b>Languages:</b> PHP, Javascript, Reeact, Wordpress, Drupal, HTML, CSS</li>
-            <li><b>Databases:</b> MySQL</li>
-            <!-- <li><b>Libraries:</b> NumPy, Pandas, OpenCV</li> -->
-            <!-- <li><b>Frameworks:</b> W</li> -->
-            <li><b>Tools & Technologies:</b> Git, Docker</li>
-            <li><b>Problem Solving:</b> Mostly Leetcode</li>
-          </ul>
-
-        </p>
-
-        <!-- <p>
-
-          Detail-oriented Software Developer with professional experience in Backend Development, Machine Learning, Computer Vision. I am adept in Python, Django, Flask, SQL, Machine Learning, Computer Vision.
-        </p> -->
-        <p>
-
-          Looking for oppurtunity to work on products or services where I can contribute more to help my organization to reach their goals.
-        </p>
-        <!-- <p>
-          Another Paragraph
-        </p>  -->
-        <!-- <p>
-        <strong>Current Focus</strong>:&nbsp;<a aria-label="Navigate to the Inclusive Design Patterns homepage"
-          href="https://www.smashingmagazine.com/inclusive-design-patterns/">Accessibility</a>&nbsp;//&nbsp;<a
-          aria-label="Navigate to the Full Stack React homepage"
-          href="https://www.fullstackreact.com/">React</a>&nbsp;//&nbsp;<a
-          aria-label='Navigate to the article "Scalable CSS"'
-          href="https://mrmrs.github.io/writing/2016/03/24/scalable-css/">Design Systems</a>
-        </p> -->
-      </div>
-    </section>
-
-
-    <!-- Third Section: Experience -->
-    <section id="experience" class="section scrollspy">
-      <h3 class="page-title white-text teal">Experience</h3>
-      <div class="container">
-
-        <!-- Latest Experience -->
-        <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <div class="col s12 m2">
-                <a href="https://triple-a.io" target="_blank"><img alt="Zhiffy logo"
-                    src="/assets/img/triplea-logo.png"  class="responsive-img center-block" /></a>
-              </div>
-              <!-- <div class="col s12 m10"> -->
-              <div class="col s12 m10">
-                <p>
-                  <span class="card-title"><a href="https://triple-a.io" target="_blank"
-                      class="teal-text hoverline">Triple-A</a></span>
-                </p>
-              </div>
-            </div>
-            <div class="role brown-text text-darken-2">Software Engineer</div>
-            <ul>
-
-              <li>
-                Working with a global team with different timezone.
-
-              </li>
-              <li>
-                Wokring on an exisitng WooCommerce Payment gateway plugin to add new features and maintain customer support for it.
-
-              </li>
-              <li>
-                Responsible for making quality products for Global client using Wordpress, Sveltkit.
-              </li>
-              <li>
-                Research and Investigate the current system and implement better solutions.
-              </li>
-
-              <li>
-                <b>Tools:</b> PHP, Wordpress, Sveltkit Javascript, MySQL, REST API, Git
-              </li>
-            </ul>
-          </div>
-          <div class="card-action">
-            <span>May 2023 - Present | Singapore | Remote</span>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <div class="col s12 m2">
-                <a href="grype.ca/" target="_blank"><img alt="Zhiffy logo"
-                    src="/assets/img/grype_logo.png" class="responsive-img center-block" /></a>
-              </div>
-              <!-- <div class="col s12 m10"> -->
-              <div class="col s12 m10">
-                <p>
-                  <span class="card-title"><a href="https://grype.ca/" target="_blank"
-                      class="teal-text hoverline">Grype Solutions</a></span>
-                </p>
-              </div>
-            </div>
-            <div class="role brown-text text-darken-2">Software Engineer</div>
-            <ul>
-
-              <li>
-                Developed a newsportal site serving 50k+ regular paid subscribed users. Paywall, newsletters, google ads implemented by custom coding. This new news site helped to get more paid subscriber and editors are much more comfortable to make their news.
-
-              </li>
-              <li>
-                Responsible for making quality products for North American clients, Wordpress, Drupal websites with Eye Catchy Frontend and Secure Backend.
-              </li>
-              <li>
-                Research and Investigate the current system and implement better solutions.
-              </li>
-
-              <li>
-                <b>Tools:</b> PHP, Wordpress, Javascript, MySQL, Drupal, REST API, Agile, Git
-              </li>
-            </ul>
-          </div>
-          <div class="card-action">
-            <span>May 2021 - Present | Ontario, Canada | Remote</span>
-          </div>
-        </div>
-
-
-        <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <div class="col s12 m2">
-                <a href="http://www.neural-semiconductor.com/" target="_blank"><img alt="NSL logo"
-                    src="/assets/img/nsl_logo.svg" style="width:100px; max-width: 100px;" class="responsive-img center-block" /></a>
-              </div>
-              <!-- <div class="col s12 m10"> -->
-              <div class="col s12 m10">
-                <p>
-                  <span class="card-title"><a href="http://www.neural-semiconductor.com/" target="_blank"
-                      class="teal-text hoverline">Neural Semiconductor Ltd.</a></span>
-                </p>
-              </div>
-            </div>
-            <div class="role brown-text text-darken-2">Software Engineer</div>
-
-            <ul>
-              <li>
-                Developed  & Developed Assessment Center project frontend and backend. Currently that project is being used by several organization for recrutment purpose.
-              </li>
-              <li>
-                Worked along with other team members to publish Magento VPS(Visual Product Search) plugin
-into Magento Marketplace. This plugin takes photos and gets similar photos using Machine learning.
-              </li>
-
-                <b>Tools:</b> PHP, Laravel, ReactJS, Javascript, Git
-              </li>
-            </ul>
-          </div>
-          <div class="card-action">
-            <span>June 2019 - May 2021 | Dhaka, Bangladesh</span>
-          </div>
-        </div>
-
-        <!-- Experience 2 -->
-        <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <div class="col s12 m2">
-                <a href="https://sycoraxtech.com/en/" target="_blank"><img alt="NSL logo"
-                  src="/assets/img/sycorax.png" style="width:100px; max-width: 100px;" class="responsive-img center-block" /></a>
-
-              </div>
-
-              <!-- <div class="col s12 m10"> -->
-              <div class="col s12 m10">
-                <p>
-                  <span class="card-title"><a href="https://sycoraxtech.com/en/" class="teal-text hoverline">Sycorax Technology</a></span>
-                </p>
-              </div>
-            </div>
-            <div class="role brown-text text-darken-2">Software Developer</div>
-            <ul>
-              <li>
-                Responsible for Backend and Frontend Development in MVC projects. Responsible for making projects from scratch to client ready (More than 6 projects).
-              </li>
-              <li>
-                Created an ERP system from scratch which is being used for the client till now.
-              </li>
-              <li>
-                <b>Tools:</b> PHP, Codeigniter, JavaScript, MySQL, Bootstrap
-              </li>
-            </ul>
-          </div>
-          <div class="card-action">
-            <span>November 2018 - May 2019 | Dhaka, Bangladesh</span>
-          </div>
-        </div>
-
-        <!-- Experience 3 -->
-        <!-- <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <div class="col s12 m2">
-                <a href="https://www.cignex.com" target="_blank"><img alt="Cignex logo"
-                    src="/assets/img/exp-cignex-logo.png" class="responsive-img center-block" /></a>
-              </div>
-              <div class="col s12 m10">
-                <p>
-                  <span class="card-title"><a href="https://www.cignex.com" target="_blank"
-                      class="teal-text hoverline">CIGNEX
-                      Datamatics </a></span>
-                </p>
-              </div>
-            </div>
-            <div class="role brown-text text-darken-2">Project Trainee</div>
-            <ul>
-              <li>
-                Designed a library management system for a local library, where we undertook activities like requirement
-                elicitation, preparing Data Flow
-                and Entity-Relationship diagrams.
-              </li>
-              <li>
-                Delivered a solution for a POC involving Automatic Financial Document Classifier using Natural Language
-                Processing and Support Vector
-                Machines with 96% accuracy on the company’s data.
-              </li>
-              <li>
-                <b>Tools:</b> Python, Scikit-learn, NLTK
-              </li>
-            </ul>
-          </div>
-          <div class="card-action">
-            <span>June 2017 - July 2017 | Ahmedabad, India</span>
-          </div>
-        </div> -->
-
-      </div>
-    </section>
-
-    <!-- Fourth Section: Projects -->
-    <section id="projects" class="section scrollspy">
-      <h3 class="page-title white-text teal">Projects & Responsibilities</h3>
-      <div class="container">
-        <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <div class="col s12 m10">
-                <p>
-                  <span class="card-title"><a href="https://wordpress.org/plugins/triplea-cryptocurrency-payment-gateway-for-woocommerce/" target="_blank"
-                      class="teal-text hoverline">Cryptocurrency Payment Gateway for WooCommerce</a></span>
-                </p>
-              </div>
-            </div>
-            <div class="role brown-text text-darken-2">2023 - Present</div>
-
-            <ul>
-                <li>
-                    Continuously add new features and fix customer issues for this plugin to ensure compatibility with most WooCommerce versions.
-                </li>
-                <li>
-                    Utilize the latest PHP and object-oriented programming principles to update the plugins with singleton design patterns.
-                </li>
-                <li>
-                    Released 14 versions last year to ensure customer satisfaction. No customer issues reported in the last 3 months.
-                </li>
-            </ul>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <div class="col s12 m10">
-                <p>
-                  <span class="card-title"><a href="https://triple-a.io/" target="_blank"
-                      class="teal-text hoverline">Triple-A website</a></span>
-                </p>
-              </div>
-            </div>
-            <div class="role brown-text text-darken-2">2023</div>
-
-            <ul>
-                <li>
-                    Completely design and develop the site from scratch using Elementor, Wordpress, PHP, Javascript & CSS.
-                </li>
-                <li>
-                    Design the backend architecture, creating the custom plugins and themes from scratch.
-                </li>
-                <li>
-                    Making sure the UI is 100% pixel perfect is also my responsibility. This site handles 100k+ users subscriptions(paid & unpaid).
-                </li>
-            </ul>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <div class="col s12 m10">
-                <p>
-                  <span class="card-title"><a href="https://www.hilltimes.com/" target="_blank"
-                      class="teal-text hoverline">The Hilltimes News Portal</a></span>
-                </p>
-              </div>
-            </div>
-            <div class="role brown-text text-darken-2">2021 - 2022</div>
-
-            <ul>
-              <li>
-                Completely design and develop the site from scratch using Elementor, Wordpress, PHP, Javascript & CSS.
-              </li>
-              <li>
-                Design the backend architecture, creating the custom plugins and themes from scratch.
-              </li>
-              <li>
-                Making sure the UI is 100% pixel perfect is also my responsibility. This site handles 100k+ users subscriptions(paid & unpaid).
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <!-- <div class="col s12 m2">
-                <a href="http://www.neural-semiconductor.com/" target="_blank"><img alt="NSL logo"
-                    src="/assets/img/nsl_logo.svg" style="width:100px; max-width: 100px;" class="responsive-img center-block" /></a>
-              </div> -->
-              <!-- <div class="col s12 m10"> -->
-              <div class="col s12 m10">
-                <p>
-                  <span class="card-title"><a href="https://www.writersunion.ca/" target="_blank"
-                      class="teal-text hoverline">Writers Union Portal & Public Site</a></span>
-                </p>
-              </div>
-            </div>
-            <div class="role brown-text text-darken-2">2021 - 2022</div>
-
-            <ul>
-              <li>
-                Implement design and functionality as the client wanted. Drupal 8, Drupal 9 are used to
-                build these sites.
-              </li>
-              <li>
-                Making sure TWUC(The Writers Union of Canada) authority can manage their
-                customers and their subscriptions smoothly.
-              </li>
-              <li>
-                Communicating with CiviCRM from sites to maintain users data.
-              </li>
-              <li>
-                REST APIs to send and receive data between public and portal sites.
-              </li>
-              <li>
-                Migration from Drupal 7 to Drupal 8 and performance improvement. Drupal 7, Drupal
-                8, Rest API, Javascript & CSS.
-              </li>
-
-            </ul>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <!-- <div class="col s12 m2">
-                <a href="http://www.neural-semiconductor.com/" target="_blank"><img alt="NSL logo"
-                    src="/assets/img/nsl_logo.svg" style="width:100px; max-width: 100px;" class="responsive-img center-block" /></a>
-              </div> -->
-              <!-- <div class="col s12 m10"> -->
-              <div class="col s12 m10">
-                <p>
-                  <span class="card-title"><a href="#" target="_blank"
-                      class="teal-text hoverline">Assessment Center</a></span>
-                </p>
-              </div>
-            </div>
-            <div class="role brown-text text-darken-2">2020 - 2021</div>
-
-            <ul>
-              <li>
-                A learning management system , My responsibilities were
-                frontend development using Laravel, Blade, Javascript & React. Also implement the backend
-                using Laravel Rest API and MySQL.
-              </li>
-
-            </ul>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <!-- <div class="col s12 m2">
-                <a href="http://www.neural-semiconductor.com/" target="_blank"><img alt="NSL logo"
-                    src="/assets/img/nsl_logo.svg" style="width:100px; max-width: 100px;" class="responsive-img center-block" /></a>
-              </div> -->
-              <!-- <div class="col s12 m10"> -->
-              <div class="col s12 m10">
-                <p>
-                  <span class="card-title"><a href="#" target="_blank"
-                      class="teal-text hoverline">Pacific ERP</a></span>
-                </p>
-              </div>
-            </div>
-            <div class="role brown-text text-darken-2">2019 - 2020</div>
-
-            <ul>
-              <li>
-                POS solution made in Codeigniter. I made it from scratch to
-                   production ready using MVC, PHP , Javascript & MySQL.
-              </li>
-
-            </ul>
-          </div>
+      <div class="field">
+        <div class="label"><span>Stack</span><span class="picked">Shopify Liquid selected</span></div>
+        <div class="pills" data-group="stack">
+          <span class="pill on"><span class="glow"></span>Shopify<span class="sub">Liquid · OS 2.0</span></span>
+          <span class="pill">WordPress<span class="sub">^6.x</span></span>
+          <span class="pill">WooCommerce<span class="sub">^9.x</span></span>
+          <span class="pill">PHP<span class="sub">^8.x</span></span>
+          <span class="pill">Laravel<span class="sub">^11</span></span>
+          <span class="pill">React<span class="sub">^18</span></span>
+          <span class="pill">SvelteKit<span class="sub">^2.x</span></span>
         </div>
       </div>
-    </section>
 
-    <!-- Fifth Section: Skills -->
-    <section id="skills" class="section scrollspy">
-      <h3 class="page-title white-text teal">Skills</h3>
-      <div class="container">
-        <!-- Languages and Databases -->
-        <div class="card">
-          <div class="card-content">
-            <h4 class="brown-text light">Languages and Databases</h4>
-            <div class="row text-center">
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/php2.png"style="max-width: 100px;" class="responsive-img" />PHP
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/js.png" style="max-width: 100px;"class="responsive-img" />Javascript
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/wordpress.png" style="max-width: 100px;" class="responsive-img" />Wordpress
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/drupal.png" style="max-width: 100px;" class="responsive-img" />Drupal
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/laravel2.png" style="max-width: 100px;" class="responsive-img" />Laravel
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/mysql-logo-1-300x300.jpg"style="max-width: 100px;" class="responsive-img" />MySQL
-              </div>
-            </div>
-            <div class="row text-center" style="margin-top:50px">
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/html5-300x300.png" style="max-width: 100px;"class="responsive-img" />HTML5
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/css3-300x300.jpg"style="max-width: 100px;" class="responsive-img" />CSS3
-              </div>
-
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/postgresql-logo.png"style="max-width: 100px;" class="responsive-img" />PostgreSQL
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/git.png"style="max-width: 100px;" class="responsive-img" />Git
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/aws.png"style="max-width: 100px;" class="responsive-img" />AWS
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/bootstrap.png"style="max-width: 100px;" class="responsive-img" />Bootstrap
-              </div>
-
-
-            </div>
-          </div>
-        </div>
-
-        <!-- <div class="card">
-          <div class="card-content">
-            <h4 class="brown-text light">Libraries</h4>
-            <div class="row text-center">
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/numpy-logo-1-500x500.jpg" class="responsive-img" />NumPy
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/pandas-logo-2-500x500.jpg" class="responsive-img" />Pandas
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/opencv-logo-1-500x500.jpg" class="responsive-img" />OpenCV
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/sk-learn-logo-1-500x500.jpg" class="responsive-img" />scikit-learn
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/matplotlib-logo-1-500x500.jpg" class="responsive-img" />matplotlib
-              </div>
-            </div>
-          </div>
-        </div> -->
-
-        <!-- Frameworks -->
-        <!-- <div class="card">
-          <div class="card-content">
-            <h4 class="brown-text light">Frameworks</h4>
-            <div class="row text-center">
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/django-logo.webp" class="responsive-img" />Django
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/flask-logo.png" class="responsive-img" />Flask
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/bootstrap.png" class="responsive-img" />Bootstrap
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/keras-logo.png" class="responsive-img" />Keras
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/tensorflow-logo-1.png" class="responsive-img" />TensorFlow
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/pytorch-logo.png" class="responsive-img" />PyTorch
-              </div>
-            </div>
-          </div>
-        </div> -->
-
-        <!-- Other -->
-        <!-- <div class="card">
-          <div class="card-content">
-            <h4 class="brown-text light">Other</h4>
-            <div class="row text-center">
-
-
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/git.png" class="responsive-img" />Git
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/aws.png" class="responsive-img" />AWS
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/heroku.png" class="responsive-img" />Heroku
-              </div>
-            </div>
-          </div>
-        </div> -->
-
-        <!-- certifications -->
-        <!-- <div class="card">
-          <div class="card-content">
-            <h4 class="brown-text light">Certificates</h4>
-            <div class="row text-left">
-              <div class="container">
-                <div class="row">
-                  <div class="col s12 m6 l6">
-                    <div class="card">
-                      <div class="card-image">
-                        <img src="/assets/img/mooc-machine-learning-coursera-800x500.jpg">
-                      </div>
-                      <div class="card-content">
-                        <span class="card-title teal-text">Machine Learning (Stanford)</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col s12 m6 l6">
-                    <div class="card">
-                      <div class="card-image">
-                        <img src="/assets/img/mooc-algorithms-stanford-2-800x500.jpg">
-                      </div>
-                      <div class="card-content">
-                        <span class="card-title teal-text">Algorithms (Stanford)</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
-
-      </div>
-    </section>
-
-    <!-- Seventh Section: Education -->
-    <section id="education" class="section scrollspy">
-      <h3 class="page-title white-text teal">Education</h3>
-      <div class="container">
-        <div class="row">
-          <!-- Education -->
-          <div class="col s12 m6 l6">
-            <div class="card">
-              <div class="card-content">
-                <p>
-                  <span class="card-title"><a href="https://www.ruet.ac.bd/" target="_blank" class="teal-text hoverline">Rajshahi University of Engineering & Technology</a></span>
-                </p>
-                <p class="brown-text">Rajshahi, Bangladesh</p>
-                <p>
-                  <b>Degree: </b>Bachelor of Science in Computer Science
-                  <br>
-                  <!-- <b>CGPA: </b>4.0/4.0 -->
-                </p>
-
-                <ul>
-                  <p>
-                    <b>Relevant Courseworks:</b>
-                  <ul>
-                    <li>Web Development</li>
-                    <li>Data Structures and Algorithms</li>
-                    <li>Database Management Systems</li>
-                    <li>Operating Systems</li>
-                  </ul>
-                  </p>
-
-                </ul>
-              </div>
-            </div>
-
-
-          </div>
-          <!-- <div class="col s12 m6 l6">
-            <div class="card">
-              <div class="card-content">
-                <p>
-                  <span class="card-title"><a href="https://ahduni.edu.in/academics/schools-centres/school-of-engineering-and-applied-science/" target="_blank" class="teal-text hoverline">School of Engineering and Applied Science, Ahmedabad
-                      University</a></span>
-                </p>
-                <p class="brown-text">Ahmedabad, India</p>
-                <p>
-                  <b>Degree: </b>Bachelor of Technology in Information and Communication Technology
-                  <br>
-                  <b>CGPA: </b>3.13/4.33
-                </p>
-
-                <ul>
-                  <p>
-                    <b>Relevant Courseworks:</b>
-                  <ul>
-                    <li>Data Structures and Algorithms</li>
-                    <li>Database Management Systems</li>
-                    <li>Operating Systems</li>
-
-                  </ul>
-                  </p>
-
-                </ul>
-              </div>
-            </div>
-          </div> -->
+      <div class="field">
+        <div class="label"><span>Engagement</span><span class="picked">Hourly selected</span></div>
+        <div class="pills" data-group="eng">
+          <span class="pill">Discovery call (free)</span>
+          <span class="pill on">Hourly</span>
+          <span class="pill">Fixed-scope project</span>
+          <span class="pill">Retainer</span>
         </div>
       </div>
-    </section>
 
-    <!-- Eight Section: Contact -->
-    <section id="contact" class="section scrollspy full-height">
-      <h3 class="page-title white-text teal">Contact</h3>
-      <div class="container">
-        <p>
-          <a aria-label="Call Shakir" data-position="top" data-tooltip="Call Shakir"
-            class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i class="fa fa-phone"></i><a
-              aria-label="Call Shakir">+880 1738790641</a></a>
-        </p>
-        <p>
-          <a aria-label="Email Shakir" href="mailto:zaman.shakirdev@gmail.com" target="_blank" data-position="top"
-            data-tooltip="Email Shakir" class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-              class="fa fa-envelope"></i><a aria-label="Email Shakir" href="mailto:zaman.shakirdev@gmail.com"
-              class="hoverline">zaman.shakirdev@gmail.com</a></a>
-        </p>
-        <p>
-          <a aria-label="View Shakir on GitHub" href="http://github.com/zaman-shakir" target="_blank"
-            data-position="top" data-tooltip="View Shakir on GitHub"
-            class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i class="fa fa-github"></i><a
-              aria-label="Shakir on Github" href="http://github.com/zaman-shakir" class="hoverline"
-              target="_blank">github.com/zaman-shakir</a></a>
-        </p>
-        <p>
-          <a aria-label="View Shakir on LinkedIn" href="http://linkedin.com/in/zaman-shakir" target="_blank"
-            data-position="top" data-tooltip="View Shakir on LinkedIn"
-            class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-              class="fa fa-linkedin"></i><a aria-label="Shakir on LinkedIn" href="http://linkedin.com/in/zaman-shakir"
-              class="hoverline" target="_blank">linkedin.com/in/zaman-shakir</a></a>
-        </p>
+      <div class="buy">
+        <div class="qty"><button>−</button><input value="1"><button>+</button></div>
+        <button class="add" onclick="document.getElementById('checkout').scrollIntoView({behavior:'smooth'})">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/><path d="M12 12v4M10 14h4"/></svg>
+          Add to cart · Book Shakir
+        </button>
       </div>
-    </section>
-  </main>
+      <a class="buy-now" href="mailto:zaman.shakirdev@gmail.com?subject=Hire%20Shakir%20-%20Migration%20Project">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+        Buy now · Email directly
+      </a>
 
-  <!-- typed.js -->
-  <script src="/assets/vendor/typed.js/typed.min.js"></script>
-  <script type="text/javascript">
-    var typed = new Typed('.typing',{
-      strings: [" PHP Developer", " Wordpress Developer", " Javascript Developer"," Problem Solver"],
-      loop: true,
-      typeSpeed: 80,
-      backSpeed: 40
+      <div class="trust">
+        <div class="item">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l9-5 9 5v8l-9 5-9-5V8z"/></svg>
+          <div><b>SEO equity protected</b>301 redirects, schema, sitemap mapping</div>
+        </div>
+        <div class="item">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg>
+          <div><b>Zero downtime cutovers</b>Staging, DNS plan, rollback ready</div>
+        </div>
+        <div class="item">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          <div><b>Fixed timeline</b>1–6 weeks based on catalog size</div>
+        </div>
+      </div>
+
+      <p class="desc">CMS expert with 10+ years specialising in Shopify and WordPress ecosystems. I migrate Danish webshops from DanDomain to Shopify and WordPress without losing rankings, redirect maps or customer data. WP cache specialist — sub-1-second First Contentful Paint on any WordPress site using the proper caching stack (page, object, edge, fragment). From custom Liquid themes for Papirladen, Ovellie and QLiving to WooCommerce plugins powering 800+ active stores worldwide.</p>
+
+      <div class="acc">
+        <details open>
+          <summary><span class="left"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg> Shipping &amp; availability</span><span class="chev">+</span></summary>
+          <div class="body">Timezone GMT+6 (Dhaka) — overlap with Denmark, EU and Singapore daily. Async-first, sync windows 14:00–22:00 GMT+6. Onboarding: free discovery call → scoped trial week → ongoing engagement. 30-day mutual exit clause.</div>
+        </details>
+        <details>
+          <summary><span class="left"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21h16M4 17l8-9 8 9M8 17v-4M16 17v-4"/></svg> Size chart — proficiency</span><span class="chev">+</span></summary>
+          <div class="body">
+            <table>
+              <tr><td>Shopify (Liquid · OS 2.0)</td><td><span class="bar-wrap"><span class="bar" style="width:94%"></span></span>expert</td></tr>
+              <tr><td>WordPress</td><td><span class="bar-wrap"><span class="bar" style="width:96%"></span></span>expert</td></tr>
+              <tr><td>WP Cache &amp; speed</td><td><span class="bar-wrap"><span class="bar" style="width:98%"></span></span>specialist</td></tr>
+              <tr><td>WooCommerce</td><td><span class="bar-wrap"><span class="bar" style="width:92%"></span></span>expert</td></tr>
+              <tr><td>DanDomain migrations</td><td><span class="bar-wrap"><span class="bar" style="width:90%"></span></span>specialist</td></tr>
+              <tr><td>PHP / OOP</td><td><span class="bar-wrap"><span class="bar" style="width:92%"></span></span>expert</td></tr>
+              <tr><td>JavaScript</td><td><span class="bar-wrap"><span class="bar" style="width:85%"></span></span>strong</td></tr>
+              <tr><td>Laravel</td><td><span class="bar-wrap"><span class="bar" style="width:75%"></span></span>strong</td></tr>
+              <tr><td>React</td><td><span class="bar-wrap"><span class="bar" style="width:68%"></span></span>working</td></tr>
+              <tr><td>SvelteKit</td><td><span class="bar-wrap"><span class="bar" style="width:72%"></span></span>working</td></tr>
+            </table>
+          </div>
+        </details>
+        <details>
+          <summary><span class="left"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg> Care instructions — how I work</span><span class="chev">+</span></summary>
+          <div class="body">Ship small, deploy often. <b>Always pull before push</b> on Shopify themes. Customer issues are sacred. Pixel-perfect frontend, clean OOP backend, singleton patterns where they belong. Cache strategy from day one. Patience beats clever hacks.</div>
+        </details>
+        <details>
+          <summary><span class="left"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l3 3 9-9"/><path d="M21 12a9 9 0 11-9-9"/></svg> Returns</span><span class="chev">+</span></summary>
+          <div class="body">Never had one. 30-day mutual exit. Knowledge transfer always included.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- MIGRATION -->
+  <section class="migrate rv" id="migration">
+    <div class="eyebrow">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.39 7.36H22l-6.18 4.49L18.21 21 12 16.5 5.79 21l2.39-7.15L2 9.36h7.61L12 2z"/></svg>
+      Migration services
+    </div>
+    <h2>Migrate from <span class="hl">DanDomain</span> to <span class="hl">Shopify</span> or <span class="hl">WordPress</span> — without losing rankings, data or sleep.</h2>
+    <p class="lead">Most Danish merchants outgrow DanDomain because of theme limitations, integration ceilings and rising costs. I plan and execute the move end-to-end — product data, customers, redirects, SEO, integrations (Business Central, e-conomic, Klaviyo) — with a clear timeline, fixed scope and zero-downtime cutover.</p>
+
+    <div class="lanes">
+      <a class="lane bestseller" href="mailto:zaman.shakirdev@gmail.com?subject=DanDomain%20to%20Shopify%20Migration">
+        <div class="flow"><span class="from">DanDomain</span><span class="arr">→</span><span class="to shop">Shopify</span></div>
+        <h3>DanDomain → Shopify</h3>
+        <p>Most-requested. Move your full catalog, customers and SEO from DanDomain to a custom Shopify (or Shopify Plus) store with a redirect plan that preserves rankings.</p>
+        <ul>
+          <li>Product, variant &amp; collection migration</li>
+          <li>Customer database transfer</li>
+          <li>URL-for-URL 301 redirect map</li>
+          <li>e-conomic / Business Central re-integration</li>
+          <li>Custom theme matching your brand</li>
+        </ul>
+        <span class="ctapill">Get a free DanDomain audit</span>
+      </a>
+
+      <a class="lane" href="mailto:zaman.shakirdev@gmail.com?subject=DanDomain%20to%20WordPress%20Migration">
+        <div class="flow"><span class="from">DanDomain</span><span class="arr">→</span><span class="to wp">WordPress / Woo</span></div>
+        <h3>DanDomain → WordPress</h3>
+        <p>Prefer content-first? Move from DanDomain to WordPress + WooCommerce for full editorial control, custom plugins and lower long-term costs.</p>
+        <ul>
+          <li>WordPress + WooCommerce setup</li>
+          <li>Catalog + customer import</li>
+          <li>Custom theme &amp; reusable blocks</li>
+          <li>Plugin stack tuned for your business</li>
+          <li>SEO &amp; redirect map preserved</li>
+        </ul>
+        <span class="ctapill">Discuss your migration</span>
+      </a>
+
+      <a class="lane" href="mailto:zaman.shakirdev@gmail.com?subject=WordPress%20to%20Shopify%20Migration">
+        <div class="flow"><span class="from wp">WordPress / Woo</span><span class="arr">→</span><span class="to shop">Shopify</span></div>
+        <h3>WordPress → Shopify</h3>
+        <p>Scaling past WooCommerce limits? I rebuild your WordPress / WooCommerce store on Shopify — keeping your design language, blog content and SEO authority.</p>
+        <ul>
+          <li>WooCommerce → Shopify product mapping</li>
+          <li>Blog &amp; content migration (with redirects)</li>
+          <li>Variable products → Shopify variants</li>
+          <li>App stack recommendation</li>
+          <li>Theme rebuild on Online Store 2.0</li>
+        </ul>
+        <span class="ctapill">Plan your move</span>
+      </a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">10+</div><div class="lbl">Years</div></div>
+      <div class="stat"><div class="num">100%</div><div class="lbl">SEO kept</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Failed cutovers</div></div>
+      <div class="stat"><div class="num">1–6w</div><div class="lbl">Timeline</div></div>
+      <div class="stat"><div class="num">800+</div><div class="lbl">Plugin installs</div></div>
+    </div>
+  </section>
+
+  <!-- WP CACHE banner -->
+  <section class="cache rv" id="cache">
+    <div>
+      <div class="eb">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+        WP Speed &amp; Cache Specialist
+      </div>
+      <h2>Any WordPress site under <span class="hl">1 second</span>. Properly cached, no shortcuts.</h2>
+      <p>Plugin spam, bloated themes and missing cache layers kill WordPress speed and Core Web Vitals. I deploy a real cache stack — page, object, fragment, edge — tuned to your hosting and stack. Result: sub-1s First Contentful Paint, green Core Web Vitals, happier Google.</p>
+      <div class="stack">
+        <span>Page cache</span><span>Object cache (Redis)</span><span>Fragment cache</span><span>Cloudflare edge</span><span>OPcache tuning</span><span>Critical CSS</span><span>Lazy-load</span><span>Image CDN</span>
+      </div>
+      <a class="cta" href="mailto:zaman.shakirdev@gmail.com?subject=Free%20WP%20speed%20audit">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        Free speed audit
+      </a>
+    </div>
+    <div class="speedo">
+      <div style="font-size:11px;letter-spacing:1.5px;color:#67e8f9;font-weight:700;text-transform:uppercase;margin-bottom:10px">Before vs after</div>
+      <div class="row"><span class="k">First Contentful Paint</span><span><span class="bef">4.2s</span> → <span class="aft">0.7s</span></span></div>
+      <div class="row"><span class="k">Largest Contentful Paint</span><span><span class="bef">6.1s</span> → <span class="aft">0.9s</span></span></div>
+      <div class="row"><span class="k">Time to Interactive</span><span><span class="bef">5.8s</span> → <span class="aft">1.1s</span></span></div>
+      <div class="row"><span class="k">Server response (TTFB)</span><span><span class="bef">820ms</span> → <span class="aft">80ms</span></span></div>
+      <div class="row"><span class="k">PageSpeed Mobile</span><span><span class="bef">42</span> → <span class="aft">98 ✓</span></span></div>
+      <div class="gauge"></div>
+    </div>
+  </section>
+
+  <!-- process -->
+  <div class="sec-head">
+    <h2>How a migration runs <span class="eyetag">5 STEPS</span></h2>
+    <div class="sub">DanDomain to Shopify or WordPress — no mystery, no last-minute surprises.</div>
+  </div>
+  <div class="process rv">
+    <div class="step">
+      <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+      <h3>Discovery audit</h3>
+      <p>Free 30-min call. Audit current DanDomain shop, integrations, traffic &amp; SEO.</p>
+      <div class="dur">⏱ Day 1 · Free</div>
+    </div>
+    <div class="step">
+      <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div>
+      <h3>Plan &amp; scope</h3>
+      <p>Fixed-scope quote. Redirect plan, data map, theme spec, integration list, go-live date.</p>
+      <div class="dur">⏱ Week 1</div>
+    </div>
+    <div class="step">
+      <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4"/></svg></div>
+      <h3>Build on staging</h3>
+      <p>Theme built on staging. Products &amp; customers imported. QA every page type.</p>
+      <div class="dur">⏱ Wks 2–4</div>
+    </div>
+    <div class="step">
+      <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 4.5l5.5 5.5L9 21l-6 1 1-6L14 4.5z"/></svg></div>
+      <h3>Cutover</h3>
+      <p>DNS + 301 redirects flipped. Zero downtime. Same-day smoke-tests. Daily monitoring.</p>
+      <div class="dur">⏱ Day 0</div>
+    </div>
+    <div class="step">
+      <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 7-7"/><path d="M14 8h7v7"/></svg></div>
+      <h3>Stabilise</h3>
+      <p>30 days of fixes, SEO tracking, ranking recovery, integration tweaks.</p>
+      <div class="dur">⏱ +30 days</div>
+    </div>
+  </div>
+
+  <!-- now shipping -->
+  <section class="building rv" id="building">
+    <div>
+      <div class="live">● Now shipping</div>
+      <h2>Cryptocurrency Payment Gateway for WooCommerce</h2>
+      <p>Sole developer on Triple-A's flagship WordPress plugin — Triple-A is MAS-licensed in Singapore, powering crypto payments for 20,000+ businesses worldwide. Singleton OOP refactor, 14 versions shipped in one year, zero open customer issues for 3 months running.</p>
+      <div class="meta">
+        <span><b>Built for</b> Triple-A · Singapore (MAS-licensed)</span>
+        <span><b>Stack</b> PHP · WordPress · WooCommerce · REST API</span>
+        <span><b>Status</b> Maintained &amp; supported</span>
+      </div>
+    </div>
+    <div class="stat">
+      <div class="row"><span>Active installs</span><span>800+</span></div>
+      <div class="row"><span>Releases / year</span><span>14</span></div>
+      <div class="row"><span>Open issues</span><span class="ok">0 · 3 months</span></div>
+      <div class="row"><span>Plugin version</span><span>v14.x</span></div>
+    </div>
+  </section>
+
+  <!-- trusted by w/ live favicons -->
+  <div class="sec-head">
+    <h2>Trusted by <span class="eyetag">8 LIVE</span></h2>
+    <div class="sub">Real Shopify stores &amp; WordPress sites I've shipped — click any card to visit the live site.</div>
+  </div>
+  <div class="trusted-by rv">
+    <a class="tbcard active" href="https://papirladen.dk" target="_blank" rel="noopener">
+      <div class="topr">
+        <div class="left-l">
+          <div class="fav"><img src="https://www.google.com/s2/favicons?domain=papirladen.dk&sz=128" alt="" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.textContent='P'"></div>
+          <div class="name-block"><div class="logo">Papirladen.dk</div><div class="country">🇩🇰 Denmark · since 1987</div></div>
+        </div>
+      </div>
+      <div class="role">B2B/B2C signup flow, Shopify Flow auto-tagging, Judge.me reviews, custom theme.</div>
+      <div class="bot"><span class="stat">papirladen.dk →</span><span class="badge shopify">SHOPIFY</span></div>
+    </a>
+    <a class="tbcard" href="https://ovellie.dk" target="_blank" rel="noopener">
+      <div class="topr">
+        <div class="left-l">
+          <div class="fav"><img src="https://www.google.com/s2/favicons?domain=ovellie.dk&sz=128" alt="" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.textContent='O'"></div>
+          <div class="name-block"><div class="logo">Ovellie.dk</div><div class="country">🇩🇰 Denmark · 120+ brands</div></div>
+        </div>
+      </div>
+      <div class="role">Quality kids' toys &amp; gear — Shopify storefront &amp; ongoing theme work. 4.9★ Trustpilot.</div>
+      <div class="bot"><span class="stat">ovellie.dk →</span><span class="badge shopify">SHOPIFY</span></div>
+    </a>
+    <a class="tbcard" href="#projects">
+      <div class="topr">
+        <div class="left-l">
+          <div class="fav placeholder">Q</div>
+          <div class="name-block"><div class="logo">QLiving</div><div class="country">🇩🇰 Denmark · Horizon theme</div></div>
+        </div>
+      </div>
+      <div class="role">Full Shopify Horizon theme modernization — 1,449 LOC, animated nav, dark footer.</div>
+      <div class="bot"><span class="stat">★ Featured</span><span class="badge shopify">SHOPIFY</span></div>
+    </a>
+    <a class="tbcard" href="https://webkonsulenterne.dk" target="_blank" rel="noopener">
+      <div class="topr">
+        <div class="left-l">
+          <div class="fav"><img src="https://www.google.com/s2/favicons?domain=webkonsulenterne.dk&sz=128" alt="" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.textContent='W'"></div>
+          <div class="name-block"><div class="logo">Webkonsulenter</div><div class="country">🇩🇰 Denmark · agency</div></div>
+        </div>
+      </div>
+      <div class="role">Shopify themes, WordPress builds &amp; internal plugin suite for an active Danish web agency.</div>
+      <div class="bot"><span class="stat">webkonsulenterne.dk →</span><span class="badge shopify">SHOPIFY</span></div>
+    </a>
+    <a class="tbcard" href="https://byaagaard.com" target="_blank" rel="noopener">
+      <div class="topr">
+        <div class="left-l">
+          <div class="fav"><img src="https://www.google.com/s2/favicons?domain=byaagaard.com&sz=128" alt="" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.textContent='Æ'"></div>
+          <div class="name-block"><div class="logo">Aagaard Jewellery</div><div class="country">🇩🇰 Denmark · since 1946</div></div>
+        </div>
+      </div>
+      <div class="role">Iconic Danish jewellery brand — site build &amp; ongoing maintenance.</div>
+      <div class="bot"><span class="stat">byaagaard.com →</span><span class="badge wp">WORDPRESS</span></div>
+    </a>
+    <a class="tbcard" href="https://ewersenergi.dk" target="_blank" rel="noopener">
+      <div class="topr">
+        <div class="left-l">
+          <div class="fav"><img src="https://www.google.com/s2/favicons?domain=ewersenergi.dk&sz=128" alt="" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.textContent='E'"></div>
+          <div class="name-block"><div class="logo">Ewers Energi</div><div class="country">🇩🇰 Denmark · biomass</div></div>
+        </div>
+      </div>
+      <div class="role">Wood pellets &amp; biomass energy site — WordPress build &amp; performance tuning.</div>
+      <div class="bot"><span class="stat">ewersenergi.dk →</span><span class="badge wp">WORDPRESS</span></div>
+    </a>
+    <a class="tbcard" href="https://triple-a.io" target="_blank" rel="noopener">
+      <div class="topr">
+        <div class="left-l">
+          <div class="fav"><img src="https://www.google.com/s2/favicons?domain=triple-a.io&sz=128" alt="" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.textContent='A'"></div>
+          <div class="name-block"><div class="logo">Triple-A.io</div><div class="country">🇸🇬 Singapore · MAS-licensed</div></div>
+        </div>
+      </div>
+      <div class="role">Crypto payment infrastructure for 20,000+ businesses. WP plugin · 800+ installs.</div>
+      <div class="bot"><span class="stat">triple-a.io →</span><span class="badge wp">WORDPRESS</span></div>
+    </a>
+    <a class="tbcard" href="https://hilltimes.com" target="_blank" rel="noopener">
+      <div class="topr">
+        <div class="left-l">
+          <div class="fav"><img src="https://www.google.com/s2/favicons?domain=hilltimes.com&sz=128" alt="" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.textContent='H'"></div>
+          <div class="name-block"><div class="logo">The Hill Times</div><div class="country">🇨🇦 Ottawa · since 1989</div></div>
+        </div>
+      </div>
+      <div class="role">Ottawa political news portal — 100k+ paid/free subs, custom theme + plugins.</div>
+      <div class="bot"><span class="stat">hilltimes.com →</span><span class="badge wp">WORDPRESS</span></div>
+    </a>
+  </div>
+
+  <!-- projects -->
+  <div class="sec-head" id="projects">
+    <h2>Product catalog <span class="eyetag">13 PRODUCTS</span></h2>
+    <div class="sub">Selected Shopify themes, WordPress sites and plugins shipped to production.</div>
+  </div>
+  <div class="tabs">
+    <button class="tab on" data-filter="all">All <span class="count">13</span></button>
+    <button class="tab" data-filter="shopify">Shopify <span class="count">5</span></button>
+    <button class="tab" data-filter="wp">WordPress <span class="count">5</span></button>
+    <button class="tab" data-filter="plugin">Plugins <span class="count">3</span></button>
+  </div>
+  <div class="projects rv">
+
+    <a class="pcard shopify" data-cat="shopify" href="https://papirladen.dk" target="_blank" rel="noopener">
+      <div class="image">
+        <span class="pill">★ Featured</span>
+        <span class="platform shopify">SHOPIFY</span>
+        <div class="glyph">P</div>
+        <div class="fav"><img src="https://www.google.com/s2/favicons?domain=papirladen.dk&sz=128" alt="" onerror="this.style.display='none'"></div>
+      </div>
+      <div class="body">
+        <h3>Papirladen.dk</h3>
+        <div class="yr">Shopify · Live · 🇩🇰 Denmark · since 1987</div>
+        <p>Soap, cleaning &amp; paper supplier with B2B and B2C channels. Custom signup flow with metafields, automatic B2B/B2C tagging via Shopify Flow, Judge.me reviews.</p>
+        <div class="stack"><span>Shopify</span><span>Liquid</span><span>Flow</span><span>Metafields</span><span>Judge.me</span></div>
+        <div class="meta-row"><b>Live store</b><span class="link">papirladen.dk →</span></div>
+      </div>
+    </a>
+    <a class="pcard shopify" data-cat="shopify" href="https://ovellie.dk" target="_blank" rel="noopener">
+      <div class="image">
+        <span class="platform shopify">SHOPIFY</span>
+        <div class="glyph">O</div>
+        <div class="fav"><img src="https://www.google.com/s2/favicons?domain=ovellie.dk&sz=128" alt="" onerror="this.style.display='none'"></div>
+      </div>
+      <div class="body">
+        <h3>Ovellie.dk</h3>
+        <div class="yr">Shopify · Live · 🇩🇰 Denmark · since 2015</div>
+        <p>Quality children's toys, books &amp; gear. 120+ brands, 4.9★ Trustpilot. Shopify storefront, theme work, performance.</p>
+        <div class="stack"><span>Shopify</span><span>Liquid</span><span>Theme</span></div>
+        <div class="meta-row"><b>Live store</b><span class="link">ovellie.dk →</span></div>
+      </div>
+    </a>
+    <a class="pcard shopify" data-cat="shopify" href="#">
+      <div class="image"><span class="pill">Horizon mod</span><span class="platform shopify">SHOPIFY</span><div class="glyph">Q</div></div>
+      <div class="body">
+        <h3>QLiving Theme</h3>
+        <div class="yr">2026 · 🇩🇰 Denmark · Horizon</div>
+        <p>Full Shopify Horizon theme modernization: 1,449 lines of CSS, modern typography, professional shadows, animated nav, dark footer. Git-deployed via GitHub Actions.</p>
+        <div class="stack"><span>Shopify</span><span>Horizon</span><span>CSS</span><span>CI/CD</span></div>
+        <div class="meta-row"><b>1,449 LOC</b><span class="link">Case study →</span></div>
+      </div>
+    </a>
+    <a class="pcard shopify" data-cat="shopify" href="https://webkonsulenterne.dk" target="_blank" rel="noopener">
+      <div class="image">
+        <span class="platform shopify">SHOPIFY</span>
+        <div class="glyph">W</div>
+        <div class="fav"><img src="https://www.google.com/s2/favicons?domain=webkonsulenterne.dk&sz=128" alt="" onerror="this.style.display='none'"></div>
+      </div>
+      <div class="body">
+        <h3>Webkonsulenter</h3>
+        <div class="yr">Shopify · Agency · 🇩🇰 Denmark</div>
+        <p>Active WP/Shopify agency. Custom themes, app integrations, speed optimisation across the agency's client stable.</p>
+        <div class="stack"><span>Shopify</span><span>Liquid</span><span>Apps</span></div>
+        <div class="meta-row"><b>Agency partner</b><span class="link">webkonsulenterne.dk →</span></div>
+      </div>
+    </a>
+    <a class="pcard shopify" data-cat="shopify" href="#">
+      <div class="image"><span class="pill">New · 2024</span><span class="platform shopify">SHOPIFY</span><div class="glyph">⚡</div></div>
+      <div class="body">
+        <h3>Demo E-commerce (SvelteKit)</h3>
+        <div class="yr">2024 · Triple-A · 🇸🇬</div>
+        <p>Superfast SvelteKit + DaisyUI demo storefront — built on tight deadlines to showcase crypto payments to merchants worldwide.</p>
+        <div class="stack"><span>SvelteKit</span><span>DaisyUI</span><span>Crypto</span></div>
+        <div class="meta-row"><b>Sole dev</b><span class="link">View →</span></div>
+      </div>
+    </a>
+
+    <a class="pcard plugin" data-cat="plugin" href="https://triple-a.io" target="_blank" rel="noopener">
+      <div class="image">
+        <span class="pill">★ 800+ installs</span>
+        <span class="platform plugin">PLUGIN</span>
+        <div class="glyph">₿</div>
+        <div class="fav"><img src="https://www.google.com/s2/favicons?domain=triple-a.io&sz=128" alt="" onerror="this.style.display='none'"></div>
+      </div>
+      <div class="body">
+        <h3>Crypto Payment Gateway for Woo</h3>
+        <div class="yr">2023 — 2025 · Triple-A · 🇸🇬</div>
+        <p>Sole developer. OOP refactor with singleton pattern. 14 releases last year. Zero open issues for 3 months. Powers 800+ active WooCommerce stores worldwide.</p>
+        <div class="stack"><span>PHP</span><span>WooCommerce</span><span>OOP</span><span>REST</span></div>
+        <div class="meta-row"><b>800+ installs</b><span class="link">triple-a.io →</span></div>
+      </div>
+    </a>
+    <a class="pcard plugin" data-cat="plugin" href="#">
+      <div class="image"><span class="platform plugin">PLUGIN</span><div class="glyph">⚙</div></div>
+      <div class="body">
+        <h3>WK Plugin Suite</h3>
+        <div class="yr">Webkonsulenter · ongoing</div>
+        <p>10+ internal WordPress / WooCommerce plugins: cache manager, custom crawler, duplicate product merger, autoloader cleaner, profit metrics.</p>
+        <div class="stack"><span>PHP</span><span>WordPress</span><span>WooCommerce</span></div>
+        <div class="meta-row"><b>10+ plugins</b><span class="link">View →</span></div>
+      </div>
+    </a>
+    <a class="pcard plugin" data-cat="plugin" href="#">
+      <div class="image"><span class="platform plugin">PLUGIN</span><div class="glyph">💳</div></div>
+      <div class="body">
+        <h3>BV E-conomic Dashboard</h3>
+        <div class="yr">Laravel · 21k+ invoices</div>
+        <p>Laravel dashboard for BilligVentilation. E-conomic API sync, comments, advanced filtering, performance tuning. 35h delivered.</p>
+        <div class="stack"><span>Laravel</span><span>MySQL</span><span>e-conomic API</span></div>
+        <div class="meta-row"><b>21k+ invoices</b><span class="link">Case study →</span></div>
+      </div>
+    </a>
+
+    <a class="pcard wp" data-cat="wp" href="https://hilltimes.com" target="_blank" rel="noopener">
+      <div class="image">
+        <span class="pill">100k+ subs</span>
+        <span class="platform wp">WORDPRESS</span>
+        <div class="glyph">H</div>
+        <div class="fav"><img src="https://www.google.com/s2/favicons?domain=hilltimes.com&sz=128" alt="" onerror="this.style.display='none'"></div>
+      </div>
+      <div class="body">
+        <h3>The Hill Times News Portal</h3>
+        <div class="yr">2022 · 🇨🇦 Ottawa · since 1989</div>
+        <p>Ottawa's political news portal. Custom theme &amp; plugins, paid &amp; unpaid subscription handling at 100k+ user scale.</p>
+        <div class="stack"><span>WordPress</span><span>Elementor</span><span>Subscriptions</span></div>
+        <div class="meta-row"><b>100k+ users</b><span class="link">hilltimes.com →</span></div>
+      </div>
+    </a>
+    <a class="pcard wp" data-cat="wp" href="https://triple-a.io" target="_blank" rel="noopener">
+      <div class="image">
+        <span class="platform wp">WORDPRESS</span>
+        <div class="glyph">A</div>
+        <div class="fav"><img src="https://www.google.com/s2/favicons?domain=triple-a.io&sz=128" alt="" onerror="this.style.display='none'"></div>
+      </div>
+      <div class="body">
+        <h3>Triple-A Website</h3>
+        <div class="yr">2023 · 🇸🇬 Singapore</div>
+        <p>Figma → Elementor pixel-perfect build on tight deadline. HubSpot integration &amp; CRM customization. Live brand site for MAS-licensed crypto provider.</p>
+        <div class="stack"><span>WordPress</span><span>Elementor</span><span>HubSpot</span></div>
+        <div class="meta-row"><b>Pixel-perfect</b><span class="link">triple-a.io →</span></div>
+      </div>
+    </a>
+    <a class="pcard wp" data-cat="wp" href="#">
+      <div class="image"><span class="platform wp">WORDPRESS</span><div class="glyph">S</div></div>
+      <div class="body">
+        <h3>Skate Ontario Portal</h3>
+        <div class="yr">2023 · 🇨🇦 Canada</div>
+        <p>Custom WordPress theme + plugin from scratch. Member portal &amp; public site, pixel-perfect frontend.</p>
+        <div class="stack"><span>WordPress</span><span>Custom Theme</span><span>Plugin</span></div>
+        <div class="meta-row"><b>Portal + Site</b><span class="link">View →</span></div>
+      </div>
+    </a>
+    <a class="pcard wp" data-cat="wp" href="https://byaagaard.com" target="_blank" rel="noopener">
+      <div class="image">
+        <span class="platform wp">WORDPRESS</span>
+        <div class="glyph">Æ</div>
+        <div class="fav"><img src="https://www.google.com/s2/favicons?domain=byaagaard.com&sz=128" alt="" onerror="this.style.display='none'"></div>
+      </div>
+      <div class="body">
+        <h3>Aagaard Jewellery</h3>
+        <div class="yr">WordPress · 🇩🇰 since 1946</div>
+        <p>Iconic Danish jewellery brand with 200+ retailers. WordPress build &amp; ongoing maintenance — theme work, speed tuning, plugin development.</p>
+        <div class="stack"><span>WordPress</span><span>PHP</span><span>WooCommerce</span></div>
+        <div class="meta-row"><b>Live site</b><span class="link">byaagaard.com →</span></div>
+      </div>
+    </a>
+    <a class="pcard wp" data-cat="wp" href="https://ewersenergi.dk" target="_blank" rel="noopener">
+      <div class="image">
+        <span class="platform wp">WORDPRESS</span>
+        <div class="glyph">E</div>
+        <div class="fav"><img src="https://www.google.com/s2/favicons?domain=ewersenergi.dk&sz=128" alt="" onerror="this.style.display='none'"></div>
+      </div>
+      <div class="body">
+        <h3>Ewers Energi</h3>
+        <div class="yr">WordPress · 🇩🇰 Denmark</div>
+        <p>Wood pellets &amp; biomass site. WordPress build &amp; ongoing maintenance, lead capture, performance tuning.</p>
+        <div class="stack"><span>WordPress</span><span>PHP</span></div>
+        <div class="meta-row"><b>Live site</b><span class="link">ewersenergi.dk →</span></div>
+      </div>
+    </a>
+  </div>
+
+  <!-- metrics -->
+  <div class="sec-head">
+    <h2>By the numbers <span class="eyetag">CAREER</span></h2>
+    <div class="sub">Receipts.</div>
+  </div>
+  <div class="metrics rv">
+    <div class="metric"><div class="big">10+</div><div class="lbl">Years</div><div class="blurb">CMS development</div></div>
+    <div class="metric"><div class="big">800+</div><div class="lbl">Installs</div><div class="blurb">WooCommerce plugin in production</div></div>
+    <div class="metric"><div class="big">&lt;1s</div><div class="lbl">FCP</div><div class="blurb">WP cache target — any site</div></div>
+    <div class="metric"><div class="big">100k+</div><div class="lbl">Users</div><div class="blurb">Largest WP portal shipped</div></div>
+  </div>
+
+  <!-- work history -->
+  <div class="sec-head" id="history">
+    <h2>Work history <span class="eyetag">10+ YRS</span></h2>
+    <div class="sub">A decade across full-time remote roles — from MVC web apps to Shopify themes and WordPress plugin product engineering.</div>
+  </div>
+  <div class="timeline rv">
+    <div class="role-item">
+      <div class="yr">Current · Remote · 🇩🇰 Denmark</div>
+      <h3>CMS Developer · Shopify &amp; WordPress</h3>
+      <div class="at">Webkonsulenter (WK) · Denmark</div>
+      <ul>
+        <li>Shopify theme work: Papirladen, Ovellie, QLiving (Horizon), Webkonsulenter, Aagaard.</li>
+        <li>WordPress sites &amp; plugins: Ewers Energi, internal WK plugin suite (cache manager, custom crawler, duplicate-product merger, autoloader cleaner, profit metrics).</li>
+        <li>WP cache &amp; speed engagements — sub-1s FCP across client sites.</li>
+        <li>BV E-conomic Dashboard (Laravel) — 21k+ invoices, auto-sync, collaboration.</li>
+      </ul>
+      <div class="stack"><span>Shopify</span><span>Liquid</span><span>WordPress</span><span>WooCommerce</span><span>PHP</span><span>Laravel</span><span>MySQL</span></div>
+    </div>
+    <div class="role-item archived">
+      <div class="yr">April 2023 — December 2025</div>
+      <h3>Software Engineer (Full-Time, Remote)</h3>
+      <div class="at">Triple-A · 🇸🇬 Singapore</div>
+      <ul>
+        <li>Sole developer on Cryptocurrency Payment Gateway for WooCommerce (800+ users worldwide).</li>
+        <li>Demo sites in WordPress &amp; SvelteKit.</li>
+        <li>Triple-A site in Elementor with pixel-perfect responsiveness &amp; HubSpot integration.</li>
+      </ul>
+      <div class="stack"><span>WordPress</span><span>PHP</span><span>JavaScript</span><span>WooCommerce</span><span>SvelteKit</span><span>REST API</span></div>
+    </div>
+    <div class="role-item archived">
+      <div class="yr">May 2019 — March 2023</div>
+      <h3>Software Engineer (Full-Time, Remote)</h3>
+      <div class="at">Grype Digital · 🇨🇦 Canada</div>
+      <ul>
+        <li>Delivered WordPress sites for North American clients (The Hill Times, Skate Ontario, TWUC).</li>
+        <li>Catchy frontends, secure backends, performance improvements.</li>
+      </ul>
+      <div class="stack"><span>WordPress</span><span>PHP</span><span>JavaScript</span><span>REST API</span></div>
+    </div>
+    <div class="role-item archived">
+      <div class="yr">June 2019 — May 2021</div>
+      <h3>Software Engineer (Full-Time)</h3>
+      <div class="at">Neural Semiconductor Ltd · 🇧🇩 Dhaka</div>
+      <ul>
+        <li>Built Assessment Center LMS UI + Laravel REST backend.</li>
+        <li>Frontend &amp; backend, React components.</li>
+      </ul>
+      <div class="stack"><span>PHP</span><span>Laravel</span><span>React</span><span>REST API</span></div>
+    </div>
+    <div class="role-item archived">
+      <div class="yr">November 2018 — May 2021</div>
+      <h3>Web Application Developer (Full-Time)</h3>
+      <div class="at">Sycorax Technology · 🇧🇩 Dhaka</div>
+      <ul>
+        <li>Frontend &amp; backend in MVC projects.</li>
+        <li>6+ projects from scratch to client-ready.</li>
+      </ul>
+      <div class="stack"><span>PHP</span><span>JavaScript</span><span>MySQL</span></div>
+    </div>
+  </div>
+
+  <!-- skills -->
+  <div class="sec-head">
+    <h2>Skills <span class="eyetag">GROUPED</span></h2>
+    <div class="sub">Daily-driver stack, strong reach, currently leveling up. Honest, not exhaustive.</div>
+  </div>
+  <div class="skillgrid rv">
+    <div class="skillcol daily">
+      <h3>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--shop)" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+        Daily driver
+        <span class="tag" style="margin-left:auto">EXPERT</span>
+      </h3>
+      <div class="blurb">What I ship every day in production.</div>
+      <div class="row"><span class="name">Shopify · Liquid</span><span class="lvl">★★★★★</span></div>
+      <div class="row"><span class="name">WordPress</span><span class="lvl">★★★★★</span></div>
+      <div class="row"><span class="name">WooCommerce</span><span class="lvl">★★★★★</span></div>
+      <div class="row"><span class="name">PHP / OOP</span><span class="lvl">★★★★★</span></div>
+      <div class="row"><span class="name">WP cache &amp; speed</span><span class="lvl">★★★★★</span></div>
+    </div>
+    <div class="skillcol strong">
+      <h3>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#92400e" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Strong reach
+        <span class="tag" style="margin-left:auto;color:#92400e;background:#fef3c7">STRONG</span>
+      </h3>
+      <div class="blurb">Comfortable shipping in production.</div>
+      <div class="row"><span class="name">JavaScript (ES2023)</span><span class="lvl">★★★★☆</span></div>
+      <div class="row"><span class="name">Laravel</span><span class="lvl">★★★★☆</span></div>
+      <div class="row"><span class="name">MySQL</span><span class="lvl">★★★★☆</span></div>
+      <div class="row"><span class="name">REST APIs</span><span class="lvl">★★★★☆</span></div>
+      <div class="row"><span class="name">Elementor / ACF</span><span class="lvl">★★★★☆</span></div>
+    </div>
+    <div class="skillcol learning">
+      <h3>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        Leveling up
+        <span class="tag" style="margin-left:auto;color:#1e40af;background:#dbeafe">LEARNING</span>
+      </h3>
+      <div class="blurb">Used in real projects, pushing for expert.</div>
+      <div class="row"><span class="name">SvelteKit</span><span class="lvl">★★★☆☆</span></div>
+      <div class="row"><span class="name">React</span><span class="lvl">★★★☆☆</span></div>
+      <div class="row"><span class="name">Shopify Apps (Remix)</span><span class="lvl">★★★☆☆</span></div>
+      <div class="row"><span class="name">DSA / LeetCode</span><span class="lvl">★★★★☆</span></div>
+    </div>
+  </div>
+
+  <!-- GAME — Migrate the Cart -->
+  <section class="game rv" id="game">
+    <div class="head">
+      <div class="ttl">
+        <h2>Migrate the Cart</h2>
+        <span class="badge">MINI-GAME</span>
+      </div>
+      <div class="scores">
+        <div>Score <b id="gScore">0</b></div>
+        <div>High <b id="gHigh">0</b></div>
+        <div>Lives <b id="gLives">3</b></div>
+      </div>
+    </div>
+    <div class="stage" id="gStage">
+      <div class="legend">← → or A / D to move · Touch &amp; drag</div>
+      <div class="player" id="gPlayer">CART</div>
+    </div>
+    <div class="legend2">
+      <span class="lk"><span class="sw g"></span>Catch <b style="color:#fff">orders &amp; products</b> +10</span>
+      <span class="lk"><span class="sw bn"></span>Catch <b style="color:#fff">SEO redirects</b> +25</span>
+      <span class="lk"><span class="sw b"></span>Avoid <b style="color:#fff">broken plugins</b> −1 life</span>
+    </div>
+    <div class="start">
+      <button id="gStart">▶ Start migration</button>
+      <span class="hint">Move with <kbd>←</kbd> <kbd>→</kbd> or drag · Goal: ship 100 to unlock <b style="color:#7adfb3">FREE-AUDIT</b> code</span>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <div class="sec-head">
+    <h2>Frequently asked <span class="eyetag">FAQ</span></h2>
+    <div class="sub">Quick answers about migrations, timelines &amp; how I work.</div>
+  </div>
+  <div class="faq rv">
+    <details open>
+      <summary><span class="q"><span class="qnum">Q1</span>How long does a DanDomain to Shopify migration take?</span></summary>
+      <div class="body">Typically 1–6 weeks depending on catalog size, integrations and design complexity. A 1,000-product DanDomain shop usually ships in 2–3 weeks. I quote a fixed timeline up-front during planning.</div>
+    </details>
+    <details>
+      <summary><span class="q"><span class="qnum">Q2</span>Will my SEO rankings survive a DanDomain to WordPress migration?</span></summary>
+      <div class="body">Yes — that's the entire point of doing it properly. URL-for-URL 301 redirect map, preserved title/meta/schema, ported sitemap and resubmitted to Google Search Console. Most projects hold or recover rankings within 30–60 days.</div>
+    </details>
+    <details>
+      <summary><span class="q"><span class="qnum">Q3</span>Can you handle WordPress to Shopify migrations with custom plugins?</span></summary>
+      <div class="body">Yes. WooCommerce custom logic maps to Shopify equivalents — apps, metafields, Shopify Functions or custom theme code. Variable products convert to Shopify variants, blog posts move with redirects, design rebuilt on Online Store 2.0.</div>
+    </details>
+    <details>
+      <summary><span class="q"><span class="qnum">Q4</span>How fast can you make my WordPress site?</span></summary>
+      <div class="body">Sub-1-second First Contentful Paint is the target on most WP sites. Proper cache stack — page cache, object cache (Redis), fragment cache, edge cache (Cloudflare) — plus OPcache tuning, critical CSS, lazy-load, and image CDN. Free speed audit included with any engagement.</div>
+    </details>
+    <details>
+      <summary><span class="q"><span class="qnum">Q5</span>Do you keep DanDomain integrations like e-conomic or Business Central?</span></summary>
+      <div class="body">Yes. I re-establish the same integrations on the target platform: e-conomic, Business Central, Klaviyo, MailChimp, GLS / PostNord, payment gateways. Direct app where it exists, custom connector otherwise.</div>
+    </details>
+    <details>
+      <summary><span class="q"><span class="qnum">Q6</span>What does a migration cost?</span></summary>
+      <div class="body">Fixed scope after the free discovery audit. Most DanDomain → Shopify migrations land between EUR 2,500 and EUR 12,000 depending on catalog, integrations and theme complexity. Quoted in writing up-front.</div>
+    </details>
+    <details>
+      <summary><span class="q"><span class="qnum">Q7</span>Where are you based and what hours do you work?</span></summary>
+      <div class="body">Dhaka, Bangladesh — GMT+6. I overlap with Denmark, the EU and Singapore daily. Sync windows 14:00–22:00 GMT+6 (10:00–18:00 CET). WhatsApp &amp; Telegram on +880 1738 790641 for fast async pings.</div>
+    </details>
+  </div>
+
+  <!-- education -->
+  <div class="sec-head">
+    <h2>Education <span class="eyetag">B.SC CSE</span></h2>
+    <div class="sub">Computer Science fundamentals from one of Bangladesh's top engineering universities.</div>
+  </div>
+  <div class="edu">
+    <div class="crest">RUET</div>
+    <div>
+      <h3>B.Sc. in Computer Science &amp; Engineering</h3>
+      <div class="where">Rajshahi University of Engineering &amp; Technology · 🇧🇩 Bangladesh</div>
+    </div>
+    <div class="yrs">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      2013 — 2017
+    </div>
+  </div>
+
+  <!-- CHECKOUT -->
+  <div class="sec-head" id="checkout">
+    <h2>Checkout <span class="eyetag">STEP 2 / 3</span></h2>
+    <div class="sub">You've added <b>1 service</b> to cart. Pick a contact channel and check out.</div>
+  </div>
+
+  <div class="checkout">
+    <div class="ck-form">
+      <div class="ck-stage">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+        Customer information
+      </div>
+      <h2>Let's plan your migration.</h2>
+      <p class="lead">Free discovery call. Bring a DanDomain audit, a WooCommerce store you've outgrown, or a brand-new build — leave with a scoped plan, a redirect map and a fixed timeline.</p>
+
+      <div class="ck-section">
+        <h3>Project type <span class="step-n">step 1 of 3</span></h3>
+        <div class="ck-method">
+          <label class="on"><input type="radio" name="ptype" checked><div class="ml"><b>Migration</b><small>DanDomain / WP / Woo → Shopify or WP</small></div></label>
+          <label><input type="radio" name="ptype"><div class="ml"><b>New build</b><small>Custom Shopify or WordPress from scratch</small></div></label>
+          <label><input type="radio" name="ptype"><div class="ml"><b>Plugin / app</b><small>Custom WooCommerce or Shopify app</small></div></label>
+          <label><input type="radio" name="ptype"><div class="ml"><b>WP speed / cache</b><small>Audit + tune cache for &lt; 1s load</small></div></label>
+        </div>
+      </div>
+
+      <div class="ck-section">
+        <h3>Preferred contact channel <span class="step-n">step 2 of 3 — pick any</span></h3>
+        <div class="ck-channels">
+          <a class="ch" href="mailto:zaman.shakirdev@gmail.com?subject=Free%20migration%20discovery%20call">
+            <span class="ico em"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></span>
+            <span class="vv">Email<small>zaman.shakirdev@gmail.com</small></span>
+          </a>
+          <a class="ch" href="https://wa.me/8801738790641" target="_blank" rel="noopener">
+            <span class="ico wa"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.5 15.2L2 22l4.9-1.4A10 10 0 1012 2zm5.5 12.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.2 3.3 5.3 4.7 2.1.9 2.9.8 3.4.8.5 0 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg></span>
+            <span class="vv">WhatsApp<small>+880 1738 790641</small></span>
+          </a>
+          <a class="ch" href="https://t.me/+8801738790641" target="_blank" rel="noopener">
+            <span class="ico tg"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M21.5 3.5L2.5 11l5.5 2 2 6.5 3-3.5 5 4 4-16.5zm-4 4l-7 6.5-1-2.5 8-4z"/></svg></span>
+            <span class="vv">Telegram<small>+880 1738 790641</small></span>
+          </a>
+          <a class="ch" href="https://linkedin.com/in/shakir-uz-zaman" target="_blank" rel="noopener">
+            <span class="ico li"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM8 17H5.5v-7H8v7zM6.75 8.7a1.5 1.5 0 110-3 1.5 1.5 0 010 3zM18 17h-2.5v-3.4c0-2.1-2.5-1.9-2.5 0V17H10.5v-7H13v1.2c1.1-2 5-2.2 5 1.9V17z"/></svg></span>
+            <span class="vv">LinkedIn<small>linkedin.com/in/shakir-uz-zaman</small></span>
+          </a>
+          <a class="ch" href="https://github.com/zaman-shakir" target="_blank" rel="noopener">
+            <span class="ico gh"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 2A10 10 0 002 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.1-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.5-1.3.1-2.6 0 0 .8-.3 2.7 1a9.5 9.5 0 015 0c1.9-1.3 2.7-1 2.7-1 .6 1.3.2 2.3.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.8v2.6c0 .3.2.6.7.5A10 10 0 0022 12 10 10 0 0012 2z"/></svg></span>
+            <span class="vv">GitHub<small>github.com/zaman-shakir</small></span>
+          </a>
+          <a class="ch" href="https://leetcode.com/shakir-uz-zaman" target="_blank" rel="noopener">
+            <span class="ico lc"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M14 4l-9 9 9 9 2-2-7-7 7-7-2-2z"/><path d="M20 13H8v-2h12v2z"/></svg></span>
+            <span class="vv">LeetCode<small>shakir-uz-zaman</small></span>
+          </a>
+        </div>
+        <div class="ck-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span><b>Based in Dhaka, Bangladesh · GMT+6.</b> Sync windows 14:00–22:00 GMT+6 (10:00–18:00 CET). Async-first.</span>
+        </div>
+      </div>
+    </div>
+
+    <aside class="ck-summary">
+      <h3>Order summary <span class="pill-sm">1 ITEM</span></h3>
+      <div class="li">
+        <div class="thumb">S<span class="q">1</span></div>
+        <div class="body"><div class="n">Shakir Uz Zaman</div><div class="v">CMS Migration Specialist · DanDomain → Shopify · Hourly</div></div>
+        <div class="price"><b>$Available</b><span>trial week free</span></div>
+      </div>
+      <div class="li">
+        <div class="thumb" style="background:var(--wp-soft);color:var(--wp)">🎁</div>
+        <div class="body"><div class="n">Free discovery call</div><div class="v">30 min · scoped plan · no commitment</div></div>
+        <div class="price"><b>FREE</b></div>
+      </div>
+      <div class="discount">
+        <input placeholder="Discount code (play game → unlock FREE-AUDIT)" id="dcode">
+        <button id="dapply">Apply</button>
+      </div>
+      <div class="totals">
+        <div class="row"><span>Subtotal</span><span>$Available</span></div>
+        <div class="row"><span>Shipping <small style="color:var(--muted)">(remote · async)</small></span><span style="color:var(--shop);font-weight:600">FREE</span></div>
+        <div class="row"><span>Discovery call</span><span style="color:var(--shop);font-weight:600">FREE</span></div>
+        <div class="row total"><span>Total</span><span class="num">Let's talk</span></div>
+        <div class="pp">Fixed-scope quote after the free discovery call.</div>
+      </div>
+      <a class="pay-btn" href="mailto:zaman.shakirdev@gmail.com?subject=Free%20migration%20discovery%20call">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+        Complete order · Book discovery call
+      </a>
+      <div class="secure">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        Secure · NDA-friendly · Reply within 24 hours
+      </div>
+    </aside>
+  </div>
+
+</div>
+
+<footer>
+  <div class="ft">
+    <div>
+      <div class="brand">shakir<span class="dot">.</span>store</div>
+      <p class="blurb">CMS migration expert. Shopify &amp; WordPress. DanDomain migrations &amp; WP cache a speciality. Ships globally.</p>
+    </div>
+    <div>
+      <h4>Migration</h4>
+      <ul>
+        <li><a href="#migration">DanDomain → Shopify</a></li>
+        <li><a href="#migration">DanDomain → WordPress</a></li>
+        <li><a href="#migration">WordPress → Shopify</a></li>
+        <li><a href="#cache">WP cache optimization</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Catalog</h4>
+      <ul>
+        <li><a href="#projects">Shopify themes</a></li>
+        <li><a href="#projects">WordPress sites</a></li>
+        <li><a href="#projects">Plugins</a></li>
+        <li><a href="#game">Mini-game</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="mailto:zaman.shakirdev@gmail.com">✉ Email</a></li>
+        <li><a href="https://wa.me/8801738790641" target="_blank" rel="noopener">📱 WhatsApp</a></li>
+        <li><a href="https://t.me/+8801738790641" target="_blank" rel="noopener">✈ Telegram</a></li>
+        <li><a href="https://linkedin.com/in/shakir-uz-zaman" target="_blank" rel="noopener">in LinkedIn</a></li>
+        <li><a href="https://github.com/zaman-shakir" target="_blank" rel="noopener">⌥ GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copy">
+    <span>© 2026 Shakir Uz Zaman · Powered by Shakify</span>
+    <span>30-day satisfaction · No returns · Free coffee included</span>
+  </div>
+</footer>
+
+<a class="scroll-hint" id="hint" href="#checkout">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg>
+  Checkout
+</a>
+
+<script>
+  // pill toggle
+  document.querySelectorAll('.pills').forEach(grp=>{
+    grp.addEventListener('click',e=>{
+      const p=e.target.closest('.pill'); if(!p) return;
+      grp.querySelectorAll('.pill').forEach(x=>x.classList.remove('on'));
+      p.classList.add('on');
+      const label = grp.previousElementSibling.querySelector('.picked');
+      if(label) label.textContent = p.firstChild.textContent.trim() + ' selected';
     });
-  </script>
+  });
+  // qty
+  const qty=document.querySelector('.qty');
+  if(qty){const i=qty.querySelector('input'),b=qty.querySelectorAll('button');b[0].onclick=()=>i.value=Math.max(1,(+i.value-1));b[1].onclick=()=>i.value=(+i.value+1)}
+  // tabs
+  document.querySelectorAll('.tab').forEach(t=>{
+    t.addEventListener('click',()=>{
+      document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      const f=t.dataset.filter;
+      document.querySelectorAll('.pcard').forEach(c=>{c.style.display=(f==='all'||c.dataset.cat===f)?'flex':'none'});
+    });
+  });
+  // ck-method
+  document.querySelectorAll('.ck-method label').forEach(l=>{
+    l.addEventListener('click',()=>{document.querySelectorAll('.ck-method label').forEach(x=>x.classList.remove('on'));l.classList.add('on')});
+  });
+  // discount
+  const da=document.getElementById('dapply');
+  if(da)da.onclick=()=>{
+    const c=document.getElementById('dcode').value.trim().toUpperCase();
+    if(c==='FREE-AUDIT'||c==='FREEAUDIT'){da.textContent='✓ Unlocked';da.style.background='var(--shop)'}
+    else if(c==='NEWMIGRATE'){da.textContent='-10% ✓'}
+    else if(c){da.textContent='Invalid'}else{da.textContent='Apply'}
+  };
+  // scroll hint
+  const hint=document.getElementById('hint');
+  window.addEventListener('scroll',()=>{hint.classList.toggle('on',window.scrollY>700)});
+  // search modal
+  const m=document.getElementById('searchModal');
+  document.getElementById('searchBtn').onclick=()=>{m.classList.add('on');setTimeout(()=>document.getElementById('searchInput').focus(),50)};
+  document.getElementById('closeSearch').onclick=()=>m.classList.remove('on');
+  m.onclick=e=>{if(e.target===m)m.classList.remove('on')};
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')m.classList.remove('on')});
 
+  // reveal on scroll
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
-  <!-- jQuery-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  // ============== GAME: Migrate the Cart ==============
+  (function(){
+    const stage=document.getElementById('gStage');
+    const player=document.getElementById('gPlayer');
+    const scoreEl=document.getElementById('gScore');
+    const highEl=document.getElementById('gHigh');
+    const livesEl=document.getElementById('gLives');
+    const startBtn=document.getElementById('gStart');
+    let W=stage.clientWidth, playerX=W/2-30, score=0, lives=3, high=+(localStorage.getItem('shakir-game-high')||0), running=false, items=[], spawnT=0, raf=0;
+    highEl.textContent=high;
 
-  <!-- Materialize - Compiled and minified JavaScript-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/js/materialize.min.js"></script>
-  <script>
-    // Materialize - Initializers
-    $(document).ready(function () {
-      $(".scrollspy").scrollSpy()
-      // Initialize collapse button
-      $(".button-collapse").sideNav({
-        menuWidth: 190, // Default is 240
-        edge: "left", // Choose the horizontal origin
-        closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-      })
-    })
-  </script>
+    function reset(){
+      score=0;lives=3;items.forEach(i=>i.el.remove());items=[];
+      scoreEl.textContent=0;livesEl.textContent=3;
+      W=stage.clientWidth;playerX=W/2-30;player.style.transform=`translateX(${playerX}px)`;
+    }
+    function over(msg){
+      running=false;cancelAnimationFrame(raf);
+      if(score>high){high=score;localStorage.setItem('shakir-game-high',high);highEl.textContent=high}
+      const g=document.createElement('div');g.className='gameover';
+      const win=score>=100;
+      g.innerHTML=`<h3>${win?'🎉 You shipped it!':'💥 Migration failed'}</h3>
+        <p>${win?'Use code <b style="color:#7adfb3">FREE-AUDIT</b> at checkout':msg||'Try again — you can do it'}</p>
+        <button onclick="this.parentElement.remove();window.__startGame()">Play again</button>`;
+      stage.appendChild(g);
+    }
+    function spawn(){
+      const r=Math.random();const type=r<0.2?'bonus':r<0.85?'good':'bad';
+      const el=document.createElement('div');el.className='item '+type;
+      el.textContent=type==='good'?'🛒':type==='bonus'?'🔀':'⚠';
+      const x=Math.random()*(W-34);el.style.left=x+'px';el.style.top='-30px';
+      stage.appendChild(el);items.push({el,x,y:-30,vy:2+Math.random()*2+score/50,type});
+    }
+    function loop(){
+      if(!running)return;
+      spawnT++;if(spawnT>40){spawn();spawnT=0}
+      const pBottom=stage.clientHeight-50, pH=36, pW=60;
+      items.forEach((it,i)=>{
+        it.y+=it.vy;it.el.style.top=it.y+'px';
+        // collision
+        if(it.y+34>pBottom && it.y<pBottom+pH && it.x+34>playerX && it.x<playerX+pW){
+          if(it.type==='good'){score+=10}
+          else if(it.type==='bonus'){score+=25}
+          else{lives--;livesEl.textContent=lives;if(lives<=0){it.el.remove();items.splice(i,1);return over()}}
+          it.el.remove();items.splice(i,1);scoreEl.textContent=score;
+          if(score>=100)return over('win');
+        }
+        else if(it.y>stage.clientHeight){
+          if(it.type==='good'){/* missed good ignored */}
+          it.el.remove();items.splice(i,1);
+        }
+      });
+      raf=requestAnimationFrame(loop);
+    }
+    window.__startGame=function(){
+      reset();running=true;raf=requestAnimationFrame(loop);
+    };
+    startBtn.onclick=window.__startGame;
+    // keyboard
+    document.addEventListener('keydown',e=>{
+      if(!running)return;
+      if(e.key==='ArrowLeft'||e.key==='a'||e.key==='A'){playerX=Math.max(0,playerX-22);player.style.transform=`translateX(${playerX}px)`}
+      if(e.key==='ArrowRight'||e.key==='d'||e.key==='D'){playerX=Math.min(W-60,playerX+22);player.style.transform=`translateX(${playerX}px)`}
+    });
+    // touch / mouse
+    let dragging=false;
+    stage.addEventListener('pointerdown',e=>{dragging=true;move(e)});
+    document.addEventListener('pointermove',e=>{if(dragging)move(e)});
+    document.addEventListener('pointerup',()=>dragging=false);
+    function move(e){const r=stage.getBoundingClientRect();playerX=Math.max(0,Math.min(W-60,e.clientX-r.left-30));player.style.transform=`translateX(${playerX}px)`}
+    // resize
+    window.addEventListener('resize',()=>{W=stage.clientWidth});
+  })();
+</script>
 </body>
-
 </html>
