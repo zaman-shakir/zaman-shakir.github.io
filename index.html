@@ -450,29 +450,20 @@
   /* ========== SITE-WIDE SNAKE OVERLAY ========== */
   #snCanvas{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:88;display:none}
   #snCanvas.on{display:block}
-  #snHUD{position:fixed;top:80px;right:14px;z-index:90;background:linear-gradient(135deg,#0c2340,#1d3557);color:#fff;border-radius:14px;padding:12px 14px;box-shadow:0 10px 40px rgba(0,0,0,.25);font-family:'Inter',sans-serif;font-size:12.5px;border:1px solid rgba(122,223,179,.25);width:230px;transition:transform .25s}
-  #snHUD.mini{transform:translateX(calc(100% - 44px))}
-  @media(max-width:780px){#snHUD{width:180px;top:auto;bottom:80px;font-size:11px;padding:10px}}
-  #snHUD .hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:6px}
-  #snHUD .ttl{font-weight:700;font-size:12.5px;display:inline-flex;align-items:center;gap:6px}
-  #snHUD .ttl::before{content:"";width:8px;height:8px;border-radius:50%;background:#7adfb3;animation:pulse 1.4s infinite}
-  #snHUD .min{background:rgba(255,255,255,.1);color:#fff;border:none;width:22px;height:22px;border-radius:6px;cursor:pointer;font-weight:700;line-height:1}
-  #snHUD .min:hover{background:rgba(255,255,255,.2)}
-  #snHUD .row{display:flex;justify-content:space-between;font-size:11px;color:#94a3b8;padding:3px 0}
-  #snHUD .row b{color:#fff;font-family:'Fraunces',serif;font-weight:700}
-  #snHUD .bar{background:rgba(255,255,255,.08);height:5px;border-radius:99px;margin:8px 0;overflow:hidden}
-  #snHUD .bar div{height:100%;background:linear-gradient(90deg,#7adfb3,#67e8f9);border-radius:99px;width:0%;transition:width .3s}
-  #snHUD .btns{display:flex;gap:5px;margin-top:8px}
-  #snHUD .btns button{flex:1;background:#7adfb3;color:#0c2340;border:none;padding:7px 8px;border-radius:99px;font-weight:700;font-size:11px;cursor:pointer;font-family:inherit}
-  #snHUD .btns button.off{background:transparent;color:#cbd5e1;border:1px solid rgba(255,255,255,.15)}
-  #snHUD .btns button:hover{background:#fff;color:#0c2340}
-  #snHUD .ft{font-size:10px;color:#67e8f9;margin-top:6px;letter-spacing:.3px}
 
-  /* eaten letter highlight in page */
-  .snake-eaten{background:linear-gradient(180deg,transparent 60%,rgba(122,223,179,.45) 60%);padding:0 1px;border-radius:2px;animation:eatFlash .35s ease}
-  @keyframes eatFlash{from{background:rgba(122,223,179,.9)}to{background:linear-gradient(180deg,transparent 60%,rgba(122,223,179,.45) 60%)}}
-  .snake-target{outline:2px solid #7adfb3;outline-offset:2px;border-radius:3px;background:rgba(122,223,179,.15);transition:all .2s;animation:pulseGlow 1.2s ease-in-out infinite}
-  @keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(122,223,179,.6)}50%{box-shadow:0 0 0 6px rgba(122,223,179,0)}}
+  /* snake score pill inside header icons */
+  .snake-pill{display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#fff7e6,#fff);border:1px solid #ff9900;color:#9a4d00;padding:6px 12px;border-radius:99px;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;cursor:default;transition:transform .15s}
+  .snake-pill:hover{transform:translateY(-1px)}
+  .snake-pill b{font-family:'Fraunces',serif;font-weight:700;font-size:14px;color:#ff7700}
+  .snake-pill-dot{width:7px;height:7px;border-radius:50%;background:#ff9900;animation:pulse 1.4s infinite;box-shadow:0 0 6px #ff9900}
+  .snake-pill-sep{color:#c9a87a;opacity:.6}
+  @media(max-width:560px){.snake-pill span:last-of-type,.snake-pill-sep{display:none}}
+
+  /* eaten + target letter styling */
+  .snake-eaten{background:linear-gradient(180deg,transparent 60%,rgba(255,153,0,.45) 60%);padding:0 1px;border-radius:2px;animation:eatFlash .35s ease}
+  @keyframes eatFlash{from{background:rgba(255,153,0,.9)}to{background:linear-gradient(180deg,transparent 60%,rgba(255,153,0,.45) 60%)}}
+  .snake-target{outline:2px solid #ff5fa2;outline-offset:2px;border-radius:3px;background:rgba(255,95,162,.18);animation:pulseGlow 1.2s ease-in-out infinite}
+  @keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(255,95,162,.6)}50%{box-shadow:0 0 0 8px rgba(255,95,162,0)}}
 </style>
 
 <!-- SEO: JSON-LD Person + Service + FAQPage -->
@@ -516,13 +507,11 @@
 <body>
 
 <div class="announce">
-  <span class="pin">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-    Dhaka → Denmark · Singapore · Canada
-  </span>
+  <span class="pin">📍 Dhaka → Denmark · Singapore · Canada</span>
   ·
-  <span><b>2 migration slots open · Q2 2026</b></span>
+  <span><b>2 slots open · Q2 2026</b></span>
 </div>
+
 
 <header>
   <div class="nav">
@@ -539,6 +528,10 @@
       <a href="#checkout">Contact</a>
     </nav>
     <div class="icons">
+      <div class="snake-pill" title="Snake is eating letters — when it eats 30, you unlock FREE-AUDIT">
+        <span class="snake-pill-dot"></span>
+        <span>Eat <b id="snScore">0</b>/30 letters → unlock <b style="color:#ff7700">FREE-AUDIT</b></span>
+      </div>
       <button class="icobtn" id="searchBtn" aria-label="Search">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
         Search
@@ -1518,27 +1511,17 @@
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});
   document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
-  // ============== SITE-WIDE SNAKE (body overlay) ==============
+  // ============== SITE-WIDE SNAKE (body overlay, header strip HUD) ==============
   (function(){
-    // build canvas + HUD
     const cvs=document.createElement('canvas');cvs.id='snCanvas';document.body.appendChild(cvs);
     const ctx=cvs.getContext('2d');
-    const hud=document.createElement('div');hud.id='snHUD';hud.innerHTML=`
-      <div class="hd"><span class="ttl">🛒 Migration Snake</span><button class="min" id="snMin" aria-label="Minimise">_</button></div>
-      <div class="row"><span>Score</span><b id="snScore">0</b></div>
-      <div class="row"><span>High</span><b id="snHigh">0</b></div>
-      <div class="row"><span>Length</span><b id="snLen">3</b></div>
-      <div class="bar"><div id="snBar"></div></div>
-      <div class="btns"><button id="snStart">▶ Start</button><button id="snPause" class="off">⏸</button></div>
-      <div class="ft" id="snFoot">Eat 30 letters → unlock FREE-AUDIT</div>`;
-    document.body.appendChild(hud);
 
     const GOAL=30,CELL=24;
+    const SNAKE='#ff9900',SNAKE_DIM='rgba(255,153,0,',FOOD='#ff5fa2';
     let W=0,H=0,cols=0,rows=0;
-    let snake=[],dir={x:1,y:0},nextDir={x:1,y:0},food=null,score=0,high=+(localStorage.getItem('snake-high')||0),running=false,paused=false,raf=0,lastTick=0,speed=140,playerY=0;
-    document.getElementById('snHigh').textContent=high;
-    const scoreEl=document.getElementById('snScore'),lenEl=document.getElementById('snLen'),barEl=document.getElementById('snBar'),footEl=document.getElementById('snFoot');
-    const startBtn=document.getElementById('snStart'),pauseBtn=document.getElementById('snPause'),minBtn=document.getElementById('snMin');
+    let snake=[],dir={x:1,y:0},food=null,score=+(localStorage.getItem('snake-score')||0),raf=0,lastTick=0,speed=130;
+    const scoreEl=document.getElementById('snScore');
+    if(scoreEl)scoreEl.textContent=score;
 
     function resize(){
       cvs.width=W=window.innerWidth;cvs.height=H=window.innerHeight;
@@ -1611,122 +1594,115 @@
 
     function drawAll(){
       ctx.clearRect(0,0,W,H);
-      // subtle grid backdrop
-      ctx.fillStyle='rgba(122,223,179,.02)';ctx.fillRect(0,0,W,H);
 
-      // food highlight ring
+      // food: pink dot w/ glow
       if(food){
-        ctx.fillStyle='rgba(122,223,179,.25)';
-        ctx.beginPath();ctx.arc(food.x*CELL+CELL/2,food.y*CELL+CELL/2,CELL,0,Math.PI*2);ctx.fill();
-        ctx.strokeStyle='#7adfb3';ctx.lineWidth=2;
-        ctx.beginPath();ctx.arc(food.x*CELL+CELL/2,food.y*CELL+CELL/2,CELL*.7,0,Math.PI*2);ctx.stroke();
+        const fx=food.x*CELL+CELL/2,fy=food.y*CELL+CELL/2;
+        ctx.shadowColor=FOOD;ctx.shadowBlur=18;
+        ctx.fillStyle=FOOD;
+        ctx.beginPath();ctx.arc(fx,fy,CELL*.45,0,Math.PI*2);ctx.fill();
+        ctx.shadowBlur=0;
+        ctx.fillStyle='#fff';
+        ctx.beginPath();ctx.arc(fx-CELL*.12,fy-CELL*.12,CELL*.12,0,Math.PI*2);ctx.fill();
       }
 
-      // snake body
+      // snake body: orange round segments
       snake.forEach((s,i)=>{
-        const x=s.x*CELL,y=s.y*CELL;
+        const x=s.x*CELL+CELL/2,y=s.y*CELL+CELL/2;
         if(i===0){
-          // head: glowing dot + cart emoji
-          ctx.shadowColor='rgba(122,223,179,.8)';ctx.shadowBlur=14;
-          ctx.fillStyle='#fff';
-          ctx.fillRect(x+2,y+2,CELL-4,CELL-4);
+          // head: bright orange circle + glow + 2 eyes
+          ctx.shadowColor=SNAKE;ctx.shadowBlur=16;
+          ctx.fillStyle=SNAKE;
+          ctx.beginPath();ctx.arc(x,y,CELL*.48,0,Math.PI*2);ctx.fill();
           ctx.shadowBlur=0;
-          ctx.font=`${CELL*.85}px serif`;ctx.textAlign='center';ctx.textBaseline='middle';
-          ctx.fillText('🛒',x+CELL/2,y+CELL/2+1);
+          // eyes (face direction)
+          const ex=dir.x,ey=dir.y;
+          const e1x=x+ex*5+(ey?5:0)*(-1),e1y=y+ey*5+(ex?5:0);
+          const e2x=x+ex*5+(ey?5:0),e2y=y+ey*5+(ex?5:0)*(-1);
+          ctx.fillStyle='#fff';
+          ctx.beginPath();ctx.arc(e1x,e1y,3,0,Math.PI*2);ctx.fill();
+          ctx.beginPath();ctx.arc(e2x,e2y,3,0,Math.PI*2);ctx.fill();
+          ctx.fillStyle='#0c2340';
+          ctx.beginPath();ctx.arc(e1x+ex,e1y+ey,1.5,0,Math.PI*2);ctx.fill();
+          ctx.beginPath();ctx.arc(e2x+ex,e2y+ey,1.5,0,Math.PI*2);ctx.fill();
         } else {
-          const a=Math.max(.3,1-i/(snake.length*1.4));
-          ctx.fillStyle=`rgba(122,223,179,${a})`;
-          ctx.fillRect(x+3,y+3,CELL-6,CELL-6);
+          const a=Math.max(.35,1-i/(snake.length*1.4));
+          ctx.fillStyle=SNAKE_DIM+a+')';
+          const r=CELL*.40*(1-i*.015);
+          ctx.beginPath();ctx.arc(x,y,Math.max(r,CELL*.2),0,Math.PI*2);ctx.fill();
         }
       });
     }
 
+    // AI direction picker — chase food, avoid self
+    function pickDir(){
+      if(!food)return;
+      const head=snake[0];
+      const dx=food.x-head.x,dy=food.y-head.y;
+      // candidates ranked: preferred axis first
+      const opts=[];
+      if(Math.abs(dx)>Math.abs(dy)){
+        if(dx>0)opts.push({x:1,y:0});else if(dx<0)opts.push({x:-1,y:0});
+        if(dy>0)opts.push({x:0,y:1});else if(dy<0)opts.push({x:0,y:-1});
+      } else {
+        if(dy>0)opts.push({x:0,y:1});else if(dy<0)opts.push({x:0,y:-1});
+        if(dx>0)opts.push({x:1,y:0});else if(dx<0)opts.push({x:-1,y:0});
+      }
+      // fallbacks
+      opts.push({x:1,y:0},{x:-1,y:0},{x:0,y:1},{x:0,y:-1});
+      for(const d of opts){
+        if(d.x===-dir.x&&d.y===-dir.y)continue; // no 180
+        const nx=(head.x+d.x+cols)%cols,ny=(head.y+d.y+rows)%rows;
+        // avoid self
+        if(snake.length>3 && snake.slice(0,-1).some(s=>s.x===nx&&s.y===ny))continue;
+        dir=d;return;
+      }
+    }
+
     function tick(t){
-      if(!running)return;
       raf=requestAnimationFrame(tick);
-      if(paused)return;
       if(t-lastTick<speed)return;
       lastTick=t;
       updateFoodPos();
-      dir=nextDir;
-      const head={x:snake[0].x+dir.x,y:snake[0].y+dir.y};
-      // wall wrap (forgiving, makes site-wide play smooth)
-      if(head.x<0)head.x=cols-1;if(head.x>=cols)head.x=0;
-      if(head.y<0)head.y=rows-1;if(head.y>=rows)head.y=0;
-      // self collision
-      if(snake.length>4 && snake.some(s=>s.x===head.x&&s.y===head.y))return gameOver('Bit yourself!');
+      pickDir();
+      const head={x:(snake[0].x+dir.x+cols)%cols,y:(snake[0].y+dir.y+rows)%rows};
+      // self collision = teleport reset (don't break experience)
+      if(snake.length>4 && snake.some(s=>s.x===head.x&&s.y===head.y)){
+        // reset on collision but keep score visible
+        snake=[head,{x:head.x-dir.x,y:head.y-dir.y},{x:head.x-dir.x*2,y:head.y-dir.y*2}];
+        drawAll();return;
+      }
       snake.unshift(head);
-      // eat (proximity check)
       if(food && Math.abs(head.x-food.x)<=1 && Math.abs(head.y-food.y)<=1){
-        score++;scoreEl.textContent=score;lenEl.textContent=snake.length;
-        barEl.style.width=Math.min(100,score/GOAL*100)+'%';
-        // visual eat: convert target → eaten highlight (persists)
-        if(food.span && food.span.isConnected){
-          food.span.className='snake-eaten';food.span=null;
-        }
+        score++;localStorage.setItem('snake-score',score);
+        if(scoreEl)scoreEl.textContent=score;
+        if(food.span && food.span.isConnected){food.span.className='snake-eaten';food.span=null}
         spawnFood();
-        if(speed>60)speed=Math.max(60,speed-2);
-        if(score>=GOAL)return gameWin();
+        if(speed>70)speed=Math.max(70,speed-1);
+        if(score>=GOAL)unlock();
       } else {
         snake.pop();
       }
       drawAll();
     }
 
-    function gameOver(why){
-      running=false;cancelAnimationFrame(raf);
-      if(score>high){high=score;localStorage.setItem('snake-high',high);document.getElementById('snHigh').textContent=high}
-      footEl.innerHTML=`💥 ${why} Score: ${score} · ${score>=GOAL?'Unlocked!':`${GOAL-score} more letters needed`}`;
-      startBtn.textContent='▶ Play again';
-      if(food && food.span && food.span.parentNode){
-        const p=food.span.parentNode;while(food.span.firstChild)p.insertBefore(food.span.firstChild,food.span);p.removeChild(food.span);p.normalize();
-      }
-    }
-    function gameWin(){
-      running=false;cancelAnimationFrame(raf);
-      if(score>high){high=score;localStorage.setItem('snake-high',high);document.getElementById('snHigh').textContent=high}
+    function unlock(){
       localStorage.setItem('snake-unlocked','1');
-      footEl.innerHTML='🎉 Unlocked <b style="color:#7adfb3">FREE-AUDIT</b> — auto-applied!';
-      startBtn.textContent='▶ Play again';
-      const inp=document.getElementById('dcode');if(inp){inp.value='FREE-AUDIT';inp.style.borderColor='#7adfb3';inp.style.background='var(--shop-soft)'}
+      const inp=document.getElementById('dcode');if(inp&&!inp.value){inp.value='FREE-AUDIT';inp.style.borderColor='#ff9900';inp.style.background='#fff7e6'}
     }
-    function start(){
-      reset();cvs.classList.add('on');running=true;paused=false;
-      lastTick=0;cancelAnimationFrame(raf);raf=requestAnimationFrame(tick);
-      footEl.textContent=`Eat ${GOAL} letters → unlock FREE-AUDIT`;
+
+    function reset(){
+      snake=[{x:Math.floor(cols/2),y:Math.floor(rows/2)},{x:Math.floor(cols/2)-1,y:Math.floor(rows/2)},{x:Math.floor(cols/2)-2,y:Math.floor(rows/2)}];
+      dir={x:1,y:0};
+      spawnFood();
     }
-    startBtn.onclick=start;
-    pauseBtn.onclick=()=>{if(!running)return;paused=!paused;pauseBtn.textContent=paused?'▶':'⏸'};
-    minBtn.onclick=()=>hud.classList.toggle('mini');
 
-    // input
-    const KEY={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0],w:[0,-1],s:[0,1],a:[-1,0],d:[1,0],W:[0,-1],S:[0,1],A:[-1,0],D:[1,0]};
-    document.addEventListener('keydown',e=>{
-      if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
-      const m=KEY[e.key];if(!m)return;
-      if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key))e.preventDefault();
-      const [nx,ny]=m;if(nx===-dir.x&&ny===-dir.y)return;
-      nextDir={x:nx,y:ny};
-    });
-    // touch swipe (any non-interactive area)
-    let tx=0,ty=0;
-    document.addEventListener('touchstart',e=>{const t=e.touches[0];tx=t.clientX;ty=t.clientY},{passive:true});
-    document.addEventListener('touchend',e=>{
-      if(!running)return;
-      const t=e.changedTouches[0],dx=t.clientX-tx,dy=t.clientY-ty;
-      if(Math.abs(dx)<30&&Math.abs(dy)<30)return;
-      let nx,ny;if(Math.abs(dx)>Math.abs(dy)){nx=dx>0?1:-1;ny=0}else{nx=0;ny=dy>0?1:-1}
-      if(nx===-dir.x&&ny===-dir.y)return;
-      nextDir={x:nx,y:ny};
-    },{passive:true});
+    // boot — auto play forever
+    reset();cvs.classList.add('on');
+    raf=requestAnimationFrame(tick);
 
-    // when scrolling, food jumps with page text (already handled by updateFoodPos each tick)
-
-    // restore unlocked
-    if(localStorage.getItem('snake-unlocked')==='1'){
-      const apply=()=>{const inp=document.getElementById('dcode');if(inp&&!inp.value){inp.value='FREE-AUDIT'}};
-      setTimeout(apply,100);
-    }
+    // restore unlock + carry-over score
+    if(localStorage.getItem('snake-unlocked')==='1')unlock();
   })();
 </script>
 </body>
