@@ -25,7 +25,8 @@
   }
   *{box-sizing:border-box}
   html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;scroll-behavior:smooth;transition:background-color .25s,color .25s}
-  html[data-theme="dark"] body{background-image:radial-gradient(circle at 15% 10%,rgba(255,153,0,.06),transparent 40%),radial-gradient(circle at 85% 90%,rgba(255,95,162,.06),transparent 40%);background-attachment:fixed}
+  body{background-image:radial-gradient(circle at 1px 1px,rgba(0,0,0,.05) 1px,transparent 0);background-size:28px 28px;background-attachment:fixed}
+  html[data-theme="dark"] body{background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.04) 1px,transparent 0),radial-gradient(circle at 15% 10%,rgba(255,153,0,.06),transparent 40%),radial-gradient(circle at 85% 90%,rgba(255,95,162,.06),transparent 40%);background-size:28px 28px,auto,auto;background-attachment:fixed}
   a{color:var(--ink);text-decoration:none}
   a:hover{color:var(--shop)}
   svg{display:block}
@@ -308,8 +309,20 @@
   /* trusted by w/ favicons */
   .trusted-by{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
   @media(max-width:900px){.trusted-by{grid-template-columns:repeat(2,1fr)}}
-  .tbcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;transition:transform .15s,box-shadow .15s;text-decoration:none;color:inherit;display:flex;flex-direction:column;justify-content:space-between;min-height:160px;position:relative}
-  .tbcard:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.05)}
+  /* tech tape */
+  .techtape{margin:48px -40px 0;padding:18px 0;border-block:1px solid var(--line);background:linear-gradient(90deg,var(--bg) 0%,var(--paper) 50%,var(--bg) 100%);overflow:hidden;mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  .techtape .ttrow{display:flex;gap:28px;white-space:nowrap;font-family:'Fraunces',serif;font-size:22px;font-weight:500;letter-spacing:-.5px;color:var(--ink);animation:tape 50s linear infinite;will-change:transform}
+  .techtape .ttrow span:nth-child(2n){color:var(--shop);font-family:'JetBrains Mono',monospace;font-size:16px;opacity:.6}
+  .techtape:hover .ttrow{animation-play-state:paused}
+  @keyframes tape{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media(max-width:780px){.techtape{margin:36px -16px 0}.techtape .ttrow{font-size:18px;gap:20px}}
+  .tbcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;transition:transform .15s,box-shadow .15s,border-color .15s;text-decoration:none;color:inherit;display:flex;flex-direction:column;justify-content:space-between;min-height:160px;position:relative;overflow:hidden}
+  .tbcard:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.07);border-color:var(--shop)}
+  .tbcard::after{content:attr(data-metric);position:absolute;top:10px;right:10px;font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--shop-dark);background:var(--shop-soft);border:1px solid rgba(0,128,96,.18);padding:4px 8px;border-radius:99px;opacity:0;transform:translateY(-4px);transition:opacity .2s ease,transform .2s ease;pointer-events:none;font-family:'JetBrains Mono',monospace;white-space:nowrap}
+  .tbcard[data-metric]:hover::after{opacity:1;transform:translateY(0)}
+  .tbcard .liveping{position:absolute;left:14px;bottom:14px;width:7px;height:7px;border-radius:50%;background:var(--shop);box-shadow:0 0 0 0 rgba(0,128,96,.6);animation:livepulse 2s infinite;display:none}
+  .tbcard[data-live="1"] .liveping{display:block}
+  @keyframes livepulse{0%{box-shadow:0 0 0 0 rgba(0,128,96,.55)}70%{box-shadow:0 0 0 8px rgba(0,128,96,0)}100%{box-shadow:0 0 0 0 rgba(0,128,96,0)}}
   .tbcard .topr{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
   .tbcard .left-l{display:flex;gap:10px;align-items:center}
   .tbcard .fav{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.03);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;border:1px solid var(--line)}
@@ -456,48 +469,6 @@
   .scroll-hint{position:fixed;bottom:20px;right:20px;background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-size:12px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.15);cursor:pointer;opacity:0;transform:translateY(20px);transition:all .2s;border:none;font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:6px;z-index:40}
   .scroll-hint.on{opacity:1;transform:translateY(0)}
 
-  /* ========== FREE AUDIT TOOL ========== */
-  .audit{margin:60px 0;background:linear-gradient(135deg,rgba(255,153,0,.1),rgba(167,139,250,.08));border:1px solid var(--line);border-radius:24px;padding:40px;position:relative;overflow:hidden}
-  @media(max-width:780px){.audit{padding:24px}}
-  .audit::before{content:"";position:absolute;top:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,153,0,.15),transparent 70%)}
-  .audit-head{position:relative;z-index:1;text-align:center;margin-bottom:24px}
-  .audit-eyebrow{font-size:10.5px;letter-spacing:2.5px;color:var(--shop);font-weight:700;text-transform:uppercase;display:inline-block;padding:5px 12px;background:var(--shop-soft);border-radius:99px;border:1px solid rgba(255,153,0,.3);margin-bottom:12px}
-  .audit-title{font-family:'Fraunces',serif;font-size:32px;line-height:1.1;letter-spacing:-1px;margin:0 0 10px;color:var(--ink)}
-  @media(max-width:780px){.audit-title{font-size:24px}}
-  .audit-lead{color:var(--muted);font-size:14px;margin:0 auto;max-width:520px;line-height:1.6}
-  .audit-form{position:relative;z-index:1;max-width:580px;margin:0 auto}
-  .audit-input{display:flex;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:6px;box-shadow:0 8px 30px rgba(0,0,0,.3);transition:border-color .15s}
-  .audit-input:focus-within{border-color:var(--shop);box-shadow:0 0 0 4px rgba(255,153,0,.15)}
-  .audit-prefix{padding:0 4px 0 12px;color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:13px}
-  .audit-input input{flex:1;background:transparent;border:none;color:var(--ink);font-family:'JetBrains Mono',monospace;font-size:14px;padding:10px 4px;outline:none}
-  .audit-input button{background:linear-gradient(135deg,var(--shop),var(--dd));color:#0c0c14;border:none;padding:10px 18px;border-radius:10px;font-weight:700;font-size:13px;cursor:pointer;font-family:inherit;flex-shrink:0;transition:transform .12s}
-  .audit-input button:hover{transform:translateY(-1px)}
-  .audit-hint{text-align:center;font-size:11px;color:var(--muted);margin-top:10px}
-  .audit-hint a{color:var(--shop);border-bottom:1px dashed currentColor;margin:0 4px}
-  .audit-result{margin-top:24px;display:none;position:relative;z-index:1}
-  .audit-result.on{display:block;animation:slidein .35s ease}
-  .audit-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:26px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
-  @media(max-width:780px){.audit-card{grid-template-columns:1fr;padding:20px}}
-  .audit-card h3{font-family:'Fraunces',serif;font-size:20px;margin:0 0 4px;color:var(--ink)}
-  .audit-card .audit-url{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--shop);margin-bottom:14px;word-break:break-all}
-  .audit-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
-  .audit-stat{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
-  .audit-stat .lbl{font-size:9.5px;letter-spacing:1.5px;color:var(--muted);font-weight:700;text-transform:uppercase}
-  .audit-stat .val{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--ink);margin-top:2px;line-height:1.1}
-  .audit-stat .val small{font-size:11px;color:var(--muted);font-weight:400;font-family:'Inter',sans-serif}
-  .audit-risks{font-size:12.5px;line-height:1.8;color:var(--muted)}
-  .audit-risks li{padding:6px 0;border-bottom:1px dashed var(--line);list-style:none;display:flex;gap:8px;align-items:flex-start}
-  .audit-risks li:last-child{border:none}
-  .audit-risks .r-icon{flex-shrink:0;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#0c0c14;margin-top:2px}
-  .audit-risks .r-icon.ok{background:#7adfb3}
-  .audit-risks .r-icon.warn{background:var(--shop)}
-  .audit-risks .r-icon.bad{background:var(--dd)}
-  .audit-cta{grid-column:1/-1;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:16px;background:linear-gradient(135deg,rgba(255,153,0,.08),rgba(255,95,162,.06));border-radius:12px;border:1px dashed var(--shop);margin-top:6px}
-  @media(max-width:780px){.audit-cta{grid-template-columns:1fr}}
-  .audit-cta .ck-text{font-size:13.5px;color:var(--ink)}
-  .audit-cta .ck-text b{color:var(--shop)}
-  .audit-cta a{background:var(--shop);color:#0c0c14;padding:10px 18px;border-radius:99px;font-weight:700;font-size:13px;text-decoration:none;white-space:nowrap}
-  .audit-cta a:hover{background:#fff;color:var(--shop)}
 
   /* ========== SITE-WIDE SNAKE OVERLAY ========== */
   #snCanvas{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:88;display:none}
@@ -567,10 +538,9 @@
   <div class="nav">
     <a href="#" class="brand">
       <svg class="bag" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg>
-      shakir<span class="dot">.</span>store
+      shakir<span class="dot">.</span>dev
     </a>
     <nav class="menu">
-      <a href="#audit" style="color:var(--shop)">⚡ Audit</a>
       <a href="#migration">Migration</a>
       <a href="#cache">Cache</a>
       <a href="#projects">Catalog</a>
@@ -770,23 +740,6 @@
     </div>
   </section>
 
-  <!-- FREE AUDIT REQUEST — drop URL, get real audit -->
-  <section class="audit rv" id="audit">
-    <div class="audit-head">
-      <div class="audit-eyebrow">⚡ FREE AUDIT</div>
-      <h2 class="audit-title">Drop your shop URL. I'll send back a real audit.</h2>
-      <p class="audit-lead">Hand-checked, not auto-generated. Platform · catalog · SEO risk · speed · redirect plan. Reply within 24h.</p>
-    </div>
-    <form class="audit-form" id="auditForm" onsubmit="return false">
-      <div class="audit-input">
-        <span class="audit-prefix">https://</span>
-        <input type="text" id="auditUrl" placeholder="your-shop.dk" autocomplete="off">
-        <button id="auditBtn" type="submit">📩 Request audit</button>
-      </div>
-      <div class="audit-hint">Free · No signup · I reply within 24h on email / WhatsApp / Telegram</div>
-    </form>
-  </section>
-
   <!-- MIGRATION -->
   <section class="migrate rv" id="migration">
     <div class="eyebrow">
@@ -938,7 +891,7 @@
     <div class="sub">Real Shopify stores &amp; WordPress sites I've shipped — click any card to visit the live site.</div>
   </div>
   <div class="trusted-by rv">
-    <a class="tbcard active" href="https://papirladen.dk" target="_blank" rel="noopener">
+    <a class="tbcard active" href="https://papirladen.dk" target="_blank" rel="noopener" data-metric="↑ 38% conversion" data-live="1"><span class="liveping"></span>
       <div class="topr">
         <div class="left-l">
           <div class="fav"><img src="https://www.google.com/s2/favicons?domain=papirladen.dk&sz=128" alt="" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.textContent='P'"></div>
@@ -948,7 +901,7 @@
       <div class="role">B2B/B2C signup, Shopify Flow, Judge.me</div>
       <div class="bot"><span class="stat">papirladen.dk →</span><span class="badge shopify">SHOPIFY</span></div>
     </a>
-    <a class="tbcard" href="https://ovellie.dk" target="_blank" rel="noopener">
+    <a class="tbcard" href="https://ovellie.dk" target="_blank" rel="noopener" data-metric="4.9★ Trustpilot" data-live="1"><span class="liveping"></span>
       <div class="topr">
         <div class="left-l">
           <div class="fav"><img src="https://www.google.com/s2/favicons?domain=ovellie.dk&sz=128" alt="" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.textContent='O'"></div>
@@ -958,7 +911,7 @@
       <div class="role">Storefront + theme work · 4.9★ Trustpilot</div>
       <div class="bot"><span class="stat">ovellie.dk →</span><span class="badge shopify">SHOPIFY</span></div>
     </a>
-    <a class="tbcard" href="#projects">
+    <a class="tbcard" href="#projects" data-metric="1,449 LOC shipped">
       <div class="topr">
         <div class="left-l">
           <div class="fav placeholder">Q</div>
@@ -968,7 +921,7 @@
       <div class="role">Horizon mod · 1,449 LOC</div>
       <div class="bot"><span class="stat">★ Featured</span><span class="badge shopify">SHOPIFY</span></div>
     </a>
-    <a class="tbcard" href="https://webkonsulenterne.dk" target="_blank" rel="noopener">
+    <a class="tbcard" href="https://webkonsulenterne.dk" target="_blank" rel="noopener" data-metric="40+ client sites">
       <div class="topr">
         <div class="left-l">
           <div class="fav"><img src="https://www.google.com/s2/favicons?domain=webkonsulenterne.dk&sz=128" alt="" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.textContent='W'"></div>
@@ -978,7 +931,7 @@
       <div class="role">Themes + WP + plugin suite</div>
       <div class="bot"><span class="stat">webkonsulenterne.dk →</span><span class="badge shopify">SHOPIFY</span></div>
     </a>
-    <a class="tbcard" href="https://byaagaard.com" target="_blank" rel="noopener">
+    <a class="tbcard" href="https://byaagaard.com" target="_blank" rel="noopener" data-metric="80 yrs of brand" data-live="1"><span class="liveping"></span>
       <div class="topr">
         <div class="left-l">
           <div class="fav"><img src="https://www.google.com/s2/favicons?domain=byaagaard.com&sz=128" alt="" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.textContent='Æ'"></div>
@@ -988,7 +941,7 @@
       <div class="role">Site build + maintenance</div>
       <div class="bot"><span class="stat">byaagaard.com →</span><span class="badge wp">WORDPRESS</span></div>
     </a>
-    <a class="tbcard" href="https://ewersenergi.dk" target="_blank" rel="noopener">
+    <a class="tbcard" href="https://ewersenergi.dk" target="_blank" rel="noopener" data-metric="FCP < 1.0s">
       <div class="topr">
         <div class="left-l">
           <div class="fav"><img src="https://www.google.com/s2/favicons?domain=ewersenergi.dk&sz=128" alt="" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.textContent='E'"></div>
@@ -998,7 +951,7 @@
       <div class="role">WP build + speed tuning</div>
       <div class="bot"><span class="stat">ewersenergi.dk →</span><span class="badge wp">WORDPRESS</span></div>
     </a>
-    <a class="tbcard" href="https://triple-a.io" target="_blank" rel="noopener">
+    <a class="tbcard" href="https://triple-a.io" target="_blank" rel="noopener" data-metric="800+ installs / 14 rel-yr" data-live="1"><span class="liveping"></span>
       <div class="topr">
         <div class="left-l">
           <div class="fav"><img src="https://www.google.com/s2/favicons?domain=triple-a.io&sz=128" alt="" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.textContent='A'"></div>
@@ -1008,7 +961,7 @@
       <div class="role">WP plugin · 800+ installs · 14 releases/yr</div>
       <div class="bot"><span class="stat">triple-a.io →</span><span class="badge wp">WORDPRESS</span></div>
     </a>
-    <a class="tbcard" href="https://hilltimes.com" target="_blank" rel="noopener">
+    <a class="tbcard" href="https://hilltimes.com" target="_blank" rel="noopener" data-metric="100k+ subscribers">
       <div class="topr">
         <div class="left-l">
           <div class="fav"><img src="https://www.google.com/s2/favicons?domain=hilltimes.com&sz=128" alt="" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.textContent='H'"></div>
@@ -1018,6 +971,48 @@
       <div class="role">News portal · 100k+ subs</div>
       <div class="bot"><span class="stat">hilltimes.com →</span><span class="badge wp">WORDPRESS</span></div>
     </a>
+  </div>
+
+  <!-- tech tape -->
+  <div class="techtape rv" aria-hidden="true">
+    <div class="ttrow">
+      <span>Shopify Liquid</span><span>·</span>
+      <span>OS 2.0</span><span>·</span>
+      <span>WordPress</span><span>·</span>
+      <span>WooCommerce</span><span>·</span>
+      <span>PHP 8.x</span><span>·</span>
+      <span>Laravel 11</span><span>·</span>
+      <span>React</span><span>·</span>
+      <span>SvelteKit</span><span>·</span>
+      <span>Node.js</span><span>·</span>
+      <span>MySQL</span><span>·</span>
+      <span>Redis</span><span>·</span>
+      <span>Cloudflare</span><span>·</span>
+      <span>e-conomic API</span><span>·</span>
+      <span>Business Central</span><span>·</span>
+      <span>Judge.me</span><span>·</span>
+      <span>Klaviyo</span><span>·</span>
+      <span>Shopify Flow</span><span>·</span>
+      <span>Git</span><span>·</span>
+      <span>Shopify Liquid</span><span>·</span>
+      <span>OS 2.0</span><span>·</span>
+      <span>WordPress</span><span>·</span>
+      <span>WooCommerce</span><span>·</span>
+      <span>PHP 8.x</span><span>·</span>
+      <span>Laravel 11</span><span>·</span>
+      <span>React</span><span>·</span>
+      <span>SvelteKit</span><span>·</span>
+      <span>Node.js</span><span>·</span>
+      <span>MySQL</span><span>·</span>
+      <span>Redis</span><span>·</span>
+      <span>Cloudflare</span><span>·</span>
+      <span>e-conomic API</span><span>·</span>
+      <span>Business Central</span><span>·</span>
+      <span>Judge.me</span><span>·</span>
+      <span>Klaviyo</span><span>·</span>
+      <span>Shopify Flow</span><span>·</span>
+      <span>Git</span>
+    </div>
   </div>
 
   <!-- projects -->
@@ -1460,7 +1455,7 @@
 <footer>
   <div class="ft">
     <div>
-      <div class="brand">shakir<span class="dot">.</span>store</div>
+      <div class="brand">shakir<span class="dot">.</span>dev</div>
       <p class="blurb">CMS migration expert. Shopify &amp; WordPress. DanDomain migrations &amp; WP cache a speciality. Ships globally.</p>
     </div>
     <div>
@@ -1550,21 +1545,6 @@
   // reveal on scroll
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});
   document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-
-  // ============== AUDIT REQUEST (mailto) ==============
-  (function(){
-    const form=document.getElementById('auditForm'),btn=document.getElementById('auditBtn'),inp=document.getElementById('auditUrl');
-    if(!form)return;
-    btn.addEventListener('click',send);
-    inp.addEventListener('keydown',e=>{if(e.key==='Enter')send()});
-    function send(){
-      let url=inp.value.trim().replace(/^https?:\/\//,'').replace(/\/$/,'');
-      if(!url){inp.focus();return}
-      const subj=encodeURIComponent(`Free audit request — ${url}`);
-      const body=encodeURIComponent(`Hi Shakir,\n\nPlease audit my shop: https://${url}\n\nI'm interested in:\n[ ] DanDomain → Shopify migration\n[ ] DanDomain → WordPress migration\n[ ] WordPress → Shopify migration\n[ ] WP speed / cache optimisation\n[ ] Other:\n\nThanks!`);
-      location.href=`mailto:zaman.shakirdev@gmail.com?subject=${subj}&body=${body}`;
-    }
-  })();
 
   // ============== THEME TOGGLE ==============
   (function(){
