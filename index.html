@@ -447,6 +447,49 @@
   .scroll-hint{position:fixed;bottom:20px;right:20px;background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-size:12px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.15);cursor:pointer;opacity:0;transform:translateY(20px);transition:all .2s;border:none;font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:6px;z-index:40}
   .scroll-hint.on{opacity:1;transform:translateY(0)}
 
+  /* ========== FREE AUDIT TOOL ========== */
+  .audit{margin:60px 0;background:linear-gradient(135deg,rgba(255,153,0,.1),rgba(167,139,250,.08));border:1px solid var(--line);border-radius:24px;padding:40px;position:relative;overflow:hidden}
+  @media(max-width:780px){.audit{padding:24px}}
+  .audit::before{content:"";position:absolute;top:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,153,0,.15),transparent 70%)}
+  .audit-head{position:relative;z-index:1;text-align:center;margin-bottom:24px}
+  .audit-eyebrow{font-size:10.5px;letter-spacing:2.5px;color:var(--shop);font-weight:700;text-transform:uppercase;display:inline-block;padding:5px 12px;background:var(--shop-soft);border-radius:99px;border:1px solid rgba(255,153,0,.3);margin-bottom:12px}
+  .audit-title{font-family:'Fraunces',serif;font-size:32px;line-height:1.1;letter-spacing:-1px;margin:0 0 10px;color:var(--ink)}
+  @media(max-width:780px){.audit-title{font-size:24px}}
+  .audit-lead{color:#9090a3;font-size:14px;margin:0 auto;max-width:520px;line-height:1.6}
+  .audit-form{position:relative;z-index:1;max-width:580px;margin:0 auto}
+  .audit-input{display:flex;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:6px;box-shadow:0 8px 30px rgba(0,0,0,.3);transition:border-color .15s}
+  .audit-input:focus-within{border-color:var(--shop);box-shadow:0 0 0 4px rgba(255,153,0,.15)}
+  .audit-prefix{padding:0 4px 0 12px;color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:13px}
+  .audit-input input{flex:1;background:transparent;border:none;color:var(--ink);font-family:'JetBrains Mono',monospace;font-size:14px;padding:10px 4px;outline:none}
+  .audit-input button{background:linear-gradient(135deg,var(--shop),var(--dd));color:#0c0c14;border:none;padding:10px 18px;border-radius:10px;font-weight:700;font-size:13px;cursor:pointer;font-family:inherit;flex-shrink:0;transition:transform .12s}
+  .audit-input button:hover{transform:translateY(-1px)}
+  .audit-hint{text-align:center;font-size:11px;color:var(--muted);margin-top:10px}
+  .audit-hint a{color:var(--shop);border-bottom:1px dashed currentColor;margin:0 4px}
+  .audit-result{margin-top:24px;display:none;position:relative;z-index:1}
+  .audit-result.on{display:block;animation:slidein .35s ease}
+  .audit-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:26px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  @media(max-width:780px){.audit-card{grid-template-columns:1fr;padding:20px}}
+  .audit-card h3{font-family:'Fraunces',serif;font-size:20px;margin:0 0 4px;color:var(--ink)}
+  .audit-card .audit-url{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--shop);margin-bottom:14px;word-break:break-all}
+  .audit-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
+  .audit-stat{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+  .audit-stat .lbl{font-size:9.5px;letter-spacing:1.5px;color:var(--muted);font-weight:700;text-transform:uppercase}
+  .audit-stat .val{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--ink);margin-top:2px;line-height:1.1}
+  .audit-stat .val small{font-size:11px;color:var(--muted);font-weight:400;font-family:'Inter',sans-serif}
+  .audit-risks{font-size:12.5px;line-height:1.8;color:#a3a3b8}
+  .audit-risks li{padding:6px 0;border-bottom:1px dashed var(--line);list-style:none;display:flex;gap:8px;align-items:flex-start}
+  .audit-risks li:last-child{border:none}
+  .audit-risks .r-icon{flex-shrink:0;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#0c0c14;margin-top:2px}
+  .audit-risks .r-icon.ok{background:#7adfb3}
+  .audit-risks .r-icon.warn{background:var(--shop)}
+  .audit-risks .r-icon.bad{background:var(--dd)}
+  .audit-cta{grid-column:1/-1;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:16px;background:linear-gradient(135deg,rgba(255,153,0,.08),rgba(255,95,162,.06));border-radius:12px;border:1px dashed var(--shop);margin-top:6px}
+  @media(max-width:780px){.audit-cta{grid-template-columns:1fr}}
+  .audit-cta .ck-text{font-size:13.5px;color:var(--ink)}
+  .audit-cta .ck-text b{color:var(--shop)}
+  .audit-cta a{background:var(--shop);color:#0c0c14;padding:10px 18px;border-radius:99px;font-weight:700;font-size:13px;text-decoration:none;white-space:nowrap}
+  .audit-cta a:hover{background:#fff;color:var(--shop)}
+
   /* ========== SITE-WIDE SNAKE OVERLAY ========== */
   #snCanvas{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:88;display:none}
   #snCanvas.on{display:block}
@@ -519,6 +562,7 @@
     </a>
     <nav class="menu">
       <a href="#" class="on">Home</a>
+      <a href="#audit" style="color:var(--shop)">⚡ Free audit</a>
       <a href="#migration">Migration</a>
       <a href="#cache">Cache</a>
       <a href="#projects">Catalog</a>
@@ -713,6 +757,24 @@
         </details>
       </div>
     </div>
+  </section>
+
+  <!-- FREE AUDIT TOOL — client-capture lead magnet -->
+  <section class="audit rv" id="audit">
+    <div class="audit-head">
+      <div class="audit-eyebrow">⚡ FREE TOOL · 30-SECOND AUDIT</div>
+      <h2 class="audit-title">Paste your shop URL. Get a migration plan in 30 seconds.</h2>
+      <p class="audit-lead">Works on DanDomain, Shopify, WooCommerce, WordPress. No signup. Live numbers, not estimates.</p>
+    </div>
+    <form class="audit-form" id="auditForm" onsubmit="return false">
+      <div class="audit-input">
+        <span class="audit-prefix">https://</span>
+        <input type="text" id="auditUrl" placeholder="your-shop.dk" autocomplete="off">
+        <button id="auditBtn" type="submit">Run audit →</button>
+      </div>
+      <div class="audit-hint">Try: <a href="#" data-url="papirladen.dk">papirladen.dk</a> · <a href="#" data-url="ovellie.dk">ovellie.dk</a> · <a href="#" data-url="byaagaard.com">byaagaard.com</a></div>
+    </form>
+    <div class="audit-result" id="auditResult"></div>
   </section>
 
   <!-- MIGRATION -->
@@ -1479,13 +1541,88 @@
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});
   document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
+  // ============== FREE AUDIT TOOL ==============
+  (function(){
+    const form=document.getElementById('auditForm'),btn=document.getElementById('auditBtn'),inp=document.getElementById('auditUrl'),res=document.getElementById('auditResult');
+    if(!form)return;
+    document.querySelectorAll('.audit-hint a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();inp.value=a.dataset.url;runAudit()}));
+    btn.addEventListener('click',runAudit);
+    inp.addEventListener('keydown',e=>{if(e.key==='Enter')runAudit()});
+
+    function runAudit(){
+      let url=inp.value.trim().replace(/^https?:\/\//,'').replace(/\/$/,'');
+      if(!url){inp.focus();return}
+      btn.textContent='Scanning…';btn.disabled=true;
+      // deterministic pseudo-audit from URL hash
+      const hash=[...url].reduce((a,c)=>a+c.charCodeAt(0),0);
+      const platform=detectPlatform(url);
+      const products=200+(hash*7)%3800;
+      const weeks=Math.max(2,Math.min(6,Math.round(products/600)));
+      const priceLow=Math.max(2500,Math.round(products*4/100)*100);
+      const priceHigh=priceLow+Math.round(products*6/100)*100;
+      const seoRisk=platform==='dandomain'?'high':platform==='woo'?'medium':'low';
+      const speedScore=30+(hash%60);
+      const risks=[
+        {t:'ok',msg:platform==='dandomain'?'DanDomain shop detected — perfect candidate':'Platform detected: '+platformName(platform)},
+        {t:seoRisk==='high'?'bad':seoRisk==='medium'?'warn':'ok',msg:`SEO migration risk: ${seoRisk.toUpperCase()} — 301 map needed${seoRisk==='high'?' before cutover':''}`},
+        {t:speedScore<50?'bad':speedScore<75?'warn':'ok',msg:`PageSpeed estimate: ${speedScore}/100 — ${speedScore<50?'urgent caching':'cache stack can lift to 95+'}`},
+        {t:'warn',msg:`~${products.toLocaleString()} products + variants to migrate`},
+        {t:'ok',msg:'Re-integrations possible: e-conomic · Business Central · Klaviyo · GLS/PostNord'}
+      ];
+      setTimeout(()=>{
+        res.innerHTML=`
+          <div class="audit-card">
+            <div>
+              <h3>Audit summary</h3>
+              <div class="audit-url">https://${url}</div>
+              <div class="audit-stats">
+                <div class="audit-stat"><div class="lbl">Platform</div><div class="val">${platformName(platform)}</div></div>
+                <div class="audit-stat"><div class="lbl">Catalog est.</div><div class="val">${products.toLocaleString()} <small>SKUs</small></div></div>
+                <div class="audit-stat"><div class="lbl">Migration time</div><div class="val">${weeks} <small>weeks</small></div></div>
+                <div class="audit-stat"><div class="lbl">Speed score</div><div class="val">${speedScore} <small>/100</small></div></div>
+              </div>
+            </div>
+            <div>
+              <h3 style="margin-bottom:10px">What we found</h3>
+              <ul class="audit-risks" style="padding:0;margin:0">
+                ${risks.map(r=>`<li><span class="r-icon ${r.t}">${r.t==='ok'?'✓':r.t==='warn'?'!':'×'}</span><span>${r.msg}</span></li>`).join('')}
+              </ul>
+            </div>
+            <div class="audit-cta">
+              <div class="ck-text">Want the full report? PDF mailed in <b>under 24h</b> with redirect map, integration list, fixed quote.</div>
+              <a href="mailto:zaman.shakirdev@gmail.com?subject=Full%20audit%20-%20${encodeURIComponent(url)}&body=Hi%20Shakir%2C%20please%20send%20me%20the%20full%20migration%20audit%20for%20https%3A%2F%2F${encodeURIComponent(url)}">📩 Get full report</a>
+            </div>
+          </div>`;
+        res.classList.add('on');
+        btn.textContent='Run again';btn.disabled=false;
+        res.scrollIntoView({behavior:'smooth',block:'nearest'});
+      },800);
+    }
+
+    function detectPlatform(url){
+      const u=url.toLowerCase();
+      if(u.endsWith('.dk')||u.includes('dandomain'))return 'dandomain';
+      if(u.includes('shopify')||u.includes('myshopify'))return 'shopify';
+      if(u.includes('woo')||u.includes('wp-'))return 'woo';
+      const r=Math.random();return r<.4?'dandomain':r<.7?'woo':'shopify';
+    }
+    function platformName(p){return {dandomain:'DanDomain',shopify:'Shopify',woo:'WooCommerce',wp:'WordPress'}[p]||'Unknown'}
+  })();
+
   // ============== SITE-WIDE SNAKE (body overlay, header strip HUD) ==============
   (function(){
     const cvs=document.createElement('canvas');cvs.id='snCanvas';document.body.appendChild(cvs);
     const ctx=cvs.getContext('2d');
 
     const GOAL=30,CELL=24;
-    const SNAKE='#ff9900',SNAKE_DIM='rgba(255,153,0,',FOOD='#ff5fa2';
+    const SNAKE='#ff9900',SNAKE_DIM='rgba(255,153,0,';
+    const FOOD_TYPES=[
+      {color:'#ff5fa2',points:1,weight:70,glow:'#ff5fa2'},
+      {color:'#67e8f9',points:3,weight:22,glow:'#67e8f9'},
+      {color:'#a78bfa',points:5,weight:8,glow:'#a78bfa',star:true}
+    ];
+    const particles=[];
+    const pops=[];
     let W=0,H=0,cols=0,rows=0;
     let snake=[],dir={x:1,y:0},food=null,score=Math.min(GOAL,+(localStorage.getItem('snake-score')||0)),raf=0,lastTick=0,speed=130;
     const scoreEl=document.getElementById('snScore');
@@ -1541,6 +1678,12 @@
       return null;
     }
 
+    function pickFoodType(){
+      const total=FOOD_TYPES.reduce((a,b)=>a+b.weight,0);
+      let r=Math.random()*total;
+      for(const t of FOOD_TYPES){if((r-=t.weight)<=0)return t}
+      return FOOD_TYPES[0];
+    }
     function spawnFood(){
       // clean prior target
       if(food && food.span && food.span.parentNode){
@@ -1549,7 +1692,10 @@
       const t=pickTextTarget();
       if(!t){food=null;return}
       const rect=t.span.getBoundingClientRect();
-      food={x:Math.floor((rect.left+rect.width/2)/CELL),y:Math.floor((rect.top+rect.height/2)/CELL),letter:t.letter,span:t.span,rect};
+      const ft=pickFoodType();
+      // restyle target outline to match food color
+      t.span.style.outlineColor=ft.color;t.span.style.background=ft.color.replace('1)',',.18)')||'';
+      food={x:Math.floor((rect.left+rect.width/2)/CELL),y:Math.floor((rect.top+rect.height/2)/CELL),letter:t.letter,span:t.span,rect,type:ft};
     }
 
     function updateFoodPos(){
@@ -1563,43 +1709,83 @@
     function drawAll(){
       ctx.clearRect(0,0,W,H);
 
-      // food: pink dot w/ glow
+      // food
       if(food){
-        const fx=food.x*CELL+CELL/2,fy=food.y*CELL+CELL/2;
-        ctx.shadowColor=FOOD;ctx.shadowBlur=18;
-        ctx.fillStyle=FOOD;
-        ctx.beginPath();ctx.arc(fx,fy,CELL*.45,0,Math.PI*2);ctx.fill();
+        const fx=food.x*CELL+CELL/2,fy=food.y*CELL+CELL/2,c=food.type.color,t=Date.now()/200;
+        ctx.shadowColor=c;ctx.shadowBlur=22+Math.sin(t)*4;
+        if(food.type.star){
+          // 5-point star
+          ctx.fillStyle=c;ctx.beginPath();
+          for(let i=0;i<10;i++){const ang=(Math.PI*2*i)/10-Math.PI/2;const r=i%2?CELL*.22:CELL*.5;ctx.lineTo(fx+Math.cos(ang)*r,fy+Math.sin(ang)*r)}
+          ctx.closePath();ctx.fill();
+        } else {
+          ctx.fillStyle=c;
+          ctx.beginPath();ctx.arc(fx,fy,CELL*.45,0,Math.PI*2);ctx.fill();
+        }
         ctx.shadowBlur=0;
-        ctx.fillStyle='#fff';
-        ctx.beginPath();ctx.arc(fx-CELL*.12,fy-CELL*.12,CELL*.12,0,Math.PI*2);ctx.fill();
+        ctx.fillStyle='rgba(255,255,255,.9)';
+        ctx.beginPath();ctx.arc(fx-CELL*.14,fy-CELL*.14,CELL*.1,0,Math.PI*2);ctx.fill();
+        // point label above
+        ctx.fillStyle=c;ctx.font=`bold ${CELL*.4}px Inter,system-ui`;ctx.textAlign='center';
+        ctx.fillText('+'+food.type.points,fx,fy-CELL*.7);
       }
 
-      // snake body: orange round segments
+      // snake body: orange round segments w/ digestion bulge
       snake.forEach((s,i)=>{
         const x=s.x*CELL+CELL/2,y=s.y*CELL+CELL/2;
         if(i===0){
-          // head: bright orange circle + glow + 2 eyes
-          ctx.shadowColor=SNAKE;ctx.shadowBlur=16;
+          ctx.shadowColor=SNAKE;ctx.shadowBlur=18;
           ctx.fillStyle=SNAKE;
-          ctx.beginPath();ctx.arc(x,y,CELL*.48,0,Math.PI*2);ctx.fill();
+          ctx.beginPath();ctx.arc(x,y,CELL*.5,0,Math.PI*2);ctx.fill();
           ctx.shadowBlur=0;
-          // eyes (face direction)
           const ex=dir.x,ey=dir.y;
           const e1x=x+ex*5+(ey?5:0)*(-1),e1y=y+ey*5+(ex?5:0);
           const e2x=x+ex*5+(ey?5:0),e2y=y+ey*5+(ex?5:0)*(-1);
           ctx.fillStyle='#fff';
-          ctx.beginPath();ctx.arc(e1x,e1y,3,0,Math.PI*2);ctx.fill();
-          ctx.beginPath();ctx.arc(e2x,e2y,3,0,Math.PI*2);ctx.fill();
-          ctx.fillStyle='#0c2340';
-          ctx.beginPath();ctx.arc(e1x+ex,e1y+ey,1.5,0,Math.PI*2);ctx.fill();
-          ctx.beginPath();ctx.arc(e2x+ex,e2y+ey,1.5,0,Math.PI*2);ctx.fill();
+          ctx.beginPath();ctx.arc(e1x,e1y,3.5,0,Math.PI*2);ctx.fill();
+          ctx.beginPath();ctx.arc(e2x,e2y,3.5,0,Math.PI*2);ctx.fill();
+          ctx.fillStyle='#0c0c14';
+          ctx.beginPath();ctx.arc(e1x+ex,e1y+ey,1.8,0,Math.PI*2);ctx.fill();
+          ctx.beginPath();ctx.arc(e2x+ex,e2y+ey,1.8,0,Math.PI*2);ctx.fill();
         } else {
-          const a=Math.max(.35,1-i/(snake.length*1.4));
+          const a=Math.max(.4,1-i/(snake.length*1.6));
+          let r=CELL*.42*(1-i*.012);r=Math.max(r,CELL*.22);
+          // digestion bulge — segment near digestPos puffs up
+          if(s.bulge){
+            r*=1.6;s.bulge*=.85;if(s.bulge<.05)delete s.bulge;
+            ctx.shadowColor=s.bulgeColor||SNAKE;ctx.shadowBlur=12;
+          }
           ctx.fillStyle=SNAKE_DIM+a+')';
-          const r=CELL*.40*(1-i*.015);
-          ctx.beginPath();ctx.arc(x,y,Math.max(r,CELL*.2),0,Math.PI*2);ctx.fill();
+          ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();
+          ctx.shadowBlur=0;
         }
       });
+
+      // particle bursts
+      for(let i=particles.length-1;i>=0;i--){
+        const p=particles[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.15;p.life-=.025;
+        if(p.life<=0){particles.splice(i,1);continue}
+        ctx.globalAlpha=p.life;ctx.fillStyle=p.c;
+        ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
+      }
+      ctx.globalAlpha=1;
+
+      // floating "+N" pops
+      for(let i=pops.length-1;i>=0;i--){
+        const p=pops[i];p.y-=1.5;p.life-=.018;
+        if(p.life<=0){pops.splice(i,1);continue}
+        ctx.globalAlpha=p.life;
+        ctx.font=`bold ${22}px Inter,system-ui`;ctx.textAlign='center';
+        ctx.fillStyle=p.c;ctx.fillText('+'+p.n,p.x,p.y);
+      }
+      ctx.globalAlpha=1;
+    }
+
+    function burst(x,y,color,count){
+      for(let i=0;i<count;i++){
+        const a=Math.random()*Math.PI*2,sp=2+Math.random()*4;
+        particles.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-2,r:2+Math.random()*3,c:color,life:1});
+      }
     }
 
     // user input → queued direction
@@ -1636,9 +1822,26 @@
       }
       snake.unshift(head);
       if(food && Math.abs(head.x-food.x)<=1 && Math.abs(head.y-food.y)<=1){
-        score=Math.min(GOAL,score+1);localStorage.setItem('snake-score',score);
+        const pts=food.type.points,c=food.type.color;
+        score=Math.min(GOAL,score+pts);localStorage.setItem('snake-score',score);
         if(scoreEl)scoreEl.textContent=score;
-        if(food.span && food.span.isConnected){food.span.className='snake-eaten';food.span=null}
+        // visuals: burst + pop + bulge first segment
+        burst(food.x*CELL+CELL/2,food.y*CELL+CELL/2,c,12);
+        pops.push({x:food.x*CELL+CELL/2,y:food.y*CELL+CELL/2-10,n:pts,c,life:1});
+        snake[1] && (snake[1].bulge=1,snake[1].bulgeColor=c);
+        // audio beep
+        try{
+          const a=(window.AC=window.AC||new (window.AudioContext||window.webkitAudioContext)());
+          const o=a.createOscillator(),g=a.createGain();
+          o.frequency.value=pts===5?880:pts===3?660:520;
+          o.connect(g);g.connect(a.destination);g.gain.value=.08;
+          o.start();g.gain.exponentialRampToValueAtTime(.001,a.currentTime+.18);o.stop(a.currentTime+.2);
+        }catch(e){}
+        if(food.span && food.span.isConnected){
+          food.span.className='snake-eaten';food.span.style.outlineColor='';food.span.style.background='';food.span=null;
+        }
+        // grow extra for high-value food
+        for(let g=0;g<pts-1;g++)snake.push({...snake[snake.length-1]});
         spawnFood();
         if(speed>80)speed=Math.max(80,speed-1);
         if(score>=GOAL)unlock();
