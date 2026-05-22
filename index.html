@@ -353,46 +353,6 @@
   .edu .where{font-size:13px;color:#555}
   .edu .yrs{font-size:13px;color:var(--muted);font-weight:500;display:inline-flex;align-items:center;gap:6px}
 
-  /* GAME — "Migrate the Cart" */
-  .game{margin:60px 0;background:linear-gradient(135deg,#1a1a1a 0%,#2a2a2a 100%);color:#fff;border-radius:24px;padding:40px;position:relative;overflow:hidden}
-  @media(max-width:780px){.game{padding:24px}}
-  .game::before{content:"";position:absolute;inset:0;background:
-    radial-gradient(circle at 20% 30%,rgba(0,128,96,.15),transparent 50%),
-    radial-gradient(circle at 80% 70%,rgba(217,39,45,.1),transparent 50%);
-    pointer-events:none}
-  .game .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;position:relative;z-index:1;flex-wrap:wrap;gap:10px}
-  .game .head .ttl{display:flex;align-items:center;gap:12px}
-  .game .head h2{font-family:'Fraunces',serif;font-size:28px;margin:0;letter-spacing:-.5px}
-  .game .head .ttl .badge{font-size:10px;background:var(--shop);color:#fff;padding:3px 8px;border-radius:99px;letter-spacing:1px;font-weight:700}
-  .game .head .scores{display:flex;gap:18px;font-size:13px;font-family:'Inter',sans-serif}
-  .game .head .scores div{background:rgba(255,255,255,.06);padding:8px 14px;border-radius:99px;border:1px solid rgba(255,255,255,.1)}
-  .game .head .scores b{color:#7adfb3;font-family:'Fraunces',serif;font-weight:700;margin-left:4px}
-  .game .stage{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;height:340px;position:relative;overflow:hidden;cursor:crosshair;z-index:1}
-  @media(max-width:520px){.game .stage{height:280px}}
-  .game .stage .legend{position:absolute;top:14px;left:14px;font-size:11px;color:#94a3b8;letter-spacing:1px;text-transform:uppercase;z-index:2;pointer-events:none}
-  .game .stage .player{position:absolute;bottom:14px;left:0;width:60px;height:36px;background:var(--shop);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#fff;transition:transform .05s;z-index:3;box-shadow:0 4px 12px rgba(0,128,96,.4)}
-  .game .stage .player::before{content:"";position:absolute;bottom:-6px;left:8px;width:12px;height:12px;background:#222;border-radius:50%}
-  .game .stage .player::after{content:"";position:absolute;bottom:-6px;right:8px;width:12px;height:12px;background:#222;border-radius:50%}
-  .game .stage .item{position:absolute;top:-30px;width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;z-index:2;box-shadow:0 4px 10px rgba(0,0,0,.3)}
-  .game .stage .item.good{background:var(--shop)}
-  .game .stage .item.bad{background:var(--dd)}
-  .game .stage .item.bonus{background:#f59e0b}
-  .game .stage .gameover{position:absolute;inset:0;background:rgba(0,0,0,.85);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;z-index:5;backdrop-filter:blur(4px)}
-  .game .stage .gameover h3{font-family:'Fraunces',serif;font-size:32px;margin:0 0 6px}
-  .game .stage .gameover p{color:#94a3b8;font-size:14px;margin:0 0 20px}
-  .game .stage .gameover button{background:var(--shop);color:#fff;border:none;padding:12px 22px;border-radius:99px;font-weight:700;cursor:pointer;font-family:inherit;font-size:13px}
-  .game .stage .gameover button:hover{background:var(--shop-dark)}
-  .game .legend2{display:flex;gap:18px;margin-top:14px;font-size:12px;color:#94a3b8;flex-wrap:wrap;position:relative;z-index:1}
-  .game .legend2 .lk{display:inline-flex;align-items:center;gap:6px}
-  .game .legend2 .sw{width:14px;height:14px;border-radius:4px}
-  .game .legend2 .sw.g{background:var(--shop)}
-  .game .legend2 .sw.b{background:var(--dd)}
-  .game .legend2 .sw.bn{background:#f59e0b}
-  .game .start{margin-top:14px;display:flex;gap:10px;align-items:center;position:relative;z-index:1;flex-wrap:wrap}
-  .game .start button{background:var(--shop);color:#fff;border:none;padding:10px 18px;border-radius:99px;font-weight:600;cursor:pointer;font-family:inherit;font-size:13px;display:inline-flex;align-items:center;gap:6px}
-  .game .start button:hover{background:var(--shop-dark)}
-  .game .start .hint{font-size:11.5px;color:#94a3b8}
-  .game .start .hint kbd{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:4px;padding:1px 6px;font-family:monospace;font-size:11px;color:#cbd5e1}
 
   /* CHECKOUT */
   .checkout{display:grid;grid-template-columns:1.3fr 1fr;gap:0;margin:30px 0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}
@@ -530,7 +490,6 @@
       <a href="#migration">Migration</a>
       <a href="#cache">Cache</a>
       <a href="#projects">Catalog</a>
-      <a href="#game">Mini-game</a>
       <a href="#history">About</a>
       <a href="#checkout">Contact</a>
     </nav>
@@ -561,7 +520,6 @@
       <a href="#migration">DanDomain → WordPress</a>
       <a href="#migration">WordPress → Shopify</a>
       <a href="#cache">WP cache optimization</a>
-      <a href="#game">Play mini-game</a>
     </div>
   </div>
 </div>
@@ -951,12 +909,12 @@
 
   <!-- projects -->
   <div class="sec-head" id="projects">
-    <h2>Product catalog <span class="eyetag">13 PRODUCTS</span></h2>
+    <h2>Product catalog <span class="eyetag">12 PRODUCTS</span></h2>
     <div class="sub">Selected Shopify themes, WordPress sites and plugins shipped to production.</div>
   </div>
   <div class="tabs">
-    <button class="tab on" data-filter="all">All <span class="count">13</span></button>
-    <button class="tab" data-filter="shopify">Shopify <span class="count">5</span></button>
+    <button class="tab on" data-filter="all">All <span class="count">12</span></button>
+    <button class="tab" data-filter="shopify">Shopify <span class="count">4</span></button>
     <button class="tab" data-filter="wp">WordPress <span class="count">5</span></button>
     <button class="tab" data-filter="plugin">Plugins <span class="count">3</span></button>
   </div>
@@ -1013,16 +971,6 @@
         <p>Active WP/Shopify agency. Custom themes, app integrations, speed optimisation across the agency's client stable.</p>
         <div class="stack"><span>Shopify</span><span>Liquid</span><span>Apps</span></div>
         <div class="meta-row"><b>Agency partner</b><span class="link">webkonsulenterne.dk →</span></div>
-      </div>
-    </a>
-    <a class="pcard shopify" data-cat="shopify" href="#">
-      <div class="image"><span class="pill">New · 2024</span><span class="platform shopify">SHOPIFY</span><div class="glyph">⚡</div></div>
-      <div class="body">
-        <h3>Demo E-commerce (SvelteKit)</h3>
-        <div class="yr">2024 · Triple-A · 🇸🇬</div>
-        <p>Superfast SvelteKit + DaisyUI demo storefront — built on tight deadlines to showcase crypto payments to merchants worldwide.</p>
-        <div class="stack"><span>SvelteKit</span><span>DaisyUI</span><span>Crypto</span></div>
-        <div class="meta-row"><b>Sole dev</b><span class="link">View →</span></div>
       </div>
     </a>
 
@@ -1091,14 +1039,14 @@
         <div class="meta-row"><b>Pixel-perfect</b><span class="link">triple-a.io →</span></div>
       </div>
     </a>
-    <a class="pcard wp" data-cat="wp" href="#">
-      <div class="image"><span class="platform wp">WORDPRESS</span><div class="glyph">S</div></div>
+    <a class="pcard wp" data-cat="wp" href="https://skateontario.org" target="_blank" rel="noopener">
+      <div class="image"><span class="platform wp">WORDPRESS</span><div class="glyph">S</div><div class="fav"><img src="https://www.google.com/s2/favicons?domain=skateontario.org&sz=128" alt="" onerror="this.style.display='none'"></div></div>
       <div class="body">
         <h3>Skate Ontario Portal</h3>
         <div class="yr">2023 · 🇨🇦 Canada</div>
         <p>Custom WordPress theme + plugin from scratch. Member portal &amp; public site, pixel-perfect frontend.</p>
         <div class="stack"><span>WordPress</span><span>Custom Theme</span><span>Plugin</span></div>
-        <div class="meta-row"><b>Portal + Site</b><span class="link">View →</span></div>
+        <div class="meta-row"><b>Portal + Site</b><span class="link">skateontario.org →</span></div>
       </div>
     </a>
     <a class="pcard wp" data-cat="wp" href="https://byaagaard.com" target="_blank" rel="noopener">
@@ -1251,32 +1199,7 @@
   </div>
 
   <!-- GAME — Migrate the Cart -->
-  <section class="game rv" id="game">
-    <div class="head">
-      <div class="ttl">
-        <h2>Migrate the Cart</h2>
-        <span class="badge">MINI-GAME</span>
-      </div>
-      <div class="scores">
-        <div>Score <b id="gScore">0</b></div>
-        <div>High <b id="gHigh">0</b></div>
-        <div>Lives <b id="gLives">3</b></div>
-      </div>
-    </div>
-    <div class="stage" id="gStage">
-      <div class="legend">← → or A / D to move · Touch &amp; drag</div>
-      <div class="player" id="gPlayer">CART</div>
-    </div>
-    <div class="legend2">
-      <span class="lk"><span class="sw g"></span>Catch <b style="color:#fff">orders &amp; products</b> +10</span>
-      <span class="lk"><span class="sw bn"></span>Catch <b style="color:#fff">SEO redirects</b> +25</span>
-      <span class="lk"><span class="sw b"></span>Avoid <b style="color:#fff">broken plugins</b> −1 life</span>
-    </div>
-    <div class="start">
-      <button id="gStart">▶ Start migration</button>
-      <span class="hint">Move with <kbd>←</kbd> <kbd>→</kbd> or drag · Goal: ship 100 to unlock <b style="color:#7adfb3">FREE-AUDIT</b> code</span>
-    </div>
-  </section>
+  <!-- game replaced by site-wide HUD scavenger hunt (top-right) — see #migHUD -->
 
   <!-- FAQ -->
   <div class="sec-head">
@@ -1404,7 +1327,7 @@
         <div class="price"><b>FREE</b></div>
       </div>
       <div class="discount">
-        <input placeholder="Discount code (play game → unlock FREE-AUDIT)" id="dcode">
+        <input placeholder="Discount code (complete Migration Quest → unlock FREE-AUDIT)" id="dcode">
         <button id="dapply">Apply</button>
       </div>
       <div class="totals">
@@ -1448,7 +1371,6 @@
         <li><a href="#projects">Shopify themes</a></li>
         <li><a href="#projects">WordPress sites</a></li>
         <li><a href="#projects">Plugins</a></li>
-        <li><a href="#game">Mini-game</a></li>
       </ul>
     </div>
     <div>
@@ -1522,78 +1444,94 @@
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});
   document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
-  // ============== GAME: Migrate the Cart ==============
+  // ============== SITE-WIDE GAME: Migration Quest (HUD) ==============
   (function(){
-    const stage=document.getElementById('gStage');
-    const player=document.getElementById('gPlayer');
-    const scoreEl=document.getElementById('gScore');
-    const highEl=document.getElementById('gHigh');
-    const livesEl=document.getElementById('gLives');
-    const startBtn=document.getElementById('gStart');
-    let W=stage.clientWidth, playerX=W/2-30, score=0, lives=3, high=+(localStorage.getItem('shakir-game-high')||0), running=false, items=[], spawnT=0, raf=0;
-    highEl.textContent=high;
+    const hud=document.createElement('div');hud.id='migHUD';hud.innerHTML=`
+      <div class="hud-top">
+        <span class="hud-ttl">🏆 Migration Quest</span>
+        <button class="hud-min" id="hudMin" aria-label="Minimise">_</button>
+      </div>
+      <div class="hud-bar"><div class="hud-fill" id="hudFill"></div></div>
+      <div class="hud-row"><span>XP</span><b id="hudXP">0</b><span>/ 100</span></div>
+      <div class="hud-quests" id="hudQuests"></div>
+      <div class="hud-foot" id="hudFoot">Visit sections + click clients to earn XP. 100 XP unlocks <b>FREE-AUDIT</b>.</div>`;
+    document.body.appendChild(hud);
 
-    function reset(){
-      score=0;lives=3;items.forEach(i=>i.el.remove());items=[];
-      scoreEl.textContent=0;livesEl.textContent=3;
-      W=stage.clientWidth;playerX=W/2-30;player.style.transform=`translateX(${playerX}px)`;
+    const STYLE=document.createElement('style');STYLE.textContent=`
+      #migHUD{position:fixed;top:80px;right:14px;z-index:90;width:260px;background:linear-gradient(135deg,#0c2340,#1d3557);color:#fff;border-radius:14px;padding:14px;box-shadow:0 10px 40px rgba(0,0,0,.25);font-family:'Inter',sans-serif;font-size:12.5px;transition:transform .25s,opacity .25s;border:1px solid rgba(122,223,179,.2)}
+      #migHUD.mini{transform:translateX(calc(100% - 50px))}
+      #migHUD.mini .hud-bar,#migHUD.mini .hud-row,#migHUD.mini .hud-quests,#migHUD.mini .hud-foot{display:none}
+      #migHUD.win{background:linear-gradient(135deg,#005c47,#008060)}
+      #migHUD .hud-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+      #migHUD .hud-ttl{font-weight:700;font-size:13px;letter-spacing:.3px}
+      #migHUD .hud-min{background:rgba(255,255,255,.1);color:#fff;border:none;width:24px;height:24px;border-radius:6px;cursor:pointer;font-weight:700;line-height:1}
+      #migHUD .hud-min:hover{background:rgba(255,255,255,.2)}
+      #migHUD .hud-bar{background:rgba(255,255,255,.1);height:8px;border-radius:99px;overflow:hidden;margin-bottom:8px}
+      #migHUD .hud-fill{height:100%;background:linear-gradient(90deg,#7adfb3,#67e8f9);border-radius:99px;width:0%;transition:width .4s ease}
+      #migHUD .hud-row{display:flex;align-items:center;gap:6px;font-size:11px;color:#9bc7b1;margin-bottom:10px}
+      #migHUD .hud-row b{color:#fff;font-family:'Fraunces',serif;font-size:16px;font-weight:700}
+      #migHUD .hud-quests{display:flex;flex-direction:column;gap:5px;margin-bottom:10px}
+      #migHUD .qu{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#cbd5e1;padding:5px 8px;background:rgba(255,255,255,.04);border-radius:6px}
+      #migHUD .qu.done{color:#7adfb3;text-decoration:line-through;opacity:.65}
+      #migHUD .qu .xp{font-weight:700;color:#67e8f9}
+      #migHUD .qu.done .xp{color:#7adfb3}
+      #migHUD .hud-foot{font-size:10.5px;color:#94a3b8;line-height:1.4}
+      #migHUD .hud-foot b{color:#7adfb3;background:rgba(122,223,179,.1);padding:1px 5px;border-radius:4px;font-weight:700}
+      #migHUD .toast{position:fixed;top:80px;left:50%;transform:translateX(-50%);background:#008060;color:#fff;padding:10px 18px;border-radius:99px;font-weight:700;font-size:13px;box-shadow:0 8px 24px rgba(0,0,0,.3);animation:toastIn .3s ease,toastOut .3s ease 1.7s forwards;z-index:300;pointer-events:none}
+      @keyframes toastIn{from{transform:translate(-50%,-20px);opacity:0}to{transform:translate(-50%,0);opacity:1}}
+      @keyframes toastOut{to{transform:translate(-50%,-20px);opacity:0}}
+      @media(max-width:780px){#migHUD{width:200px;top:auto;bottom:80px;font-size:11.5px;padding:10px}}
+    `;document.head.appendChild(STYLE);
+
+    const quests=[
+      {id:'migration',label:'Visit Migration services',xp:15,type:'view',sel:'#migration'},
+      {id:'cache',label:'Read WP Cache section',xp:15,type:'view',sel:'#cache'},
+      {id:'process',label:'See 5-step process',xp:10,type:'view',sel:'.process'},
+      {id:'client',label:'Click any live client',xp:15,type:'click',sel:'.tbcard'},
+      {id:'project',label:'Open any project',xp:10,type:'click',sel:'.pcard'},
+      {id:'faq',label:'Open 3 FAQs',xp:15,type:'count',sel:'.faq details',count:3,_n:0},
+      {id:'variant',label:'Try a migration variant',xp:10,type:'click',sel:'.pills[data-group="migration"] .pill'},
+      {id:'checkout',label:'Reach checkout',xp:10,type:'view',sel:'#checkout'},
+    ];
+    let xp=+(localStorage.getItem('mig-xp')||0);
+    const done=new Set(JSON.parse(localStorage.getItem('mig-done')||'[]'));
+    const xpEl=document.getElementById('hudXP'),fillEl=document.getElementById('hudFill'),qWrap=document.getElementById('hudQuests'),footEl=document.getElementById('hudFoot');
+
+    function render(){
+      xpEl.textContent=xp;fillEl.style.width=Math.min(100,xp)+'%';
+      qWrap.innerHTML=quests.map(q=>`<div class="qu ${done.has(q.id)?'done':''}"><span>${done.has(q.id)?'✓':'○'} ${q.label}</span><span class="xp">+${q.xp}</span></div>`).join('');
+      if(xp>=100){hud.classList.add('win');footEl.innerHTML='🎉 Quest complete! Use code <b>FREE-AUDIT</b> at checkout.'}
     }
-    function over(msg){
-      running=false;cancelAnimationFrame(raf);
-      if(score>high){high=score;localStorage.setItem('shakir-game-high',high);highEl.textContent=high}
-      const g=document.createElement('div');g.className='gameover';
-      const win=score>=100;
-      g.innerHTML=`<h3>${win?'🎉 You shipped it!':'💥 Migration failed'}</h3>
-        <p>${win?'Use code <b style="color:#7adfb3">FREE-AUDIT</b> at checkout':msg||'Try again — you can do it'}</p>
-        <button onclick="this.parentElement.remove();window.__startGame()">Play again</button>`;
-      stage.appendChild(g);
+    function toast(msg){const t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),2200)}
+    function grant(id){
+      const q=quests.find(x=>x.id===id);if(!q||done.has(id))return;
+      done.add(id);xp+=q.xp;
+      localStorage.setItem('mig-xp',xp);localStorage.setItem('mig-done',JSON.stringify([...done]));
+      toast(`+${q.xp} XP · ${q.label}`);render();
     }
-    function spawn(){
-      const r=Math.random();const type=r<0.2?'bonus':r<0.85?'good':'bad';
-      const el=document.createElement('div');el.className='item '+type;
-      el.textContent=type==='good'?'🛒':type==='bonus'?'🔀':'⚠';
-      const x=Math.random()*(W-34);el.style.left=x+'px';el.style.top='-30px';
-      stage.appendChild(el);items.push({el,x,y:-30,vy:2+Math.random()*2+score/50,type});
-    }
-    function loop(){
-      if(!running)return;
-      spawnT++;if(spawnT>40){spawn();spawnT=0}
-      const pBottom=stage.clientHeight-50, pH=36, pW=60;
-      items.forEach((it,i)=>{
-        it.y+=it.vy;it.el.style.top=it.y+'px';
-        // collision
-        if(it.y+34>pBottom && it.y<pBottom+pH && it.x+34>playerX && it.x<playerX+pW){
-          if(it.type==='good'){score+=10}
-          else if(it.type==='bonus'){score+=25}
-          else{lives--;livesEl.textContent=lives;if(lives<=0){it.el.remove();items.splice(i,1);return over()}}
-          it.el.remove();items.splice(i,1);scoreEl.textContent=score;
-          if(score>=100)return over('win');
-        }
-        else if(it.y>stage.clientHeight){
-          if(it.type==='good'){/* missed good ignored */}
-          it.el.remove();items.splice(i,1);
-        }
-      });
-      raf=requestAnimationFrame(loop);
-    }
-    window.__startGame=function(){
-      reset();running=true;raf=requestAnimationFrame(loop);
-    };
-    startBtn.onclick=window.__startGame;
-    // keyboard
-    document.addEventListener('keydown',e=>{
-      if(!running)return;
-      if(e.key==='ArrowLeft'||e.key==='a'||e.key==='A'){playerX=Math.max(0,playerX-22);player.style.transform=`translateX(${playerX}px)`}
-      if(e.key==='ArrowRight'||e.key==='d'||e.key==='D'){playerX=Math.min(W-60,playerX+22);player.style.transform=`translateX(${playerX}px)`}
+    render();
+    document.getElementById('hudMin').onclick=()=>hud.classList.toggle('mini');
+
+    // view quests via IntersectionObserver
+    const ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
+      quests.filter(q=>q.type==='view').forEach(q=>{const el=document.querySelector(q.sel);if(el===e.target)grant(q.id)});
+    }}),{threshold:.4});
+    quests.filter(q=>q.type==='view').forEach(q=>{const el=document.querySelector(q.sel);if(el)ob.observe(el)});
+
+    // click quests
+    quests.filter(q=>q.type==='click').forEach(q=>{
+      document.querySelectorAll(q.sel).forEach(el=>el.addEventListener('click',()=>grant(q.id),{passive:true}));
     });
-    // touch / mouse
-    let dragging=false;
-    stage.addEventListener('pointerdown',e=>{dragging=true;move(e)});
-    document.addEventListener('pointermove',e=>{if(dragging)move(e)});
-    document.addEventListener('pointerup',()=>dragging=false);
-    function move(e){const r=stage.getBoundingClientRect();playerX=Math.max(0,Math.min(W-60,e.clientX-r.left-30));player.style.transform=`translateX(${playerX}px)`}
-    // resize
-    window.addEventListener('resize',()=>{W=stage.clientWidth});
+    // count quests (FAQ opens)
+    const fq=quests.find(q=>q.id==='faq');
+    document.querySelectorAll('.faq details').forEach(d=>d.addEventListener('toggle',()=>{
+      if(d.open && !done.has('faq')){fq._n++;if(fq._n>=fq.count)grant('faq')}
+    }));
+
+    // auto-apply unlocked code in checkout discount when reached 100
+    const obCk=new MutationObserver(()=>{
+      if(xp>=100){const inp=document.getElementById('dcode');if(inp&&!inp.value){inp.value='FREE-AUDIT';inp.style.borderColor='var(--shop)';inp.style.background='var(--shop-soft)'}}
+    });obCk.observe(document.body,{childList:true,subtree:true});
   })();
 </script>
 </body>
