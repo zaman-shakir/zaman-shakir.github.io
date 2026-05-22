@@ -69,11 +69,30 @@
   .crumb svg{color:#ccc}
 
   /* PDP */
-  .pdp{display:grid;grid-template-columns:0.75fr 1fr;gap:40px;padding:18px 0 60px;align-items:start}
+  .pdp{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:18px 0 60px;align-items:start}
   @media(max-width:900px){.pdp{grid-template-columns:1fr;gap:28px}}
 
-  .main-img{aspect-ratio:1/1;max-width:380px;background:#eee;border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 28px rgba(0,0,0,.06);margin:0 auto}
-  @media(max-width:900px){.main-img{max-width:320px}}
+  /* hero-card replaces profile image — sells 3 specialities up-front */
+  .hero-card{background:linear-gradient(135deg,#fffaf3,#fef3e7 50%,#e3f1ec);border:1px solid var(--line);border-radius:18px;padding:24px;position:relative;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,.05)}
+  .hero-card::before{content:"";position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(0,128,96,.1),transparent 70%)}
+  .hero-eyebrow{font-size:10.5px;letter-spacing:2px;color:var(--shop);text-transform:uppercase;font-weight:700;display:inline-flex;align-items:center;gap:6px;margin-bottom:14px;position:relative;z-index:1}
+  .hero-eyebrow .pip{width:6px;height:6px;background:var(--shop);border-radius:50%;animation:pulse 1.5s infinite}
+  .hero-stack{display:flex;flex-direction:column;gap:10px;position:relative;z-index:1}
+  .hero-spec{display:grid;grid-template-columns:32px 1fr auto;gap:12px;align-items:center;padding:14px;background:#fff;border-radius:12px;border:1px solid rgba(0,0,0,.04);text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s}
+  .hero-spec:hover{transform:translateX(4px);box-shadow:0 6px 18px rgba(0,0,0,.06)}
+  .hero-spec.dd{border-left:3px solid var(--dd)}
+  .hero-spec.wp{border-left:3px solid var(--wp)}
+  .hero-spec.speed{border-left:3px solid var(--shop)}
+  .hero-spec-num{font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:var(--muted);line-height:1;opacity:.4}
+  .hero-spec-tag{font-size:9.5px;letter-spacing:1.5px;font-weight:700;color:var(--shop-dark);text-transform:uppercase;margin-bottom:3px}
+  .hero-spec.dd .hero-spec-tag{color:var(--dd)}
+  .hero-spec.wp .hero-spec-tag{color:var(--wp)}
+  .hero-spec h3{font-family:'Fraunces',serif;font-size:16px;font-weight:600;margin:0 0 3px;color:var(--ink);line-height:1.2}
+  .hero-spec p{font-size:12px;color:#555;line-height:1.45;margin:0}
+  .hero-spec-cta{font-size:12px;font-weight:700;color:var(--shop);white-space:nowrap}
+  .hero-foot{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;padding-top:14px;border-top:1px dashed rgba(0,0,0,.1);position:relative;z-index:1}
+  .hero-foot-stat{font-size:11px;color:var(--muted)}
+  .hero-foot-stat b{color:var(--ink);font-family:'Fraunces',serif;font-weight:600;font-size:14px;margin-right:3px}
   .main-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
   .main-img:hover img{transform:scale(1.03)}
   .main-img .tags{position:absolute;top:16px;left:16px;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
@@ -436,8 +455,7 @@
   "@type":"Person",
   "name":"Shakir Uz Zaman",
   "url":"https://zaman-shakir.github.io/",
-  "image":"https://zaman-shakir.github.io/shakir-pp1.png",
-  "jobTitle":"CMS Migration Expert — Shopify & WordPress",
+  "jobTitle":"CMS Migration Expert — DanDomain → Shopify, DanDomain → WordPress, WordPress Speed Specialist",
   "email":"mailto:zaman.shakirdev@gmail.com",
   "telephone":"+8801738790641",
   "address":{"@type":"PostalAddress","addressLocality":"Dhaka","addressCountry":"BD"},
@@ -537,17 +555,45 @@
   </div>
 
   <section class="pdp">
-    <div class="main-img">
-      <div class="tags">
-        <span class="tag">⭐ BESTSELLER</span>
-        <span class="tag dd">DANDOMAIN SPECIALIST</span>
+    <div class="hero-card">
+      <div class="hero-eyebrow">
+        <span class="pip"></span>3 SPECIALITIES · IN STOCK · SHIPS WORLDWIDE
       </div>
-      <img src="shakir-pp1.png" alt="Shakir Uz Zaman — Shopify and WordPress migration developer">
-      <div class="verified">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="#7adfb3" stroke="#063a26" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
-        Verified · 10+ yrs CMS expert
+      <div class="hero-stack">
+        <a class="hero-spec dd" href="#migration">
+          <div class="hero-spec-num">01</div>
+          <div class="hero-spec-body">
+            <div class="hero-spec-tag">★ MOST-REQUESTED</div>
+            <h3>DanDomain → Shopify Specialist</h3>
+            <p>Move catalog, customers, SEO &amp; integrations to Shopify without losing rankings. Fixed scope, zero downtime.</p>
+          </div>
+          <div class="hero-spec-cta">Plan →</div>
+        </a>
+        <a class="hero-spec wp" href="#migration">
+          <div class="hero-spec-num">02</div>
+          <div class="hero-spec-body">
+            <div class="hero-spec-tag">CONTENT-FIRST</div>
+            <h3>DanDomain → WordPress Specialist</h3>
+            <p>WP + WooCommerce setup, custom theme, plugin stack tuned to your business. Lower long-term costs.</p>
+          </div>
+          <div class="hero-spec-cta">Plan →</div>
+        </a>
+        <a class="hero-spec speed" href="#cache">
+          <div class="hero-spec-num">03</div>
+          <div class="hero-spec-body">
+            <div class="hero-spec-tag">⚡ &lt; 1 SECOND</div>
+            <h3>WordPress Cache &amp; Speed Specialist</h3>
+            <p>Any WP site under 1 second First Contentful Paint. Page + object + edge + fragment cache, OPcache, critical CSS.</p>
+          </div>
+          <div class="hero-spec-cta">Audit →</div>
+        </a>
       </div>
-      <div class="stock">In stock</div>
+      <div class="hero-foot">
+        <span class="hero-foot-stat"><b>10+</b> years</span>
+        <span class="hero-foot-stat"><b>800+</b> plugin installs</span>
+        <span class="hero-foot-stat"><b>100k+</b> users on one portal</span>
+        <span class="hero-foot-stat"><b>0</b> failed migrations</span>
+      </div>
     </div>
 
     <div class="info">
