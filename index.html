@@ -44,12 +44,12 @@
   .brand{font-family:'Fraunces',serif;font-weight:700;font-size:22px;letter-spacing:-.5px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
   .brand .dot{color:var(--shop)}
   .brand .bag{color:var(--shop)}
-  .menu{display:flex;gap:4px;justify-content:center;flex-wrap:wrap}
-  .menu a{font-size:13px;font-weight:500;color:var(--ink);padding:8px 12px;border-radius:8px;display:inline-flex;align-items:center;gap:6px;transition:all .15s}
+  .menu{display:flex;gap:2px;justify-content:center;flex-wrap:nowrap}
+  .menu a{font-size:13px;font-weight:500;color:var(--ink);padding:7px 10px;border-radius:8px;display:inline-flex;align-items:center;gap:6px;transition:all .15s;white-space:nowrap}
   .menu a:hover{background:rgba(255,255,255,.05);color:var(--shop)}
   .menu a.on{color:var(--shop);background:var(--shop-soft)}
-  .icons{display:flex;gap:6px;justify-content:flex-end;align-items:center;color:var(--muted)}
-  .icobtn{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:99px;border:1px solid var(--line);background:var(--paper);font-family:inherit;font-size:12.5px;font-weight:500;color:var(--ink);cursor:pointer;text-decoration:none;transition:all .15s}
+  .icons{display:flex;gap:5px;justify-content:flex-end;align-items:center;color:var(--muted);flex-shrink:0}
+  .icobtn{display:inline-flex;align-items:center;gap:5px;padding:7px 11px;border-radius:99px;border:1px solid var(--line);background:var(--paper);font-family:inherit;font-size:12px;font-weight:500;color:var(--ink);cursor:pointer;text-decoration:none;transition:all .15s;white-space:nowrap}
   .icobtn:hover{border-color:var(--shop);color:var(--shop);transform:translateY(-1px)}
   .icobtn.shop{background:var(--shop);color:#fff;border-color:var(--shop)}
   .icobtn.shop:hover{background:var(--shop-dark);color:#fff}
@@ -580,7 +580,7 @@
     <div class="icons">
       <div class="snake-pill" title="Use arrows or WASD to guide the snake. Eat 30 letters to unlock FREE-AUDIT.">
         <span class="snake-pill-dot"></span>
-        <span>↑↓←→ <b id="snScore">0</b>/30 → <b style="color:#ff7700">FREE-AUDIT</b></span>
+        <span><b id="snScore">0</b>/30 🐍</span>
       </div>
       <button class="icobtn" id="themeBtn" aria-label="Toggle theme" title="Toggle day/night">
         <span id="themeIcon">🌙</span>
