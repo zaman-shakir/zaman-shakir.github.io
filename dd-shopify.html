@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pick a layout · DanDomain → Shopify · 6 concepts</title><link rel="icon" href="/assets/img/favicon/favicon-32x32.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"><style>
+:root{--bg:#0e0f12;--paper:#15171c;--ink:#f1ebe1;--muted:#8b8a86;--line:#22252b;--acc:#7fdfb9;--p:#ff7eb6}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.55;min-height:100vh}
+body{background-image:radial-gradient(circle at 50% 0%,rgba(127,223,185,.06),transparent 50%);background-attachment:fixed}
+a{color:inherit;text-decoration:none}
+.mono{font-family:'JetBrains Mono',monospace}
+
+header{padding:48px 32px 24px;border-bottom:1px solid var(--line);max-width:1400px;margin:0 auto}
+header .top{display:flex;justify-content:space-between;margin-bottom:32px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);flex-wrap:wrap;gap:10px}
+header .top b{color:var(--ink)}
+header h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(40px,5.5vw,72px);line-height:1;letter-spacing:-2px;margin-bottom:16px}
+header h1 em{font-style:italic;color:var(--acc)}
+header .deck{color:var(--muted);font-size:18px;max-width:720px;line-height:1.5}
+header .deck b{color:var(--ink)}
+
+main{padding:48px 32px 80px;max-width:1400px;margin:0 auto}
+.pick-note{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--acc);padding:20px 24px;margin-bottom:32px;font-size:14.5px;color:var(--ink);line-height:1.6}
+.pick-note b{color:var(--acc)}
+
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+@media(max-width:980px){.grid{grid-template-columns:1fr}}
+
+.card{background:var(--paper);border:1px solid var(--line);overflow:hidden;transition:border-color .25s,transform .25s;display:flex;flex-direction:column;min-height:560px}
+.card:hover{border-color:var(--acc);transform:translateY(-4px)}
+.card .preview{height:340px;background:#000;overflow:hidden;position:relative;border-bottom:1px solid var(--line)}
+.card .preview iframe{width:200%;height:200%;border:0;transform:scale(.5);transform-origin:0 0;pointer-events:none}
+.card .preview .badge{position:absolute;top:14px;left:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:6px 12px;border-radius:99px;background:rgba(0,0,0,.6);color:var(--acc);font-weight:700;backdrop-filter:blur(6px);border:1px solid rgba(127,223,185,.3)}
+.card.dd1 .preview{background:#fafaf7}
+.card.dd2 .preview{background:#f6f3ec}
+.card.dd3 .preview{background:#0e0e0c}
+.card.dd4 .preview{background:#f7f7f5}
+.card.dd5 .preview{background:#fafaf6}
+.card.dd6 .preview{background:#ffffff}
+
+.card .meta{padding:24px 26px;flex:1;display:flex;flex-direction:column}
+.card .num{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:1.8px;color:var(--acc);font-weight:700;margin-bottom:8px;text-transform:uppercase}
+.card h2{font-family:'Fraunces',serif;font-weight:500;font-size:30px;letter-spacing:-1px;line-height:1.05;margin-bottom:10px}
+.card h2 em{font-style:italic;color:var(--acc)}
+.card .sub{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-bottom:14px}
+.card p{color:var(--muted);font-size:14.5px;line-height:1.6;margin-bottom:16px;flex:1}
+.card p b{color:var(--ink)}
+.card .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+.card .tags span{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;padding:4px 9px;border:1px solid var(--line);color:var(--muted);border-radius:99px}
+.card .actions{display:flex;gap:10px;padding-top:18px;border-top:1px solid var(--line)}
+.card .btn{flex:1;padding:12px 16px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;text-align:center;border:1px solid var(--line);color:var(--ink);transition:all .15s}
+.card .btn:hover{background:var(--acc);color:#0a0a0a;border-color:var(--acc)}
+.card .btn.pri{background:var(--ink);color:#0a0a0a;border-color:var(--ink)}
+.card .btn.pri:hover{background:var(--acc);border-color:var(--acc)}
+
+footer{padding:32px;border-top:1px solid var(--line);max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+footer b{color:var(--ink)}
+footer a{color:var(--acc)}
+</style></head><body>
+<header>
+  <div class="top">
+    <span><b>Shakir Uz Zaman</b> · DanDomain → Shopify · Layout picker</span>
+    <span>6 lead-gen concepts · talk-first · no pricing upfront</span>
+    <span>23 May 2026</span>
+  </div>
+  <h1>Pick a layout for the <em>DanDomain → Shopify</em> page.</h1>
+  <p class="deck">Six dedicated lead-gen pages, all single-purpose: <b>get the prospect on a 30-minute call</b>. No pricing on the page, no tier-pickers, no friction. Pick the one you'd trust to convert a Danish merchant into a booked call.</p>
+</header>
+
+<main>
+  <div class="pick-note">
+    <b>How to choose →</b> Open each one full-page. Read it as a Danish merchant who's spent the last week googling "DanDomain Shopify migration". Which layout would make you book the call? Reply with the DD number.
+  </div>
+
+  <div class="grid">
+    <article class="card dd1">
+      <div class="preview"><span class="badge">DD-1 · Stripe / SaaS</span><iframe src="/dd-shopify-1.html" loading="lazy" sandbox=""></iframe></div>
+      <div class="meta">
+        <div class="num">DD-1 · CONVERSION-OPTIMISED SAAS</div>
+        <h2>Clean <em>Stripe-style</em> landing.</h2>
+        <div class="sub">Light · green accent · Inter · familiar SaaS chrome</div>
+        <p>Stripe / Linear-style modern landing. Hero → pain points → solution → cases → testimonials → FAQ → CTA. <b>Reads like 2026 SaaS.</b> Familiar pattern that converts well on cold traffic.</p>
+        <div class="tags"><span>SaaS</span><span>Light</span><span>Inter</span><span>Conversion-first</span></div>
+        <div class="actions"><a class="btn" href="/dd-shopify-1.html" target="_blank">View →</a><a class="btn pri" href="mailto:zaman.shakirdev@gmail.com?subject=Ship DD-1">Pick DD-1</a></div>
+      </div>
+    </article>
+
+    <article class="card dd2">
+      <div class="preview"><span class="badge">DD-2 · Editorial</span><iframe src="/dd-shopify-2.html" loading="lazy" sandbox=""></iframe></div>
+      <div class="meta">
+        <div class="num">DD-2 · EDITORIAL FEATURE</div>
+        <h2>Newspaper-style <em>feature.</em></h2>
+        <div class="sub">Fraunces · cream paper · drop-caps · pull-quotes · byline</div>
+        <p>Magazine-grade. Frames you as the journalist of record on DanDomain migrations. Reads like a feature in the FT. <b>Highest "credibility" signal</b> for senior, conservative buyers.</p>
+        <div class="tags"><span>Editorial</span><span>Fraunces</span><span>Cream</span><span>Drop-caps</span></div>
+        <div class="actions"><a class="btn" href="/dd-shopify-2.html" target="_blank">View →</a><a class="btn pri" href="mailto:zaman.shakirdev@gmail.com?subject=Ship DD-2">Pick DD-2</a></div>
+      </div>
+    </article>
+
+    <article class="card dd3">
+      <div class="preview"><span class="badge">DD-3 · Studio</span><iframe src="/dd-shopify-3.html" loading="lazy" sandbox=""></iframe></div>
+      <div class="meta">
+        <div class="num">DD-3 · PENTAGRAM-GRADE STUDIO</div>
+        <h2>Bold <em>studio.</em> Dark.</h2>
+        <div class="sub">Dark · Instrument Serif italic · Geist · massive type</div>
+        <p>Massive italic display type. Marquee of clients. Dark, confident, opinionated. <b>Looks like a €30k/project agency.</b> Best for ambitious clients who buy on visual confidence.</p>
+        <div class="tags"><span>Studio</span><span>Dark</span><span>Big type</span><span>Italic</span></div>
+        <div class="actions"><a class="btn" href="/dd-shopify-3.html" target="_blank">View →</a><a class="btn pri" href="mailto:zaman.shakirdev@gmail.com?subject=Ship DD-3">Pick DD-3</a></div>
+      </div>
+    </article>
+
+    <article class="card dd4">
+      <div class="preview"><span class="badge">DD-4 · Comparison</span><iframe src="/dd-shopify-4.html" loading="lazy" sandbox=""></iframe></div>
+      <div class="meta">
+        <div class="num">DD-4 · HEAD-TO-HEAD COMPARISON</div>
+        <h2>DanDomain <em>vs</em> Shopify table.</h2>
+        <div class="sub">Comparison-first · honest checklist · proof cards · audit feel</div>
+        <p>Comparison-first. Big side-by-side table merchants actually want to see. Proof cards below. <b>Wins on SEO</b> ("dandomain vs shopify" search intent) and answers the buyer's real question before they ask.</p>
+        <div class="tags"><span>Comparison table</span><span>SEO-strong</span><span>Decision-aid</span><span>Light</span></div>
+        <div class="actions"><a class="btn" href="/dd-shopify-4.html" target="_blank">View →</a><a class="btn pri" href="mailto:zaman.shakirdev@gmail.com?subject=Ship DD-4">Pick DD-4</a></div>
+      </div>
+    </article>
+
+    <article class="card dd5">
+      <div class="preview"><span class="badge">DD-5 · Story</span><iframe src="/dd-shopify-5.html" loading="lazy" sandbox=""></iframe></div>
+      <div class="meta">
+        <div class="num">DD-5 · LONGFORM STORY</div>
+        <h2>The <em>Papirladen</em> story.</h2>
+        <div class="sub">Newsreader serif · single column · chapters · drop-cap · 4-min read</div>
+        <p>Single longform piece: the Papirladen migration told as a 4-minute story. Chapter breaks, blockquote, fact sheet, soft CTA. <b>Highest emotional resonance.</b> Best when buyers need to feel safe before they call.</p>
+        <div class="tags"><span>Longform</span><span>Newsreader</span><span>Single column</span><span>Chapters</span></div>
+        <div class="actions"><a class="btn" href="/dd-shopify-5.html" target="_blank">View →</a><a class="btn pri" href="mailto:zaman.shakirdev@gmail.com?subject=Ship DD-5">Pick DD-5</a></div>
+      </div>
+    </article>
+
+    <article class="card dd6">
+      <div class="preview"><span class="badge">DD-6 · Fact sheet</span><iframe src="/dd-shopify-6.html" loading="lazy" sandbox=""></iframe></div>
+      <div class="meta">
+        <div class="num">DD-6 · BRUTAL FACT SHEET</div>
+        <h2>Black-and-white <em>data sheet.</em></h2>
+        <div class="sub">Brutalist swiss · Archivo + IBM Plex Mono · zero animation · raw tables</div>
+        <p>Crypton.trading-style. Pure B/W, 12-col grid, every claim in a real data table. No motion, no decoration. <b>Reads as expensive because it refuses to entertain you.</b> Best for senior, technical buyers.</p>
+        <div class="tags"><span>Brutalist</span><span>Swiss grid</span><span>Tables</span><span>No animation</span></div>
+        <div class="actions"><a class="btn" href="/dd-shopify-6.html" target="_blank">View →</a><a class="btn pri" href="mailto:zaman.shakirdev@gmail.com?subject=Ship DD-6">Pick DD-6</a></div>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer><span>© 2026 <b>Shakir Uz Zaman</b> · 6 DD → Shopify concepts</span><span>DD-1 SaaS · DD-2 Editorial · DD-3 Studio · DD-4 Compare · DD-5 Story · DD-6 Brutal</span><span><a href="mailto:zaman.shakirdev@gmail.com">zaman.shakirdev@gmail.com</a></span></footer>
+</body></html>

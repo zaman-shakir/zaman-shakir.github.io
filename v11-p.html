@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SHAKIR QUEST · A playable portfolio · CMS migration practice</title><link rel="icon" href="/assets/img/favicon/favicon-32x32.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"><style>
+:root{--bg:#1a1a3e;--sky:#5cb6ff;--paper:#fff;--ink:#0a0a0a;--gold:#ffd700;--grass:#5fc659;--brick:#cc4040;--coin:#ffce5c;--p:#ff5cbb}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--paper);font-family:'VT323',monospace;font-size:18px;line-height:1.4;min-height:100vh;-webkit-font-smoothing:none;image-rendering:pixelated}
+body{background-image:radial-gradient(circle at 20% 20%,#fff 1px,transparent 1px),radial-gradient(circle at 60% 80%,#fff 1px,transparent 1px),radial-gradient(circle at 80% 30%,#fff 1px,transparent 1px),radial-gradient(circle at 30% 60%,#fff 1px,transparent 1px);background-size:200px 200px}
+a{color:var(--gold);text-decoration:none}
+.tt{font-family:'Press Start 2P',monospace;font-size:11px;letter-spacing:1px}
+
+.wrap{max-width:1200px;margin:0 auto;padding:20px 16px 80px}
+.hud{display:flex;justify-content:space-between;background:var(--ink);border:3px solid var(--paper);padding:10px 16px;margin-bottom:14px;font-family:'Press Start 2P',monospace;font-size:10px;letter-spacing:1px;flex-wrap:wrap;gap:8px;color:var(--paper)}
+.hud .yel{color:var(--gold)}
+
+/* GAME SCREEN */
+.screen{background:linear-gradient(180deg,#5cb6ff 0%,#5cb6ff 70%,#5fc659 70%,#5fc659 100%);border:4px solid var(--paper);padding:24px;margin-bottom:14px;position:relative;overflow:hidden;border-radius:6px;min-height:360px}
+.screen::before{content:"";position:absolute;left:0;right:0;top:69.5%;height:6px;background:repeating-linear-gradient(90deg,#3a8e36 0,#3a8e36 10px,#5fc659 10px,#5fc659 20px)}
+.screen .clouds{position:absolute;top:30px;left:60px;color:var(--paper);font-size:34px;letter-spacing:6px}
+.screen .clouds2{position:absolute;top:50px;right:80px;color:var(--paper);font-size:28px;letter-spacing:6px;opacity:.8}
+.screen .title{position:relative;text-align:center;padding-top:32px}
+.screen .title .super{font-family:'Press Start 2P',monospace;font-size:14px;color:var(--gold);letter-spacing:3px;margin-bottom:14px;text-shadow:2px 2px 0 #000}
+.screen .title h1{font-family:'Press Start 2P',monospace;font-size:clamp(24px,5.5vw,52px);color:var(--paper);letter-spacing:2px;line-height:1.1;text-shadow:3px 3px 0 var(--brick),6px 6px 0 var(--ink);margin-bottom:16px}
+.screen .title p{font-family:'VT323',monospace;font-size:24px;color:var(--paper);text-shadow:2px 2px 0 #000;max-width:680px;margin:0 auto 18px}
+.screen .player{position:absolute;left:40px;bottom:54px;width:48px;height:64px;background:var(--brick);border:3px solid var(--ink);border-radius:6px 6px 0 0;animation:walk 1s steps(2) infinite}
+.screen .player::before{content:"S";position:absolute;left:50%;top:6px;transform:translateX(-50%);color:var(--paper);font-family:'Press Start 2P',monospace;font-size:18px}
+.screen .player::after{content:"";position:absolute;left:8px;right:8px;bottom:-12px;height:12px;background:var(--ink);border-radius:0 0 6px 6px}
+@keyframes walk{50%{transform:translateY(-4px)}}
+.screen .coin{position:absolute;width:28px;height:28px;border-radius:50%;background:var(--coin);border:3px solid var(--ink);box-shadow:inset -4px -4px 0 rgba(0,0,0,.25);animation:spin 1.2s infinite}
+@keyframes spin{50%{transform:scaleX(.3)}}
+.screen .coin.c1{left:120px;bottom:160px}
+.screen .coin.c2{left:230px;bottom:200px}
+.screen .coin.c3{left:340px;bottom:160px}
+.screen .pipe{position:absolute;right:60px;bottom:54px;width:80px;height:120px;background:var(--grass);border:3px solid var(--ink);border-radius:6px 6px 0 0}
+.screen .pipe::before{content:"";position:absolute;top:-12px;left:-8px;right:-8px;height:24px;background:var(--grass);border:3px solid var(--ink);border-radius:6px}
+.screen .pipe::after{content:"→";position:absolute;left:50%;top:30px;transform:translateX(-50%);color:var(--ink);font-family:'Press Start 2P',monospace;font-size:14px}
+.screen .brick{position:absolute;width:40px;height:40px;background:var(--brick);border:3px solid var(--ink)}
+.screen .brick.b1{left:200px;bottom:240px}
+.screen .brick.b2{left:240px;bottom:240px}
+.screen .brick.b3{left:280px;bottom:240px}
+
+/* LEVELS = portfolio sections */
+h2{font-family:'Press Start 2P',monospace;font-size:14px;color:var(--gold);letter-spacing:2px;margin:32px 0 14px;padding-bottom:6px;border-bottom:3px solid var(--paper);text-transform:uppercase;display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:8px}
+h2 span{font-family:'VT323',monospace;font-size:18px;color:var(--paper);letter-spacing:1px;text-transform:none;font-weight:400;opacity:.8}
+
+.levels{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:780px){.levels{grid-template-columns:1fr}}
+.lvl{background:var(--ink);border:3px solid var(--paper);padding:18px;position:relative}
+.lvl::before{content:"WORLD " attr(data-w);position:absolute;top:-12px;left:14px;background:var(--brick);color:var(--paper);padding:3px 10px;font-family:'Press Start 2P',monospace;font-size:9px;border:2px solid var(--paper)}
+.lvl h3{font-family:'Press Start 2P',monospace;font-size:12px;color:var(--coin);letter-spacing:1px;line-height:1.4;margin:14px 0 10px}
+.lvl p{color:var(--paper);font-size:18px;line-height:1.4;margin-bottom:12px;font-family:'VT323',monospace}
+.lvl .stats{display:flex;justify-content:space-between;font-family:'Press Start 2P',monospace;font-size:9px;color:var(--gold);letter-spacing:1px;border-top:2px solid var(--paper);padding-top:10px;flex-wrap:wrap;gap:6px}
+.lvl .link{display:inline-block;margin-top:8px;color:var(--gold);font-family:'Press Start 2P',monospace;font-size:9px;letter-spacing:1px;border-bottom:2px dashed var(--gold)}
+
+/* CONTINUE BAR */
+.continue{background:var(--ink);border:3px solid var(--paper);padding:24px;margin-top:32px;text-align:center}
+.continue h3{font-family:'Press Start 2P',monospace;font-size:14px;color:var(--coin);letter-spacing:2px;margin-bottom:10px}
+.continue p{color:var(--paper);font-size:22px;margin-bottom:14px;font-family:'VT323',monospace}
+.continue .btns{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.btn{background:var(--gold);color:var(--ink);padding:12px 22px;font-family:'Press Start 2P',monospace;font-size:10px;letter-spacing:1.5px;border:3px solid var(--paper);text-transform:uppercase}
+.btn:hover{background:var(--paper);color:var(--ink)}
+.btn.alt{background:transparent;color:var(--paper)}
+
+footer{margin-top:32px;padding:14px 0;border-top:3px solid var(--paper);font-family:'Press Start 2P',monospace;font-size:9px;letter-spacing:1.5px;color:var(--paper);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;opacity:.7}
+.vnav{position:fixed;bottom:14px;right:14px;z-index:99;background:var(--ink);border:3px solid var(--paper);padding:4px;font-family:'Press Start 2P',monospace;font-size:9px;display:flex;gap:2px}
+.vnav a{padding:5px 8px;color:var(--paper);letter-spacing:1px}
+.vnav a.on{background:var(--gold);color:var(--ink)}
+</style></head><body>
+<div class="wrap">
+  <div class="hud"><span><span class="yel">SHAKIR</span> × 1UP</span><span>COINS · <span class="yel">×50</span></span><span>LEVEL · <span class="yel">10-X</span></span><span>SCORE · <span class="yel">0050000</span></span><span class="yel">PRESS START</span></div>
+
+  <div class="screen">
+    <div class="clouds">☁ ☁</div>
+    <div class="clouds2">☁ ☁</div>
+    <div class="title">
+      <div class="super">★ PLAYER 1 START ★</div>
+      <h1>SHAKIR<br>QUEST</h1>
+      <p>An independent CMS migration practice · 10+ YR · 50+ migrations · 0 failed cutovers</p>
+    </div>
+    <div class="brick b1"></div><div class="brick b2"></div><div class="brick b3"></div>
+    <div class="coin c1"></div><div class="coin c2"></div><div class="coin c3"></div>
+    <div class="player"></div>
+    <div class="pipe"></div>
+  </div>
+
+  <h2>SELECT WORLD <span>each = real client · jump in</span></h2>
+  <div class="levels">
+    <a class="lvl" data-w="1-1" href="https://papirladen.dk" target="_blank"><h3>Papirladen.dk</h3><p>1987 stationery brand. Moved 38k SKUs from DanDomain to Shopify in 6 weeks. Conversion ↑ 38%.</p><div class="stats"><span>SEO ★100</span><span>+38%</span><span>0 DOWN</span></div><span class="link">→ visit ↗</span></a>
+    <a class="lvl" data-w="1-2" href="https://ovellie.dk" target="_blank"><h3>Ovellie.dk</h3><p>120-brand multi-retailer. Custom Liquid storefront. Held 4.9★ Trustpilot across rebuild.</p><div class="stats"><span>★4.9</span><span>94 PSI</span><span>120BR</span></div><span class="link">→ visit ↗</span></a>
+    <a class="lvl" data-w="1-3" href="https://triple-a.io" target="_blank"><h3>Triple-A.io</h3><p>MAS-licensed WooCommerce payments plugin. 14 releases/yr, 0 criticals 18 mo.</p><div class="stats"><span>800+ INS</span><span>14/YR</span><span>0 CRIT</span></div><span class="link">→ visit ↗</span></a>
+    <a class="lvl" data-w="2-1" href="https://byaagaard.com" target="_blank"><h3>Aagaard Jewellery</h3><p>WP brand site + maint. for DK's oldest jewellery house. Est. 1946.</p><div class="stats"><span>0.84s</span><span>80 YR</span><span>WP</span></div><span class="link">→ visit ↗</span></a>
+    <a class="lvl" data-w="2-2" href="https://ewersenergi.dk" target="_blank"><h3>Ewers Energi</h3><p>Biomass WP rebuild. Cache stack tuned. FCP &lt; 1s on cold cache.</p><div class="stats"><span>0.72s</span><span>↓76%</span><span>WP</span></div><span class="link">→ visit ↗</span></a>
+    <a class="lvl" data-w="2-3" href="https://hilltimes.com" target="_blank"><h3>Hill Times · CA</h3><p>Canadian national news. 100k+ paid subs. Sub-1s FCP on heavy WP install.</p><div class="stats"><span>100K+</span><span>&lt;1.0s</span><span>WP</span></div><span class="link">→ visit ↗</span></a>
+  </div>
+
+  <div class="continue">
+    <h3>CONTINUE? · 9 9 8 7 6 5...</h3>
+    <p>Bonus stage: book a 30-minute discovery call · win 2 Q2 2026 slots</p>
+    <div class="btns"><a class="btn" href="mailto:zaman.shakirdev@gmail.com?subject=Continue · V11-P">▶ PRESS START</a><a class="btn alt" href="https://www.linkedin.com/in/shakir-uz-zaman/" target="_blank">LINKEDIN</a></div>
+  </div>
+
+  <footer><span>© 2014–2026 SHAKIR UZ ZAMAN · QUEST PRODUCTIONS</span><span>V11-P · ARCADE · PORTFOLIO</span><span>HIGH SCORE · 0 FAILED</span></footer>
+</div>
+<nav class="vnav"><a href="/">LIVE</a><a href="/v11-p.html" class="on">V11-P</a><a href="/v11-m.html">V11-M</a></nav>
+</body></html>

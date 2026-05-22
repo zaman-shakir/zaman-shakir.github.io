@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shakir's Line · Subway map of a CMS migration practice</title>
+<link rel="icon" href="/assets/img/favicon/favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#f3f0e8;--ink:#0a0a0a;--paper:#fff;--muted:#65615a;--shop:#008060;--wp:#21759b;--dd:#d9272d;--gold:#e4b04a;--line:#0a0a0a;--purple:#7c3a82;--orange:#e87a2a;--sky:#3aa0d9}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:'JetBrains Mono',monospace;letter-spacing:1px}
+
+  .wrap{max-width:1280px;margin:0 auto;padding:40px 24px 80px}
+
+  header{display:flex;justify-content:space-between;align-items:end;border-bottom:3px solid var(--ink);padding-bottom:18px;margin-bottom:32px;flex-wrap:wrap;gap:14px}
+  header h1{font-family:'Inter',sans-serif;font-weight:800;font-size:44px;letter-spacing:-1.5px;line-height:1}
+  header h1 em{font-style:italic;color:var(--shop)}
+  header .meta{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);text-align:right}
+  header .meta b{color:var(--ink);display:block;font-size:13px}
+
+  /* LEGEND */
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:24px;font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted)}
+  .legend i{font-style:normal;display:inline-flex;align-items:center;gap:6px}
+  .legend i::before{content:"";width:18px;height:6px;display:inline-block;border-radius:2px}
+  .legend i.shop::before{background:var(--shop)}
+  .legend i.wp::before{background:var(--wp)}
+  .legend i.dd::before{background:var(--dd)}
+  .legend i.gold::before{background:var(--gold)}
+  .legend i.pu::before{background:var(--purple)}
+
+  /* SUBWAY MAP */
+  .map{background:var(--paper);border:2px solid var(--ink);padding:32px;border-radius:6px;box-shadow:6px 6px 0 var(--ink);margin-bottom:36px;overflow-x:auto}
+  .map svg{display:block;width:100%;height:auto;min-width:760px}
+  .map .ll{stroke-width:12;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .map .lbl{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.5px}
+  .map .sub{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;fill:#65615a}
+  .map .st{fill:#fff;stroke:#0a0a0a;stroke-width:3}
+  .map .term{fill:#0a0a0a}
+  .map .term-text{fill:#fff;font-weight:700;font-size:11px;font-family:'Inter',sans-serif}
+
+  /* STATIONS LIST */
+  h2{font-family:'Inter',sans-serif;font-weight:800;font-size:24px;letter-spacing:-.7px;margin:32px 0 14px;display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:8px}
+  h2 span{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);font-weight:500}
+
+  .stations{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:780px){.stations{grid-template-columns:1fr}}
+  .stn{background:var(--paper);border:2px solid var(--ink);padding:18px;border-radius:6px;box-shadow:4px 4px 0 var(--ink);cursor:pointer;position:relative;transition:transform .15s,box-shadow .15s}
+  .stn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+  .stn .pip{position:absolute;top:14px;right:14px;width:12px;height:12px;border-radius:50%;border:2px solid var(--ink);background:var(--shop)}
+  .stn.wp .pip{background:var(--wp)}
+  .stn.dd .pip{background:var(--dd)}
+  .stn.pu .pip{background:var(--purple)}
+  .stn .line{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:700}
+  .stn .name{font-family:'Inter',sans-serif;font-weight:800;font-size:18px;letter-spacing:-.4px;margin-bottom:6px;padding-right:30px}
+  .stn .desc{font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:10px;min-height:50px}
+  .stn .meta{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--shop);font-weight:700;letter-spacing:.5px;border-top:1px dashed var(--ink);padding-top:8px;display:flex;justify-content:space-between}
+
+  footer{margin-top:48px;padding:18px 0;border-top:2px solid var(--ink);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  footer b{color:var(--ink)}
+
+  .vnav{position:fixed;bottom:14px;right:14px;z-index:99;background:var(--paper);border:1px solid var(--ink);padding:5px;font-family:'JetBrains Mono',monospace;font-size:10px;display:flex;gap:2px;box-shadow:3px 3px 0 var(--ink)}
+  .vnav a{padding:5px 8px;color:var(--muted)}
+  .vnav a.on{background:var(--shop);color:var(--paper);font-weight:700}
+  .vnav a:hover:not(.on){background:var(--bg)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Shakir's <em>Line.</em><br>Subway map of a migration practice.</h1>
+    <div class="meta"><b>V9 · PORTFOLIO</b>10+ YR · 50+ STOPS · 0 DELAYS</div>
+  </header>
+
+  <div class="legend">
+    <i class="shop">Shopify line</i>
+    <i class="wp">WordPress line</i>
+    <i class="dd">DanDomain spur (closing)</i>
+    <i class="gold">Cache express</i>
+    <i class="pu">Plugin / Laravel</i>
+  </div>
+
+  <div class="map">
+    <svg viewBox="0 0 1200 520" xmlns="http://www.w3.org/2000/svg">
+      <!-- LINES -->
+      <!-- shopify main green line -->
+      <path class="ll" d="M60 200 H1140" stroke="#008060"/>
+      <!-- wordpress blue line -->
+      <path class="ll" d="M60 320 H1140" stroke="#21759b"/>
+      <!-- dandomain red spur -->
+      <path class="ll" d="M60 120 H440 L520 200" stroke="#d9272d"/>
+      <!-- cache gold express -->
+      <path class="ll" d="M820 320 L900 400 H1140" stroke="#e4b04a"/>
+      <!-- plugin purple branch -->
+      <path class="ll" d="M520 320 L600 440 H1100" stroke="#7c3a82"/>
+
+      <!-- shopify stations -->
+      <circle class="st" cx="120" cy="200" r="11"/><text class="lbl" x="120" y="180" text-anchor="middle">Papirladen</text><text class="sub" x="120" y="232" text-anchor="middle">B2B+B2C · 1987</text>
+      <circle class="st" cx="280" cy="200" r="11"/><text class="lbl" x="280" y="180" text-anchor="middle">Ovellie</text><text class="sub" x="280" y="232" text-anchor="middle">120 brands · 4.9★</text>
+      <circle class="st" cx="440" cy="200" r="11"/><text class="lbl" x="440" y="180" text-anchor="middle">QLiving</text><text class="sub" x="440" y="232" text-anchor="middle">Horizon · 1,449 LOC</text>
+      <circle class="st" cx="600" cy="200" r="11"/><text class="lbl" x="600" y="180" text-anchor="middle">Webkons.</text><text class="sub" x="600" y="232" text-anchor="middle">DK agency</text>
+      <circle class="st" cx="760" cy="200" r="11"/><text class="lbl" x="760" y="180" text-anchor="middle">Aagaard</text><text class="sub" x="760" y="232" text-anchor="middle">1946 · jewellery</text>
+      <circle class="st" cx="920" cy="200" r="11"/><text class="lbl" x="920" y="180" text-anchor="middle">Ewers</text><text class="sub" x="920" y="232" text-anchor="middle">WP · biomass</text>
+      <!-- terminus -->
+      <rect class="term" x="1060" y="184" width="80" height="32" rx="16"/><text class="term-text" x="1100" y="204" text-anchor="middle">SHOPIFY ✦</text>
+
+      <!-- wp line stations -->
+      <circle class="st" cx="160" cy="320" r="11"/><text class="lbl" x="160" y="346" text-anchor="middle">Aagaard</text>
+      <circle class="st" cx="320" cy="320" r="11"/><text class="lbl" x="320" y="346" text-anchor="middle">Ewers</text>
+      <circle class="st" cx="520" cy="320" r="11"/><text class="lbl" x="520" y="346" text-anchor="middle">Triple-A</text><text class="sub" x="520" y="358" text-anchor="middle">— interchange →</text>
+      <circle class="st" cx="680" cy="320" r="11"/><text class="lbl" x="680" y="346" text-anchor="middle">Webkons.</text>
+      <circle class="st" cx="820" cy="320" r="11"/><text class="lbl" x="820" y="346" text-anchor="middle">Hill Times</text><text class="sub" x="820" y="358" text-anchor="middle">— cache exp. →</text>
+      <rect class="term" x="1060" y="304" width="100" height="32" rx="16"/><text class="term-text" x="1110" y="324" text-anchor="middle">WORDPRESS</text>
+
+      <!-- DD spur -->
+      <rect class="term" x="60" y="104" width="100" height="32" rx="16"/><text class="term-text" x="110" y="124" text-anchor="middle">DANDOMAIN</text>
+      <circle class="st" cx="280" cy="120" r="11"/><text class="lbl" x="280" y="100" text-anchor="middle">Catalog</text>
+      <circle class="st" cx="440" cy="120" r="11"/><text class="lbl" x="440" y="100" text-anchor="middle">Redirects</text>
+      <!-- interchange marker at 520,200 -->
+      <text class="sub" x="540" y="170">→ Shopify interchange</text>
+
+      <!-- cache express -->
+      <text class="sub" x="900" y="392" text-anchor="middle">FCP &lt; 1.0s express</text>
+      <circle class="st" cx="980" cy="400" r="11"/><text class="lbl" x="980" y="426" text-anchor="middle">Edge cache</text>
+      <circle class="st" cx="1080" cy="400" r="11"/><text class="lbl" x="1080" y="426" text-anchor="middle">OPcache JIT</text>
+
+      <!-- plugin branch -->
+      <text class="sub" x="700" y="466">Plugins / Laravel branch</text>
+      <circle class="st" cx="780" cy="440" r="11"/><text class="lbl" x="780" y="466" text-anchor="middle">Triple-A plugin</text>
+      <circle class="st" cx="920" cy="440" r="11"/><text class="lbl" x="920" y="466" text-anchor="middle">BilligVent.</text>
+      <rect class="term" x="1040" y="424" width="80" height="32" rx="16"/><text class="term-text" x="1080" y="444" text-anchor="middle">LARAVEL</text>
+
+      <!-- start marker -->
+      <text class="lbl" x="60" y="490" fill="#0a0a0a">Practice est. 2014 · Dhaka</text>
+    </svg>
+  </div>
+
+  <h2>Station guide <span>each stop = a real client</span></h2>
+  <div class="stations">
+    <a class="stn" href="https://papirladen.dk" target="_blank"><span class="pip"></span><div class="line">Shopify line · st. 01</div><div class="name">Papirladen.dk</div><div class="desc">B2B+B2C stationery brand since 1987. 38k SKUs, 4,200 redirects, 6-week cutover from DanDomain.</div><div class="meta"><span>+38% conv</span><span>shopify ↗</span></div></a>
+    <a class="stn" href="https://ovellie.dk" target="_blank"><span class="pip"></span><div class="line">Shopify line · st. 02</div><div class="name">Ovellie.dk</div><div class="desc">120+ brand storefront on OS 2.0. Editor-managed brand drops, 4.9★ Trustpilot kept across rebuild.</div><div class="meta"><span>94 PSI</span><span>shopify ↗</span></div></a>
+    <a class="stn" href="#"><span class="pip"></span><div class="line">Shopify line · st. 03</div><div class="name">QLiving</div><div class="desc">Shopify Horizon theme modernisation. 1,449 LOC custom design system.</div><div class="meta"><span>★ featured</span><span>shopify</span></div></a>
+    <a class="stn" href="https://webkonsulenterne.dk" target="_blank"><span class="pip"></span><div class="line">Interchange · st. 04</div><div class="name">Webkonsulenter</div><div class="desc">Agency partner. Shopify themes + WP build pipeline + custom plugin suite.</div><div class="meta"><span>40+ sites</span><span>shop+wp ↗</span></div></a>
+    <a class="stn wp" href="https://byaagaard.com" target="_blank"><span class="pip"></span><div class="line">WP line · st. 05</div><div class="name">Aagaard Jewellery</div><div class="desc">Brand site + maintenance for the oldest jewellery brand in DK. Est. 1946.</div><div class="meta"><span>0.84s FCP</span><span>wp ↗</span></div></a>
+    <a class="stn wp" href="https://ewersenergi.dk" target="_blank"><span class="pip"></span><div class="line">WP line · st. 06</div><div class="name">Ewers Energi</div><div class="desc">Biomass site. WP rebuild + speed tuning. Sub-1s First Contentful Paint.</div><div class="meta"><span>0.72s FCP</span><span>wp ↗</span></div></a>
+    <a class="stn pu" href="https://triple-a.io" target="_blank"><span class="pip"></span><div class="line">Plugin branch · st. 07</div><div class="name">Triple-A.io</div><div class="desc">MAS-licensed payments plugin for WooCommerce. 14 releases/yr, 0 criticals 18 mo.</div><div class="meta"><span>800+ installs</span><span>woo ↗</span></div></a>
+    <a class="stn wp" href="https://hilltimes.com" target="_blank"><span class="pip"></span><div class="line">Cache express · st. 08</div><div class="name">The Hill Times</div><div class="desc">Canadian national news portal. 100k+ paid subs. Sub-1s FCP on heavy WP install.</div><div class="meta"><span>100k+ subs</span><span>wp ↗</span></div></a>
+    <a class="stn pu" href="#"><span class="pip"></span><div class="line">Plugin branch · st. 09</div><div class="name">BilligVentilation</div><div class="desc">Laravel 11 e-conomic dashboard. 21k invoices, hourly auto-sync, MySQL-5.6 compatible.</div><div class="meta"><span>21k records</span><span>laravel</span></div></a>
+  </div>
+
+  <footer>
+    <span>© 2014–2026 <b>Shakir Uz Zaman</b> · Shakir Line · Subway transit map</span>
+    <span>V9-P · Portfolio mode · 50+ stations · 0 delays</span>
+    <span><a href="mailto:zaman.shakirdev@gmail.com" style="color:var(--shop);font-weight:700;border-bottom:1px solid var(--shop)">zaman.shakirdev@gmail.com</a></span>
+  </footer>
+</div>
+<nav class="vnav"><a href="/">Live</a><a href="/showcase.html">Showcase</a><a href="/v9-p.html" class="on">V9-P</a><a href="/v9-m.html">V9-M</a></nav>
+</body>
+</html>

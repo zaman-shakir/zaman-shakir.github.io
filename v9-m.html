@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Take Shakir's Line · DanDomain → Shopify migration in 4–6 weeks</title><link rel="icon" href="/assets/img/favicon/favicon-32x32.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"><style>
+:root{--bg:#f3f0e8;--ink:#0a0a0a;--paper:#fff;--shop:#008060;--gold:#e4b04a;--muted:#65615a;--dd:#d9272d}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.55;min-height:100vh}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:32px 24px}
+.top{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:32px;flex-wrap:wrap;gap:8px}
+.top b{color:var(--shop)}
+
+/* HERO TICKET */
+.ticket{background:var(--paper);border:3px solid var(--ink);border-radius:8px;box-shadow:8px 8px 0 var(--ink);padding:40px;margin-bottom:32px;position:relative;overflow:hidden}
+.ticket::before{content:"";position:absolute;top:0;left:0;width:14px;height:100%;background:var(--shop)}
+.ticket .badge{display:inline-block;background:var(--gold);color:var(--ink);padding:5px 14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700;border-radius:99px;margin-bottom:18px;border:2px solid var(--ink)}
+.ticket h1{font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(40px,6vw,80px);letter-spacing:-2.5px;line-height:.95;margin-bottom:18px}
+.ticket h1 em{font-style:italic;color:var(--shop)}
+.ticket h1 .strike{text-decoration:line-through;text-decoration-color:var(--dd);text-decoration-thickness:6px;color:var(--muted)}
+.ticket p{font-size:18px;color:var(--muted);max-width:680px;margin-bottom:24px;line-height:1.5}
+.ticket p b{color:var(--ink);font-weight:700}
+.ticket .btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{padding:14px 24px;font-family:'Inter',sans-serif;font-weight:700;font-size:14px;border:2px solid var(--ink);border-radius:99px;transition:transform .15s,box-shadow .15s;display:inline-flex;align-items:center;gap:8px}
+.btn-pri{background:var(--shop);color:var(--paper)}
+.btn-sec{background:var(--paper)}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+
+/* LINE STOPS = service tiers */
+h2{font-family:'Inter',sans-serif;font-weight:800;font-size:32px;letter-spacing:-1.2px;line-height:1;margin:48px 0 12px}
+h2 em{font-style:italic;color:var(--shop)}
+.sub{color:var(--muted);font-size:16px;max-width:640px;margin-bottom:28px}
+
+.lines{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px}
+@media(max-width:780px){.lines{grid-template-columns:1fr}}
+.ln{background:var(--paper);border:2px solid var(--ink);border-radius:8px;padding:24px;box-shadow:5px 5px 0 var(--ink);position:relative}
+.ln::before{content:"";position:absolute;top:0;left:0;right:0;height:8px;border-radius:6px 6px 0 0;background:var(--shop)}
+.ln.wp::before{background:#21759b}
+.ln.gold::before{background:var(--gold)}
+.ln .l{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.8px;color:var(--muted);text-transform:uppercase;margin-top:6px;margin-bottom:6px;font-weight:700}
+.ln h3{font-weight:800;font-size:22px;letter-spacing:-.5px;line-height:1.1;margin-bottom:8px}
+.ln .price{font-family:'Inter',sans-serif;font-weight:900;font-size:28px;letter-spacing:-1px;margin-bottom:10px;color:var(--shop)}
+.ln ul{list-style:none;font-size:13.5px;line-height:1.7;margin-bottom:16px;color:var(--muted)}
+.ln li::before{content:"● ";color:var(--shop);font-weight:700}
+.ln .book{display:block;background:var(--ink);color:var(--paper);padding:11px;text-align:center;font-family:'Inter',sans-serif;font-weight:700;font-size:13px;border-radius:99px;letter-spacing:.3px;text-transform:uppercase}
+
+/* TIMETABLE = process */
+.tt{background:var(--paper);border:2px solid var(--ink);border-radius:8px;overflow:hidden;box-shadow:5px 5px 0 var(--ink);margin-bottom:48px}
+.tt table{width:100%;border-collapse:collapse;font-size:13.5px}
+.tt th,.tt td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--ink)}
+.tt th{background:var(--ink);color:var(--paper);text-transform:uppercase;letter-spacing:1.5px;font-size:11px;font-family:'JetBrains Mono',monospace}
+.tt tr:last-child td{border-bottom:0}
+.tt td.t{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--shop)}
+
+/* REVIEWS */
+.rv{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:48px}
+@media(max-width:780px){.rv{grid-template-columns:1fr}}
+.rv > div{background:var(--paper);border:2px solid var(--ink);border-radius:8px;padding:24px;box-shadow:4px 4px 0 var(--ink)}
+.rv blockquote{font-size:17px;line-height:1.45;margin-bottom:14px;font-weight:500}
+.rv blockquote::before{content:"\201C ";color:var(--shop);font-weight:900;font-size:28px}
+.rv cite{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;font-style:normal;display:flex;gap:10px;align-items:center;padding-top:12px;border-top:1px dashed var(--ink);color:var(--muted)}
+.rv cite .av{width:36px;height:36px;border-radius:50%;background:var(--shop);color:var(--paper);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px}
+.rv cite b{display:block;color:var(--ink);font-size:13px;letter-spacing:.4px}
+
+footer{margin-top:32px;padding:20px 0;border-top:2px solid var(--ink);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+footer b{color:var(--ink)}
+.vnav{position:fixed;bottom:14px;right:14px;z-index:99;background:var(--paper);border:1px solid var(--ink);padding:5px;font-family:'JetBrains Mono',monospace;font-size:10px;display:flex;gap:2px;box-shadow:3px 3px 0 var(--ink)}
+.vnav a{padding:5px 8px;color:var(--muted)}
+.vnav a.on{background:var(--shop);color:var(--paper);font-weight:700}
+.vnav a:hover:not(.on){background:var(--bg)}
+</style></head><body>
+<div class="wrap">
+  <div class="top"><span><b>SHAKIR LINE</b> · Q2 2026 · 2 slots</span><span>V9 · SUBWAY MAP · MARKETING</span><span>2026-05-23</span></div>
+
+  <div class="ticket">
+    <span class="badge">⊙ Q2 2026 — 2 seats open</span>
+    <h1>Skip the <em class="strike">DanDomain</em> line.<br>Take the <em>Shopify</em> express.</h1>
+    <p>Independent CMS migration practice. <b>10+ years</b>, <b>50+ migrations</b>, <b>zero failures</b>. Fixed scope, fixed price, weekly demo, sub-1s WP cache a speciality.</p>
+    <div class="btns"><a class="btn btn-pri" href="mailto:zaman.shakirdev@gmail.com?subject=Book a discovery call · V9-M">⊙ Board a discovery call</a><a class="btn btn-sec" href="#stops">View the network →</a></div>
+  </div>
+
+  <h2 id="stops">Three <em>lines.</em> Pick your route.</h2>
+  <p class="sub">Every project ships on a fixed scope, single point of contact, weekly Friday demo, 2 weeks of post-launch stabilisation.</p>
+  <div class="lines">
+    <div class="ln gold"><div class="l">⌀ Cache express</div><h3>WordPress speed</h3><div class="price">from €3,500</div><ul><li>FCP under 1.0s cold cache</li><li>Page + object + edge cache</li><li>OPcache JIT, critical CSS</li><li>Plugin diet</li><li>CWV monitoring</li></ul><a class="book" href="mailto:zaman.shakirdev@gmail.com?subject=Cache express">Book this line</a></div>
+    <div class="ln"><div class="l">⊙ Shopify main</div><h3>DanDomain → Shopify</h3><div class="price">€8k – €18k</div><ul><li>Full catalog import</li><li>301 redirect map (URL-for-URL)</li><li>e-conomic / BC integration</li><li>Custom Liquid theme</li><li>Zero-downtime cutover</li><li>2 wk post-launch support</li></ul><a class="book" href="mailto:zaman.shakirdev@gmail.com?subject=DanDomain → Shopify">Book this line</a></div>
+    <div class="ln wp"><div class="l">◆ WP line</div><h3>WP build / WP → Shopify</h3><div class="price">from €6,500</div><ul><li>WP + WooCommerce build</li><li>Or migration to Shopify</li><li>Plugin stack tuned</li><li>SEO preserved</li><li>Same fixed-scope workflow</li></ul><a class="book" href="mailto:zaman.shakirdev@gmail.com?subject=WP build">Book this line</a></div>
+  </div>
+
+  <h2>The <em>timetable.</em></h2>
+  <p class="sub">A typical cutover runs 4–6 weeks. Fixed milestones, weekly demos, single throat to choke.</p>
+  <div class="tt"><table><thead><tr><th>Stop</th><th>Phase</th><th class="t">Week</th><th>What happens</th></tr></thead><tbody>
+    <tr><td>01</td><td>Discover &amp; audit</td><td class="t">Week 1</td><td>Catalog inventory, integration map, plugin debt, redirect plan. Risk register signed before code.</td></tr>
+    <tr><td>02</td><td>Rebuild &amp; rewire</td><td class="t">Weeks 2–3</td><td>Theme on staging. Catalog import w/ metafields. e-conomic, BC, Klaviyo, Judge.me re-wired.</td></tr>
+    <tr><td>03</td><td>Cutover</td><td class="t">Week 4</td><td>301 map deployed. DNS flipped low-traffic. Every priority URL monitored live 48h.</td></tr>
+    <tr><td>04</td><td>Stabilise &amp; hand-over</td><td class="t">Weeks 5–6</td><td>SEO crawl diff, funnel review, runbook. You own the code, the keys, the docs.</td></tr>
+  </tbody></table></div>
+
+  <h2>Passenger <em>reviews.</em></h2>
+  <p class="sub">Named, verified, still operating live shops.</p>
+  <div class="rv">
+    <div><blockquote>He moved 38,000 SKUs and twelve years of SEO authority from DanDomain to Shopify in six weeks. Conversion went up the day we cut over.</blockquote><cite><span class="av">J</span><span><b>Jens Møller</b>Director · Papirladen · DK · est. 1987</span></cite></div>
+    <div><blockquote>We needed a developer who could read a Singapore regulator's audit and a WooCommerce changelog in the same morning. Shakir is that person.</blockquote><cite><span class="av" style="background:#7c3a82">S</span><span><b>Sai Krishna</b>CTO · Triple-A · SG · MAS-licensed</span></cite></div>
+  </div>
+
+  <div class="ticket" style="text-align:center;background:var(--shop);color:var(--paper);box-shadow:8px 8px 0 var(--ink)">
+    <h1 style="color:var(--paper)">Last train: <em style="color:var(--gold)">Q2 2026.</em></h1>
+    <p style="color:rgba(255,255,255,.85);margin:0 auto 18px">30-minute discovery call. No obligation.</p>
+    <div class="btns" style="justify-content:center"><a class="btn" style="background:var(--gold);color:var(--ink)" href="mailto:zaman.shakirdev@gmail.com?subject=Book a call · V9-M">⊙ Board now</a><a class="btn btn-sec" href="https://www.linkedin.com/in/shakir-uz-zaman/" target="_blank">LinkedIn ↗</a></div>
+  </div>
+
+  <footer><span>© 2014–2026 <b>Shakir Uz Zaman</b> · Shakir Line transit</span><span>V9-M · Marketing · 3 lines · 4 phases</span><span><a href="mailto:zaman.shakirdev@gmail.com" style="color:var(--shop)">zaman.shakirdev@gmail.com</a></span></footer>
+</div>
+<nav class="vnav"><a href="/">Live</a><a href="/showcase.html">Showcase</a><a href="/v9-p.html">V9-P</a><a href="/v9-m.html" class="on">V9-M</a></nav>
+</body></html>

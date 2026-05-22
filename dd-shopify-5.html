@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Migration · A short story · DanDomain → Shopify</title><link rel="icon" href="/assets/img/favicon/favicon-32x32.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Inter:wght@500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"><style>
+:root{--bg:#fafaf6;--paper:#fff;--ink:#1a1a1a;--muted:#666;--line:#e0dcd2;--accent:#0a5c3e;--dd:#d9272d;--gold:#a07a2a}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:'Newsreader',Georgia,serif;font-size:18px;line-height:1.65;min-height:100vh;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:var(--accent)}
+a:hover{color:var(--accent)}
+.mono{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
+.sans{font-family:'Inter',sans-serif}
+
+header{padding:18px 24px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);max-width:780px;margin:0 auto;flex-wrap:wrap;gap:10px;background:var(--paper);position:sticky;top:0;z-index:50}
+header .brand{display:flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-weight:700;letter-spacing:-.3px}
+header .brand .mark{width:32px;height:32px;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:center;border-radius:8px;font-family:'Newsreader',serif;font-style:italic;font-size:18px;font-weight:700}
+header .cta{background:var(--accent);color:var(--paper);padding:9px 16px;border-radius:99px;font-size:13px;font-family:'Inter',sans-serif;font-weight:600;text-decoration:none}
+header .cta:hover{background:#073f29;color:var(--paper)}
+
+article{max-width:680px;margin:0 auto;padding:48px 24px 80px}
+
+.hd{margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.hd .kicker{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;font-weight:700;margin-bottom:14px}
+.hd h1{font-family:'Newsreader',serif;font-weight:500;font-size:48px;letter-spacing:-1.2px;line-height:1.05;margin-bottom:16px}
+.hd h1 em{font-style:italic}
+.hd .byline{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.hd .byline b{color:var(--ink)}
+
+.story p{margin-bottom:18px;font-size:19px;line-height:1.7}
+.story p:first-of-type::first-letter{font-family:'Newsreader',serif;font-weight:600;font-size:78px;line-height:.8;float:left;padding:8px 12px 0 0;color:var(--accent)}
+.story p b{font-weight:600}
+.story .chap{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);text-align:center;margin:36px 0 24px;padding-top:24px;border-top:1px solid var(--line)}
+.story .chap b{display:block;font-family:'Newsreader',serif;font-style:italic;font-size:22px;color:var(--ink);letter-spacing:-.4px;text-transform:none;font-weight:500;margin-top:6px}
+
+.story blockquote{margin:30px -30px;padding:24px 30px;border-left:4px solid var(--accent);background:rgba(10,92,62,.04);font-style:italic;font-size:22px;line-height:1.45}
+.story blockquote cite{display:block;margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-style:normal}
+.story blockquote cite b{color:var(--ink)}
+@media(max-width:780px){.story blockquote{margin:24px 0;padding:18px 22px}}
+
+.story .fig{margin:30px 0;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:18px 22px}
+.story .fig .ft{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;font-weight:700}
+.story .fig .row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line);font-family:'JetBrains Mono',monospace;font-size:13px}
+.story .fig .row:last-child{border:0}
+.story .fig .row .k{color:var(--muted);text-transform:uppercase;font-size:10px;letter-spacing:1.2px}
+.story .fig .row .v{font-weight:700;color:var(--accent)}
+
+.cta-end{background:var(--ink);color:var(--paper);padding:40px;border-radius:14px;margin-top:48px;text-align:center}
+.cta-end h2{font-family:'Newsreader',serif;font-weight:500;font-size:36px;letter-spacing:-1px;line-height:1.05;margin-bottom:14px;color:var(--paper)}
+.cta-end h2 em{font-style:italic;color:var(--gold)}
+.cta-end p{font-size:16.5px;color:rgba(255,255,255,.78);max-width:440px;margin:0 auto 24px;line-height:1.55}
+.cta-end .btns{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.btn{padding:13px 22px;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;border-radius:99px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .15s,background .15s}
+.btn-pri{background:var(--accent);color:var(--paper)}
+.btn-pri:hover{background:#0d7a52;color:var(--paper);transform:translateY(-2px)}
+.btn-sec{background:transparent;color:var(--paper);border:1px solid rgba(255,255,255,.3)}
+.btn-sec:hover{background:rgba(255,255,255,.1);color:var(--paper)}
+
+footer{padding:32px 24px;border-top:1px solid var(--line);max-width:780px;margin:0 auto;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+footer b{color:var(--ink)}
+.vnav{position:fixed;bottom:14px;right:14px;z-index:99;background:var(--paper);border:1px solid var(--line);padding:5px;font-family:'JetBrains Mono',monospace;font-size:10px;display:flex;gap:2px;border-radius:99px;box-shadow:0 6px 18px rgba(0,0,0,.08)}
+.vnav a{padding:5px 9px;color:var(--muted);border-radius:99px;text-decoration:none}
+.vnav a.on{background:var(--accent);color:var(--paper);font-weight:700}
+</style></head><body>
+<header><a class="brand" href="/"><span class="mark">S</span>shakir.dev</a><a class="cta" href="mailto:zaman.shakirdev@gmail.com?subject=Discovery call · DD-5">Talk to me →</a></header>
+
+<article>
+  <div class="hd">
+    <div class="kicker">A short story · 4-minute read · 23 May 2026</div>
+    <h1>The Migration <em>— and what it cost to keep every ranking.</em></h1>
+    <p class="byline"><span>By <b>Shakir Uz Zaman</b></span><span>Independent · Dhaka</span><span><b>4 min</b> read</span></p>
+  </div>
+
+  <div class="story">
+    <p>Papirladen called me in late 2024. Their DanDomain shop was 12 years old, ran 38,000 SKUs across dual B2B and B2C catalogues, and ranked on the first page of Google for several thousand long-tail queries the wholesale industry depended on. The CEO had been told by three other agencies that a Shopify migration would cost <b>€40,000+</b> and risk losing search authority for six months while Google "re-evaluated" the new site.</p>
+
+    <p>He didn't believe it. Neither did I.</p>
+
+    <div class="chap">Chapter I<b>The audit</b></div>
+
+    <p>Week one was the inventory. We walked every URL — 4,200 of them — and built the redirect map by hand. The B2B pricing logic, the EAN/CVR billing flow, the Klaviyo segments, the Judge.me reviews: each was diagrammed, dependencies labelled, replacements proposed on Shopify. By Friday of the first week we had a 23-page risk register. Both of us signed it. <b>Nothing was built yet.</b></p>
+
+    <div class="chap">Chapter II<b>The rebuild</b></div>
+
+    <p>Weeks two and three were the heads-down rebuild. A custom Liquid theme on staging. Catalog imported with metafields preserving every B2B price tier. Shopify Flow rewired to recreate the customer group logic that DanDomain handled natively. e-conomic integration plumbed through a small middleware layer. Klaviyo, Judge.me, Trustpilot: all reconnected against the new shop's webhooks. <b>Every Friday I demoed live progress.</b> Three change requests came back. All three landed inside the same week.</p>
+
+    <div class="chap">Chapter III<b>The cutover</b></div>
+
+    <p>Week four was the day everyone fears. We picked a Tuesday at 04:00 local time — the lowest-traffic window in the analytics. The 301 redirect map went live ten minutes before DNS flipped. Structured data was matched URL-for-URL to the old shop's schema so Google would never re-evaluate the page. By 04:14 the new shop was answering production traffic. I ran a crawl diff against the previous week's snapshot every two hours for the next 48. <b>No URL dropped. No ranking moved.</b> The first wholesale order came in at 09:22.</p>
+
+    <blockquote>"He moved 38,000 SKUs and twelve years of SEO authority from DanDomain to Shopify in six weeks. Conversion went up the day we cut over."<cite><b>Jens Møller</b> · Director · Papirladen.dk · est. 1987</cite></blockquote>
+
+    <div class="chap">Chapter IV<b>The numbers</b></div>
+
+    <p>Ninety days after cutover, the verdict was in. Conversion was up 38% on a like-for-like comparison. SEO equity was intact — actually slightly up, because Core Web Vitals had jumped from a B to an A. The B2B portal was being used by wholesalers who had previously called the office to place orders. The full project ran six weeks instead of the originally-scoped eight, and came in at the lower end of the fixed-price range.</p>
+
+    <div class="fig">
+      <div class="ft">Papirladen · post-cutover · 90-day numbers</div>
+      <div class="row"><span class="k">SEO equity retained</span><span class="v">100%</span></div>
+      <div class="row"><span class="k">Conversion lift (90d)</span><span class="v">+38%</span></div>
+      <div class="row"><span class="k">Cutover window</span><span class="v">6 weeks</span></div>
+      <div class="row"><span class="k">Downtime</span><span class="v">0 min</span></div>
+      <div class="row"><span class="k">Redirects mapped</span><span class="v">4,200</span></div>
+      <div class="row"><span class="k">Orphaned URLs</span><span class="v">0</span></div>
+    </div>
+
+    <div class="chap">Coda<b>What it costs to do this right</b></div>
+
+    <p>Papirladen wasn't unique. Aagaard, Ovellie, Webkonsulenter — every shop on the practice's roster sits inside the same playbook. <b>Three things, on the same day:</b> 301 redirect map URL-for-URL, structured data matched to the old schema, independent crawl diff within 48 hours. Skip one and rankings fall. Hit all three and traffic continues — or rises.</p>
+
+    <p>Fifty migrations in. <b>Zero failed cutovers.</b> Two slots open for Q2 2026.</p>
+    <p>If any of this sounds like your shop — let's talk for thirty minutes. No deck, no pricing on the call, just an honest read.</p>
+  </div>
+
+  <div class="cta-end">
+    <h2>Same playbook. <em>Your shop.</em></h2>
+    <p>30-minute discovery call. I read your DanDomain shop live. You decide what's next.</p>
+    <div class="btns"><a class="btn btn-pri" href="mailto:zaman.shakirdev@gmail.com?subject=Discovery call · DD-5">Book a 30-min call →</a><a class="btn btn-sec" href="https://wa.me/8801738790641" target="_blank">WhatsApp first ↗</a></div>
+  </div>
+</article>
+
+<footer><span>© 2014–2026 <b>Shakir Uz Zaman</b> · Independent practice</span><span>DD-5 · Story / longform</span><span><a href="mailto:zaman.shakirdev@gmail.com">zaman.shakirdev@gmail.com</a></span></footer>
+
+<nav class="vnav"><a href="/">Live</a><a href="/dd-shopify-1.html">DD-1</a><a href="/dd-shopify-2.html">DD-2</a><a href="/dd-shopify-3.html">DD-3</a><a href="/dd-shopify-4.html">DD-4</a><a href="/dd-shopify-5.html" class="on">DD-5</a><a href="/dd-shopify-6.html">DD-6</a></nav>
+</body></html>

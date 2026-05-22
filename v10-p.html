@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SHAKIR · ASSEMBLY INSTRUCTIONS · CMS Migration Practice</title><link rel="icon" href="/assets/img/favicon/favicon-32x32.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"><style>
+:root{--bg:#fffef9;--ink:#0058a3;--paper:#fff;--accent:#ffdb00;--line:#0a0a0a;--muted:#666;--red:#cc0000}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);font-family:'Noto Sans',Helvetica,sans-serif;color:var(--line);font-size:14px;line-height:1.5;min-height:100vh}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1140px;margin:0 auto;padding:32px 24px 80px}
+.top{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:24px;flex-wrap:wrap;gap:8px;border-bottom:2px solid var(--line);padding-bottom:14px}
+.top .brand{display:flex;align-items:center;gap:10px;color:var(--ink);font-weight:900;font-size:14px;font-family:'Noto Sans',sans-serif;letter-spacing:1.5px}
+.top .brand .logo{background:var(--accent);color:var(--ink);padding:4px 10px;border-radius:99px;font-size:13px}
+
+/* COVER */
+.cover{background:var(--accent);border:3px solid var(--line);padding:40px;margin-bottom:36px;border-radius:4px;display:grid;grid-template-columns:1.5fr 1fr;gap:32px;align-items:center}
+@media(max-width:780px){.cover{grid-template-columns:1fr}}
+.cover h1{font-family:'Noto Sans',sans-serif;font-weight:900;font-size:clamp(38px,5.5vw,68px);letter-spacing:-2px;line-height:.95;color:var(--ink);margin-bottom:18px}
+.cover .product{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--line);margin-bottom:10px;font-weight:700}
+.cover p{font-size:16px;color:var(--line);max-width:520px;margin-bottom:18px;line-height:1.45}
+.cover .ttbl{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;color:var(--line)}
+.cover .ttbl b{font-size:14px;display:block}
+
+/* "Allen-key" person illustration */
+.cover svg{width:100%;height:auto;max-width:280px;margin:0 auto;display:block}
+
+/* SECTIONS */
+h2{font-family:'Noto Sans',sans-serif;font-weight:900;font-size:24px;color:var(--ink);letter-spacing:-.5px;margin:40px 0 14px;text-transform:uppercase;border-bottom:2px solid var(--ink);padding-bottom:6px;display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:8px}
+h2 .n{font-family:'JetBrains Mono',monospace;background:var(--ink);color:var(--paper);padding:4px 12px;border-radius:99px;font-size:14px;letter-spacing:1px}
+h2 span.aux{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);font-weight:500;letter-spacing:1.5px;text-transform:none}
+
+/* PARTS LIST */
+.parts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px}
+@media(max-width:780px){.parts{grid-template-columns:repeat(2,1fr)}}
+.pt{background:var(--paper);border:2px solid var(--line);padding:16px;text-align:center;border-radius:4px}
+.pt svg{width:48px;height:48px;margin:0 auto 8px;display:block}
+.pt .id{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-bottom:4px}
+.pt .name{font-weight:700;font-size:13px;line-height:1.3;margin-bottom:4px}
+.pt .qty{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink);font-weight:700}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:780px){.steps{grid-template-columns:1fr}}
+.step{background:var(--paper);border:2px solid var(--line);padding:20px;border-radius:4px;position:relative;min-height:200px}
+.step .n{position:absolute;top:-14px;left:14px;background:var(--ink);color:var(--paper);font-family:'Noto Sans',sans-serif;font-weight:900;font-size:14px;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid var(--line)}
+.step h3{font-family:'Noto Sans',sans-serif;font-weight:900;font-size:17px;letter-spacing:-.3px;margin:10px 0 8px;text-transform:uppercase;color:var(--ink)}
+.step h3 a{color:var(--ink);border-bottom:2px solid var(--accent)}
+.step p{font-size:13.5px;color:var(--muted);line-height:1.55;margin-bottom:12px}
+.step .meta{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--line);font-weight:700;letter-spacing:.5px;border-top:1px dashed var(--line);padding-top:8px;display:flex;justify-content:space-between;text-transform:uppercase}
+
+/* WARNING BOX */
+.warn{background:var(--accent);border:2px solid var(--line);padding:20px 24px;border-radius:4px;margin:32px 0;display:flex;gap:18px;align-items:center}
+.warn .icon{font-size:36px;color:var(--red);line-height:1;flex-shrink:0}
+.warn p{font-size:14px;line-height:1.55;color:var(--line)}
+.warn p b{font-weight:900;color:var(--ink)}
+
+footer{margin-top:32px;padding:18px 0;border-top:2px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+footer b{color:var(--ink)}
+.vnav{position:fixed;bottom:14px;right:14px;z-index:99;background:var(--paper);border:2px solid var(--line);padding:5px;font-family:'JetBrains Mono',monospace;font-size:10px;display:flex;gap:2px;border-radius:4px}
+.vnav a{padding:5px 8px;color:var(--muted)}
+.vnav a.on{background:var(--ink);color:var(--paper);font-weight:700}
+</style></head><body>
+<div class="wrap">
+  <div class="top">
+    <span class="brand"><span class="logo">SHK</span>ASSEMBLY MANUAL</span>
+    <span>MODEL <b>SHAKIR-2026</b> · CMS MIGRATION SPECIALIST</span>
+    <span>V10 · PORTFOLIO</span>
+  </div>
+
+  <article class="cover">
+    <div>
+      <div class="product">Art. nr. 2026.05.23 · est. 2014</div>
+      <h1>SHAKIR<sup style="font-size:.4em">™</sup><br><span style="font-weight:400;color:var(--line)">CMS Migration Specialist</span></h1>
+      <p>Independent practice. Comes flat-packed with 10+ years of experience, 50+ live migrations, 800+ plugin installs, and zero failed cutovers. Assembly time: 4–6 weeks. Tools included.</p>
+      <div class="ttbl"><b>2 SLOTS</b>Available · Q2 2026<br><b>4–6 WEEKS</b>Estimated assembly</div>
+    </div>
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" stroke="#0a0a0a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <!-- IKEA assembly man -->
+      <circle cx="100" cy="50" r="22" fill="#fff"/>
+      <line x1="100" y1="72" x2="100" y2="135"/>
+      <line x1="100" y1="92" x2="60" y2="120"/>
+      <line x1="100" y1="92" x2="150" y2="100"/>
+      <line x1="100" y1="135" x2="75" y2="180"/>
+      <line x1="100" y1="135" x2="125" y2="180"/>
+      <!-- allen key in hand -->
+      <path d="M150 100 L165 100 L165 92" stroke="#cc0000" stroke-width="4"/>
+      <!-- speech: lightbulb -->
+      <circle cx="60" cy="115" r="6" fill="#ffdb00"/>
+    </svg>
+  </article>
+
+  <h2><span class="n">A</span>Parts list <span class="aux">included in the box</span></h2>
+  <div class="parts">
+    <div class="pt"><svg viewBox="0 0 48 48" stroke="#0a0a0a" stroke-width="2.5" fill="none" stroke-linecap="round"><rect x="8" y="14" width="32" height="22" rx="2"/><line x1="12" y1="20" x2="36" y2="20"/><line x1="12" y1="26" x2="28" y2="26"/></svg><div class="id">Part 01 ×1</div><div class="name">Shopify storefront</div><div class="qty">×4 shops shipped</div></div>
+    <div class="pt"><svg viewBox="0 0 48 48" stroke="#0a0a0a" stroke-width="2.5" fill="none" stroke-linecap="round"><circle cx="24" cy="24" r="14"/><path d="M24 14 v20 M14 24 h20"/></svg><div class="id">Part 02 ×1</div><div class="name">WordPress site</div><div class="qty">×5 sites shipped</div></div>
+    <div class="pt"><svg viewBox="0 0 48 48" stroke="#0a0a0a" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M10 30 L18 22 L26 28 L34 16 L40 22"/><circle cx="40" cy="22" r="3" fill="#cc0000"/></svg><div class="id">Part 03 ×1</div><div class="name">WP cache stack</div><div class="qty">FCP &lt; 1.0s</div></div>
+    <div class="pt"><svg viewBox="0 0 48 48" stroke="#0a0a0a" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M8 16 L40 16 L40 36 L8 36 Z"/><circle cx="14" cy="22" r="2" fill="#0058a3"/><circle cx="20" cy="22" r="2" fill="#0058a3"/></svg><div class="id">Part 04 ×3</div><div class="name">Production plugins</div><div class="qty">800+ installs</div></div>
+    <div class="pt"><svg viewBox="0 0 48 48" stroke="#0a0a0a" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M10 38 L24 14 L38 38 Z"/><line x1="24" y1="22" x2="24" y2="30"/></svg><div class="id">Part 05 ×1</div><div class="name">Allen key (skills)</div><div class="qty">PHP·Liquid·React</div></div>
+    <div class="pt"><svg viewBox="0 0 48 48" stroke="#0a0a0a" stroke-width="2.5" fill="none" stroke-linecap="round"><circle cx="24" cy="24" r="15"/><path d="M16 24 a8 8 0 0 0 16 0 a8 8 0 0 0 -16 0"/></svg><div class="id">Part 06 ×3</div><div class="name">301 redirect map</div><div class="qty">URL-for-URL</div></div>
+    <div class="pt"><svg viewBox="0 0 48 48" stroke="#0a0a0a" stroke-width="2.5" fill="none" stroke-linecap="round"><rect x="10" y="14" width="28" height="22"/><line x1="10" y1="22" x2="38" y2="22"/></svg><div class="id">Part 07 ×∞</div><div class="name">Weekly demos</div><div class="qty">every Friday</div></div>
+    <div class="pt"><svg viewBox="0 0 48 48" stroke="#0a0a0a" stroke-width="2.5" fill="none" stroke-linecap="round"><circle cx="24" cy="24" r="14"/><path d="M18 28 L22 32 L32 18"/></svg><div class="id">Part 08 ×0</div><div class="name">Failed cutovers</div><div class="qty">all-time</div></div>
+  </div>
+
+  <h2><span class="n">B</span>Selected work <span class="aux">previously assembled · 50+ in production</span></h2>
+  <div class="steps">
+    <a class="step" href="https://papirladen.dk" target="_blank"><div class="n">01</div><h3>Papirladen.dk</h3><p>Danish stationery brand since 1987. 38k SKUs and 4,200 redirects assembled from DanDomain to Shopify Plus over six weeks. Zero downtime.</p><div class="meta"><span>+38% CONV</span><span>SHOPIFY ↗</span></div></a>
+    <a class="step" href="https://ovellie.dk" target="_blank"><div class="n">02</div><h3>Ovellie.dk</h3><p>120+ brand storefront on OS 2.0. Editor-managed brand drops. Held 4.9★ Trustpilot through rebuild.</p><div class="meta"><span>94 PSI</span><span>SHOPIFY ↗</span></div></a>
+    <a class="step" href="https://triple-a.io" target="_blank"><div class="n">03</div><h3>Triple-A.io</h3><p>MAS-licensed WooCommerce payments plugin. 14 releases per year, 0 critical tickets in 18 months.</p><div class="meta"><span>800+ INSTALLS</span><span>WOO ↗</span></div></a>
+    <a class="step" href="https://byaagaard.com" target="_blank"><div class="n">04</div><h3>Aagaard Jewellery</h3><p>Brand site assembled in WP for the oldest jewellery brand in DK. Est. 1946.</p><div class="meta"><span>0.84s FCP</span><span>WP ↗</span></div></a>
+    <a class="step" href="https://ewersenergi.dk" target="_blank"><div class="n">05</div><h3>Ewers Energi</h3><p>Biomass site WP rebuild. Cache stack tuned. Sub-1s FCP on cold cache.</p><div class="meta"><span>0.72s FCP</span><span>WP ↗</span></div></a>
+    <a class="step" href="https://hilltimes.com" target="_blank"><div class="n">06</div><h3>The Hill Times · CA</h3><p>National news portal. 100k+ paid subs. Sub-1s FCP on a heavy WP install.</p><div class="meta"><span>100K+ SUBS</span><span>WP ↗</span></div></a>
+  </div>
+
+  <div class="warn"><span class="icon">⚠</span><p><b>NOTE:</b> Assembly requires two adults for migrations over 10,000 SKUs. Recommend allowing 4–6 weeks. Tools included. Some assembly required from client (catalog access, hosting credentials, integration API keys).</p></div>
+
+  <footer><span>© 2014–2026 <b>SHAKIR™</b> · CMS Migration practice · Dhaka</span><span>V10-P · IKEA manual · Portfolio mode</span><span><a href="mailto:zaman.shakirdev@gmail.com" style="color:var(--ink);font-weight:900">zaman.shakirdev@gmail.com</a></span></footer>
+</div>
+<nav class="vnav"><a href="/">Live</a><a href="/showcase.html">Showcase</a><a href="/v10-p.html" class="on">V10-P</a><a href="/v10-m.html">V10-M</a></nav>
+</body></html>

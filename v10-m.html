@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SHAKIR · How to migrate your shop in 4 steps · DanDomain → Shopify</title><link rel="icon" href="/assets/img/favicon/favicon-32x32.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"><style>
+:root{--bg:#fffef9;--ink:#0058a3;--paper:#fff;--accent:#ffdb00;--line:#0a0a0a;--muted:#555;--red:#cc0000}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);font-family:'Noto Sans',Helvetica,sans-serif;color:var(--line);font-size:15px;line-height:1.55;min-height:100vh}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1140px;margin:0 auto;padding:32px 24px 80px}
+.top{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:24px;flex-wrap:wrap;gap:8px;border-bottom:2px solid var(--line);padding-bottom:14px}
+.top .brand{display:flex;align-items:center;gap:10px;color:var(--ink);font-weight:900;font-size:14px;letter-spacing:1.5px}
+.top .brand .logo{background:var(--accent);color:var(--ink);padding:4px 10px;border-radius:99px;font-size:13px}
+
+.cover{background:var(--ink);color:var(--paper);border:3px solid var(--line);padding:48px;border-radius:6px;margin-bottom:36px;text-align:center;position:relative}
+.cover .badge{display:inline-block;background:var(--accent);color:var(--line);padding:5px 14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700;border-radius:99px;margin-bottom:18px;border:2px solid var(--line)}
+.cover h1{font-family:'Noto Sans',sans-serif;font-weight:900;font-size:clamp(38px,6vw,80px);letter-spacing:-2.5px;line-height:.95;margin-bottom:18px;color:var(--paper)}
+.cover h1 em{font-style:normal;color:var(--accent)}
+.cover p{font-size:18px;color:rgba(255,255,255,.85);max-width:680px;margin:0 auto 24px}
+.cover .btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.btn{padding:14px 26px;font-family:'Noto Sans',sans-serif;font-weight:900;font-size:14px;border:2px solid var(--line);border-radius:99px;transition:transform .15s,box-shadow .15s;letter-spacing:.3px;text-transform:uppercase}
+.btn-pri{background:var(--accent);color:var(--line)}
+.btn-sec{background:transparent;color:var(--paper);border-color:var(--paper)}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--accent)}
+.btn-sec:hover{box-shadow:4px 4px 0 var(--accent)}
+
+h2{font-family:'Noto Sans',sans-serif;font-weight:900;font-size:30px;color:var(--ink);letter-spacing:-.8px;margin:48px 0 14px;text-transform:uppercase;border-bottom:2px solid var(--ink);padding-bottom:6px;display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:8px}
+h2 .n{font-family:'JetBrains Mono',monospace;background:var(--ink);color:var(--paper);padding:4px 14px;border-radius:99px;font-size:14px;letter-spacing:1px}
+.sub{color:var(--muted);font-size:16px;margin-bottom:24px;max-width:620px}
+
+/* PARTS = service tiers */
+.parts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:36px}
+@media(max-width:780px){.parts{grid-template-columns:1fr}}
+.pt{background:var(--paper);border:2px solid var(--line);padding:24px;border-radius:6px;text-align:center;position:relative}
+.pt.best{background:var(--accent)}
+.pt.best::before{content:"BEST SELLER";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--red);color:var(--paper);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;padding:4px 12px;border-radius:99px;font-weight:700;border:2px solid var(--line)}
+.pt svg{width:54px;height:54px;margin:0 auto 12px;display:block}
+.pt .art{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-bottom:4px}
+.pt h3{font-family:'Noto Sans',sans-serif;font-weight:900;font-size:18px;letter-spacing:-.3px;margin-bottom:8px;text-transform:uppercase;color:var(--ink)}
+.pt .price{font-family:'Noto Sans',sans-serif;font-weight:900;font-size:28px;color:var(--line);margin-bottom:14px;letter-spacing:-.8px}
+.pt ul{list-style:none;font-size:13.5px;line-height:1.65;color:var(--muted);text-align:left;margin:0 0 18px}
+.pt li{padding:2px 0}
+.pt li::before{content:"✓ ";color:var(--ink);font-weight:900}
+.pt .book{background:var(--ink);color:var(--paper);padding:11px;display:block;text-align:center;font-family:'Noto Sans',sans-serif;font-weight:900;font-size:13px;letter-spacing:.5px;border-radius:99px;text-transform:uppercase}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:36px}
+@media(max-width:780px){.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.steps{grid-template-columns:1fr}}
+.step{background:var(--paper);border:2px solid var(--line);padding:20px;border-radius:6px;position:relative}
+.step .n{position:absolute;top:-14px;left:14px;background:var(--ink);color:var(--paper);font-family:'Noto Sans',sans-serif;font-weight:900;font-size:14px;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid var(--line)}
+.step .when{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink);font-weight:700;text-transform:uppercase;letter-spacing:1.2px;margin:14px 0 6px}
+.step h4{font-weight:900;font-size:16px;line-height:1.1;margin-bottom:8px;text-transform:uppercase;color:var(--line)}
+.step p{font-size:13px;color:var(--muted);line-height:1.55}
+
+/* REVIEWS */
+.rv{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:36px}
+@media(max-width:780px){.rv{grid-template-columns:1fr}}
+.rv > div{background:var(--paper);border:2px solid var(--line);padding:22px;border-radius:6px}
+.rv blockquote{font-size:16px;line-height:1.45;margin-bottom:12px}
+.rv blockquote::before{content:"\201C ";color:var(--ink);font-weight:900;font-size:24px}
+.rv cite{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;font-style:normal;display:flex;gap:10px;align-items:center;padding-top:10px;border-top:1px dashed var(--line);color:var(--muted)}
+.rv cite .av{width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.rv cite b{display:block;color:var(--line);font-size:13px;letter-spacing:.4px}
+
+.warn{background:var(--accent);border:2px solid var(--line);padding:22px;border-radius:6px;margin:32px 0;display:flex;gap:18px;align-items:center}
+.warn .icon{font-size:38px;color:var(--red);line-height:1;flex-shrink:0}
+.warn p{font-size:14px;line-height:1.5}
+.warn p b{font-weight:900;color:var(--ink)}
+
+footer{margin-top:32px;padding:20px 0;border-top:2px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+footer b{color:var(--ink)}
+.vnav{position:fixed;bottom:14px;right:14px;z-index:99;background:var(--paper);border:2px solid var(--line);padding:5px;font-family:'JetBrains Mono',monospace;font-size:10px;display:flex;gap:2px;border-radius:4px}
+.vnav a{padding:5px 8px;color:var(--muted)}
+.vnav a.on{background:var(--ink);color:var(--paper);font-weight:700}
+</style></head><body>
+<div class="wrap">
+  <div class="top"><span class="brand"><span class="logo">SHK</span>HOW TO MIGRATE YOUR SHOP</span><span>MODEL <b>SHAKIR-2026</b></span><span>V10 · MARKETING</span></div>
+
+  <div class="cover">
+    <span class="badge">⚡ Q2 2026 · 2 SLOTS</span>
+    <h1>How to migrate<br>your shop in <em>4 steps.</em></h1>
+    <p>Independent CMS migration practice. 10+ years, 50+ migrations, zero failures. Fixed scope, fixed price, weekly demos, 4–6 week assembly.</p>
+    <div class="btns"><a class="btn btn-pri" href="mailto:zaman.shakirdev@gmail.com?subject=Discovery call · V10-M">⌃ Book a discovery call</a><a class="btn btn-sec" href="#tiers">View kits →</a></div>
+  </div>
+
+  <h2 id="tiers"><span class="n">A</span>Available kits</h2>
+  <p class="sub">Three pre-packaged migration kits. All include weekly demos, fixed scope, 301 redirect map, post-launch support.</p>
+  <div class="parts">
+    <div class="pt"><svg viewBox="0 0 48 48" stroke="#0058a3" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M10 30 L18 22 L26 28 L34 16 L40 22"/><circle cx="40" cy="22" r="3" fill="#ffdb00"/></svg><div class="art">Art. 03 · WP Speed</div><h3>Cache & speed kit</h3><div class="price">€3,500+</div><ul><li>FCP &lt; 1.0s cold cache</li><li>Edge + page + object cache</li><li>OPcache JIT</li><li>Critical CSS inlined</li><li>Plugin diet</li></ul><a class="book" href="mailto:zaman.shakirdev@gmail.com?subject=Cache kit">Order kit →</a></div>
+    <div class="pt best"><svg viewBox="0 0 48 48" stroke="#0a0a0a" stroke-width="2.5" fill="none" stroke-linecap="round"><rect x="8" y="14" width="32" height="22" rx="2"/><line x1="12" y1="20" x2="36" y2="20"/><line x1="12" y1="26" x2="28" y2="26"/></svg><div class="art">Art. 01 · DanDomain → Shopify</div><h3>Migration kit</h3><div class="price">€8k – €18k</div><ul><li>Full catalog import</li><li>301 redirect map</li><li>e-conomic / BC wire-up</li><li>Custom Liquid theme</li><li>Zero-downtime cutover</li><li>2 wks post-launch support</li></ul><a class="book" href="mailto:zaman.shakirdev@gmail.com?subject=Migration kit">Order kit →</a></div>
+    <div class="pt"><svg viewBox="0 0 48 48" stroke="#0058a3" stroke-width="2.5" fill="none" stroke-linecap="round"><circle cx="24" cy="24" r="14"/><path d="M24 14 v20 M14 24 h20"/></svg><div class="art">Art. 02 · WP Build</div><h3>WP / Woo build kit</h3><div class="price">€6,500+</div><ul><li>WordPress + WooCommerce</li><li>Or WP → Shopify Plus</li><li>Custom theme + blocks</li><li>SEO authority preserved</li><li>Plugin stack tuned</li></ul><a class="book" href="mailto:zaman.shakirdev@gmail.com?subject=WP build kit">Order kit →</a></div>
+  </div>
+
+  <h2><span class="n">B</span>Assembly steps</h2>
+  <p class="sub">A typical cutover runs four phases over four to six weeks.</p>
+  <div class="steps">
+    <div class="step"><div class="n">01</div><div class="when">Week 1</div><h4>Discover</h4><p>Inventory the catalog, integrations, plugin debt. Sign risk register.</p></div>
+    <div class="step"><div class="n">02</div><div class="when">Weeks 2–3</div><h4>Rebuild</h4><p>Theme on staging. Import catalog. Re-wire integrations.</p></div>
+    <div class="step"><div class="n">03</div><div class="when">Week 4</div><h4>Cutover</h4><p>Deploy 301 map. Flip DNS. Monitor every priority URL 48h.</p></div>
+    <div class="step"><div class="n">04</div><div class="when">Weeks 5–6</div><h4>Hand over</h4><p>SEO crawl diff. Runbook delivered. You own the keys.</p></div>
+  </div>
+
+  <h2><span class="n">C</span>Customer reviews</h2>
+  <div class="rv">
+    <div><blockquote>He moved 38,000 SKUs and twelve years of SEO authority from DanDomain to Shopify in six weeks. Conversion went up the day we cut over.</blockquote><cite><span class="av">J</span><span><b>Jens Møller</b>Director · Papirladen · DK</span></cite></div>
+    <div><blockquote>We needed a developer who could read a Singapore regulator's audit and a WooCommerce changelog in the same morning. Shakir is that person.</blockquote><cite><span class="av" style="background:var(--red)">S</span><span><b>Sai Krishna</b>CTO · Triple-A · SG</span></cite></div>
+  </div>
+
+  <div class="warn"><span class="icon">⚠</span><p><b>NOTE:</b> Two adults recommended for catalogs over 10,000 SKUs. Practice capped at <b>2 simultaneous migrations</b>. Q2 2026 slots filling. Reserve now to avoid disappointment.</p></div>
+
+  <div class="cover" style="background:var(--accent);color:var(--line)">
+    <h1 style="color:var(--ink)">Assembly required.<br><em style="color:var(--red)">Tools included.</em></h1>
+    <p style="color:var(--line)">30-minute discovery call. No obligation. Bring a DanDomain shop, WP site, or WooCommerce build.</p>
+    <div class="btns"><a class="btn btn-pri" style="background:var(--ink);color:var(--paper)" href="mailto:zaman.shakirdev@gmail.com?subject=Discovery call · V10-M">Book a discovery call →</a><a class="btn btn-sec" style="color:var(--ink);border-color:var(--ink)" href="https://wa.me/8801738790641" target="_blank">WhatsApp ↗</a></div>
+  </div>
+
+  <footer><span>© 2014–2026 <b>SHAKIR™</b> · CMS Migration co.</span><span>V10-M · IKEA manual · Marketing</span><span><a href="mailto:zaman.shakirdev@gmail.com" style="color:var(--ink);font-weight:900">zaman.shakirdev@gmail.com</a></span></footer>
+</div>
+<nav class="vnav"><a href="/">Live</a><a href="/showcase.html">Showcase</a><a href="/v10-p.html">V10-P</a><a href="/v10-m.html" class="on">V10-M</a></nav>
+</body></html>

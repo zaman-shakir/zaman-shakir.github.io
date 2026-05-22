@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shakir Airways · Book your migration · DanDomain → Shopify · WordPress</title>
+<link rel="icon" href="/assets/img/favicon/favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a5c3e;--bg2:#074a31;--paper:#fff;--ink:#0a0a0a;--gold:#e4b04a;--accent:#0a5c3e;--accent2:#a62a25;--muted:#6b6864;--line:#0a0a0a;--stub:#f7f3e8}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--paper);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;min-height:100vh}
+  body{background-image:
+    radial-gradient(circle at 20% -10%,rgba(228,176,74,.18),transparent 50%),
+    radial-gradient(circle at 80% 110%,rgba(255,255,255,.06),transparent 50%);
+    background-attachment:fixed}
+  a{color:inherit;text-decoration:none}
+
+  .topbar{background:rgba(0,0,0,.4);border-bottom:1px solid rgba(255,255,255,.1);padding:10px 24px;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.7);flex-wrap:wrap;gap:8px;backdrop-filter:blur(8px);position:sticky;top:0;z-index:100}
+  .topbar b{color:var(--paper)}
+  .topbar .live::before{content:"●";color:var(--gold);margin-right:6px;animation:p 1.4s infinite}
+  @keyframes p{50%{opacity:.3}}
+
+  /* HEADER */
+  header{padding:64px 24px 32px;text-align:center;max-width:1200px;margin:0 auto}
+  header .badge{display:inline-block;background:var(--gold);color:var(--ink);padding:5px 14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700;border-radius:99px;margin-bottom:20px}
+  header h1{font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(48px,7vw,108px);letter-spacing:-3px;line-height:.95;margin-bottom:20px}
+  header h1 em{font-style:italic;color:var(--gold)}
+  header p{font-size:18px;color:rgba(255,255,255,.78);max-width:680px;margin:0 auto;line-height:1.5}
+  header p b{color:var(--paper);font-weight:600}
+
+  /* BOARDING PASS = pricing/booking */
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px 80px}
+  .pass{background:var(--paper);color:var(--ink);border-radius:8px;box-shadow:0 30px 80px rgba(0,0,0,.35);display:grid;grid-template-columns:1.7fr 1fr;border:1px solid var(--ink);overflow:hidden;margin:32px 0 64px;position:relative}
+  @media(max-width:780px){.pass{grid-template-columns:1fr}}
+  .pass .main{padding:32px;border-right:2px dashed var(--ink)}
+  @media(max-width:780px){.pass .main{border-right:0;border-bottom:2px dashed var(--ink)}}
+  .pass .stub{background:var(--stub);padding:32px;display:flex;flex-direction:column}
+  .pass .head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--ink);padding-bottom:14px;margin-bottom:24px}
+  .pass .head .logo{display:flex;align-items:center;gap:10px}
+  .pass .head .logo .icon{width:38px;height:38px;background:var(--accent);color:var(--paper);display:flex;align-items:center;justify-content:center;border-radius:50%;font-weight:800;font-size:18px}
+  .pass .head .logo b{font-weight:800;font-size:16px}
+  .pass .head .logo span{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;display:block;margin-top:2px}
+  .pass .head .flight{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);text-align:right}
+  .pass .head .flight b{display:block;color:var(--accent);font-size:18px;letter-spacing:0;margin-top:2px}
+  .pass .route{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:end;margin-bottom:24px}
+  .pass .route .col .lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .pass .route .col .code{font-family:'Inter',sans-serif;font-weight:800;font-size:64px;letter-spacing:-3px;line-height:.9}
+  .pass .route .col .city{font-size:13px;color:var(--muted);margin-top:4px}
+  .pass .route .col.r{text-align:right}
+  .pass .route .plane{padding:0 8px;font-size:32px;line-height:1;color:var(--accent);transform:rotate(-10deg)}
+  .pass .grid-info{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;border-block:1px solid var(--ink);padding:16px 0;margin-bottom:22px}
+  @media(max-width:560px){.pass .grid-info{grid-template-columns:repeat(2,1fr)}}
+  .pass .grid-info .c{font-family:'JetBrains Mono',monospace}
+  .pass .grid-info .c .l{font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+  .pass .grid-info .c .v{font-weight:700;font-size:14px;letter-spacing:.5px;color:var(--ink)}
+  .pass .passenger{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+  .pass .passenger .name{font-family:'Inter',sans-serif;font-weight:800;font-size:30px;letter-spacing:-1px;text-transform:uppercase;line-height:1}
+  .pass .passenger .name small{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:var(--muted);margin-bottom:6px;font-weight:500}
+  .pass .passenger .seat{font-family:'JetBrains Mono',monospace;text-align:right}
+  .pass .passenger .seat .l{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+  .pass .passenger .seat .v{font-weight:800;font-size:32px;letter-spacing:1px;color:var(--accent)}
+  .pass .stub h3{font-family:'Inter',sans-serif;font-weight:800;font-size:18px;margin-bottom:14px;letter-spacing:-.3px}
+  .pass .stub .row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed var(--muted);font-family:'JetBrains Mono',monospace;font-size:11px}
+  .pass .stub .row:last-of-type{border:0}
+  .pass .stub .row .k{color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;font-size:9.5px}
+  .pass .stub .row .v{color:var(--ink);font-weight:700}
+  .pass .stub .total{margin-top:14px;padding:12px;background:var(--ink);color:var(--paper);text-align:center;border-radius:4px}
+  .pass .stub .total .l{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;opacity:.7}
+  .pass .stub .total .v{font-family:'Inter',sans-serif;font-weight:800;font-size:22px;letter-spacing:-.5px;margin-top:2px}
+  .pass .stub .bk{margin-top:14px;display:block;background:var(--gold);color:var(--ink);padding:14px;font-family:'Inter',sans-serif;font-weight:800;font-size:14px;text-align:center;border-radius:4px;letter-spacing:.2px;transition:transform .15s}
+  .pass .stub .bk:hover{transform:translateY(-2px)}
+
+  /* CABIN CLASSES = service tiers */
+  section{max-width:1200px;margin:0 auto;padding:64px 24px}
+  h2{font-family:'Inter',sans-serif;font-weight:800;font-size:clamp(32px,4.5vw,56px);letter-spacing:-1.5px;line-height:.98;margin-bottom:14px;color:var(--paper)}
+  h2 em{font-style:italic;color:var(--gold)}
+  .sub{color:rgba(255,255,255,.7);font-size:17px;max-width:680px;margin-bottom:36px}
+
+  .classes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:780px){.classes{grid-template-columns:1fr}}
+  .cls{background:var(--paper);color:var(--ink);border-radius:8px;padding:28px;position:relative;border:1px solid var(--ink);box-shadow:0 12px 24px rgba(0,0,0,.18);display:flex;flex-direction:column}
+  .cls.best{background:var(--gold);transform:scale(1.02);border:2px solid var(--ink)}
+  .cls.best::before{content:"BESTSELLER";position:absolute;top:-12px;left:24px;background:var(--accent2);color:var(--paper);padding:4px 12px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;font-weight:700;border-radius:99px;border:1px solid var(--ink)}
+  .cls .lbl{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .cls h3{font-family:'Inter',sans-serif;font-weight:800;font-size:26px;letter-spacing:-.7px;margin-bottom:6px}
+  .cls .from{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px}
+  .cls .price{font-family:'Inter',sans-serif;font-weight:900;font-size:32px;letter-spacing:-1px;margin-bottom:18px}
+  .cls ul{list-style:none;font-size:13.5px;line-height:1.7;flex:1;margin-bottom:18px}
+  .cls li::before{content:"✓ ";color:var(--accent);font-weight:700}
+  .cls .book{background:var(--ink);color:var(--paper);padding:13px;text-align:center;font-family:'Inter',sans-serif;font-weight:700;font-size:13px;letter-spacing:.5px;border-radius:4px;text-transform:uppercase}
+  .cls.best .book{background:var(--accent)}
+
+  /* STATS */
+  .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.15);border-radius:6px;overflow:hidden;margin:48px 0}
+  @media(max-width:780px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stats .s{background:var(--bg2);padding:22px;text-align:center}
+  .stats .s .n{font-family:'Inter',sans-serif;font-weight:800;font-size:38px;letter-spacing:-1.5px;color:var(--gold);line-height:1}
+  .stats .s .l{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:6px}
+
+  /* TESTIMONIALS = passenger reviews */
+  .reviews{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:24px}
+  @media(max-width:780px){.reviews{grid-template-columns:1fr}}
+  .rv{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:24px;border-radius:6px;backdrop-filter:blur(8px)}
+  .rv .stars{color:var(--gold);font-size:14px;letter-spacing:2px;margin-bottom:10px}
+  .rv blockquote{font-size:17px;line-height:1.5;margin-bottom:14px;color:var(--paper);font-weight:400}
+  .rv cite{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;color:rgba(255,255,255,.7);text-transform:uppercase;font-style:normal;display:flex;gap:10px;align-items:center;padding-top:12px;border-top:1px solid rgba(255,255,255,.12)}
+  .rv cite .av{width:36px;height:36px;border-radius:50%;background:var(--gold);color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-weight:800;font-size:16px}
+  .rv cite b{display:block;color:var(--paper);font-size:13px;letter-spacing:.5px;margin-bottom:2px}
+
+  /* FAQ */
+  .faq{max-width:880px;margin:0 auto}
+  .faq details{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);padding:18px 22px;margin-bottom:8px;cursor:pointer;border-radius:6px}
+  .faq summary{font-family:'Inter',sans-serif;font-weight:600;font-size:16px;list-style:none;display:flex;justify-content:space-between;gap:18px;color:var(--paper)}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";color:var(--gold);font-size:22px;line-height:1;font-weight:300}
+  .faq details[open] summary::after{content:"−"}
+  .faq details p{margin-top:12px;font-size:14.5px;line-height:1.7;color:rgba(255,255,255,.78)}
+  .faq details p b{color:var(--gold)}
+
+  /* CTA */
+  .endcap{text-align:center;padding:80px 24px;margin-top:32px;background:linear-gradient(180deg,rgba(228,176,74,.06),rgba(228,176,74,0));border-top:1px solid rgba(255,255,255,.12)}
+  .endcap h2{margin-bottom:16px}
+  .endcap p{color:rgba(255,255,255,.78);max-width:580px;margin:0 auto 28px;font-size:17px}
+  .endcap .btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+  .btn{padding:16px 28px;font-family:'Inter',sans-serif;font-weight:700;font-size:14px;border-radius:6px;letter-spacing:.2px;display:inline-flex;align-items:center;gap:8px;transition:transform .15s,background .15s}
+  .btn-pri{background:var(--gold);color:var(--ink)}
+  .btn-pri:hover{transform:translateY(-2px);background:#f4c25a}
+  .btn-sec{background:transparent;color:var(--paper);border:1px solid rgba(255,255,255,.3)}
+  .btn-sec:hover{background:rgba(255,255,255,.1)}
+
+  footer{padding:32px 24px;background:rgba(0,0,0,.4);border-top:1px solid rgba(255,255,255,.1);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.55);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  footer b{color:var(--paper)}
+
+  .vnav{position:fixed;bottom:14px;right:14px;z-index:99;background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.18);padding:5px;font-family:'JetBrains Mono',monospace;font-size:10px;display:flex;gap:2px;backdrop-filter:blur(8px);border-radius:6px}
+  .vnav a{padding:5px 9px;color:rgba(255,255,255,.6);border-radius:3px}
+  .vnav a.on{background:var(--gold);color:var(--ink);font-weight:700}
+  .vnav a:hover:not(.on){background:rgba(255,255,255,.1);color:var(--paper)}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <span class="live"><b>SHAKIR AIRWAYS</b> · 2 SEATS AVAILABLE · Q2 2026</span>
+  <span>BOOK A FLIGHT · CMS MIGRATION · DAN → SHO · 4–6 WK</span>
+  <span>V8 · MARKETING</span>
+</div>
+
+<header>
+  <span class="badge">⚡ Q2 2026 · 2 seats left</span>
+  <h1>Fly from <em>DanDomain</em><br>to <em>Shopify.</em><br>Land with all your <em>rankings.</em></h1>
+  <p>Independent migration practice. <b>10+ years</b>, <b>50+ migrations</b>, <b>zero failures</b>. Fixed scope, fixed price, weekly demo, 4–6 week cutover. Boarding now for Q2 2026.</p>
+</header>
+
+<div class="wrap">
+
+  <!-- BOOKING PASS -->
+  <article class="pass">
+    <div class="main">
+      <div class="head">
+        <div class="logo"><span class="icon">S</span><div><b>Shakir Airways</b><span>Booking confirmation</span></div></div>
+        <div class="flight">Flight no.<b>SUZ 2026</b></div>
+      </div>
+      <div class="route">
+        <div class="col"><div class="lbl">From</div><div class="code">DAN</div><div class="city">DanDomain · Aalborg</div></div>
+        <div class="plane">✈</div>
+        <div class="col r"><div class="lbl">To</div><div class="code">SHO</div><div class="city">Shopify Plus · global</div></div>
+      </div>
+      <div class="grid-info">
+        <div class="c"><div class="l">Departure</div><div class="v">Q2 2026</div></div>
+        <div class="c"><div class="l">Gate</div><div class="v">DKK · DK</div></div>
+        <div class="c"><div class="l">Duration</div><div class="v">4-6 WKS</div></div>
+        <div class="c"><div class="l">Class</div><div class="v">SPECIALIST</div></div>
+      </div>
+      <div class="passenger">
+        <div class="name"><small>Passenger</small>YOUR SHOP NAME</div>
+        <div class="seat"><div class="l">Seat</div><div class="v">1A</div></div>
+      </div>
+    </div>
+    <div class="stub">
+      <h3>Booking summary</h3>
+      <div class="row"><span class="k">Service</span><span class="v">DanDomain → Shopify</span></div>
+      <div class="row"><span class="k">Includes</span><span class="v">Catalog</span></div>
+      <div class="row"><span class="k">Includes</span><span class="v">301 redirects</span></div>
+      <div class="row"><span class="k">Includes</span><span class="v">e-conomic wire-up</span></div>
+      <div class="row"><span class="k">Includes</span><span class="v">Custom theme</span></div>
+      <div class="row"><span class="k">Includes</span><span class="v">2 wks support</span></div>
+      <div class="total"><div class="l">From · ex VAT</div><div class="v">€ 8,000–18,000</div></div>
+      <a class="bk" href="mailto:zaman.shakirdev@gmail.com?subject=Book my flight · V8">Reserve a seat →</a>
+    </div>
+  </article>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="s"><div class="n">10+</div><div class="l">Years aloft</div></div>
+    <div class="s"><div class="n">50+</div><div class="l">Flights</div></div>
+    <div class="s"><div class="n">100%</div><div class="l">SEO retained</div></div>
+    <div class="s"><div class="n">0</div><div class="l">Crashes</div></div>
+    <div class="s"><div class="n">2</div><div class="l">Seats open</div></div>
+  </div>
+
+  <!-- CABIN CLASSES -->
+  <section style="padding-left:0;padding-right:0">
+    <h2>Pick your <em>cabin.</em></h2>
+    <p class="sub">Three flight classes for three types of migration. All include weekly demos, a fixed scope, a 301 redirect map, and post-launch stabilisation.</p>
+    <div class="classes">
+      <div class="cls">
+        <span class="lbl">Class C</span>
+        <h3>WordPress speed</h3>
+        <div class="from">From</div>
+        <div class="price">€ 3,500</div>
+        <ul>
+          <li>Page + object + edge cache</li>
+          <li>OPcache JIT + critical CSS</li>
+          <li>Plugin diet</li>
+          <li>FCP under 1.0s on cold cache</li>
+          <li>Core Web Vitals monitoring</li>
+        </ul>
+        <a class="book" href="mailto:zaman.shakirdev@gmail.com?subject=Book cabin C · WP speed">Reserve →</a>
+      </div>
+      <div class="cls best">
+        <span class="lbl">Class B</span>
+        <h3>DanDomain → Shopify</h3>
+        <div class="from">From</div>
+        <div class="price">€ 8,000–18,000</div>
+        <ul>
+          <li>Full catalog + variants + metafields</li>
+          <li>301 redirect map (URL-for-URL)</li>
+          <li>e-conomic / BC integration</li>
+          <li>Custom Liquid theme</li>
+          <li>Zero-downtime cutover · weekly demo</li>
+          <li>2 weeks post-launch stabilisation</li>
+        </ul>
+        <a class="book" href="mailto:zaman.shakirdev@gmail.com?subject=Book cabin B · DanDomain → Shopify">Reserve →</a>
+      </div>
+      <div class="cls">
+        <span class="lbl">Class A</span>
+        <h3>WP → Shopify Plus</h3>
+        <div class="from">From</div>
+        <div class="price">€ 12,000+</div>
+        <ul>
+          <li>Product + variant mapping</li>
+          <li>WooCommerce decommission</li>
+          <li>App stack recommendation</li>
+          <li>Theme rebuild on OS 2.0</li>
+          <li>SEO authority preservation</li>
+        </ul>
+        <a class="book" href="mailto:zaman.shakirdev@gmail.com?subject=Book cabin A · WP → Shopify">Reserve →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section style="padding-left:0;padding-right:0">
+    <h2>Passenger <em>reviews.</em></h2>
+    <p class="sub">Real merchants who flew with us. Named, verified, still operating live shops.</p>
+    <div class="reviews">
+      <div class="rv">
+        <div class="stars">★★★★★</div>
+        <blockquote>"He moved 38,000 SKUs and twelve years of SEO authority from DanDomain to Shopify in six weeks. Conversion went up the day we cut over."</blockquote>
+        <cite><span class="av">J</span><span><b>Jens Møller</b>Director · Papirladen · DK · est. 1987</span></cite>
+      </div>
+      <div class="rv">
+        <div class="stars">★★★★★</div>
+        <blockquote>"We needed a developer who could read a Singapore regulator's audit and a WooCommerce changelog in the same morning. Shakir is that person."</blockquote>
+        <cite><span class="av" style="background:var(--accent2);color:var(--paper)">S</span><span><b>Sai Krishna</b>CTO · Triple-A · SG · MAS-licensed</span></cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="padding-left:0;padding-right:0">
+    <h2>Pre-flight <em>questions.</em></h2>
+    <p class="sub">The five things every merchant asks before takeoff.</p>
+    <div class="faq">
+      <details open><summary>What does a DanDomain → Shopify migration cost?</summary><p>Quoted per project after a paid discovery call. Typical catalog of 1–10k SKUs with two integrations and redirect map under 5,000 URLs runs <b>€8,000–€18,000 ex VAT</b>. Fixed scope, fixed price, no hourly billing.</p></details>
+      <details><summary>How do you preserve SEO equity across a platform change?</summary><p>Three things on the same day: complete <b>301 map</b> URL-for-URL, new shop's <b>structured data</b> matched to old schema, <b>crawl diff</b> within 48h. Skip one and rankings drop. I don't skip.</p></details>
+      <details><summary>Can you also build on WordPress?</summary><p>Yes. WordPress + WooCommerce is about a third of the practice. Same fixed-scope workflow. WP wins when content is the product or the catalog model breaks Shopify's variant ceiling.</p></details>
+      <details><summary>How fast can a WP site actually load?</summary><p>Most ship under <b>1.0s First Contentful Paint</b> on a cold cache. Page + object + edge cache, OPcache JIT, critical CSS inlined, strict plugin diet. Speed is a budget, enforced in CI.</p></details>
+      <details><summary>Will I be one client among many?</summary><p>No. Capacity capped at <b>two simultaneous migrations</b>. Direct contact, weekly demos, Friday calls. When the project lands you own the code, the keys, and the runbook.</p></details>
+    </div>
+  </section>
+</div>
+
+<section class="endcap">
+  <h2>Boarding closes <em>Friday.</em></h2>
+  <p>30-min discovery call · no obligation. Bring a DanDomain shop, a WooCommerce build, or a WP site that should load under 1 second.</p>
+  <div class="btns">
+    <a class="btn btn-pri" href="mailto:zaman.shakirdev@gmail.com?subject=Discovery call · V8-M">Book your seat ✈</a>
+    <a class="btn btn-sec" href="https://www.linkedin.com/in/shakir-uz-zaman/" target="_blank">LinkedIn ↗</a>
+    <a class="btn btn-sec" href="https://wa.me/8801738790641" target="_blank">WhatsApp ↗</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2014–2026 <b>Shakir Airways</b> · CMS migration co.</span>
+  <span>V8-M · Boarding pass · Marketing mode</span>
+  <span><a href="mailto:zaman.shakirdev@gmail.com" style="color:var(--gold);font-weight:700">zaman.shakirdev@gmail.com</a></span>
+</footer>
+
+<nav class="vnav">
+  <a href="/">Live</a><a href="/showcase.html">Showcase</a><a href="/v8-p.html">V8-P</a><a href="/v8-m.html" class="on">V8-M</a>
+</nav>
+</body>
+</html>

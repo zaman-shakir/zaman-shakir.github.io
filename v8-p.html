@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SUZ · Boarding Pass · Shakir Uz Zaman portfolio</title>
+<link rel="icon" href="/assets/img/favicon/favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Barcode&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#e8e6df;--paper:#fff;--ink:#0a0a0a;--accent:#0a5c3e;--accent2:#a62a25;--line:#0a0a0a;--muted:#6b6864;--stub:#f7f3e8}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);font-family:'Inter',system-ui,sans-serif;color:var(--ink);font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.5;min-height:100vh}
+  body{background-image:repeating-linear-gradient(45deg,transparent 0,transparent 24px,rgba(0,0,0,.025) 24px,rgba(0,0,0,.025) 25px)}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:'JetBrains Mono',monospace;letter-spacing:.5px}
+
+  .wrap{max-width:1140px;margin:0 auto;padding:48px 24px 80px}
+  .topbar{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:24px;flex-wrap:wrap;gap:8px}
+  .topbar b{color:var(--ink)}
+
+  /* BOARDING PASS */
+  .pass{background:var(--paper);border:1px solid var(--ink);box-shadow:8px 8px 0 var(--ink);display:grid;grid-template-columns:1.7fr 1fr;border-radius:6px;overflow:hidden;margin-bottom:48px;position:relative}
+  @media(max-width:780px){.pass{grid-template-columns:1fr}}
+  .pass .main{padding:28px;border-right:2px dashed var(--ink)}
+  @media(max-width:780px){.pass .main{border-right:0;border-bottom:2px dashed var(--ink)}}
+  .pass .stub{background:var(--stub);padding:28px;display:flex;flex-direction:column;justify-content:space-between}
+
+  .pass .head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--ink);padding-bottom:14px;margin-bottom:22px;flex-wrap:wrap;gap:12px}
+  .pass .head .logo{display:flex;align-items:center;gap:10px}
+  .pass .head .logo .icon{width:36px;height:36px;background:var(--accent);color:var(--paper);display:flex;align-items:center;justify-content:center;border-radius:50%;font-weight:800;font-size:18px}
+  .pass .head .logo b{font-weight:800;font-size:16px;letter-spacing:-.3px}
+  .pass .head .logo span{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;display:block;margin-top:2px}
+  .pass .head .flight{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);text-align:right}
+  .pass .head .flight b{display:block;color:var(--accent);font-size:18px;letter-spacing:0;margin-top:2px}
+
+  .route{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:end;margin-bottom:24px}
+  .route .col .lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .route .col .code{font-family:'Inter',sans-serif;font-weight:800;font-size:64px;letter-spacing:-3px;line-height:.9}
+  .route .col .city{font-size:13px;color:var(--muted);margin-top:4px}
+  .route .col.r{text-align:right}
+  .route .plane{padding:0 8px;font-size:32px;line-height:1;color:var(--accent);transform:rotate(-10deg)}
+
+  .grid-info{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;border-block:1px solid var(--ink);padding:16px 0;margin-bottom:22px}
+  @media(max-width:560px){.grid-info{grid-template-columns:repeat(2,1fr)}}
+  .grid-info .c{font-family:'JetBrains Mono',monospace}
+  .grid-info .c .l{font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+  .grid-info .c .v{font-weight:700;font-size:14px;letter-spacing:.5px;color:var(--ink)}
+
+  .passenger{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+  .passenger .name{font-family:'Inter',sans-serif;font-weight:800;font-size:32px;letter-spacing:-1px;text-transform:uppercase;line-height:1}
+  .passenger .name small{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:var(--muted);margin-bottom:6px;font-weight:500}
+  .passenger .seat{font-family:'JetBrains Mono',monospace;text-align:right}
+  .passenger .seat .l{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+  .passenger .seat .v{font-weight:800;font-size:32px;letter-spacing:1px;color:var(--accent)}
+
+  .stub h3{font-family:'Inter',sans-serif;font-weight:800;font-size:22px;letter-spacing:-.5px;margin-bottom:14px}
+  .stub .stub-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed var(--muted);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.5px}
+  .stub .stub-row:last-child{border:0}
+  .stub .stub-row .k{color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;font-size:9.5px}
+  .stub .stub-row .v{color:var(--ink);font-weight:700}
+  .stub .bar{margin-top:18px;height:60px;background-image:repeating-linear-gradient(90deg,#000 0,#000 2px,transparent 2px,transparent 5px,#000 5px,#000 7px,transparent 7px,transparent 12px,#000 12px,#000 14px,transparent 14px,transparent 18px);background-size:auto 100%;background-repeat:repeat-x}
+  .stub .bcode{margin-top:6px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:2px;color:var(--ink);text-align:center}
+
+  /* WORK GRID — luggage tags */
+  h2{font-family:'Inter',sans-serif;font-weight:800;font-size:28px;letter-spacing:-1px;margin:48px 0 18px;display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:10px}
+  h2 span{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--muted);font-weight:500}
+
+  .tags{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:780px){.tags{grid-template-columns:1fr}}
+  .tag{background:var(--paper);border:1px solid var(--ink);padding:18px;position:relative;box-shadow:4px 4px 0 var(--ink);transition:transform .15s,box-shadow .15s;cursor:pointer}
+  .tag:nth-child(2n){transform:rotate(-1deg)}
+  .tag:nth-child(3n){transform:rotate(.5deg)}
+  .tag:hover{transform:rotate(0) translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+  .tag::before{content:"";position:absolute;top:14px;left:14px;width:14px;height:14px;border:2px solid var(--ink);border-radius:50%;background:var(--bg)}
+  .tag::after{content:"";position:absolute;top:8px;left:18px;width:6px;height:18px;background:#9a6b3b;transform:rotate(-25deg);z-index:-1}
+  .tag .head{padding-left:36px;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .tag .head b{color:var(--ink)}
+  .tag h3{font-weight:800;font-size:18px;letter-spacing:-.4px;margin-bottom:6px;line-height:1.15}
+  .tag p{font-size:12.5px;color:var(--muted);line-height:1.55;margin-bottom:12px;min-height:48px}
+  .tag .meta{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--accent);font-weight:700;letter-spacing:.8px;display:flex;justify-content:space-between;border-top:1px dashed var(--muted);padding-top:8px}
+
+  footer{margin-top:48px;padding:18px 0;border-top:1px solid var(--ink);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  footer b{color:var(--ink)}
+
+  .vnav{position:fixed;bottom:14px;right:14px;z-index:99;background:var(--paper);border:1px solid var(--ink);padding:5px;font-family:'JetBrains Mono',monospace;font-size:10px;display:flex;gap:2px;box-shadow:3px 3px 0 var(--ink)}
+  .vnav a{padding:5px 8px;color:var(--muted)}
+  .vnav a.on{background:var(--accent);color:var(--paper);font-weight:700}
+  .vnav a:hover:not(.on){background:var(--bg)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <span><b>SHAKIR AIRWAYS</b> · CMS Migration · Est. 2014</span>
+    <span>V8 · BOARDING PASS · <b>PORTFOLIO</b></span>
+    <span>2026-05-23 · GMT+6</span>
+  </div>
+
+  <article class="pass">
+    <div class="main">
+      <div class="head">
+        <div class="logo"><span class="icon">S</span><div><b>Shakir Airways</b><span>CMS migration co.</span></div></div>
+        <div class="flight">Flight no.<b>SUZ 2026</b></div>
+      </div>
+      <div class="route">
+        <div class="col"><div class="lbl">From</div><div class="code">DAN</div><div class="city">DanDomain</div></div>
+        <div class="plane">✈</div>
+        <div class="col r"><div class="lbl">To</div><div class="code">SHO</div><div class="city">Shopify / WordPress</div></div>
+      </div>
+      <div class="grid-info">
+        <div class="c"><div class="l">Boarding</div><div class="v">Q2 2026</div></div>
+        <div class="c"><div class="l">Gate</div><div class="v">DKK · DK</div></div>
+        <div class="c"><div class="l">Duration</div><div class="v">4-6 WKS</div></div>
+        <div class="c"><div class="l">Class</div><div class="v">SPECIALIST</div></div>
+      </div>
+      <div class="passenger">
+        <div class="name"><small>Passenger</small>SHAKIR UZ ZAMAN</div>
+        <div class="seat"><div class="l">Seat</div><div class="v">1A</div></div>
+      </div>
+    </div>
+    <div class="stub">
+      <div>
+        <h3>Stub</h3>
+        <div class="stub-row"><span class="k">Carrier</span><span class="v">SUZ</span></div>
+        <div class="stub-row"><span class="k">Years live</span><span class="v">10+</span></div>
+        <div class="stub-row"><span class="k">Migrations</span><span class="v">50+</span></div>
+        <div class="stub-row"><span class="k">SEO retained</span><span class="v">100 %</span></div>
+        <div class="stub-row"><span class="k">Failed cutovers</span><span class="v">0</span></div>
+        <div class="stub-row"><span class="k">Slots open</span><span class="v">2 · Q2-26</span></div>
+      </div>
+      <div>
+        <div class="bar"></div>
+        <div class="bcode">* SUZ-2026-DAN-SHO-1A-0FAIL *</div>
+      </div>
+    </div>
+  </article>
+
+  <h2>Itinerary · selected work <span>10 of 50 shipped</span></h2>
+  <div class="tags">
+    <a class="tag" href="https://papirladen.dk" target="_blank"><div class="head"><span>SEAT <b>01A</b></span><span>DK</span></div><h3>Papirladen.dk → Shopify</h3><p>38k SKUs · 4,200 redirects · B2B+B2C dual pricing · 6w cutover · 0 downtime.</p><div class="meta"><span>+38% conv</span><span>shopify ↗</span></div></a>
+    <a class="tag" href="https://ovellie.dk" target="_blank"><div class="head"><span>SEAT <b>02B</b></span><span>DK</span></div><h3>Ovellie.dk · 120 brands</h3><p>Custom Liquid storefront · 4.9★ Trustpilot · editor-managed brand drops.</p><div class="meta"><span>94 PSI</span><span>shopify ↗</span></div></a>
+    <a class="tag" href="https://triple-a.io" target="_blank"><div class="head"><span>SEAT <b>03C</b></span><span>SG</span></div><h3>Triple-A · WC plugin</h3><p>MAS-licensed payments plugin · 14 releases/yr · 0 criticals in 18 mo.</p><div class="meta"><span>800+ installs</span><span>woo ↗</span></div></a>
+    <a class="tag" href="https://byaagaard.com" target="_blank"><div class="head"><span>SEAT <b>04D</b></span><span>DK</span></div><h3>Aagaard Jewellery</h3><p>WP build + maintenance for 80-year jewellery house · est. 1946.</p><div class="meta"><span>0.84s FCP</span><span>wp ↗</span></div></a>
+    <a class="tag" href="https://ewersenergi.dk" target="_blank"><div class="head"><span>SEAT <b>05E</b></span><span>DK</span></div><h3>Ewers Energi</h3><p>Biomass site rebuild + speed tuning. Edge cache + OPcache + critical CSS.</p><div class="meta"><span>0.72s FCP</span><span>wp ↗</span></div></a>
+    <a class="tag" href="https://hilltimes.com" target="_blank"><div class="head"><span>SEAT <b>06F</b></span><span>CA</span></div><h3>The Hill Times · CA</h3><p>National news portal · 100k+ paid subscribers · sub-1s FCP.</p><div class="meta"><span>&lt; 1.0s FCP</span><span>wp ↗</span></div></a>
+    <a class="tag" href="https://webkonsulenterne.dk" target="_blank"><div class="head"><span>SEAT <b>07G</b></span><span>DK</span></div><h3>Webkonsulenter</h3><p>Agency partner · Shopify themes + WordPress build pipeline + custom plugins.</p><div class="meta"><span>40+ sites</span><span>shop+wp ↗</span></div></a>
+    <a class="tag" href="#"><div class="head"><span>SEAT <b>08H</b></span><span>DK</span></div><h3>QLiving (Horizon)</h3><p>Shopify Horizon theme modernisation · 1,449 LOC design system.</p><div class="meta"><span>★ featured</span><span>shopify</span></div></a>
+    <a class="tag" href="#"><div class="head"><span>SEAT <b>09J</b></span><span>DK</span></div><h3>BilligVentilation</h3><p>Laravel 11 e-conomic dashboard · 21k invoices · daily auto-sync.</p><div class="meta"><span>21k records</span><span>laravel</span></div></a>
+    <a class="tag" href="mailto:zaman.shakirdev@gmail.com"><div class="head"><span>SEAT <b>10K</b></span><span>+41</span></div><h3>+ 41 more shops</h3><p>Full client manifest available on request. Ten years, fifty migrations, zero failures.</p><div class="meta"><span>request roster →</span><span>email ↗</span></div></a>
+  </div>
+
+  <footer>
+    <span>© 2014–2026 <b>Shakir Uz Zaman</b> · Shakir Airways · CMS migration co.</span>
+    <span>V8-P · Boarding pass · Portfolio mode</span>
+    <span><a href="mailto:zaman.shakirdev@gmail.com" style="color:var(--accent);font-weight:700;border-bottom:1px solid var(--accent)">zaman.shakirdev@gmail.com</a></span>
+  </footer>
+</div>
+<nav class="vnav"><a href="/">Live</a><a href="/showcase.html">Showcase</a><a href="/v8-p.html" class="on">V8-P</a><a href="/v8-m.html">V8-M</a></nav>
+</body>
+</html>

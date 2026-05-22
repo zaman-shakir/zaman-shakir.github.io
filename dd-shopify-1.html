@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DanDomain to Shopify migration · Specialist · Free 30-min call</title><meta name="description" content="Independent specialist migrating Danish merchants from DanDomain to Shopify. Zero downtime, full SEO equity preserved. Book a free 30-minute call."><link rel="icon" href="/assets/img/favicon/favicon-32x32.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"><style>
+:root{--bg:#fafaf7;--paper:#fff;--ink:#0a0a0a;--muted:#6b7280;--line:#e5e5e5;--shop:#008060;--shop-dk:#005c47;--shop-soft:#e3f1ec;--dd:#d9272d;--dd-soft:#fce6e7;--gold:#f59e0b}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:15.5px;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
+body{background-image:radial-gradient(circle at 50% 0%,rgba(0,128,96,.06),transparent 60%);background-attachment:fixed}
+a{color:inherit;text-decoration:none}
+.mono{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:1px}
+
+header{padding:16px 24px;background:rgba(250,250,247,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;max-width:1280px;margin:0 auto}
+header .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.3px}
+header .brand .mark{width:32px;height:32px;background:var(--shop);color:var(--paper);display:flex;align-items:center;justify-content:center;border-radius:8px;font-weight:800}
+header nav{display:flex;gap:8px;align-items:center;font-size:13.5px;font-weight:500}
+header nav a{color:var(--muted)}
+header nav a:hover{color:var(--ink)}
+header .cta{background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:99px;font-size:13.5px;font-weight:600;transition:transform .15s}
+header .cta:hover{transform:translateY(-1px);color:var(--paper)}
+
+/* HERO */
+.hero{max-width:1180px;margin:0 auto;padding:64px 24px 48px;text-align:center}
+.hero .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--shop-soft);border:1px solid rgba(0,128,96,.2);padding:6px 14px;border-radius:99px;font-size:12px;font-weight:600;color:var(--shop-dk);margin-bottom:24px;letter-spacing:.3px}
+.hero .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--shop);animation:p 1.5s infinite}
+@keyframes p{50%{opacity:.4}}
+.hero h1{font-family:'Inter',sans-serif;font-weight:800;font-size:clamp(40px,5.5vw,72px);letter-spacing:-2.2px;line-height:1;margin-bottom:24px;max-width:880px;margin-left:auto;margin-right:auto}
+.hero h1 .dd{color:var(--dd);text-decoration:line-through;text-decoration-thickness:5px;text-decoration-color:var(--dd)}
+.hero h1 .sh{color:var(--shop)}
+.hero p{font-size:19px;color:var(--muted);max-width:680px;margin:0 auto 32px;line-height:1.55}
+.hero p b{color:var(--ink);font-weight:600}
+.hero .btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.btn{padding:14px 24px;font-family:'Inter',sans-serif;font-weight:600;font-size:14.5px;border-radius:99px;display:inline-flex;align-items:center;gap:8px;transition:transform .15s,box-shadow .15s,background .15s}
+.btn-pri{background:var(--shop);color:var(--paper);border:1px solid var(--shop);box-shadow:0 6px 18px rgba(0,128,96,.3)}
+.btn-pri:hover{transform:translateY(-2px);background:var(--shop-dk);color:var(--paper);box-shadow:0 10px 24px rgba(0,128,96,.4)}
+.btn-sec{background:var(--paper);color:var(--ink);border:1px solid var(--line)}
+.btn-sec:hover{border-color:var(--ink)}
+.hero .micro{font-size:12.5px;color:var(--muted)}
+.hero .micro b{color:var(--shop-dk);font-weight:600}
+
+/* TRUST BAR */
+.trust{max-width:1180px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+@media(max-width:780px){.trust{grid-template-columns:repeat(2,1fr)}}
+.trust .cell{background:var(--paper);padding:20px;text-align:center}
+.trust .n{font-family:'Inter',sans-serif;font-weight:800;font-size:30px;letter-spacing:-1px;color:var(--ink);line-height:1}
+.trust .n .acc{color:var(--shop)}
+.trust .l{font-size:11.5px;color:var(--muted);margin-top:6px;letter-spacing:.3px}
+
+/* SECTION */
+section{max-width:1180px;margin:0 auto;padding:80px 24px}
+.shead{text-align:center;margin-bottom:48px}
+.shead .lbl{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--shop);font-weight:700;margin-bottom:14px}
+.shead h2{font-family:'Inter',sans-serif;font-weight:800;font-size:clamp(32px,4vw,52px);letter-spacing:-1.5px;line-height:1.05;margin-bottom:14px;max-width:720px;margin-left:auto;margin-right:auto}
+.shead h2 em{font-style:italic;color:var(--shop)}
+.shead .sub{color:var(--muted);font-size:17px;max-width:600px;margin:0 auto;line-height:1.55}
+
+/* PAINS */
+.pains{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:780px){.pains{grid-template-columns:1fr}}
+.pain{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:28px;transition:border-color .15s,transform .15s}
+.pain:hover{border-color:var(--dd);transform:translateY(-3px)}
+.pain .icon{width:42px;height:42px;background:var(--dd-soft);color:var(--dd);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;margin-bottom:14px}
+.pain h3{font-weight:700;font-size:18px;letter-spacing:-.3px;margin-bottom:8px}
+.pain p{color:var(--muted);font-size:14.5px;line-height:1.55}
+
+/* SOLUTION */
+.solution{display:grid;grid-template-columns:repeat(2,1fr);gap:48px;align-items:center}
+@media(max-width:880px){.solution{grid-template-columns:1fr}}
+.solution h2{font-family:'Inter',sans-serif;font-weight:800;font-size:38px;letter-spacing:-1.5px;line-height:1.05;margin-bottom:18px}
+.solution h2 em{font-style:italic;color:var(--shop)}
+.solution > .col p{font-size:16px;color:var(--muted);margin-bottom:14px;line-height:1.65}
+.solution ul{list-style:none;padding:0;margin-top:14px}
+.solution li{padding:10px 0;border-bottom:1px solid var(--line);font-size:15px;display:flex;align-items:start;gap:12px}
+.solution li:last-child{border:0}
+.solution li::before{content:"";flex-shrink:0;width:22px;height:22px;background:var(--shop);color:var(--paper);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin-top:1px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;color:transparent}
+.solution li b{color:var(--ink);font-weight:600}
+.solution .visual{background:linear-gradient(135deg,var(--shop-soft),var(--paper));border:1px solid var(--line);border-radius:18px;padding:32px;position:relative;overflow:hidden}
+.solution .visual::before{content:"";position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(0,128,96,.18),transparent 60%)}
+.solution .vstep{display:flex;align-items:center;gap:16px;padding:14px 0;border-bottom:1px dashed rgba(0,0,0,.1);position:relative}
+.solution .vstep:last-child{border:0}
+.solution .vstep .vn{width:36px;height:36px;border-radius:10px;background:var(--shop);color:var(--paper);font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px}
+.solution .vstep .vt b{display:block;font-weight:700;font-size:14.5px;margin-bottom:2px}
+.solution .vstep .vt span{color:var(--muted);font-size:13px}
+
+/* CASES */
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:880px){.cases{grid-template-columns:1fr}}
+.case{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:26px;transition:border-color .15s,box-shadow .15s}
+.case:hover{border-color:var(--shop);box-shadow:0 12px 30px rgba(0,128,96,.08)}
+.case .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.case .head .logo{width:38px;height:38px;background:var(--shop-soft);color:var(--shop-dk);font-family:'Inter',sans-serif;font-weight:800;font-size:18px;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.case .head .badge{background:var(--shop);color:var(--paper);padding:3px 8px;font-size:9.5px;letter-spacing:1px;font-weight:700;border-radius:99px;text-transform:uppercase}
+.case h3{font-family:'Inter',sans-serif;font-weight:700;font-size:18px;letter-spacing:-.4px;margin-bottom:6px}
+.case .sub{font-size:13px;color:var(--muted);margin-bottom:16px}
+.case .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding-top:14px;border-top:1px solid var(--line)}
+.case .metrics div{text-align:center}
+.case .metrics .v{font-weight:800;font-size:18px;color:var(--shop);letter-spacing:-.4px}
+.case .metrics .k{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+
+/* REVIEWS */
+.reviews{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media(max-width:780px){.reviews{grid-template-columns:1fr}}
+.rv{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:28px}
+.rv .stars{color:var(--gold);font-size:14px;letter-spacing:2px;margin-bottom:12px}
+.rv blockquote{font-size:17.5px;line-height:1.5;font-weight:500;color:var(--ink);margin-bottom:16px}
+.rv cite{display:flex;gap:12px;align-items:center;padding-top:14px;border-top:1px solid var(--line);font-style:normal}
+.rv cite .av{width:44px;height:44px;border-radius:50%;background:var(--shop);color:var(--paper);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;flex-shrink:0}
+.rv cite b{display:block;font-weight:700;font-size:14.5px;color:var(--ink)}
+.rv cite span{font-size:12.5px;color:var(--muted);margin-top:1px;display:block}
+
+/* FAQ */
+.faq{max-width:780px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--line);padding:20px 0;cursor:pointer}
+.faq summary{font-weight:700;font-size:17px;list-style:none;display:flex;justify-content:space-between;align-items:start;gap:18px;color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--shop);font-size:24px;line-height:1;font-weight:300;flex-shrink:0}
+.faq details[open] summary::after{content:"−"}
+.faq details p{margin-top:14px;color:var(--muted);line-height:1.7;font-size:15px}
+.faq details p b{color:var(--ink)}
+
+/* CTA */
+.endcap{max-width:880px;margin:0 auto;padding:64px 24px;text-align:center}
+.endcap .panel{background:linear-gradient(135deg,var(--shop) 0%,var(--shop-dk) 100%);color:var(--paper);padding:56px 36px;border-radius:24px;box-shadow:0 30px 80px rgba(0,128,96,.3);position:relative;overflow:hidden}
+.endcap .panel::before{content:"";position:absolute;top:-100px;right:-100px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.12),transparent 60%)}
+.endcap h2{font-family:'Inter',sans-serif;font-weight:800;font-size:clamp(34px,4.5vw,52px);letter-spacing:-1.5px;line-height:1.05;margin-bottom:18px;position:relative;color:var(--paper)}
+.endcap p{font-size:18px;color:rgba(255,255,255,.85);max-width:520px;margin:0 auto 28px;position:relative}
+.endcap .btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;position:relative;margin-bottom:18px}
+.endcap .btn-pri{background:var(--paper);color:var(--shop-dk);border-color:var(--paper)}
+.endcap .btn-pri:hover{background:var(--bg);transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.18)}
+.endcap .btn-sec{background:transparent;color:var(--paper);border-color:rgba(255,255,255,.4)}
+.endcap .btn-sec:hover{background:rgba(255,255,255,.1);color:var(--paper)}
+.endcap .reassure{font-size:13px;color:rgba(255,255,255,.7);position:relative;margin-top:8px}
+.endcap .reassure b{color:var(--paper);font-weight:600}
+
+footer{max-width:1180px;margin:0 auto;padding:32px 24px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center}
+footer b{color:var(--ink)}
+footer a{color:var(--shop);font-weight:600}
+
+.vnav{position:fixed;bottom:14px;right:14px;z-index:99;background:var(--paper);border:1px solid var(--line);padding:5px;font-family:'JetBrains Mono',monospace;font-size:10px;display:flex;gap:2px;border-radius:99px;box-shadow:0 6px 18px rgba(0,0,0,.08)}
+.vnav a{padding:6px 11px;color:var(--muted);border-radius:99px}
+.vnav a.on{background:var(--shop);color:var(--paper);font-weight:700}
+.vnav a:hover:not(.on){background:var(--bg);color:var(--ink)}
+</style></head>
+<body>
+<header>
+  <a class="brand" href="/"><span class="mark">S</span>shakir.dev</a>
+  <nav>
+    <a href="#pains">Why now</a>
+    <a href="#how">How it works</a>
+    <a href="#cases">Cases</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <a class="cta" href="mailto:zaman.shakirdev@gmail.com?subject=Discovery call · DanDomain → Shopify">Talk to me →</a>
+</header>
+
+<section class="hero">
+  <span class="eyebrow"><span class="dot"></span>Q2 2026 · 2 slots open</span>
+  <h1>Move from <span class="dd">DanDomain</span> to <span class="sh">Shopify.</span><br>Without losing a single ranking.</h1>
+  <p>Independent specialist for Danish merchants leaving DanDomain. <b>10+ years</b>, <b>50+ migrations</b>, <b>zero failed cutovers</b>. Fixed scope, weekly demo, sub-1s cache. Let's spend 30 minutes on the phone before anything else.</p>
+  <div class="btns">
+    <a class="btn btn-pri" href="mailto:zaman.shakirdev@gmail.com?subject=Discovery call · DanDomain → Shopify">📞 Book a free 30-min call</a>
+    <a class="btn btn-sec" href="https://wa.me/8801738790641" target="_blank">💬 WhatsApp</a>
+  </div>
+  <p class="micro"><b>No sales pitch.</b> No pricing slides. Just your shop, my screen, and a punch list.</p>
+</section>
+
+<div class="trust">
+  <div class="cell"><div class="n">10+</div><div class="l">Years shipping</div></div>
+  <div class="cell"><div class="n">50+</div><div class="l">Migrations live</div></div>
+  <div class="cell"><div class="n"><span class="acc">100%</span></div><div class="l">SEO retained</div></div>
+  <div class="cell"><div class="n"><span class="acc">0</span></div><div class="l">Failed cutovers</div></div>
+  <div class="cell"><div class="n">4–6w</div><div class="l">Typical cutover</div></div>
+</div>
+
+<section id="pains">
+  <div class="shead">
+    <div class="lbl">⌃ Why merchants leave</div>
+    <h2>If any of this <em>sounds familiar,</em><br>your shop has outgrown DanDomain.</h2>
+    <p class="sub">DanDomain was great in 2010. In 2026 it's a ceiling — and the ceiling is costing you orders.</p>
+  </div>
+  <div class="pains">
+    <div class="pain"><div class="icon">⌖</div><h3>Theme limits</h3><p>You can't redesign without rebuilding from scratch. Every brand refresh becomes a six-month consulting project.</p></div>
+    <div class="pain"><div class="icon">⌥</div><h3>App ecosystem gaps</h3><p>The integrations you need (Klaviyo, Judge.me, modern checkout, headless) either don't exist on DanDomain or are five years behind.</p></div>
+    <div class="pain"><div class="icon">⌒</div><h3>Slow page speed</h3><p>DanDomain's legacy stack caps Core Web Vitals scores. You're losing organic traffic to faster competitors on Shopify.</p></div>
+    <div class="pain"><div class="icon">⌘</div><h3>SEO equity at risk</h3><p>A bad migration burns 12 years of rankings overnight. A good one keeps every URL, every backlink, every euro of traffic.</p></div>
+    <div class="pain"><div class="icon">⌃</div><h3>B2B + B2C strain</h3><p>Dual-pricing, customer groups and EAN/CVR billing are rough on DanDomain. Shopify Flow + metafields make this trivial.</p></div>
+    <div class="pain"><div class="icon">⌐</div><h3>Lock-in</h3><p>Migration agencies quote €40k+ and disappear at handover. You end up with a half-done store and no documentation.</p></div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="solution">
+    <div class="col">
+      <div class="lbl mono" style="color:var(--shop);font-weight:700;letter-spacing:1.8px;text-transform:uppercase;margin-bottom:14px">⌃ How it works</div>
+      <h2>A migration that <em>keeps</em><br>every ranking. Every URL. Every euro.</h2>
+      <p>Three things have to happen on the same day or the cutover loses ranking authority:</p>
+      <ul>
+        <li><b>301 redirect map</b> matched URL-for-URL from the old shop to the new one — typically 1,000–5,000 redirects, no orphans.</li>
+        <li><b>Structured data</b> (Product / Offer / Review schema) matched to the old shop's schema so Google doesn't re-evaluate.</li>
+        <li><b>Crawl diff</b> run by an independent tool within 48 hours of cutover — every priority URL signed off, in writing.</li>
+      </ul>
+      <p style="margin-top:18px"><b>Most "lost ranking after migration" stories</b> come from skipping one of these three. I've never skipped one. Zero failed cutovers in 50+ migrations.</p>
+    </div>
+    <div class="col visual">
+      <h4 style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:var(--shop-dk);font-weight:700;margin-bottom:14px;position:relative">Four phases · 4–6 weeks</h4>
+      <div class="vstep"><div class="vn">1</div><div class="vt"><b>Discover &amp; audit</b><span>Week 1 · catalog inventory, integrations, redirect plan</span></div></div>
+      <div class="vstep"><div class="vn">2</div><div class="vt"><b>Rebuild &amp; rewire</b><span>Weeks 2–3 · staging theme, catalog import, e-conomic wired</span></div></div>
+      <div class="vstep"><div class="vn">3</div><div class="vt"><b>Cutover</b><span>Week 4 · 301 map live, DNS flipped, 48h URL monitoring</span></div></div>
+      <div class="vstep"><div class="vn">4</div><div class="vt"><b>Stabilise &amp; hand over</b><span>Weeks 5–6 · crawl diff, runbook, you own the keys</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="cases">
+  <div class="shead">
+    <div class="lbl">⌃ Recently migrated</div>
+    <h2>Real Danish shops. <em>Real numbers.</em></h2>
+    <p class="sub">Three of fifty migrations. Every shop still live, still ranking, still growing.</p>
+  </div>
+  <div class="cases">
+    <a class="case" href="https://papirladen.dk" target="_blank">
+      <div class="head"><div class="logo">P</div><span class="badge">DanDomain → Shopify</span></div>
+      <h3>Papirladen.dk</h3>
+      <p class="sub">Danish stationery brand · est. 1987 · 38,000 SKU · B2B + B2C</p>
+      <div class="metrics"><div><div class="v">100%</div><div class="k">SEO kept</div></div><div><div class="v">+38%</div><div class="k">Conv 90d</div></div><div><div class="v">0min</div><div class="k">Downtime</div></div></div>
+    </a>
+    <a class="case" href="https://ovellie.dk" target="_blank">
+      <div class="head"><div class="logo">O</div><span class="badge">Shopify build</span></div>
+      <h3>Ovellie.dk</h3>
+      <p class="sub">Multi-brand retailer · 120+ brands · custom Liquid storefront</p>
+      <div class="metrics"><div><div class="v">4.9★</div><div class="k">Trustpilot</div></div><div><div class="v">94</div><div class="k">PSI mobile</div></div><div><div class="v">120+</div><div class="k">Brands</div></div></div>
+    </a>
+    <a class="case" href="https://byaagaard.com" target="_blank">
+      <div class="head"><div class="logo">Æ</div><span class="badge">DanDomain → WP</span></div>
+      <h3>Aagaard Jewellery</h3>
+      <p class="sub">DK's oldest jewellery brand · est. 1946 · 80 years live</p>
+      <div class="metrics"><div><div class="v">0.84s</div><div class="k">FCP cold</div></div><div><div class="v">80yr</div><div class="k">Heritage</div></div><div><div class="v">100%</div><div class="k">SEO kept</div></div></div>
+    </a>
+  </div>
+</section>
+
+<section>
+  <div class="shead">
+    <div class="lbl">⌃ What clients say</div>
+    <h2>Named. Verified. <em>Still live.</em></h2>
+  </div>
+  <div class="reviews">
+    <div class="rv">
+      <div class="stars">★★★★★</div>
+      <blockquote>"He moved 38,000 SKUs and twelve years of SEO authority from DanDomain to Shopify in six weeks. Conversion went up the day we cut over."</blockquote>
+      <cite><span class="av">J</span><span><b>Jens Møller</b><span>Director · Papirladen · est. 1987</span></span></cite>
+    </div>
+    <div class="rv">
+      <div class="stars">★★★★★</div>
+      <blockquote>"We needed someone who could read a regulator's audit and a WooCommerce changelog in the same morning. Shakir is that person."</blockquote>
+      <cite><span class="av" style="background:var(--gold)">S</span><span><b>Sai Krishna</b><span>CTO · Triple-A · Singapore</span></span></cite>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="shead">
+    <div class="lbl">⌃ Pre-call FAQ</div>
+    <h2>Five things merchants ask <em>before</em> we talk.</h2>
+    <p class="sub">If you have a different question, it'll get answered on the call. No tricks.</p>
+  </div>
+  <div class="faq">
+    <details open><summary>What happens on the discovery call?</summary><p>30 minutes, screen-share. You walk me through your current DanDomain shop. I ask about catalog size, integrations, redirect surface, dual-pricing needs. By the end we both know whether the migration is a fit and what it would cost. <b>No deck, no pitch.</b></p></details>
+    <details><summary>Will I get a quote on the call?</summary><p>You'll get a range — not a binding quote. Real quotes need 1–2 days of deeper inventory work and are issued in writing afterwards. <b>No surprises.</b> Fixed scope, fixed price, no hourly billing.</p></details>
+    <details><summary>How do you keep SEO equity intact?</summary><p>Three non-negotiables on cutover day: a complete <b>301 redirect map</b> matched URL-for-URL, the new shop's <b>structured data</b> matched to the old schema, and an independent <b>crawl diff</b> within 48 hours. Most "lost ranking" stories skip at least one. I don't.</p></details>
+    <details><summary>What integrations do you re-wire?</summary><p>The Danish standard set — e-conomic, Business Central, Klaviyo, Judge.me, Mailchimp, Trustpilot, EAN/CVR billing flows, plus any custom ERPs or PIMs you depend on. Re-wired against the new Shopify schema during weeks 2–3.</p></details>
+    <details><summary>What if my shop is too big / too small?</summary><p>I take catalogs from 200 SKUs (small jewellery brand) up to 50,000 (multi-warehouse retailer). The shape of the migration changes; the workflow doesn't. The discovery call tells us which.</p></details>
+  </div>
+</section>
+
+<section class="endcap">
+  <div class="panel">
+    <h2>Let's talk for <em style="font-style:italic">30 minutes.</em></h2>
+    <p>No deck. No quote. Just your DanDomain shop, my screen, and a clear answer on whether Shopify is the move.</p>
+    <div class="btns">
+      <a class="btn btn-pri" href="mailto:zaman.shakirdev@gmail.com?subject=Discovery call · DanDomain → Shopify">📞 Book a free 30-min call</a>
+      <a class="btn btn-sec" href="https://wa.me/8801738790641" target="_blank">💬 WhatsApp first</a>
+    </div>
+    <p class="reassure"><b>2 slots open Q2 2026.</b> I reply within 24h on email / WhatsApp / Telegram.</p>
+  </div>
+</section>
+
+<footer>
+  <span>© 2014–2026 <b>Shakir Uz Zaman</b> · Independent practice · Dhaka</span>
+  <span>DanDomain → Shopify specialist · concept 1 of 6</span>
+  <span><a href="mailto:zaman.shakirdev@gmail.com">zaman.shakirdev@gmail.com</a></span>
+</footer>
+
+<nav class="vnav">
+  <a href="/">Live</a>
+  <a href="/dd-shopify-1.html" class="on">DD-1</a>
+  <a href="/dd-shopify-2.html">DD-2</a>
+  <a href="/dd-shopify-3.html">DD-3</a>
+  <a href="/dd-shopify-4.html">DD-4</a>
+  <a href="/dd-shopify-5.html">DD-5</a>
+  <a href="/dd-shopify-6.html">DD-6</a>
+</nav>
+</body></html>
