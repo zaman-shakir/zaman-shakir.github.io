@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SHAKIR UZ ZAMAN / CMS MIGRATION / SHOPIFY / WORDPRESS / DANDOMAIN</title>
+<meta name="description" content="Independent CMS migration practice. DanDomain to Shopify and WordPress. Zero failures. Capacity capped at two simultaneous migrations.">
+<link rel="icon" href="/assets/img/favicon/favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Archivo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fff; --ink:#000; --rule:#000; --grey:#555; --pale:#eaeaea; --hl:#ffe600;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;line-height:1.45;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+  a:hover{background:var(--ink);color:var(--bg);text-decoration:none}
+  ::selection{background:var(--ink);color:var(--bg)}
+  img{display:block;max-width:100%}
+  .sans{font-family:'Archivo',sans-serif}
+
+  /* RULE LINES */
+  hr{border:0;border-top:1px solid var(--ink);margin:0}
+  .ruled{border:1px solid var(--ink)}
+
+  /* HEADER */
+  header{border-bottom:2px solid var(--ink);background:var(--bg);position:sticky;top:0;z-index:30}
+  header .row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;border-bottom:1px solid var(--ink);font-size:10.5px;letter-spacing:.4px;text-transform:uppercase}
+  header .row > div{padding:6px 12px;border-right:1px solid var(--ink)}
+  header .row > div:last-child{border-right:0}
+  header .row b{font-weight:700}
+  header .row .live::before{content:"●";color:var(--ink);margin-right:6px;animation:b 1.4s infinite}
+  @keyframes b{50%{opacity:.2}}
+  header .row .hl{background:var(--hl)}
+  header .brand{padding:18px 12px;display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap}
+  header .brand h1{font-family:'Archivo',sans-serif;font-weight:900;font-size:34px;letter-spacing:-1.5px;line-height:.9}
+  header .brand nav{display:flex;gap:18px;font-size:11px;text-transform:uppercase;letter-spacing:1px;font-weight:600}
+  header .brand nav a{padding:4px 0;border-bottom:1px solid var(--ink);text-decoration:none}
+  header .brand nav a:hover{background:var(--ink);color:var(--bg);padding:4px 8px}
+
+  /* GRID LAYOUT */
+  main{display:grid;grid-template-columns:repeat(12,1fr);border-bottom:2px solid var(--ink)}
+  @media(max-width:980px){main{grid-template-columns:1fr}}
+  .cell{padding:24px 18px;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+  .cell:last-child{border-right:0}
+  @media(max-width:980px){.cell{border-right:0}}
+  .col-1{grid-column:span 1}
+  .col-2{grid-column:span 2}
+  .col-3{grid-column:span 3}
+  .col-4{grid-column:span 4}
+  .col-5{grid-column:span 5}
+  .col-6{grid-column:span 6}
+  .col-7{grid-column:span 7}
+  .col-8{grid-column:span 8}
+  .col-9{grid-column:span 9}
+  .col-12{grid-column:span 12}
+  @media(max-width:980px){.col-1,.col-2,.col-3,.col-4,.col-5,.col-6,.col-7,.col-8,.col-9,.col-12{grid-column:span 1}}
+
+  /* SECTION META */
+  .meta{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;border-bottom:1px solid var(--ink);padding-bottom:6px;margin-bottom:14px;display:flex;justify-content:space-between}
+  .meta b{font-weight:700}
+
+  h2{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,4vw,52px);letter-spacing:-1.5px;line-height:.95;text-transform:uppercase}
+  h3{font-family:'Archivo',sans-serif;font-weight:700;font-size:18px;letter-spacing:-.5px;text-transform:uppercase;margin-bottom:6px}
+  h4{font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.6px}
+
+  /* HERO */
+  .hero h1{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(64px,12vw,200px);letter-spacing:-6px;line-height:.84;text-transform:uppercase}
+  .hero h1 span{background:var(--hl)}
+  .hero .sub{margin-top:18px;font-size:13.5px;line-height:1.55;max-width:720px}
+  .hero .sub b{background:var(--ink);color:var(--bg);padding:1px 5px}
+  .stats-row{display:grid;grid-template-columns:repeat(5,1fr);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+  @media(max-width:780px){.stats-row{grid-template-columns:repeat(2,1fr)}}
+  .stats-row > div{padding:18px;border-right:1px solid var(--ink)}
+  .stats-row > div:last-child{border-right:0}
+  .stats-row .num{font-family:'Archivo',sans-serif;font-weight:900;font-size:48px;letter-spacing:-2px;line-height:1}
+  .stats-row .lbl{font-size:10.5px;text-transform:uppercase;letter-spacing:1.2px;margin-top:4px;color:var(--grey)}
+
+  /* TABLE */
+  table{width:100%;border-collapse:collapse;font-size:12px}
+  table th,table td{padding:9px 12px;border:1px solid var(--ink);text-align:left;vertical-align:top}
+  table th{background:var(--ink);color:var(--bg);text-transform:uppercase;letter-spacing:1px;font-size:10.5px;font-weight:600}
+  table td.num{font-family:'Archivo',sans-serif;font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+  table tr:hover td{background:var(--pale)}
+  table .live::before{content:"●";color:var(--ink);margin-right:6px;animation:b 1.6s infinite}
+
+  /* SPECIMEN */
+  .specimen{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(80px,16vw,240px);letter-spacing:-8px;line-height:.85;text-transform:uppercase;padding:24px 18px;border-bottom:2px solid var(--ink);background:var(--bg);overflow:hidden;text-align:left}
+  .specimen i{font-style:italic;font-weight:700;background:var(--hl)}
+  .specimen .stk{-webkit-text-stroke:2px var(--ink);color:transparent;font-weight:900}
+
+  /* TESTIMONIAL */
+  .quote{padding:24px 18px}
+  .quote blockquote{font-family:'Archivo',sans-serif;font-weight:700;font-size:24px;line-height:1.2;letter-spacing:-.5px;text-transform:uppercase;margin-bottom:18px}
+  .quote blockquote::before{content:"\201C ";font-weight:900}
+  .quote blockquote::after{content:" \201D";font-weight:900}
+  .quote cite{font-size:11px;text-transform:uppercase;letter-spacing:1px;font-style:normal;border-top:1px solid var(--ink);padding-top:10px;display:block}
+  .quote cite b{font-weight:700;font-family:'Archivo',sans-serif}
+
+  /* PROCESS GRID */
+  .proc{display:grid;grid-template-columns:repeat(4,1fr)}
+  @media(max-width:780px){.proc{grid-template-columns:1fr}}
+  .proc > div{padding:18px;border-right:1px solid var(--ink)}
+  .proc > div:last-child{border-right:0}
+  .proc .pn{font-size:10.5px;text-transform:uppercase;letter-spacing:1.5px;border-bottom:1px solid var(--ink);padding-bottom:6px;margin-bottom:10px;display:flex;justify-content:space-between}
+  .proc h4{margin-bottom:8px}
+  .proc p{font-size:12px;line-height:1.6}
+
+  /* FAQ */
+  details{border-bottom:1px solid var(--ink);padding:14px 18px;cursor:pointer}
+  summary{font-family:'Archivo',sans-serif;font-weight:700;font-size:14px;letter-spacing:-.2px;text-transform:uppercase;list-style:none;display:flex;justify-content:space-between;gap:14px}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:"[ + ]";font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;margin-right:8px;color:var(--grey)}
+  details[open] summary::before{content:"[ – ]"}
+  details p{margin-top:10px;font-size:12.5px;line-height:1.7}
+  details p b{background:var(--hl);padding:0 2px}
+
+  /* ENDCAP */
+  .endcap{padding:40px 18px;background:var(--ink);color:var(--bg);text-align:left}
+  .endcap h2{font-size:clamp(40px,8vw,128px);letter-spacing:-4px}
+  .endcap h2 span{background:var(--hl);color:var(--ink);padding:0 6px}
+  .endcap p{margin:18px 0 28px;font-size:13.5px;max-width:640px}
+  .endcap .btns{display:flex;gap:0;flex-wrap:wrap;border:1px solid var(--bg)}
+  .endcap .btns a{padding:14px 20px;font-size:11px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;border-right:1px solid var(--bg);text-decoration:none}
+  .endcap .btns a:last-child{border-right:0}
+  .endcap .btns a:hover{background:var(--hl);color:var(--ink)}
+  .endcap .btns a.pri{background:var(--hl);color:var(--ink)}
+
+  /* COLOPHON */
+  .colo{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--ink);background:var(--bg)}
+  @media(max-width:780px){.colo{grid-template-columns:repeat(2,1fr)}}
+  .colo > div{padding:18px;border-right:1px solid var(--ink)}
+  .colo > div:last-child{border-right:0}
+  .colo h5{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;border-bottom:1px solid var(--ink);padding-bottom:5px;margin-bottom:8px}
+  .colo ul{list-style:none;font-size:11.5px;line-height:1.7}
+  .colo li::before{content:"→ "}
+  .colo li a{text-decoration:none;border-bottom:1px solid var(--ink)}
+
+  footer{padding:14px 18px;border-top:1px solid var(--ink);font-size:10.5px;text-transform:uppercase;letter-spacing:1.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  /* VARIANT NAV */
+  .vnav{position:fixed;bottom:0;left:0;right:0;z-index:99;background:var(--bg);border-top:2px solid var(--ink);padding:6px 10px;font-family:'IBM Plex Mono',monospace;font-size:10px;display:flex;gap:0;justify-content:center;text-transform:uppercase;letter-spacing:1px}
+  .vnav a{padding:6px 12px;color:var(--ink);border-right:1px solid var(--ink);text-decoration:none;font-weight:600}
+  .vnav a:last-child{border-right:0}
+  .vnav a.on{background:var(--ink);color:var(--bg)}
+  .vnav a:hover:not(.on){background:var(--hl)}
+  body{padding-bottom:34px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="row">
+    <div><b>Doc.</b> /portfolio/v5</div>
+    <div class="live"><b>STATUS</b> online · GMT+6</div>
+    <div class="hl"><b>2 SLOTS</b> Q2 2026</div>
+    <div><b>EST.</b> 2014 · 10+ YR</div>
+    <div><b>DHAKA</b> · DK · SG · CA</div>
+  </div>
+  <div class="brand">
+    <h1>SHAKIR<br>UZ ZAMAN.</h1>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#faq">FAQ</a>
+      <a href="#engage">Engage</a>
+      <a href="https://www.linkedin.com/in/shakir-uz-zaman/" target="_blank">LI ↗</a>
+      <a href="https://github.com/zaman-shakir" target="_blank">GH ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="cell col-12 hero">
+    <div class="meta"><span><b>§ 00</b> · Cover</span><span>2026-05-23 · Edition 1</span></div>
+    <h1>CMS<br>MIGRATION<br><span>SPECIALIST.</span></h1>
+    <p class="sub">Independent practice. <b>Ten years</b>, <b>fifty migrations</b>, <b>zero failures</b>. DanDomain &nbsp;→&nbsp; Shopify. DanDomain &nbsp;→&nbsp; WordPress. WordPress &nbsp;→&nbsp; Shopify. WP cache &amp; speed under one second. Capacity capped at two simultaneous engagements.</p>
+  </section>
+
+  <!-- STATS -->
+  <div class="col-12 stats-row">
+    <div><div class="num">10+</div><div class="lbl">Years</div></div>
+    <div><div class="num">50+</div><div class="lbl">Migrations</div></div>
+    <div><div class="num">100%</div><div class="lbl">SEO Retained</div></div>
+    <div><div class="num">800+</div><div class="lbl">Plugin Installs</div></div>
+    <div><div class="num">0</div><div class="lbl">Failed Cutovers</div></div>
+  </div>
+
+  <!-- SPECIMEN -->
+  <div class="specimen col-12"><span class="stk">DAN-</span>DOMAIN<i> → </i>SHOPIFY.</div>
+
+  <!-- WORK TABLE -->
+  <section class="cell col-12" id="work" style="padding:24px 0;border-right:0">
+    <div style="padding:0 18px"><div class="meta"><span><b>§ 01</b> · Selected work · 8 of 50</span><span>Source: client roster / 2014–2026</span></div></div>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Client</th>
+          <th>Vertical</th>
+          <th>Stack</th>
+          <th>Year</th>
+          <th>Outcome</th>
+          <th class="num">Metric</th>
+          <th>URL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>01</td><td class="live"><b>Papirladen.dk</b></td><td>Stationery · B2B+B2C</td><td>Shopify Plus</td><td>2025</td><td>DanDomain → Shopify · 6w · 0 downtime</td><td class="num">+38% conv</td><td><a href="https://papirladen.dk" target="_blank">papirladen.dk</a></td></tr>
+        <tr><td>02</td><td class="live"><b>Ovellie.dk</b></td><td>Multi-brand retail</td><td>Shopify OS 2.0</td><td>2024</td><td>Custom Liquid storefront · editor-managed</td><td class="num">4.9★ TP</td><td><a href="https://ovellie.dk" target="_blank">ovellie.dk</a></td></tr>
+        <tr><td>03</td><td><b>QLiving</b></td><td>Furniture</td><td>Shopify Horizon</td><td>2024</td><td>Theme modernisation · 1,449 LOC</td><td class="num">94 PSI</td><td>★ featured</td></tr>
+        <tr><td>04</td><td><b>Webkonsulenter</b></td><td>Agency partner</td><td>Shopify + WP</td><td>2023+</td><td>Theme + WP build pipeline</td><td class="num">40+ sites</td><td><a href="https://webkonsulenterne.dk" target="_blank">webkonsulenterne.dk</a></td></tr>
+        <tr><td>05</td><td class="live"><b>Aagaard Jewellery</b></td><td>Heritage / luxury</td><td>WordPress</td><td>2024+</td><td>Brand site + maintenance · est. 1946</td><td class="num">0.84s FCP</td><td><a href="https://byaagaard.com" target="_blank">byaagaard.com</a></td></tr>
+        <tr><td>06</td><td><b>Ewers Energi</b></td><td>Biomass / energy</td><td>WordPress</td><td>2024</td><td>Rebuild + cache stack</td><td class="num">0.72s FCP</td><td><a href="https://ewersenergi.dk" target="_blank">ewersenergi.dk</a></td></tr>
+        <tr><td>07</td><td class="live"><b>Triple-A</b></td><td>Payments · MAS</td><td>WooCommerce plugin</td><td>2023+</td><td>14 releases / yr · 0 criticals 18 mo</td><td class="num">800+ inst.</td><td><a href="https://triple-a.io" target="_blank">triple-a.io</a></td></tr>
+        <tr><td>08</td><td><b>The Hill Times</b></td><td>News portal</td><td>WordPress</td><td>2024+</td><td>National news · CA · 100k+ subs</td><td class="num">&lt; 1.0s FCP</td><td><a href="https://hilltimes.com" target="_blank">hilltimes.com</a></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- TESTIMONIAL 1 -->
+  <div class="cell col-8 quote">
+    <div class="meta"><span><b>§ 02</b> · Quote 01</span><span>Papirladen · DK</span></div>
+    <blockquote>He moved 38,000 SKUs and twelve years of SEO authority from DanDomain to Shopify in six weeks. Conversion went up the day we cut over.</blockquote>
+    <cite><b>JENS MØLLER</b> — DIRECTOR · PAPIRLADEN.DK · EST. 1987</cite>
+  </div>
+  <div class="cell col-4">
+    <div class="meta"><span><b>§ 02b</b> · CASE 01 NUMBERS</span><span>Papirladen · DanDomain → Shopify</span></div>
+    <table>
+      <tr><td>Catalog</td><td class="num">38,000 SKU</td></tr>
+      <tr><td>Redirects</td><td class="num">4,200</td></tr>
+      <tr><td>Window</td><td class="num">6 wk</td></tr>
+      <tr><td>Downtime</td><td class="num">0 min</td></tr>
+      <tr><td>SEO kept</td><td class="num">100 %</td></tr>
+      <tr><td>Conv lift 90d</td><td class="num">+38 %</td></tr>
+    </table>
+  </div>
+
+  <!-- PROCESS -->
+  <section class="cell col-12" id="process" style="padding:0;border-right:0">
+    <div style="padding:24px 18px 14px"><div class="meta"><span><b>§ 03</b> · Process · how a cutover runs</span><span>4 phases · 4–6 weeks · weekly demo</span></div>
+      <h2 style="margin-bottom:18px">PROCESS / FOUR PHASES.</h2>
+    </div>
+    <div class="proc">
+      <div>
+        <div class="pn"><b>P.I</b><span>Week 1</span></div>
+        <h4>Discover &amp; audit</h4>
+        <p>Catalog inventory · integration map · plugin debt · redirect plan. Risk register signed before code.</p>
+      </div>
+      <div>
+        <div class="pn"><b>P.II</b><span>W. 2–3</span></div>
+        <h4>Rebuild &amp; rewire</h4>
+        <p>Theme on staging. Catalog import w/ metafields. e-conomic · Business Central · Klaviyo · Judge.me re-wired.</p>
+      </div>
+      <div>
+        <div class="pn"><b>P.III</b><span>W. 4</span></div>
+        <h4>Cutover</h4>
+        <p>301 map deployed. DNS flipped in low-traffic window. Priority URLs monitored live for 48 h.</p>
+      </div>
+      <div>
+        <div class="pn"><b>P.IV</b><span>W. 5–6</span></div>
+        <h4>Stabilise &amp; hand over</h4>
+        <p>SEO crawl diff · funnel review · runbook. Not a dependency. You own keys + code.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL 2 -->
+  <div class="cell col-4">
+    <div class="meta"><span><b>§ 04</b> · CASE 02 NUMBERS</span><span>Triple-A · WooCommerce plugin</span></div>
+    <table>
+      <tr><td>Active installs</td><td class="num">800+</td></tr>
+      <tr><td>Releases / yr</td><td class="num">14</td></tr>
+      <tr><td>Criticals 18 mo</td><td class="num">0</td></tr>
+      <tr><td>PHP versions CI</td><td class="num">4</td></tr>
+      <tr><td>MAS audit</td><td class="num">PASS</td></tr>
+    </table>
+  </div>
+  <div class="cell col-8 quote">
+    <div class="meta"><span><b>§ 04b</b> · Quote 02</span><span>Triple-A · SG</span></div>
+    <blockquote>We needed a developer who could read a Singapore regulator's audit checklist and a WooCommerce changelog in the same morning. Shakir is that person.</blockquote>
+    <cite><b>SAI KRISHNA</b> — CTO · TRIPLE-A · SINGAPORE · MAS-LICENSED</cite>
+  </div>
+
+  <!-- SPECIMEN 2 -->
+  <div class="specimen col-12">WORDPRESS<i> &lt; </i><span class="stk">1.0s</span></div>
+
+  <!-- WP CACHE TABLE -->
+  <section class="cell col-12" style="padding:24px 0;border-right:0">
+    <div style="padding:0 18px"><div class="meta"><span><b>§ 05</b> · Cache benchmark · First Contentful Paint · cold cache · 4G</span><span>Budget: 1.0 s</span></div></div>
+    <table>
+      <thead><tr><th>Site</th><th>Stack</th><th class="num">Before</th><th class="num">After</th><th class="num">Δ</th><th class="num">Status</th></tr></thead>
+      <tbody>
+        <tr><td>ewersenergi.dk</td><td>WP · biomass</td><td class="num">3.0 s</td><td class="num">0.72 s</td><td class="num">↓ 76%</td><td class="num">PASS</td></tr>
+        <tr><td>byaagaard.com</td><td>WP · 1946</td><td class="num">2.9 s</td><td class="num">0.84 s</td><td class="num">↓ 71%</td><td class="num">PASS</td></tr>
+        <tr><td>hilltimes.com</td><td>WP · CA news</td><td class="num">3.4 s</td><td class="num">0.93 s</td><td class="num">↓ 73%</td><td class="num">PASS</td></tr>
+        <tr><td>webkonsulenterne.dk</td><td>WP · agency</td><td class="num">2.5 s</td><td class="num">0.66 s</td><td class="num">↓ 74%</td><td class="num">PASS</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- FAQ -->
+  <section class="cell col-12" id="faq" style="padding:0;border-right:0">
+    <div style="padding:24px 18px 0"><div class="meta"><span><b>§ 06</b> · Frequent enquiries</span><span>Updated quarterly</span></div>
+      <h2 style="margin-bottom:14px">FAQ / FIVE QUESTIONS.</h2>
+    </div>
+    <details open>
+      <summary>What does a DanDomain → Shopify migration cost?</summary>
+      <p>Quoted per project after a paid discovery call. A typical catalog of 1–10k SKUs with two integrations and a redirect map under 5,000 URLs runs <b>€8,000–€18,000 ex VAT</b>. No hourly billing — fixed scope, fixed price.</p>
+    </details>
+    <details>
+      <summary>How do you preserve SEO equity across a platform change?</summary>
+      <p>Three things on the same day: a <b>complete 301 redirect map</b> matched URL-for-URL, the new shop's <b>structured data</b> matched to the old schema, and a <b>crawl diff</b> run within 48h of cutover. Most "lost ranking" stories come from skipping one of these.</p>
+    </details>
+    <details>
+      <summary>Can you also build on WordPress?</summary>
+      <p>Yes. WordPress + WooCommerce is about a third of the practice. Same workflow — fixed scope, weekly demos, post-launch stabilisation. WP wins when content is the product, full data ownership matters, or the catalog model breaks Shopify's variant ceiling.</p>
+    </details>
+    <details>
+      <summary>How fast can a WP site actually load?</summary>
+      <p>Most WP sites I ship hit <b>under 1.0s First Contentful Paint</b> on a cold cache. Page cache + object cache + edge fragment cache + OPcache + critical CSS + a strict plugin diet. Speed is a budget, enforced in CI.</p>
+    </details>
+    <details>
+      <summary>Will I be one client among many?</summary>
+      <p>No. Capacity capped at <b>two simultaneous migrations</b>. You work with me directly, every week, single thread for questions, Friday demo. When the project ends you own the code, the runbook, and the keys.</p>
+    </details>
+  </section>
+
+  <!-- ENDCAP -->
+  <div class="endcap col-12" id="engage">
+    <div class="meta" style="border-color:var(--bg)"><span style="color:var(--bg)"><b>§ 07</b> · Engage</span><span style="color:var(--bg)">2 slots · Q2 2026</span></div>
+    <h2>BRING A <span>SHOP</span>.<br>I'LL DO THE REST.</h2>
+    <p>Discovery call: 30 minutes, no obligation. Bring a DanDomain shop scheduled to leave, a WooCommerce build the agency couldn't finish, or a WordPress site that should load in under one second.</p>
+    <div class="btns">
+      <a class="pri" href="mailto:zaman.shakirdev@gmail.com?subject=Discovery call · v5">Book the call →</a>
+      <a href="https://www.linkedin.com/in/shakir-uz-zaman/" target="_blank">LinkedIn ↗</a>
+      <a href="https://github.com/zaman-shakir" target="_blank">GitHub ↗</a>
+      <a href="https://wa.me/8801738790641" target="_blank">WhatsApp ↗</a>
+    </div>
+  </div>
+
+  <!-- COLOPHON -->
+  <div class="col-12 colo">
+    <div>
+      <h5>Practice</h5>
+      <ul>
+        <li><a href="#work">Work / 50+</a></li>
+        <li><a href="#process">Process / 4 phases</a></li>
+        <li><a href="#faq">FAQ / 5 questions</a></li>
+        <li><a href="#engage">Engage / 2 slots</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Stack</h5>
+      <ul>
+        <li>Shopify · OS 2.0</li>
+        <li>WordPress · Woo</li>
+        <li>PHP 8 · Laravel 11</li>
+        <li>React · SvelteKit</li>
+      </ul>
+    </div>
+    <div>
+      <h5>Geography</h5>
+      <ul>
+        <li>Dhaka, BD (HQ)</li>
+        <li>Denmark</li>
+        <li>Singapore</li>
+        <li>Canada</li>
+      </ul>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:zaman.shakirdev@gmail.com">zaman.shakirdev@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/shakir-uz-zaman/" target="_blank">LinkedIn ↗</a></li>
+        <li><a href="https://wa.me/8801738790641" target="_blank">WhatsApp ↗</a></li>
+        <li>GMT+6</li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span>© 2014–2026 SHAKIR UZ ZAMAN · INDEPENDENT PRACTICE</span>
+  <span>V5 · BRUTALIST SWISS · ARCHIVO + IBM PLEX MONO · HAND-SET</span>
+  <span>LAST REV. 23 MAY 2026</span>
+</footer>
+
+<nav class="vnav">
+  <a href="/">Live</a>
+  <a href="/v1.html">V1</a>
+  <a href="/v2.html">V2</a>
+  <a href="/v3.html">V3</a>
+  <a href="/v4.html">V4</a>
+  <a href="/v5.html" class="on">V5</a>
+  <a href="/v6.html">V6</a>
+  <a href="/v7.html">V7</a>
+</nav>
+
+</body>
+</html>

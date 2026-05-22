@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shakir Uz Zaman · Drag the boxes — CMS Migration Specialist</title>
+<meta name="description" content="Independent CMS migration practice. Drag any card. DanDomain → Shopify. WP cache &lt; 1s. 10+ years, 50+ migrations.">
+<link rel="icon" href="/assets/img/favicon/favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f0eee5; --paper:#fff; --ink:#0a0a0a; --muted:#5a5a5a;
+    --line:#0a0a0a; --pink:#ff5fa2; --lime:#c5f56b; --sky:#7dc4ff; --orange:#ff8540; --violet:#a78bfa; --green:#22c55e; --yellow:#ffd166;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden}
+  body{background-image:radial-gradient(circle at 50% 50%,rgba(0,0,0,.06) 1px,transparent 1px);background-size:24px 24px}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.5px;text-transform:uppercase}
+
+  /* CORNER STATUS */
+  .corner-tl{position:fixed;top:18px;left:20px;z-index:100;display:flex;align-items:center;gap:10px}
+  .corner-tl .mark{width:42px;height:42px;border-radius:50%;background:var(--ink);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;letter-spacing:-1px}
+  .corner-tl .info{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:1px;text-transform:uppercase;line-height:1.3}
+  .corner-tl .info b{display:block;font-size:11.5px;color:var(--ink)}
+  .corner-tl .info span{color:var(--muted)}
+  .corner-tr{position:fixed;top:24px;right:20px;z-index:100;display:flex;gap:10px;align-items:center}
+  .pill{padding:8px 12px;border:2px solid var(--ink);background:var(--paper);font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:1px;text-transform:uppercase;font-weight:600;border-radius:99px;display:flex;align-items:center;gap:6px}
+  .pill .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:p 1.5s infinite}
+  @keyframes p{50%{opacity:.4}}
+  .pill.lime{background:var(--lime)}
+  .pill.pink{background:var(--pink);color:var(--bg)}
+
+  /* HERO PLAYGROUND */
+  .hero{position:relative;width:100%;height:100vh;min-height:760px;overflow:hidden;border-bottom:2px solid var(--ink)}
+  .hero .title{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;z-index:1;width:90%;max-width:1100px}
+  .hero h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(48px,9vw,148px);line-height:.88;letter-spacing:-4px;color:var(--ink)}
+  .hero h1 .out{-webkit-text-stroke:2px var(--ink);color:transparent;font-weight:700}
+  .hero h1 small{display:block;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:3px;color:var(--muted);margin-top:24px;font-weight:500;text-transform:uppercase}
+  .hero .hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;animation:bob 2s ease-in-out infinite;pointer-events:none}
+  .hero .hint::before{content:"☞ ";color:var(--ink);font-size:14px}
+  @keyframes bob{50%{transform:translate(-50%,-6px)}}
+
+  /* PHYSICS CARDS */
+  .pcard{position:absolute;background:var(--paper);border:2px solid var(--ink);padding:14px 18px;cursor:grab;user-select:none;box-shadow:6px 6px 0 var(--ink);transition:transform .15s cubic-bezier(.3,1.5,.5,1),box-shadow .15s;font-size:13px;line-height:1.4;will-change:transform;z-index:2;border-radius:6px;font-family:'Space Grotesk',sans-serif;font-weight:600}
+  .pcard:hover{transform:rotate(-2deg) scale(1.06);box-shadow:10px 10px 0 var(--ink);z-index:10}
+  .pcard.grab{cursor:grabbing;box-shadow:14px 14px 0 var(--ink);z-index:20;transition:none}
+  .pcard.pink{background:var(--pink);color:var(--paper)}
+  .pcard.lime{background:var(--lime)}
+  .pcard.sky{background:var(--sky)}
+  .pcard.orange{background:var(--orange);color:var(--paper)}
+  .pcard.violet{background:var(--violet);color:var(--paper)}
+  .pcard.yellow{background:var(--yellow)}
+  .pcard.dark{background:var(--ink);color:var(--bg)}
+  .pcard .lbl{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;opacity:.75;margin-bottom:4px;font-weight:500;display:block}
+  .pcard .big{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:32px;line-height:1;letter-spacing:-1.5px;display:block;margin-top:4px}
+  .pcard a{color:inherit;border-bottom:1.5px solid currentColor}
+
+  /* SECTION */
+  section{padding:80px 40px;border-bottom:2px solid var(--ink);position:relative;background:var(--bg)}
+  @media(max-width:780px){section{padding:64px 20px}}
+  .shead{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:18px;margin-bottom:48px}
+  .shead h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(38px,5.5vw,68px);letter-spacing:-2px;line-height:.95;max-width:900px}
+  .shead h2 em{font-style:italic;background:var(--lime);padding:0 14px;border:2px solid var(--ink);display:inline-block;line-height:1;border-radius:6px}
+  .shead .num{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--muted);background:var(--paper);border:2px solid var(--ink);padding:8px 14px;border-radius:99px}
+
+  /* WORK STICKER GRID */
+  .stickers{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;max-width:1280px;margin:0 auto}
+  @media(max-width:980px){.stickers{grid-template-columns:1fr}}
+  .stk{grid-column:span 4;background:var(--paper);border:2px solid var(--ink);padding:24px;border-radius:8px;box-shadow:6px 6px 0 var(--ink);transition:transform .2s,box-shadow .2s;cursor:pointer;position:relative;min-height:280px;display:flex;flex-direction:column;justify-content:space-between}
+  .stk:nth-child(2n){transform:rotate(-1deg)}
+  .stk:nth-child(3n){transform:rotate(1deg)}
+  .stk:hover{transform:rotate(0deg) translate(-3px,-3px);box-shadow:12px 12px 0 var(--ink)}
+  .stk.tall{grid-column:span 4;min-height:340px}
+  .stk.wide{grid-column:span 8}
+  @media(max-width:980px){.stk,.stk.tall,.stk.wide{grid-column:span 1}}
+  .stk.lime{background:var(--lime)}
+  .stk.pink{background:var(--pink);color:var(--paper)}
+  .stk.sky{background:var(--sky)}
+  .stk.yellow{background:var(--yellow)}
+  .stk.violet{background:var(--violet);color:var(--paper)}
+  .stk.orange{background:var(--orange);color:var(--paper)}
+  .stk .tag{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin-bottom:14px;display:flex;justify-content:space-between}
+  .stk h3{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:28px;line-height:1.05;letter-spacing:-1px;margin-bottom:10px}
+  .stk p{font-size:13.5px;line-height:1.55;opacity:.85;margin-bottom:18px;flex:1}
+  .stk .nums{display:flex;gap:16px;flex-wrap:wrap;padding-top:14px;border-top:2px solid currentColor}
+  .stk .n{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;line-height:1;letter-spacing:-.5px}
+  .stk .n small{font-family:'DM Mono',monospace;font-size:9.5px;display:block;text-transform:uppercase;letter-spacing:1.2px;font-weight:500;opacity:.7;margin-top:3px}
+  .stk .arrow{position:absolute;top:18px;right:18px;font-size:24px;font-weight:700;transition:transform .2s}
+  .stk:hover .arrow{transform:translate(3px,-3px)}
+
+  /* PROCESS — STACKED CARDS */
+  .proc{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1280px;margin:0 auto}
+  @media(max-width:780px){.proc{grid-template-columns:1fr}}
+  .pc{background:var(--paper);border:2px solid var(--ink);padding:22px;border-radius:6px;position:relative}
+  .pc:nth-child(1){background:var(--lime)}
+  .pc:nth-child(2){background:var(--sky)}
+  .pc:nth-child(3){background:var(--yellow)}
+  .pc:nth-child(4){background:var(--pink);color:var(--paper)}
+  .pc::before{content:attr(data-n);position:absolute;top:-14px;left:18px;background:var(--ink);color:var(--bg);font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;padding:5px 10px;border-radius:99px;font-weight:600}
+  .pc h4{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.5px;margin:14px 0 8px;line-height:1.1}
+  .pc p{font-size:13px;line-height:1.6;opacity:.9}
+
+  /* TESTIMONIAL — POSTCARDS */
+  .quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:1280px;margin:0 auto}
+  @media(max-width:780px){.quotes{grid-template-columns:1fr}}
+  .q{background:var(--paper);border:2px solid var(--ink);padding:32px;border-radius:8px;box-shadow:8px 8px 0 var(--ink);position:relative;transform:rotate(-1deg);transition:transform .2s}
+  .q:nth-child(2){background:var(--lime);transform:rotate(1deg)}
+  .q:hover{transform:rotate(0deg)}
+  .q blockquote{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:20px;line-height:1.4;letter-spacing:-.3px;margin-bottom:20px}
+  .q blockquote::before{content:"\201C";font-size:64px;line-height:0;vertical-align:-20px;color:var(--pink);font-family:Georgia,serif;font-weight:700;margin-right:4px}
+  .q cite{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;display:flex;gap:14px;align-items:center;font-style:normal;padding-top:18px;border-top:2px dashed var(--ink)}
+  .q cite .av{width:42px;height:42px;border-radius:50%;background:var(--ink);color:var(--bg);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700}
+  .q cite b{display:block;font-size:13px;font-weight:700;letter-spacing:.6px;margin-bottom:2px;text-transform:none}
+
+  /* CTA */
+  .endcap{padding:120px 40px;background:var(--ink);color:var(--bg);text-align:center;border-bottom:2px solid var(--ink);position:relative;overflow:hidden}
+  .endcap h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(48px,8vw,128px);letter-spacing:-3px;line-height:.95;margin-bottom:36px;position:relative}
+  .endcap h2 em{font-style:italic;background:var(--lime);color:var(--ink);padding:0 18px;border-radius:8px;display:inline-block;line-height:1}
+  .endcap p{font-size:18px;color:rgba(240,238,229,.7);max-width:680px;margin:0 auto 36px;position:relative}
+  .endcap .btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;position:relative}
+  .btn{padding:18px 32px;font-family:'DM Mono',monospace;font-size:12.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;border:2px solid var(--bg);transition:transform .15s,background .15s,color .15s;border-radius:8px}
+  .btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--lime)}
+  .btn.pri{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+  .btn.pri:hover{box-shadow:6px 6px 0 var(--pink)}
+
+  /* FOOTER */
+  footer{padding:32px 40px;background:var(--bg);font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;align-items:center}
+  footer b{color:var(--ink)}
+  footer a{color:var(--ink);border-bottom:1.5px solid var(--ink)}
+
+  /* VARIANT NAV */
+  .vnav{position:fixed;bottom:18px;right:18px;z-index:99;background:var(--paper);border:2px solid var(--ink);padding:6px;font-family:'DM Mono',monospace;font-size:10.5px;display:flex;gap:4px;border-radius:99px;box-shadow:4px 4px 0 var(--ink)}
+  .vnav a{padding:6px 11px;border-radius:99px;color:var(--muted);transition:all .15s}
+  .vnav a.on{background:var(--pink);color:var(--paper);font-weight:700}
+  .vnav a:hover:not(.on){background:var(--bg);color:var(--ink)}
+</style>
+</head>
+<body>
+
+<div class="corner-tl">
+  <span class="mark">S</span>
+  <span class="info"><b>Shakir Uz Zaman</b><span>CMS migration practice</span></span>
+</div>
+
+<div class="corner-tr">
+  <span class="pill"><span class="dot"></span>2 slots · Q2</span>
+  <span class="pill lime">v4 · physics</span>
+</div>
+
+<section class="hero" id="play">
+  <div class="title">
+    <h1><span class="out">Drag</span> the boxes.<br>I'll <em>migrate</em> the shop.</h1>
+    <small>An independent CMS migration practice — DanDomain · Shopify · WordPress</small>
+  </div>
+  <div class="hint">grab anything · throw it around · click to launch</div>
+
+  <!-- Physics cards seeded via JS w/ data-* attrs -->
+  <div class="pcard pink" data-x="10" data-y="22"><span class="lbl">specialty 01</span>DanDomain → Shopify<span class="big">⚡ HOT</span></div>
+  <div class="pcard lime" data-x="78" data-y="18"><span class="lbl">years shipping</span><span class="big">10+</span></div>
+  <div class="pcard sky" data-x="64" data-y="68"><span class="lbl">migrations live</span><span class="big">50+</span></div>
+  <div class="pcard yellow" data-x="14" data-y="66"><span class="lbl">failed cutovers</span><span class="big">0</span></div>
+  <div class="pcard violet" data-x="42" data-y="12"><span class="lbl">WP cache target</span><span class="big">&lt; 1.0s FCP</span></div>
+  <div class="pcard dark" data-x="80" data-y="42">SEO equity<br><span class="big">100%</span></div>
+  <div class="pcard orange" data-x="8" data-y="45">Plugin installs<br><span class="big">800+</span></div>
+  <div class="pcard" data-x="48" data-y="76">📍 Dhaka<br>🇩🇰 🇸🇬 🇨🇦</div>
+  <div class="pcard pink" data-x="32" data-y="42">Click here<br><a href="#engage" style="font-size:18px">Book a call ↗</a></div>
+</section>
+
+<section id="work">
+  <div class="shead">
+    <h2>Real shops. <em>Real numbers.</em></h2>
+    <span class="num">§ 01 · WORK</span>
+  </div>
+  <div class="stickers">
+    <a class="stk lime tall" href="https://papirladen.dk" target="_blank">
+      <div>
+        <div class="tag"><span>papirladen.dk</span><span>★ best</span></div>
+        <h3>Papirladen kept every ranking. Conversion up 38%.</h3>
+        <p>Danish stationery brand since 1987. 38k SKUs, 4,200 redirects, dual B2B/B2C pricing. DanDomain → Shopify Plus over a 6-week cutover, zero downtime.</p>
+      </div>
+      <div class="nums">
+        <div class="n">100%<small>seo kept</small></div>
+        <div class="n">+38%<small>conv 90d</small></div>
+        <div class="n">0min<small>downtime</small></div>
+      </div>
+      <span class="arrow">↗</span>
+    </a>
+    <a class="stk pink" href="https://ovellie.dk" target="_blank">
+      <div>
+        <div class="tag"><span>ovellie.dk</span><span>4.9★ Trustpilot</span></div>
+        <h3>Ovellie carries 120 brands at 94 PSI.</h3>
+        <p>Custom Liquid storefront, editor-managed brand drops, 100 KB critical CSS budget.</p>
+      </div>
+      <div class="nums">
+        <div class="n">4.9★<small>trustpilot</small></div>
+        <div class="n">94<small>psi mobile</small></div>
+      </div>
+      <span class="arrow">↗</span>
+    </a>
+    <a class="stk sky" href="https://triple-a.io" target="_blank">
+      <div>
+        <div class="tag"><span>triple-a.io</span><span>MAS-licensed</span></div>
+        <h3>Triple-A ships 14 releases / year, 0 criticals in 18 mo.</h3>
+        <p>WooCommerce payments plugin. Tagged Git release pipeline, PHPCS gates, signed releases.</p>
+      </div>
+      <div class="nums">
+        <div class="n">800+<small>installs</small></div>
+        <div class="n">14/yr<small>releases</small></div>
+        <div class="n">0<small>criticals</small></div>
+      </div>
+      <span class="arrow">↗</span>
+    </a>
+    <a class="stk violet wide" href="https://hilltimes.com" target="_blank">
+      <div>
+        <div class="tag"><span>hilltimes.com · CA · since 1989</span><span>WP</span></div>
+        <h3>Canadian national news portal — 100k+ paid subs, sub-1s FCP.</h3>
+        <p>WordPress + heavy plugin diet rewritten around a strict cache budget. Edge fragment cache + OPcache JIT + critical CSS.</p>
+      </div>
+      <div class="nums">
+        <div class="n">100k+<small>subs</small></div>
+        <div class="n">&lt; 1.0s<small>fcp cold</small></div>
+        <div class="n">37<small>years live</small></div>
+      </div>
+      <span class="arrow">↗</span>
+    </a>
+    <a class="stk yellow" href="https://byaagaard.com" target="_blank">
+      <div>
+        <div class="tag"><span>byaagaard.com</span><span>since 1946</span></div>
+        <h3>Aagaard — 80-year jewellery house, modern WP build.</h3>
+        <p>Site rebuild plus ongoing maintenance for the oldest jewellery brand in Denmark.</p>
+      </div>
+      <div class="nums">
+        <div class="n">80<small>years</small></div>
+        <div class="n">0.84s<small>fcp</small></div>
+      </div>
+      <span class="arrow">↗</span>
+    </a>
+  </div>
+</section>
+
+<section id="process" style="background:var(--paper)">
+  <div class="shead">
+    <h2>How a cutover <em>actually</em> runs.</h2>
+    <span class="num">§ 02 · PROCESS</span>
+  </div>
+  <div class="proc">
+    <div class="pc" data-n="week 1"><h4>Discover</h4><p>Inventory of catalog, integrations, plugins, redirects. Risk register signed before any code is written.</p></div>
+    <div class="pc" data-n="weeks 2–3"><h4>Rebuild</h4><p>Theme on staging. Catalog import w/ metafields. e-conomic, BC, Klaviyo, Judge.me re-wired to new schema.</p></div>
+    <div class="pc" data-n="week 4"><h4>Cutover</h4><p>301 map deployed. DNS flipped in low-traffic window. Every priority URL monitored live for 48h after.</p></div>
+    <div class="pc" data-n="weeks 5–6"><h4>Hand over</h4><p>SEO crawl diff, funnel signal review. Runbook handed over. You own the code, the keys, and the docs.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="shead">
+    <h2>What clients <em>actually</em> say.</h2>
+    <span class="num">§ 03 · TESTIMONIALS</span>
+  </div>
+  <div class="quotes">
+    <div class="q">
+      <blockquote>He moved 38,000 SKUs and twelve years of SEO authority from DanDomain to Shopify in six weeks. Conversion went up the day we cut over.</blockquote>
+      <cite><span class="av">J</span><span><b>Jens Møller</b>Director · Papirladen · DK · est. 1987</span></cite>
+    </div>
+    <div class="q">
+      <blockquote>We needed a developer who could read a Singapore regulator's audit checklist and a WooCommerce changelog in the same morning. Shakir is that person.</blockquote>
+      <cite><span class="av" style="background:var(--pink)">S</span><span><b>Sai Krishna</b>CTO · Triple-A · SG · MAS-licensed</span></cite>
+    </div>
+  </div>
+</section>
+
+<section class="endcap" id="engage">
+  <h2>Two slots open.<br><em>Q2 2026.</em></h2>
+  <p>Bring a DanDomain shop scheduled to leave, a WooCommerce build the agency couldn't finish, or a WP site that should load in under a second. 30-minute discovery call, no obligation.</p>
+  <div class="btns">
+    <a class="btn pri" href="mailto:zaman.shakirdev@gmail.com?subject=Discovery call · v4">Book a call ↗</a>
+    <a class="btn" href="https://www.linkedin.com/in/shakir-uz-zaman/" target="_blank">LinkedIn</a>
+    <a class="btn" href="https://github.com/zaman-shakir" target="_blank">GitHub</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2014–2026 <b>Shakir Uz Zaman</b> · Independent practice</span>
+  <span>v4 · Drag-and-throw physics · No framework</span>
+  <span><a href="mailto:zaman.shakirdev@gmail.com">zaman.shakirdev@gmail.com</a></span>
+</footer>
+
+<nav class="vnav">
+  <a href="/">Live</a>
+  <a href="/v1.html">V1</a>
+  <a href="/v2.html">V2</a>
+  <a href="/v3.html">V3</a>
+  <a href="/v4.html" class="on">V4</a>
+  <a href="/v5.html">V5</a>
+  <a href="/v6.html">V6</a>
+  <a href="/v7.html">V7</a>
+</nav>
+
+<script>
+// PHYSICS: drag + gentle bobble + cursor influence
+(function(){
+  const hero = document.getElementById('play');
+  const cards = Array.from(hero.querySelectorAll('.pcard'));
+  const rect = () => hero.getBoundingClientRect();
+
+  function placeInitial(){
+    const r = rect();
+    cards.forEach(c => {
+      const x = parseFloat(c.dataset.x) / 100 * r.width;
+      const y = parseFloat(c.dataset.y) / 100 * r.height;
+      c.style.left = (x - c.offsetWidth/2) + 'px';
+      c.style.top  = (y - c.offsetHeight/2) + 'px';
+      c.dataset.vx = (Math.random()-.5) * 0.3;
+      c.dataset.vy = (Math.random()-.5) * 0.3;
+      c.style.transform = `rotate(${(Math.random()-.5)*8}deg)`;
+    });
+  }
+  placeInitial();
+  window.addEventListener('resize', placeInitial);
+
+  // drag
+  let dragging = null, dx = 0, dy = 0, lastX = 0, lastY = 0, lastT = 0, vx = 0, vy = 0;
+  function pos(e){ const t = e.touches ? e.touches[0] : e; return {x: t.clientX, y: t.clientY}; }
+  cards.forEach(c => {
+    c.addEventListener('pointerdown', e => {
+      if (e.target.tagName === 'A') return;
+      dragging = c;
+      const {x, y} = pos(e);
+      const cr = c.getBoundingClientRect();
+      const hr = rect();
+      dx = x - cr.left;
+      dy = y - cr.top;
+      lastX = x; lastY = y; lastT = performance.now();
+      c.classList.add('grab');
+      c.style.transition = 'none';
+      c.dataset.vx = 0; c.dataset.vy = 0;
+      e.preventDefault();
+    });
+  });
+  window.addEventListener('pointermove', e => {
+    if (!dragging) return;
+    const {x, y} = pos(e);
+    const hr = rect();
+    const nx = x - hr.left - dx;
+    const ny = y - hr.top - dy;
+    dragging.style.left = nx + 'px';
+    dragging.style.top  = ny + 'px';
+    const now = performance.now(), dt = Math.max(1, now - lastT);
+    vx = (x - lastX) / dt * 16;
+    vy = (y - lastY) / dt * 16;
+    lastX = x; lastY = y; lastT = now;
+    dragging.style.transform = `rotate(${Math.max(-15, Math.min(15, vx))}deg)`;
+  });
+  window.addEventListener('pointerup', () => {
+    if (!dragging) return;
+    dragging.classList.remove('grab');
+    dragging.dataset.vx = Math.max(-20, Math.min(20, vx));
+    dragging.dataset.vy = Math.max(-20, Math.min(20, vy));
+    dragging = null;
+  });
+
+  // gentle physics loop
+  function tick(){
+    const r = rect();
+    cards.forEach(c => {
+      if (c === dragging) return;
+      let x = parseFloat(c.style.left) || 0;
+      let y = parseFloat(c.style.top) || 0;
+      let vx = parseFloat(c.dataset.vx) || 0;
+      let vy = parseFloat(c.dataset.vy) || 0;
+      vy += 0.08; // gentle gravity
+      vx *= 0.985; vy *= 0.985;
+      x += vx; y += vy;
+      const w = c.offsetWidth, h = c.offsetHeight;
+      if (x < 0){ x = 0; vx = -vx * 0.6; }
+      if (x + w > r.width){ x = r.width - w; vx = -vx * 0.6; }
+      if (y < 0){ y = 0; vy = -vy * 0.6; }
+      if (y + h > r.height){ y = r.height - h; vy = -vy * 0.55; vx *= 0.9; }
+      c.style.left = x + 'px';
+      c.style.top = y + 'px';
+      c.dataset.vx = vx;
+      c.dataset.vy = vy;
+    });
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+</script>
+
+</body>
+</html>
