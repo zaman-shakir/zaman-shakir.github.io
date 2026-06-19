@@ -198,9 +198,6 @@
 
   /* ---- snake canvas overlay ---- */
   #snCanvas{position:fixed;inset:0;z-index:40;pointer-events:none}
-  .sn-eat{background:linear-gradient(180deg,transparent 58%,rgba(58,215,197,.4) 58%);border-radius:2px;animation:eat .35s ease}
-  @keyframes eat{0%{background-size:0 100%}100%{background-size:100% 100%}}
-  .sn-target{outline:1.5px solid var(--acc);outline-offset:2px;border-radius:3px;background:rgba(58,215,197,.12)}
 
   /* unlock toast */
   #toast{
@@ -417,59 +414,19 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
   }
   size(); addEventListener('resize',size);
 
-  /* pick a visible word in body text, wrap it as the food target */
-  const SEL='section p, .lead, .card h3, .job p, h1, .tag';
-  let curTarget=null;
-  function clearTarget(){
-    if(curTarget&&curTarget.parentNode){
-      const p=curTarget.parentNode;
-      while(curTarget.firstChild)p.insertBefore(curTarget.firstChild,curTarget);
-      p.removeChild(curTarget); p.normalize();
-    }
-    curTarget=null;
-  }
-  function pickTarget(){
-    clearTarget();
-    const nodes=[...document.querySelectorAll(SEL)].filter(n=>{
-      const r=n.getBoundingClientRect();
-      return r.top>70 && r.bottom<H-20 && r.width>30 && n.textContent.trim().length>14;
-    });
-    if(!nodes.length) return null;
-    const el=nodes[(Math.random()*nodes.length)|0];
-    /* find a text node with a word */
-    const tw=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);
-    const texts=[]; let t; while(t=tw.nextNode()){ if(t.nodeValue.trim().length>3) texts.push(t); }
-    if(!texts.length) return null;
-    const tn=texts[(Math.random()*texts.length)|0];
-    const words=tn.nodeValue.split(/(\s+)/);
-    const wi=[]; words.forEach((w,i)=>{ if(w.trim().length>2) wi.push(i); });
-    if(!wi.length) return null;
-    const idx=wi[(Math.random()*wi.length)|0];
-    const before=words.slice(0,idx).join(''), word=words[idx], after=words.slice(idx+1).join('');
-    const span=document.createElement('span'); span.className='sn-target'; span.textContent=word;
-    const frag=document.createDocumentFragment();
-    if(before)frag.appendChild(document.createTextNode(before));
-    frag.appendChild(span);
-    if(after)frag.appendChild(document.createTextNode(after));
-    tn.parentNode.replaceChild(frag,tn);
-    curTarget=span;
-    return span;
-  }
+  /* classic snake food: a standalone emoji on a random empty grid cell */
   function pickType(){
     const tot=FOOD_TYPES.reduce((a,b)=>a+b.weight,0); let r=Math.random()*tot;
     for(const t of FOOD_TYPES){ if((r-=t.weight)<=0) return t; } return FOOD_TYPES[0];
   }
   function spawnFood(){
-    const span=pickTarget();
-    if(!span){ food=null; return; }
-    const r=span.getBoundingClientRect();
-    food={ x:Math.floor((r.left+r.width/2)/CELL), y:Math.floor((r.top+r.height/2)/CELL), span, type:pickType() };
-  }
-  function refreshFoodPos(){
-    if(!food||!food.span||!food.span.isConnected){ spawnFood(); return; }
-    const r=food.span.getBoundingClientRect();
-    if(r.bottom<0||r.top>H){ spawnFood(); return; }
-    food.x=Math.floor((r.left+r.width/2)/CELL); food.y=Math.floor((r.top+r.height/2)/CELL);
+    let x,y,tries=0;
+    do{
+      x=2+((Math.random()*(cols-4))|0);
+      y=3+((Math.random()*(rows-5))|0);   /* keep below the nav row */
+      tries++;
+    }while(snake.some(s=>s.x===x&&s.y===y)&&tries<40);
+    food={ x, y, type:pickType() };
   }
   function reset(){
     const cx=Math.floor(cols/2),cy=Math.floor(rows/2);
@@ -485,9 +442,9 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
       score=Math.min(GOAL,score+food.type.points);
       scoreEl.textContent=score;
       localStorage.setItem('wp-snake',score);
-      if(food.span){ food.span.className='sn-eat'; const s=food.span; setTimeout(()=>{ if(s.parentNode){const p=s.parentNode;while(s.firstChild)p.insertBefore(s.firstChild,s);p.removeChild(s);p.normalize();} },350); curTarget=null; }
       if(score>=GOAL) unlock();
       spawnFood();
+      if(snake.length>14) snake.pop();   /* cap length so it stays tidy */
     } else {
       snake.pop();
     }
@@ -524,7 +481,7 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
   function tick(ts){
     raf=requestAnimationFrame(tick);
-    if(ts-last>speed){ last=ts; refreshFoodPos(); step(); }
+    if(ts-last>speed){ last=ts; step(); }
     draw();
   }
 
