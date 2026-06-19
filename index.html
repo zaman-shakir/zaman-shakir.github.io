@@ -1,1824 +1,557 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Shakir Uz Zaman — Migration Expert · DanDomain → Shopify · WordPress → Shopify · DanDomain → WordPress</title>
-<meta name="description" content="CMS migration expert. DanDomain to Shopify, DanDomain to WordPress, WordPress to Shopify — SEO equity preserved, zero downtime, fixed timeline. WP cache expert: any WordPress site under 1s. 10+ years.">
-<meta name="keywords" content="DanDomain to Shopify migration, DanDomain to WordPress migration, WordPress to Shopify migration, Shopify migration expert, WP cache expert, WordPress speed optimization, WooCommerce migration, Liquid developer, Denmark Shopify">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shakir Uz Zaman — WordPress Engineer</title>
+<meta name="description" content="WordPress Engineer, 9+ years. Custom themes & plugins, Gutenberg/ACF blocks, WooCommerce, PHP 7/8, WP_Query, REST API. Performance: caching, DB & asset optimization, Core Web Vitals.">
+<meta name="keywords" content="WordPress Engineer, WordPress developer, custom plugin, custom theme, Gutenberg block development, ACF blocks, WooCommerce, PHP 7 8, WP_Query, WordPress REST API, WordPress performance">
+
+<link rel="icon" type="image/png" href="/assets/img/favicon/favicon-32x32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/img/favicon/apple-touch-icon.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    /* LIGHT theme (default — Shopify-inspired) */
-    --bg:#fafaf7; --paper:#ffffff; --ink:#1a1a1a; --muted:#6b7280;
-    --line:#e5e5e5; --shop:#008060; --shop-dark:#005c47; --shop-soft:#e3f1ec;
-    --wp:#21759b; --wp-soft:#e0edf3; --dd:#d9272d; --dd-soft:#fce6e7;
-    --accent:#202e25; --gold:#f59e0b; --pulse:#7adfb3;
-  }
-  html[data-theme="dark"]{
-    --bg:#0a0a0f; --paper:#13131a; --ink:#f5f5f7; --muted:#7a7a8c;
-    --line:#23232e; --shop:#ff9900; --shop-dark:#ff7700; --shop-soft:rgba(255,153,0,.12);
-    --wp:#67e8f9; --wp-soft:rgba(103,232,249,.12); --dd:#ff5fa2; --dd-soft:rgba(255,95,162,.12);
-    --accent:#000; --gold:#ff9900; --pulse:#ff5fa2;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;scroll-behavior:smooth;transition:background-color .25s,color .25s}
-  body{background-image:radial-gradient(circle at 1px 1px,rgba(0,0,0,.05) 1px,transparent 0);background-size:28px 28px;background-attachment:fixed}
-  html[data-theme="dark"] body{background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.04) 1px,transparent 0),radial-gradient(circle at 15% 10%,rgba(255,153,0,.06),transparent 40%),radial-gradient(circle at 85% 90%,rgba(255,95,162,.06),transparent 40%);background-size:28px 28px,auto,auto;background-attachment:fixed}
-  a{color:var(--ink);text-decoration:none}
-  a:hover{color:var(--shop)}
-  svg{display:block}
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  /* reveal on scroll */
-  .rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
-  .rv.on{opacity:1;transform:translateY(0)}
-
-  .announce{background:var(--accent);color:#fff;text-align:center;padding:10px 18px;font-size:12.5px;letter-spacing:.3px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
-  .announce b{color:#7adfb3}
-  .announce .pin{display:inline-flex;align-items:center;gap:6px}
-
-  header{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
-  .nav{max-width:1240px;margin:0 auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:nowrap}
-  @media(max-width:980px){.nav .menu{display:none}}
-  .brand{font-family:'Fraunces',serif;font-weight:700;font-size:22px;letter-spacing:-.5px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
-  .brand .dot{color:var(--shop)}
-  .brand .bag{color:var(--shop)}
-  .menu{display:flex;gap:2px;justify-content:center;flex-wrap:nowrap}
-  .menu a{font-size:13px;font-weight:500;color:var(--ink);padding:7px 10px;border-radius:8px;display:inline-flex;align-items:center;gap:6px;transition:all .15s;white-space:nowrap}
-  .menu a:hover{background:rgba(255,255,255,.05);color:var(--shop)}
-  .menu a.on{color:var(--shop);background:var(--shop-soft)}
-  .icons{display:flex;gap:5px;justify-content:flex-end;align-items:center;color:var(--muted);flex-shrink:0}
-  .icobtn{display:inline-flex;align-items:center;gap:5px;padding:7px 11px;border-radius:99px;border:1px solid var(--line);background:var(--paper);font-family:inherit;font-size:12px;font-weight:500;color:var(--ink);cursor:pointer;text-decoration:none;transition:all .15s;white-space:nowrap}
-  .icobtn:hover{border-color:var(--shop);color:var(--shop);transform:translateY(-1px)}
-  .icobtn.shop{background:var(--shop);color:#fff;border-color:var(--shop)}
-  .icobtn.shop:hover{background:var(--shop-dark);color:#fff}
-  .cart-pill .badge{background:var(--paper);color:var(--shop);font-size:10px;font-weight:700;border-radius:99px;padding:1px 6px;margin-left:4px}
-
-  /* search modal */
-  .modal{position:fixed;inset:0;background:rgba(15,20,18,.6);backdrop-filter:blur(6px);z-index:200;display:none;align-items:flex-start;justify-content:center;padding:80px 20px}
-  .modal.on{display:flex;animation:fade .2s ease}
-  @keyframes fade{from{opacity:0}to{opacity:1}}
-  .modal .box{background:var(--paper);border-radius:16px;padding:24px;width:100%;max-width:560px;box-shadow:0 30px 80px rgba(0,0,0,.4);animation:slidein .3s ease;border:1px solid var(--line)}
-  @keyframes slidein{from{transform:translateY(-20px);opacity:0}to{transform:translateY(0);opacity:1}}
-  .modal h3{font-family:'Fraunces',serif;font-size:22px;margin:0 0 12px}
-  .modal input{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:12px;font-size:15px;font-family:inherit}
-  .modal input:focus{outline:none;border-color:var(--shop)}
-  .modal .sugg{margin-top:14px;font-size:12px;color:var(--muted)}
-  .modal .sugg a{display:inline-block;padding:5px 10px;background:rgba(255,255,255,.05);border-radius:99px;margin:4px 4px 0 0;font-size:12px;color:var(--ink)}
-  .modal .sugg a:hover{background:var(--shop-soft);color:var(--shop-dark)}
-  .modal .close{float:right;background:none;border:none;font-size:20px;cursor:pointer;color:#999}
-
-  .container{max-width:1240px;margin:0 auto;padding:0 24px}
-
-  .crumb{padding:18px 0 6px;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-  .crumb a{color:var(--muted)}
-  .crumb a:hover{color:var(--ink)}
-  .crumb b{color:var(--ink);font-weight:500}
-  .crumb svg{color:#ccc}
-
-  /* PDP */
-  .pdp{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:18px 0 60px;align-items:start}
-  @media(max-width:900px){.pdp{grid-template-columns:1fr;gap:28px}}
-
-  /* hero-card */
-  .hero-card{background:linear-gradient(135deg,rgba(255,153,0,.06),rgba(255,95,162,.04) 50%,rgba(103,232,249,.04));border:1px solid var(--line);border-radius:18px;padding:24px;position:relative;overflow:hidden}
-  .hero-card::before{content:"";position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(255,153,0,.18),transparent 70%)}
-  .hero-eyebrow{font-size:10.5px;letter-spacing:2px;color:var(--shop);text-transform:uppercase;font-weight:700;display:inline-flex;align-items:center;gap:6px;margin-bottom:14px;position:relative;z-index:1}
-  .hero-eyebrow .pip{width:6px;height:6px;background:var(--shop);border-radius:50%;animation:pulse 1.5s infinite;box-shadow:0 0 6px var(--shop)}
-  .hero-stack{display:flex;flex-direction:column;gap:10px;position:relative;z-index:1}
-  .hero-spec{display:grid;grid-template-columns:32px 1fr auto;gap:12px;align-items:center;padding:14px;background:var(--paper);border-radius:12px;border:1px solid var(--line);text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s}
-  .hero-spec:hover{transform:translateX(4px);box-shadow:0 6px 18px rgba(0,0,0,.06)}
-  .hero-spec.dd{border-left:3px solid var(--dd)}
-  .hero-spec.wp{border-left:3px solid var(--wp)}
-  .hero-spec.speed{border-left:3px solid var(--shop)}
-  .hero-spec-num{font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:var(--muted);line-height:1;opacity:.4}
-  .hero-spec-tag{font-size:9.5px;letter-spacing:1.5px;font-weight:700;color:var(--shop);text-transform:uppercase;margin-bottom:3px}
-  .hero-spec.dd .hero-spec-tag{color:var(--dd)}
-  .hero-spec.wp .hero-spec-tag{color:var(--wp)}
-  .hero-spec h3{font-family:'Fraunces',serif;font-size:16px;font-weight:600;margin:0 0 3px;color:var(--ink);line-height:1.2}
-  .hero-spec p{font-size:12px;color:var(--muted);line-height:1.45;margin:0}
-  .hero-spec-cta{font-size:12px;font-weight:700;color:var(--shop);white-space:nowrap}
-  .hero-foot{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);position:relative;z-index:1}
-  .hero-foot-stat{font-size:12px;color:var(--ink);font-weight:500}
-  .hero-foot-stat b{color:var(--shop);font-family:'Fraunces',serif;font-weight:700;font-size:16px;margin-right:4px}
-  .main-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
-  .main-img:hover img{transform:scale(1.03)}
-  .main-img .tags{position:absolute;top:16px;left:16px;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
-  .main-img .tag{background:var(--paper);color:var(--ink);font-size:11px;font-weight:700;padding:6px 12px;border-radius:999px;box-shadow:0 2px 8px rgba(0,0,0,.08);letter-spacing:.5px;display:inline-flex;align-items:center;gap:5px;animation:slidein .5s ease both}
-  .main-img .tag:nth-child(1){animation-delay:.1s}
-  .main-img .tag:nth-child(2){animation-delay:.2s}
-  .main-img .tag:nth-child(3){animation-delay:.3s}
-  .main-img .tag:nth-child(4){animation-delay:.4s}
-  .main-img .tag.shop{background:var(--shop);color:#fff}
-  .main-img .tag.wp{background:var(--wp);color:#fff}
-  .main-img .tag.dd{background:var(--dd);color:#fff}
-  .main-img .verified{position:absolute;bottom:16px;left:16px;background:rgba(0,0,0,.7);color:#fff;padding:8px 14px;border-radius:999px;font-size:11px;font-weight:600;backdrop-filter:blur(8px);display:flex;align-items:center;gap:6px}
-  .main-img .stock{position:absolute;bottom:16px;right:16px;background:var(--pulse);color:#063a26;padding:6px 12px;border-radius:99px;font-size:10.5px;font-weight:700;letter-spacing:1px;display:flex;align-items:center;gap:5px}
-  .main-img .stock::before{content:"";width:6px;height:6px;border-radius:50%;background:#063a26;animation:pulse 1.4s infinite}
-  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(1.4)}}
-
-  .info .vendor{font-size:11px;color:var(--shop);letter-spacing:1.5px;text-transform:uppercase;font-weight:700;display:flex;align-items:center;gap:8px}
-  .info .vendor .pip{width:5px;height:5px;background:var(--shop);border-radius:50%;animation:pulse 1.5s infinite}
-  .info h1{font-family:'Fraunces',serif;font-weight:600;font-size:44px;letter-spacing:-1.2px;line-height:1.05;margin:10px 0 8px;color:var(--ink)}
-  .info .role{font-size:15px;color:var(--muted);margin-bottom:14px;line-height:1.55}
-  .info .role b{color:var(--shop);font-weight:600}
-  .reviews{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);margin-bottom:18px;flex-wrap:wrap}
-  .stars{color:var(--gold);letter-spacing:2px;font-size:14px}
-  .pipe{color:#ddd}
-
-  .price-row{display:flex;align-items:baseline;gap:10px;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);flex-wrap:wrap}
-  .price-row .price{font-family:'Fraunces',serif;font-size:30px;font-weight:600;color:var(--ink)}
-  .price-row .was{font-size:14px;color:var(--muted);text-decoration:line-through}
-  .price-row .save{margin-left:auto;background:var(--shop-soft);color:var(--shop-dark);font-size:11px;font-weight:600;padding:5px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:5px}
-
-  .field{margin-top:22px}
-  .field .label{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
-  .field .label .picked{color:var(--muted);font-weight:400}
-  .pills{display:flex;flex-wrap:wrap;gap:8px}
-  .pill{font-size:13px;padding:9px 14px;border:1px solid var(--line);background:var(--paper);border-radius:999px;cursor:pointer;transition:all .15s;color:var(--ink);font-weight:500;font-family:inherit;display:inline-flex;align-items:center;gap:6px}
-  .pill:hover{border-color:#999;transform:translateY(-1px)}
-  .pill.on{border-color:var(--ink);background:var(--ink);color:#fff}
-  .pill .sub{color:inherit;opacity:.6;font-size:11px;margin-left:3px;font-weight:400}
-  .pill .glow{width:6px;height:6px;border-radius:50%;background:var(--shop);box-shadow:0 0 6px var(--shop)}
-  .pill.hot::after{content:"HOT";font-size:9px;background:var(--dd);color:#fff;padding:1px 5px;border-radius:3px;letter-spacing:1px;margin-left:4px;font-weight:700}
-
-  .buy{display:grid;grid-template-columns:130px 1fr;gap:10px;margin-top:24px}
-  @media(max-width:480px){.buy{grid-template-columns:1fr}}
-  .qty{display:flex;border:1px solid var(--line);border-radius:999px;align-items:center;justify-content:space-between;padding:0 8px;background:#fff}
-  .qty button{background:none;border:none;font-size:18px;width:34px;height:46px;cursor:pointer;color:var(--ink)}
-  .qty input{border:none;text-align:center;width:40px;font-family:inherit;font-size:14px;font-weight:600;background:transparent;outline:none}
-  .add{background:var(--ink);color:#fff;border:none;border-radius:999px;padding:14px 22px;font-weight:600;font-size:14px;cursor:pointer;letter-spacing:.3px;transition:transform .12s,background .12s;display:inline-flex;align-items:center;justify-content:center;gap:8px}
-  .add:hover{background:#000;transform:translateY(-1px)}
-  .buy-now{margin-top:10px;background:var(--shop);color:#fff;border:none;border-radius:999px;padding:14px 22px;font-weight:600;font-size:14px;cursor:pointer;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .12s;text-decoration:none}
-  .buy-now:hover{background:var(--shop-dark)}
-
-  .trust{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px;padding:16px;background:var(--paper);border:1px solid var(--line);border-radius:12px}
-  @media(max-width:520px){.trust{grid-template-columns:1fr}}
-  .trust .item{display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--muted)}
-  .trust .item svg{flex-shrink:0;color:var(--shop)}
-  .trust .item b{display:block;font-size:12px;font-weight:600;color:var(--ink);margin-bottom:2px}
-
-  .desc{margin-top:24px;font-family:'Fraunces',serif;font-size:16px;line-height:1.65;color:var(--ink)}
-  .desc::first-letter{font-size:48px;float:left;line-height:1;font-weight:600;padding:4px 8px 0 0;color:var(--shop)}
-
-  .acc{margin-top:24px;border-top:1px solid var(--line)}
-  .acc details{border-bottom:1px solid var(--line)}
-  .acc summary{cursor:pointer;padding:16px 0;font-size:14px;font-weight:600;color:var(--ink);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px}
-  .acc summary::-webkit-details-marker{display:none}
-  .acc summary .left{display:inline-flex;align-items:center;gap:10px}
-  .acc summary .chev{font-size:22px;font-weight:400;color:#999;transition:transform .2s}
-  .acc details[open] .chev{transform:rotate(45deg);color:var(--shop)}
-  .acc .body{padding:0 0 20px;font-size:14px;color:var(--muted);line-height:1.7}
-  .acc .body table{width:100%;border-collapse:collapse}
-  .acc .body td{padding:6px 8px 6px 0}
-  .acc .body td:first-child{color:var(--ink);width:35%;font-weight:500}
-  .acc .body .bar-wrap{background:rgba(255,255,255,.04);border-radius:99px;height:6px;width:100%;max-width:160px;display:inline-block;vertical-align:middle;margin-right:8px}
-  .acc .body .bar{display:block;height:100%;background:var(--shop);border-radius:99px}
-
-  /* MIGRATION */
-  .migrate{margin:60px 0;background:linear-gradient(135deg,rgba(255,153,0,.08) 0%,rgba(255,95,162,.06) 50%,rgba(103,232,249,.06) 100%);border:1px solid var(--line);border-radius:24px;padding:48px;overflow:hidden;position:relative}
-  @media(max-width:780px){.migrate{padding:28px}}
-  .migrate::before{content:"";position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(217,39,45,.08),transparent 70%);animation:float 8s ease-in-out infinite}
-  @keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,20px)}}
-  .migrate .eyebrow{font-size:11px;color:var(--dd);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:10px;position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px}
-  .migrate h2{font-family:'Fraunces',serif;font-size:42px;line-height:1.05;letter-spacing:-1.5px;margin:0 0 14px;color:var(--ink);max-width:780px;position:relative;z-index:1}
-  .migrate h2 .hl{background:linear-gradient(180deg,transparent 60%,rgba(0,128,96,.25) 60%);padding:0 2px}
-  .migrate .lead{font-size:16px;line-height:1.65;color:var(--muted);max-width:680px;margin:0 0 28px;position:relative;z-index:1}
-  .lanes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;position:relative;z-index:1}
-  @media(max-width:780px){.lanes{grid-template-columns:1fr}}
-  .lane{background:var(--paper);border-radius:16px;padding:24px;border:1px solid rgba(0,0,0,.04);transition:transform .15s,box-shadow .15s;text-decoration:none;color:inherit;display:flex;flex-direction:column;position:relative}
-  .lane:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.08)}
-  .lane.bestseller{border:2px solid var(--shop)}
-  .lane.bestseller::before{content:"★ BESTSELLER";position:absolute;top:-10px;left:20px;background:var(--shop);color:#fff;font-size:10px;font-weight:700;letter-spacing:1px;padding:3px 10px;border-radius:6px}
-  .lane .flow{display:flex;align-items:center;gap:8px;margin-bottom:14px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;flex-wrap:wrap}
-  .lane .flow .from{background:var(--dd-soft);color:var(--dd);padding:4px 9px;border-radius:6px}
-  .lane .flow .from.wp{background:var(--wp-soft);color:var(--wp)}
-  .lane .flow .to.shop{background:var(--shop-soft);color:var(--shop-dark);padding:4px 9px;border-radius:6px}
-  .lane .flow .to.wp{background:var(--wp-soft);color:var(--wp);padding:4px 9px;border-radius:6px}
-  .lane .arr{color:#999;font-size:13px}
-  .lane h3{font-family:'Fraunces',serif;font-size:21px;margin:0 0 8px;line-height:1.2;color:var(--ink)}
-  .lane p{font-size:13px;color:var(--muted);line-height:1.55;margin:0 0 14px;flex:1}
-  .lane ul{margin:0 0 16px;padding-left:18px;font-size:12px;color:var(--muted);line-height:1.7}
-  .lane ul li::marker{color:var(--shop)}
-  .lane .priceblock{padding:12px 14px;background:rgba(255,255,255,.03);border-radius:10px;border:1px dashed var(--line);margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;font-size:12px}
-  .lane .priceblock .from-l{color:var(--muted);font-weight:500}
-  .lane .priceblock .num{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--ink)}
-  .lane .priceblock .num small{font-size:11px;color:var(--muted);font-weight:400}
-  .lane .ctapill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#fff;padding:10px 14px;background:var(--ink);border-radius:99px;justify-content:center}
-  .lane.bestseller .ctapill{background:var(--shop)}
-
-  .migrate .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:28px;padding-top:24px;border-top:1px dashed rgba(0,0,0,.1);position:relative;z-index:1}
-  @media(max-width:780px){.migrate .stats{grid-template-columns:repeat(2,1fr)}}
-  .migrate .stats .stat .num{font-family:'Fraunces',serif;font-size:34px;font-weight:600;color:var(--shop);line-height:1}
-  .migrate .stats .stat .lbl{font-size:11px;color:#666;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin-top:4px}
-
-  /* WP CACHE SPECIALTY BANNER */
-  .cache{margin:60px 0;background:linear-gradient(135deg,#0c2340 0%,#1d3557 50%,#06b6d4 130%);color:#fff;border-radius:24px;padding:48px;display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center;overflow:hidden;position:relative}
-  @media(max-width:900px){.cache{grid-template-columns:1fr;padding:28px}}
-  .cache::before{content:"";position:absolute;left:-100px;bottom:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(6,182,212,.3),transparent 70%);animation:float 10s ease-in-out infinite}
-  .cache .eb{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:2px;color:#67e8f9;font-weight:700;text-transform:uppercase;margin-bottom:14px;position:relative;z-index:1;padding:5px 12px;background:rgba(103,232,249,.1);border-radius:99px}
-  .cache h2{font-family:'Fraunces',serif;font-size:36px;line-height:1.1;letter-spacing:-1px;margin:0 0 12px;position:relative;z-index:1}
-  .cache h2 .hl{color:#67e8f9}
-  .cache p{font-size:14.5px;color:var(--ink);line-height:1.65;margin:0 0 18px;position:relative;z-index:1;max-width:520px}
-  .cache .speedo{position:relative;z-index:1;background:rgba(255,255,255,.05);border:1px solid rgba(103,232,249,.2);border-radius:18px;padding:24px;backdrop-filter:blur(10px)}
-  .cache .speedo .row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:13px}
-  .cache .speedo .row:last-child{border:none;padding-top:14px;margin-top:6px;border-top:1px solid rgba(255,255,255,.2)}
-  .cache .speedo .row .k{color:#cbd5e1;font-weight:500}
-  .cache .speedo .row .bef{color:#fca5a5}
-  .cache .speedo .row .aft{color:#7adfb3;font-weight:700;display:inline-flex;align-items:center;gap:4px}
-  .cache .speedo .gauge{height:8px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden;margin-top:6px;width:100%}
-  .cache .speedo .gauge::after{content:"";display:block;height:100%;background:linear-gradient(90deg,#7adfb3,#67e8f9);border-radius:99px;animation:fill 2s ease-out both;width:95%}
-  @keyframes fill{from{width:0}}
-  .cache .stack{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;position:relative;z-index:1}
-  .cache .stack span{font-size:10.5px;background:rgba(255,255,255,.08);color:var(--ink);padding:4px 10px;border-radius:99px;border:1px solid rgba(255,255,255,.1);font-weight:500;letter-spacing:.3px}
-  .cache .cta{display:inline-flex;align-items:center;gap:8px;background:var(--paper);color:#0c2340;padding:10px 18px;border-radius:99px;font-weight:700;font-size:13px;text-decoration:none;margin-top:18px;position:relative;z-index:1}
-  .cache .cta:hover{background:#67e8f9}
-
-  /* now shipping */
-  .building{margin:30px 0 70px;background:linear-gradient(135deg,#0f1a14 0%,#1e3a2e 100%);color:#fff;border-radius:18px;padding:38px;display:grid;grid-template-columns:1.4fr 1fr;gap:30px;align-items:center;overflow:hidden;position:relative}
-  @media(max-width:780px){.building{grid-template-columns:1fr;padding:28px}}
-  .building::before{content:"";position:absolute;top:-50px;right:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(122,223,179,.2),transparent 70%);animation:float 7s ease-in-out infinite}
-  .building .live{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:2px;color:#7adfb3;font-weight:600;text-transform:uppercase;margin-bottom:12px;position:relative;z-index:1}
-  .building .live::before{content:"";width:8px;height:8px;border-radius:50%;background:#7adfb3;box-shadow:0 0 0 4px rgba(122,223,179,.2);animation:pulse 1.6s infinite}
-  .building h2{font-family:'Fraunces',serif;font-size:30px;line-height:1.1;letter-spacing:-.5px;margin:0 0 10px;position:relative;z-index:1}
-  .building p{color:#cfe5d8;font-size:14px;line-height:1.65;margin:0 0 16px;position:relative;z-index:1;max-width:520px}
-  .building .meta{display:flex;flex-wrap:wrap;gap:16px;font-size:12px;color:#9bc7b1;position:relative;z-index:1}
-  .building .meta b{color:#fff;font-weight:500}
-  .building .stat{background:rgba(255,255,255,.05);border:1px solid rgba(122,223,179,.2);border-radius:14px;padding:20px;position:relative;z-index:1}
-  .building .stat .row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:13px}
-  .building .stat .row:last-child{border:none}
-  .building .stat .row span:first-child{color:#9bc7b1}
-  .building .stat .row span:last-child{color:#fff;font-weight:600}
-  .building .stat .row .ok{color:#7adfb3}
-
-  /* process */
-  .process{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:step;position:relative}
-  @media(max-width:900px){.process{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:480px){.process{grid-template-columns:1fr}}
-  .step{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px 18px;position:relative;counter-increment:step;display:flex;flex-direction:column;transition:transform .2s}
-  .step:hover{transform:translateY(-3px)}
-  .step::before{content:"0" counter(step);position:absolute;top:14px;right:16px;font-family:'Fraunces',serif;font-size:30px;font-weight:600;color:var(--shop-soft);line-height:1}
-  .step h3{font-family:'Fraunces',serif;font-size:17px;margin:0 0 6px;color:var(--ink)}
-  .step p{font-size:12.5px;color:var(--muted);line-height:1.55;margin:0;flex:1}
-  .step .icon{width:36px;height:36px;border-radius:10px;background:var(--shop-soft);color:var(--shop-dark);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
-  .step .dur{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;letter-spacing:1px;color:var(--shop);font-weight:700;text-transform:uppercase;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
-
-  .sec-head{margin:50px 0 22px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;border-bottom:1px solid var(--line);padding-bottom:14px}
-  .sec-head h2{font-family:'Fraunces',serif;font-size:30px;font-weight:600;letter-spacing:-.5px;margin:0;color:var(--ink);display:inline-flex;align-items:center;gap:10px}
-  .sec-head h2 .eyetag{font-size:10px;letter-spacing:1.5px;color:var(--shop);background:var(--shop-soft);padding:3px 8px;border-radius:99px;font-family:'Inter',sans-serif;font-weight:700}
-  .sec-head .sub{font-size:13px;color:var(--muted);max-width:480px;text-align:right}
-  @media(max-width:600px){.sec-head{flex-direction:column;align-items:flex-start}.sec-head .sub{text-align:left}}
-
-  .tabs{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap}
-  .tab{font-size:13px;padding:8px 16px;border:1px solid var(--line);background:var(--paper);border-radius:999px;cursor:pointer;font-weight:500;color:var(--muted);font-family:inherit;display:inline-flex;align-items:center;gap:6px}
-  .tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-  .tab .count{margin-left:5px;color:inherit;opacity:.6;font-size:11px}
-
-  .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  @media(max-width:900px){.projects{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:560px){.projects{grid-template-columns:1fr}}
-  .pcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .15s,box-shadow .15s;cursor:pointer;display:flex;flex-direction:column;text-decoration:none;color:inherit}
-  .pcard:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.06)}
-  .pcard .image{aspect-ratio:5/4;background:linear-gradient(135deg,#e3f1ec,#cfe5d8);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-  .pcard .image .glyph{font-family:'Fraunces',serif;font-size:62px;font-weight:600;color:var(--shop-dark);opacity:.4;line-height:1}
-  .pcard .image .pill{position:absolute;top:12px;left:12px;background:var(--paper);padding:5px 10px;border-radius:999px;font-size:11px;font-weight:600;color:var(--ink);letter-spacing:.4px;display:inline-flex;align-items:center;gap:5px}
-  .pcard .image .platform{position:absolute;top:12px;right:12px;font-size:10px;font-weight:700;padding:4px 8px;border-radius:4px;letter-spacing:1px;display:inline-flex;align-items:center;gap:4px}
-  .pcard .image .platform.shopify{background:var(--shop);color:#fff}
-  .pcard .image .platform.wp{background:var(--wp);color:#fff}
-  .pcard .image .platform.plugin{background:#7c3aed;color:#fff}
-  .pcard .image .fav{position:absolute;bottom:12px;right:12px;background:var(--paper);border-radius:8px;padding:5px;box-shadow:0 2px 8px rgba(0,0,0,.1);width:36px;height:36px;display:flex;align-items:center;justify-content:center}
-  .pcard .image .fav img{width:24px;height:24px;border-radius:4px}
-  .pcard.shopify .image{background:linear-gradient(135deg,#d4f0e2,#a9e2c5)}
-  .pcard.shopify .image .glyph{color:var(--shop-dark)}
-  .pcard.wp .image{background:linear-gradient(135deg,#d6e8f1,#a9d0e2)}
-  .pcard.wp .image .glyph{color:#1d4f6c}
-  .pcard.plugin .image{background:linear-gradient(135deg,#e9d5ff,#d8b4fe)}
-  .pcard.plugin .image .glyph{color:#6b21a8}
-  .pcard .body{padding:18px;flex:1;display:flex;flex-direction:column}
-  .pcard .body h3{font-family:'Fraunces',serif;font-size:18px;font-weight:600;margin:0 0 4px;line-height:1.2;color:var(--ink)}
-  .pcard .body .yr{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;margin-bottom:10px}
-  .pcard .body p{font-size:13px;color:var(--muted);line-height:1.55;margin:0 0 14px;flex:1}
-  .pcard .stack{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
-  .pcard .stack span{font-size:10px;background:rgba(255,255,255,.05);color:var(--muted);padding:3px 8px;border-radius:999px;font-weight:500;letter-spacing:.3px}
-  .pcard .meta-row{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:12px;font-size:12px;color:var(--muted)}
-  .pcard .meta-row b{color:var(--ink);font-weight:600}
-  .pcard .link{color:var(--shop);font-weight:600;font-size:12px;display:inline-flex;align-items:center;gap:4px}
-
-  /* trusted by w/ favicons */
-  .trusted-by{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-  @media(max-width:900px){.trusted-by{grid-template-columns:repeat(2,1fr)}}
-  /* tech tape */
-  .techtape{margin:48px -40px 0;padding:18px 0;border-block:1px solid var(--line);background:linear-gradient(90deg,var(--bg) 0%,var(--paper) 50%,var(--bg) 100%);overflow:hidden;mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-  .techtape .ttrow{display:flex;gap:28px;white-space:nowrap;font-family:'Fraunces',serif;font-size:22px;font-weight:500;letter-spacing:-.5px;color:var(--ink);animation:tape 50s linear infinite;will-change:transform}
-  .techtape .ttrow span:nth-child(2n){color:var(--shop);font-family:'JetBrains Mono',monospace;font-size:16px;opacity:.6}
-  .techtape:hover .ttrow{animation-play-state:paused}
-  @keyframes tape{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-  @media(max-width:780px){.techtape{margin:36px -16px 0}.techtape .ttrow{font-size:18px;gap:20px}}
-  .tbcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;transition:transform .15s,box-shadow .15s,border-color .15s;text-decoration:none;color:inherit;display:flex;flex-direction:column;justify-content:space-between;min-height:160px;position:relative;overflow:hidden}
-  .tbcard:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.07);border-color:var(--shop)}
-  .tbcard::after{content:attr(data-metric);position:absolute;top:10px;right:10px;font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--shop-dark);background:var(--shop-soft);border:1px solid rgba(0,128,96,.18);padding:4px 8px;border-radius:99px;opacity:0;transform:translateY(-4px);transition:opacity .2s ease,transform .2s ease;pointer-events:none;font-family:'JetBrains Mono',monospace;white-space:nowrap}
-  .tbcard[data-metric]:hover::after{opacity:1;transform:translateY(0)}
-  .tbcard .liveping{position:absolute;left:14px;bottom:14px;width:7px;height:7px;border-radius:50%;background:var(--shop);box-shadow:0 0 0 0 rgba(0,128,96,.6);animation:livepulse 2s infinite;display:none}
-  .tbcard[data-live="1"] .liveping{display:block}
-  @keyframes livepulse{0%{box-shadow:0 0 0 0 rgba(0,128,96,.55)}70%{box-shadow:0 0 0 8px rgba(0,128,96,0)}100%{box-shadow:0 0 0 0 rgba(0,128,96,0)}}
-  .tbcard .topr{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
-  .tbcard .left-l{display:flex;gap:10px;align-items:center}
-  .tbcard .fav{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.03);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;border:1px solid var(--line)}
-  .tbcard .fav img{width:22px;height:22px;border-radius:4px}
-  .tbcard .fav.placeholder{background:var(--shop-soft);color:var(--shop-dark);font-family:'Fraunces',serif;font-weight:700;font-size:15px}
-  .tbcard .name-block{flex:1;min-width:0}
-  .tbcard .logo{font-family:'Fraunces',serif;font-size:18px;font-weight:700;color:var(--ink);letter-spacing:-.3px;line-height:1.1}
-  .tbcard .country{font-size:10px;color:var(--muted);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-top:2px}
-  .tbcard .role{font-size:12px;color:var(--muted);line-height:1.5;margin-top:10px;flex:1}
-  .tbcard .bot{display:flex;justify-content:space-between;align-items:center;margin-top:14px;flex-wrap:wrap;gap:6px}
-  .tbcard .stat{font-size:11px;color:var(--shop);font-weight:700;letter-spacing:.5px}
-  .tbcard .badge{font-size:9px;font-weight:700;padding:2px 7px;border-radius:4px;letter-spacing:1px;display:inline-flex;align-items:center;gap:4px}
-  .tbcard .badge.shopify{background:var(--shop-soft);color:var(--shop-dark)}
-  .tbcard .badge.wp{background:var(--wp-soft);color:var(--wp)}
-  .tbcard.active{border-color:var(--shop);background:linear-gradient(180deg,var(--shop-soft) 0%,#fff 100%)}
-
-  /* work history */
-  .timeline{position:relative;padding-left:34px}
-  .timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:var(--line)}
-  .role-item{position:relative;padding-bottom:28px}
-  .role-item::before{content:"";position:absolute;left:-28px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:3px solid var(--shop)}
-  .role-item.archived::before{border-color:#cbd5cf}
-  .role-item .yr{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:1.5px;text-transform:uppercase}
-  .role-item h3{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--ink);margin:4px 0 4px;line-height:1.25}
-  .role-item .at{font-size:13px;color:var(--shop);font-weight:600;margin-bottom:10px}
-  .role-item ul{margin:0;padding-left:18px;color:var(--muted);font-size:13px;line-height:1.65}
-  .role-item .stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-  .role-item .stack span{font-size:10px;background:rgba(255,255,255,.05);color:var(--muted);padding:3px 8px;border-radius:999px;font-weight:500}
-
-  /* skills grouped */
-  .skillgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  @media(max-width:780px){.skillgrid{grid-template-columns:1fr}}
-  .skillcol{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px}
-  .skillcol h3{font-family:'Fraunces',serif;font-size:18px;margin:0 0 4px;display:flex;align-items:center;gap:8px}
-  .skillcol .blurb{font-size:12px;color:var(--muted);margin-bottom:16px}
-  .skillcol .row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--line);font-size:13.5px}
-  .skillcol .row:last-child{border:none}
-  .skillcol .row .name{font-weight:500;display:inline-flex;align-items:center;gap:6px}
-  .skillcol .row .lvl{font-size:11px;color:var(--shop);background:var(--shop-soft);padding:2px 8px;border-radius:99px;font-weight:600}
-  .skillcol.strong .row .lvl{color:#92400e;background:#fef3c7}
-  .skillcol.learning .row .lvl{color:#1e40af;background:#dbeafe}
-  .skillcol .tag{font-size:10px;color:var(--shop);background:var(--shop-soft);padding:3px 8px;border-radius:99px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
-
-  /* metrics */
-  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:30px}
-  @media(max-width:780px){.metrics{grid-template-columns:repeat(2,1fr)}}
-  .metric{text-align:center;border-right:1px solid var(--line);padding:0 10px}
-  .metric:last-child{border:none}
-  @media(max-width:780px){.metric{border:none;padding:14px 0;border-bottom:1px solid var(--line)}.metric:last-child{border:none}}
-  .metric .big{font-family:'Fraunces',serif;font-size:46px;font-weight:600;color:var(--shop);line-height:1}
-  .metric .lbl{font-size:11px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin-top:8px}
-  .metric .blurb{font-size:12px;color:var(--muted);margin-top:6px}
-
-  /* FAQ */
-  .faq details{background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-bottom:10px;padding:0 20px;transition:border-color .15s}
-  .faq details[open]{border-color:var(--shop)}
-  .faq summary{cursor:pointer;padding:18px 0;font-size:15px;font-weight:600;color:var(--ink);list-style:none;display:flex;justify-content:space-between;align-items:center;font-family:'Fraunces',serif;gap:10px}
-  .faq summary::-webkit-details-marker{display:none}
-  .faq summary .q{display:inline-flex;align-items:center;gap:10px;flex:1}
-  .faq summary .q .qnum{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--shop);background:var(--shop-soft);padding:3px 8px;border-radius:6px}
-  .faq summary::after{content:"+";font-size:22px;color:var(--shop);font-weight:400}
-  .faq details[open] summary::after{content:"−"}
-  .faq .body{padding:0 0 20px;font-size:14px;color:var(--muted);line-height:1.7}
-
-  .edu{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px 30px;display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center}
-  @media(max-width:680px){.edu{grid-template-columns:1fr;text-align:left}}
-  .edu .crest{width:60px;height:60px;border-radius:50%;background:var(--shop-soft);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;color:var(--shop-dark);font-size:20px}
-  .edu h3{font-family:'Fraunces',serif;font-size:20px;font-weight:600;margin:0 0 4px;color:var(--ink)}
-  .edu .where{font-size:13px;color:var(--muted)}
-  .edu .yrs{font-size:13px;color:var(--muted);font-weight:500;display:inline-flex;align-items:center;gap:6px}
-
-
-  /* CHECKOUT */
-  .checkout{display:grid;grid-template-columns:1.3fr 1fr;gap:0;margin:30px 0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}
-  @media(max-width:900px){.checkout{grid-template-columns:1fr}}
-  .ck-form{padding:36px}
-  .ck-summary{background:linear-gradient(180deg,#f6f5f1 0%,#fafaf7 100%);padding:36px;border-left:1px solid var(--line)}
-  @media(max-width:900px){.ck-summary{border-left:none;border-top:1px solid var(--line)}}
-  .ck-stage{font-size:11px;letter-spacing:2px;color:var(--shop);text-transform:uppercase;font-weight:700;margin-bottom:6px;display:inline-flex;align-items:center;gap:6px}
-  .ck-form h2{font-family:'Fraunces',serif;font-size:28px;font-weight:600;margin:0 0 6px;letter-spacing:-.5px}
-  .ck-form .lead{color:var(--muted);font-size:13.5px;line-height:1.55;margin-bottom:22px}
-  .ck-section{margin-bottom:24px}
-  .ck-section h3{font-size:13px;font-weight:600;color:var(--ink);margin:0 0 10px;display:flex;justify-content:space-between;align-items:center}
-  .ck-section h3 .step-n{font-size:11px;color:var(--muted);font-weight:500}
-  .ck-method{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-  .ck-method label{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid var(--line);border-radius:12px;cursor:pointer;font-size:13px;font-weight:500;background:var(--paper);transition:all .15s}
-  .ck-method label:hover{border-color:var(--shop)}
-  .ck-method label.on{border-color:var(--shop);background:var(--shop-soft)}
-  .ck-method input{accent-color:var(--shop)}
-  .ck-method .ml b{display:block;font-size:13.5px;color:var(--ink)}
-  .ck-method .ml small{font-size:11px;color:var(--muted);font-weight:400}
-  .ck-channels{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-  .ch{display:flex;align-items:center;gap:10px;padding:13px 16px;border:1px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink);font-size:13px;font-weight:600;text-decoration:none;transition:all .15s}
-  .ch:hover{border-color:var(--ink);transform:translateY(-1px)}
-  .ch .ico{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0}
-  .ch .ico.wa{background:#25d366}
-  .ch .ico.tg{background:#229ed9}
-  .ch .ico.em{background:var(--shop)}
-  .ch .ico.li{background:#0a66c2}
-  .ch .ico.gh{background:#181717}
-  .ch .ico.lc{background:#f59e0b}
-  .ch .vv{display:flex;flex-direction:column;gap:1px}
-  .ch .vv small{color:var(--muted);font-weight:400;font-size:11px}
-  .ck-link{display:flex;align-items:center;gap:10px;padding:12px;border:1px dashed var(--line);border-radius:10px;font-size:12.5px;color:var(--muted);background:rgba(255,255,255,.03);margin-top:10px}
-  .ck-link svg{color:var(--shop);flex-shrink:0}
-  .ck-link b{color:var(--ink);font-weight:600}
-  .ck-summary h3{font-family:'Fraunces',serif;font-size:22px;font-weight:600;margin:0 0 16px;letter-spacing:-.3px;display:flex;justify-content:space-between;align-items:center}
-  .ck-summary h3 .pill-sm{font-size:10px;color:var(--shop);background:var(--shop-soft);padding:3px 8px;border-radius:99px;font-weight:700;letter-spacing:1px;font-family:'Inter',sans-serif}
-  .li{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);align-items:flex-start}
-  .li:last-of-type{border:none}
-  .li .thumb{width:48px;height:48px;border-radius:8px;background:var(--shop-soft);display:flex;align-items:center;justify-content:center;color:var(--shop-dark);font-family:'Fraunces',serif;font-weight:700;flex-shrink:0;position:relative}
-  .li .thumb .q{position:absolute;top:-6px;right:-6px;background:var(--ink);color:#fff;font-size:10px;font-weight:700;border-radius:99px;width:18px;height:18px;display:flex;align-items:center;justify-content:center}
-  .li .body{flex:1;font-size:13px;line-height:1.4}
-  .li .body .n{font-weight:600;color:var(--ink)}
-  .li .body .v{color:var(--muted);font-size:11.5px;margin-top:2px}
-  .li .price{font-size:12.5px;color:var(--muted);text-align:right;white-space:nowrap}
-  .li .price b{display:block;color:var(--ink);font-family:'Fraunces',serif;font-weight:600;font-size:14px}
-  .discount{display:flex;gap:6px;margin:14px 0 10px}
-  .discount input{flex:1;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-family:inherit;font-size:13px;background:#fff}
-  .discount input:focus{outline:none;border-color:var(--shop)}
-  .discount button{background:var(--ink);color:#fff;border:none;border-radius:10px;padding:0 16px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:inherit}
-  .totals{font-size:13px;color:var(--muted);margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
-  .totals .row{display:flex;justify-content:space-between;padding:5px 0}
-  .totals .row.total{padding-top:14px;margin-top:6px;border-top:1px solid var(--line);font-size:18px;font-weight:600;color:var(--ink);font-family:'Fraunces',serif}
-  .totals .row.total .num{color:var(--shop)}
-  .totals .pp{font-size:11px;color:var(--muted);margin-top:4px;text-align:right}
-  .pay-btn{margin-top:18px;width:100%;background:var(--shop);color:#fff;border:none;border-radius:12px;padding:16px;font-weight:700;font-size:14px;cursor:pointer;text-decoration:none;text-align:center;letter-spacing:.3px;display:flex;align-items:center;justify-content:center;gap:8px}
-  .pay-btn:hover{background:var(--shop-dark)}
-  .secure{display:flex;align-items:center;gap:8px;justify-content:center;font-size:11px;color:var(--muted);margin-top:12px}
-
-  footer{background:var(--accent);color:#cfe5d8;padding:40px 24px 20px;margin-top:40px}
-  footer .ft{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:30px}
-  @media(max-width:780px){footer .ft{grid-template-columns:1fr 1fr}}
-  @media(max-width:480px){footer .ft{grid-template-columns:1fr}}
-  footer .brand{color:#fff;font-family:'Fraunces',serif;font-size:24px;font-weight:600}
-  footer .brand .dot{color:#7adfb3}
-  footer .blurb{font-size:13px;color:#9bc7b1;margin-top:8px;line-height:1.6;max-width:280px}
-  footer h4{font-size:11px;color:#7adfb3;letter-spacing:2px;text-transform:uppercase;margin:0 0 14px;font-weight:700}
-  footer ul{list-style:none;padding:0;margin:0;font-size:13px;line-height:2}
-  footer ul a{color:#cfe5d8;display:inline-flex;align-items:center;gap:6px}
-  footer ul a:hover{color:#fff}
-  footer .copy{max-width:1240px;margin:30px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);font-size:12px;color:#9bc7b1;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-
-  .scroll-hint{position:fixed;bottom:20px;right:20px;background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-size:12px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.15);cursor:pointer;opacity:0;transform:translateY(20px);transition:all .2s;border:none;font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:6px;z-index:40}
-  .scroll-hint.on{opacity:1;transform:translateY(0)}
-
-
-  /* ========== SITE-WIDE SNAKE OVERLAY ========== */
-  #snCanvas{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:88;display:none}
-  #snCanvas.on{display:block}
-
-  /* snake score pill inside header icons */
-  .snake-pill{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#fff7e6,#fff);border:1px solid #ff9900;color:#9a4d00;padding:5px 11px;border-radius:99px;font-family:'Inter',sans-serif;font-size:11.5px;font-weight:600;cursor:default;white-space:nowrap;line-height:1}
-  .snake-pill b{font-family:'Fraunces',serif;font-weight:700;font-size:13px;color:#ff7700}
-  .snake-pill-dot{width:6px;height:6px;border-radius:50%;background:#ff9900;animation:pulse 1.4s infinite;box-shadow:0 0 6px #ff9900;flex-shrink:0}
-  @media(max-width:780px){.snake-pill{display:none}}
-
-  /* eaten + target letter styling */
-  .snake-eaten{background:linear-gradient(180deg,transparent 60%,rgba(255,153,0,.45) 60%);padding:0 1px;border-radius:2px;animation:eatFlash .35s ease}
-  @keyframes eatFlash{from{background:rgba(255,153,0,.9)}to{background:linear-gradient(180deg,transparent 60%,rgba(255,153,0,.45) 60%)}}
-  .snake-target{outline:2px solid #ff5fa2;outline-offset:2px;border-radius:3px;background:rgba(255,95,162,.18);animation:pulseGlow 1.2s ease-in-out infinite}
-  @keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(255,95,162,.6)}50%{box-shadow:0 0 0 8px rgba(255,95,162,0)}}
-</style>
-
-<!-- SEO: JSON-LD Person + Service + FAQPage -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
   "@type":"Person",
   "name":"Shakir Uz Zaman",
   "url":"https://zaman-shakir.github.io/",
-  "jobTitle":"CMS Migration Expert — DanDomain → Shopify, DanDomain → WordPress, WordPress Speed Specialist",
+  "jobTitle":"WordPress Engineer — Custom Themes, Plugins, Gutenberg Blocks, WooCommerce",
   "email":"mailto:zaman.shakirdev@gmail.com",
-  "telephone":"+8801738790641",
   "address":{"@type":"PostalAddress","addressLocality":"Dhaka","addressCountry":"BD"},
-  "sameAs":["https://github.com/zaman-shakir","https://linkedin.com/in/shakir-uz-zaman","https://leetcode.com/shakir-uz-zaman"],
-  "knowsAbout":["Shopify","WordPress","WooCommerce","Liquid","DanDomain to Shopify migration","DanDomain to WordPress migration","WordPress to Shopify migration","WP cache optimization","PHP","Laravel","React","SvelteKit"]
+  "sameAs":["https://github.com/zaman-shakir","https://linkedin.com/in/shakir-uz-zaman"],
+  "knowsAbout":["WordPress","Custom WordPress themes","Custom WordPress plugins","Gutenberg block development","ACF","WooCommerce","WP_Query","WordPress REST API","PHP","MySQL optimization","JavaScript","Core Web Vitals"]
 }
 </script>
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"Service",
-  "serviceType":"DanDomain to Shopify Migration",
-  "provider":{"@type":"Person","name":"Shakir Uz Zaman"},
-  "areaServed":["Denmark","EU","Singapore","Canada","Worldwide"],
-  "description":"DanDomain to Shopify, DanDomain to WordPress and WordPress to Shopify migrations with SEO equity preservation, zero downtime cutovers and fixed-scope pricing."
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"How long does a DanDomain to Shopify migration take?","acceptedAnswer":{"@type":"Answer","text":"1–6 weeks depending on catalog size, integrations and design complexity."}},
-    {"@type":"Question","name":"Will my SEO rankings survive a DanDomain to WordPress migration?","acceptedAnswer":{"@type":"Answer","text":"Yes — URL-for-URL 301 redirect map, preserved title/meta/schema, ported sitemap."}},
-    {"@type":"Question","name":"Can you handle WordPress to Shopify migrations with custom plugins?","acceptedAnswer":{"@type":"Answer","text":"Yes. WooCommerce custom logic maps to Shopify apps, metafields, Shopify Functions or custom theme code."}},
-    {"@type":"Question","name":"How fast can you make my WordPress site?","acceptedAnswer":{"@type":"Answer","text":"Sub-1-second First Contentful Paint on most WP sites — proper caching strategy (page cache, object cache, edge cache, fragment cache) tuned to the stack."}}
-  ]
-}
-</script>
+
+<style>
+  :root{
+    --bg:#0d1117;
+    --bg2:#11161d;
+    --panel:#161b22;
+    --line:#222b36;
+    --line2:#2d3a47;
+    --ink:#e6edf3;
+    --mut:#8b97a6;
+    --dim:#5c6773;
+    --acc:#3ad7c5;          /* cyan accent */
+    --acc2:#58a6ff;         /* wp-ish blue */
+    --com:#6a9955;          /* code-comment green */
+    --warn:#e3b341;
+    --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    --sans:'Sora',system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-weight:300;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    position:relative;
+  }
+  /* subtle grid + glow backdrop */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(900px 500px at 78% -8%, rgba(58,215,197,.10), transparent 60%),
+      radial-gradient(700px 500px at 8% 12%, rgba(88,166,255,.08), transparent 55%),
+      linear-gradient(transparent 0 31px, rgba(255,255,255,.014) 31px 32px),
+      linear-gradient(90deg, transparent 0 31px, rgba(255,255,255,.014) 31px 32px);
+    background-size:auto,auto,32px 32px,32px 32px;
+  }
+  .wrap{max-width:980px;margin:0 auto;padding:0 28px;position:relative;z-index:2}
+
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--acc);color:#062b27}
+
+  /* ---- nav ---- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(12px);
+    background:rgba(13,17,23,.72);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .logo{font-family:var(--mono);font-weight:700;font-size:15px;letter-spacing:-.5px}
+  .logo .br{color:var(--acc)}
+  .navlinks{display:flex;gap:26px;font-family:var(--mono);font-size:12.5px;color:var(--mut)}
+  .navlinks a{transition:color .2s;position:relative}
+  .navlinks a:hover{color:var(--acc)}
+  .navlinks a::before{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--acc);transition:width .25s}
+  .navlinks a:hover::before{width:100%}
+  .snakehud{
+    font-family:var(--mono);font-size:11.5px;color:var(--dim);
+    display:inline-flex;align-items:center;gap:7px;
+    border:1px solid var(--line2);border-radius:99px;padding:4px 11px;
+    cursor:default;white-space:nowrap;
+  }
+  .snakehud b{color:var(--acc);font-weight:700}
+  .snakehud .dot{width:6px;height:6px;border-radius:50%;background:var(--acc);box-shadow:0 0 8px var(--acc);animation:pulse 1.5s infinite}
+  @media(max-width:760px){.navlinks{display:none}}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+  /* ---- hero ---- */
+  header{padding:96px 0 72px;position:relative}
+  .eyebrow{font-family:var(--mono);font-size:12.5px;color:var(--com);margin-bottom:22px;letter-spacing:.3px}
+  .eyebrow::before{content:"// "}
+  h1{
+    font-family:var(--mono);font-weight:800;
+    font-size:clamp(38px,7vw,72px);line-height:1.02;letter-spacing:-2.5px;
+    margin-bottom:18px;
+  }
+  h1 .name{color:var(--ink)}
+  .tag{
+    font-size:clamp(18px,2.6vw,23px);color:var(--mut);font-weight:300;max-width:620px;margin-bottom:14px;
+  }
+  .tag b{color:var(--ink);font-weight:500}
+  .tag .acc{color:var(--acc)}
+  .meta{font-family:var(--mono);font-size:12.5px;color:var(--dim);margin-bottom:34px;display:flex;gap:18px;flex-wrap:wrap}
+  .meta span{display:inline-flex;align-items:center;gap:7px}
+  .meta i{width:5px;height:5px;border-radius:50%;background:var(--acc);font-style:normal}
+  .cta{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    font-family:var(--mono);font-size:13px;font-weight:500;
+    padding:12px 20px;border-radius:9px;border:1px solid var(--line2);
+    display:inline-flex;align-items:center;gap:9px;transition:.2s;
+  }
+  .btn svg{width:15px;height:15px}
+  .btn.primary{background:var(--acc);color:#06241f;border-color:var(--acc);font-weight:700}
+  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(58,215,197,.28)}
+  .btn.ghost:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-2px)}
+
+  /* ---- section ---- */
+  section{padding:60px 0;position:relative}
+  .sec-label{
+    font-family:var(--mono);font-size:12.5px;color:var(--acc);margin-bottom:8px;letter-spacing:1px;
+  }
+  .sec-label::before{content:"# "}
+  .sec-title{font-family:var(--mono);font-weight:700;font-size:clamp(24px,4vw,34px);letter-spacing:-1px;margin-bottom:30px;color:var(--ink)}
+  .lead{color:var(--mut);max-width:680px;font-size:16.5px;margin-bottom:26px}
+  .lead b{color:var(--ink);font-weight:500}
+
+  /* ---- about chips ---- */
+  .chips{display:flex;flex-wrap:wrap;gap:9px;max-width:760px}
+  .chip{
+    font-family:var(--mono);font-size:12px;color:var(--mut);
+    border:1px solid var(--line);background:var(--panel);
+    padding:6px 12px;border-radius:7px;transition:.18s;
+  }
+  .chip:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-2px)}
+
+  /* ---- work cards ---- */
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(max-width:720px){.cards{grid-template-columns:1fr}}
+  .card{
+    border:1px solid var(--line);background:linear-gradient(180deg,var(--panel),var(--bg2));
+    border-radius:13px;padding:22px;transition:.22s;position:relative;overflow:hidden;
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .card::after{content:"";position:absolute;inset:0;border-radius:13px;border:1px solid transparent;transition:.22s;pointer-events:none}
+  .card:hover{transform:translateY(-4px);border-color:var(--line2)}
+  .card:hover::after{border-color:rgba(58,215,197,.35);box-shadow:0 14px 34px rgba(0,0,0,.4)}
+  .card .top{display:flex;align-items:center;justify-content:space-between}
+  .badge{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:1px;padding:3px 8px;border-radius:5px}
+  .badge.wp{background:rgba(88,166,255,.14);color:var(--acc2)}
+  .badge.plugin{background:rgba(227,179,65,.14);color:var(--warn)}
+  .badge.shop{background:rgba(58,215,197,.12);color:var(--acc)}
+  .card h3{font-family:var(--mono);font-size:16.5px;font-weight:700;letter-spacing:-.3px}
+  .card .yr{font-family:var(--mono);font-size:11.5px;color:var(--dim)}
+  .card p{font-size:14px;color:var(--mut);font-weight:300}
+  .card .st{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
+  .card .st span{font-family:var(--mono);font-size:10.5px;color:var(--dim);border:1px solid var(--line);padding:2px 7px;border-radius:5px}
+  .card .lk{font-family:var(--mono);font-size:11.5px;color:var(--acc);opacity:0;transition:.2s}
+  .card:hover .lk{opacity:1}
+
+  /* ---- experience ---- */
+  .tl{border-left:1px solid var(--line2);margin-left:6px;padding-left:26px;display:flex;flex-direction:column;gap:30px}
+  .job{position:relative}
+  .job::before{content:"";position:absolute;left:-32px;top:5px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--acc)}
+  .job .when{font-family:var(--mono);font-size:11.5px;color:var(--dim);margin-bottom:4px}
+  .job h3{font-family:var(--mono);font-size:16px;font-weight:700;letter-spacing:-.3px}
+  .job .at{font-size:13.5px;color:var(--acc);margin-bottom:8px}
+  .job p{font-size:14px;color:var(--mut);font-weight:300;max-width:680px}
+
+  /* ---- performance ---- */
+  .perf{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:720px){.perf{grid-template-columns:1fr}}
+  .pcol{border:1px solid var(--line);background:linear-gradient(180deg,var(--panel),var(--bg2));border-radius:13px;padding:20px 22px;transition:.22s}
+  .pcol:hover{border-color:var(--line2);transform:translateY(-3px)}
+  .ph{font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--acc);letter-spacing:.5px;margin-bottom:12px}
+  .ph::before{content:"› ";color:var(--dim)}
+  .pcol ul{list-style:none}
+  .pcol li{font-size:13.5px;color:var(--mut);font-weight:300;padding:5px 0;border-top:1px solid var(--line);display:flex;align-items:center;gap:9px}
+  .pcol li:first-child{border-top:0}
+  .pcol li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--acc);flex-shrink:0;box-shadow:0 0 6px var(--acc)}
+
+  /* ---- contact ---- */
+  .contact{
+    border:1px solid var(--line);border-radius:16px;background:linear-gradient(160deg,var(--panel),var(--bg2));
+    padding:40px;text-align:center;position:relative;overflow:hidden;
+  }
+  .contact::before{content:"";position:absolute;top:-80px;right:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(58,215,197,.12),transparent 70%)}
+  .contact h2{font-family:var(--mono);font-weight:800;font-size:clamp(24px,4vw,36px);letter-spacing:-1px;margin-bottom:12px;position:relative}
+  .contact p{color:var(--mut);margin-bottom:26px;position:relative}
+  .links{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;position:relative}
+
+  footer{padding:40px 0 60px;text-align:center;font-family:var(--mono);font-size:11.5px;color:var(--dim)}
+  footer .br{color:var(--acc)}
+
+  /* reveal on scroll */
+  .rv{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s}
+  .rv.in{opacity:1;transform:none}
+
+  /* ---- snake canvas overlay ---- */
+  #snCanvas{position:fixed;inset:0;z-index:40;pointer-events:none}
+
+  /* unlock toast */
+  #toast{
+    position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(140%);
+    z-index:80;background:var(--acc);color:#06241f;font-family:var(--mono);font-weight:700;font-size:13px;
+    padding:13px 22px;border-radius:11px;box-shadow:0 14px 40px rgba(58,215,197,.4);transition:transform .5s cubic-bezier(.2,.9,.3,1.3);
+    display:flex;align-items:center;gap:10px;
+  }
+  #toast.on{transform:translateX(-50%) translateY(0)}
+</style>
 </head>
 <body>
 
-<div class="announce">
-  <span class="pin">📍 Dhaka → Denmark · Singapore · Canada</span>
-  ·
-  <span><b>2 slots open · Q2 2026</b></span>
-</div>
+<canvas id="snCanvas"></canvas>
 
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo">shakir<span class="br">.</span>dev</a>
+    <div class="navlinks">
+      <a href="#about">about</a>
+      <a href="#work">work</a>
+      <a href="#performance">speed</a>
+      <a href="#experience">experience</a>
+      <a href="#contact">contact</a>
+    </div>
+    <div class="snakehud" title="Arrows or WASD to steer the snake. Eat 30 🍔🍵⭐ off the page to unlock a Free WP audit.">
+      <span class="dot"></span><b id="snScore">0</b>/30 🐍
+    </div>
+  </div>
+</nav>
 
 <header>
-  <div class="nav">
-    <a href="#" class="brand">
-      <svg class="bag" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg>
-      shakir<span class="dot">.</span>dev
-    </a>
-    <nav class="menu">
-      <a href="#migration">Migration</a>
-      <a href="#cache">Cache</a>
-      <a href="#projects">Catalog</a>
-      <a href="#history">About</a>
-      <a href="#checkout">Contact</a>
-    </nav>
-    <div class="icons">
-      <div class="snake-pill" title="Use arrows or WASD to guide the snake. Eat 30 letters to unlock FREE-AUDIT.">
-        <span class="snake-pill-dot"></span>
-        <span><b id="snScore">0</b>/30 🐍</span>
-      </div>
-      <button class="icobtn" id="themeBtn" aria-label="Toggle theme" title="Toggle day/night">
-        <span id="themeIcon">🌙</span>
-      </button>
-      <button class="icobtn" id="searchBtn" aria-label="Search">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-        Search
-      </button>
-      <a class="icobtn" href="https://linkedin.com/in/shakir-uz-zaman" target="_blank" rel="noopener" aria-label="Account">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></svg>
-        Account
+  <div class="wrap">
+    <div class="eyebrow">9+ years · remote worldwide · available</div>
+    <h1><span class="name">Shakir Uz Zaman</span></h1>
+    <p class="tag"><b>WordPress Engineer.</b> I build custom <span class="acc">themes</span>, <span class="acc">plugins</span> and <span class="acc">Gutenberg blocks</span> — clean OOP PHP, fast front-ends.</p>
+    <div class="meta">
+      <span><i></i>PHP 7/8</span>
+      <span><i></i>WP_Query · REST API</span>
+      <span><i></i>WooCommerce</span>
+      <span><i></i>Gutenberg · ACF</span>
+    </div>
+    <div class="cta">
+      <a class="btn primary" href="mailto:zaman.shakirdev@gmail.com?subject=WordPress%20Engineer%20role">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+        Email me
       </a>
-      <a class="icobtn shop cart-pill" href="#checkout" aria-label="Checkout">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg>
-        Cart <span class="badge">1</span>
+      <a class="btn ghost" href="/assets/resume-wp.pdf" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+        Résumé
       </a>
     </div>
   </div>
 </header>
 
-<div class="modal" id="searchModal">
-  <div class="box">
-    <button class="close" id="closeSearch">✕</button>
-    <h3>What can I migrate for you?</h3>
-    <input type="text" placeholder="Try: DanDomain to Shopify, WP cache, theme rebuild…" id="searchInput">
-    <div class="sugg">Popular:
-      <a href="#migration">DanDomain → Shopify</a>
-      <a href="#migration">DanDomain → WordPress</a>
-      <a href="#migration">WordPress → Shopify</a>
-      <a href="#cache">WP cache optimization</a>
+<section id="about">
+  <div class="wrap rv">
+    <div class="sec-label">about</div>
+    <h2 class="sec-title">What I do</h2>
+    <p class="lead">9+ years building for WordPress. I work across the stack — <b>Core architecture and request lifecycle</b>, actions/filters, WP_Query, template hierarchy, rewrite rules, cron and the REST API. I ship custom themes and plugins, <b>Gutenberg and ACF blocks</b>, WooCommerce, and I tune performance: caching, DB queries, assets, Core Web Vitals.</p>
+    <div class="chips">
+      <span class="chip">WordPress</span>
+      <span class="chip">PHP 7/8 · OOP</span>
+      <span class="chip">WP_Query</span>
+      <span class="chip">Template hierarchy</span>
+      <span class="chip">Rewrite rules · Cron</span>
+      <span class="chip">REST API</span>
+      <span class="chip">Gutenberg blocks</span>
+      <span class="chip">ACF</span>
+      <span class="chip">WooCommerce</span>
+      <span class="chip">Multisite</span>
+      <span class="chip">MySQL optimization</span>
+      <span class="chip">Page-speed optimization</span>
+      <span class="chip">Caching · OPcache</span>
+      <span class="chip">Core Web Vitals</span>
+      <span class="chip">HTML5 · CSS3 · SCSS</span>
+      <span class="chip">JavaScript ES6+</span>
+      <span class="chip">jQuery</span>
+      <span class="chip">Shopify · Liquid</span>
+      <span class="chip">Cloudflare</span>
+      <span class="chip">Git · PR workflow</span>
     </div>
   </div>
-</div>
+</section>
 
-<!-- Snake game is body-wide overlay, see #snCanvas + #snHUD injected by JS -->
+<section id="work">
+  <div class="wrap rv">
+    <div class="sec-label">work</div>
+    <h2 class="sec-title">Selected work</h2>
+    <div class="cards">
 
-<div class="container" id="pdp-content">
-
-  <div class="crumb">
-    <a href="#">Home</a>
-    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
-    <a href="#">CMS Experts</a>
-    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
-    <a href="#">Shopify &amp; WordPress</a>
-    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
-    <b>Shakir Uz Zaman</b>
-  </div>
-
-  <section class="pdp">
-    <div class="hero-card">
-      <div class="hero-eyebrow">
-        <span class="pip"></span>3 SPECIALITIES · IN STOCK · SHIPS WORLDWIDE
-      </div>
-      <div class="hero-stack">
-        <a class="hero-spec dd" href="#migration">
-          <div class="hero-spec-num">01</div>
-          <div class="hero-spec-body">
-            <div class="hero-spec-tag">★ MOST-REQUESTED</div>
-            <h3>DanDomain → Shopify Specialist</h3>
-            <p>Move catalog, customers, SEO &amp; integrations to Shopify without losing rankings. Fixed scope, zero downtime.</p>
-          </div>
-          <div class="hero-spec-cta">Plan →</div>
-        </a>
-        <a class="hero-spec wp" href="#migration">
-          <div class="hero-spec-num">02</div>
-          <div class="hero-spec-body">
-            <div class="hero-spec-tag">CONTENT-FIRST</div>
-            <h3>DanDomain → WordPress Specialist</h3>
-            <p>WP + WooCommerce setup, custom theme, plugin stack tuned to your business. Lower long-term costs.</p>
-          </div>
-          <div class="hero-spec-cta">Plan →</div>
-        </a>
-        <a class="hero-spec speed" href="#cache">
-          <div class="hero-spec-num">03</div>
-          <div class="hero-spec-body">
-            <div class="hero-spec-tag">⚡ &lt; 1 SECOND</div>
-            <h3>WordPress Cache &amp; Speed Specialist</h3>
-            <p>Any WP site under 1 second First Contentful Paint. Page + object + edge + fragment cache, OPcache, critical CSS.</p>
-          </div>
-          <div class="hero-spec-cta">Audit →</div>
-        </a>
-      </div>
-      <div class="hero-foot">
-        <span class="hero-foot-stat"><b>10+</b> years</span>
-        <span class="hero-foot-stat"><b>800+</b> plugin installs</span>
-        <span class="hero-foot-stat"><b>100k+</b> users on one portal</span>
-        <span class="hero-foot-stat"><b>0</b> failed migrations</span>
-      </div>
-    </div>
-
-    <div class="info">
-      <div class="vendor"><span class="pip"></span>CMS MIGRATION SPECIALIST</div>
-      <h1>Shakir Uz Zaman</h1>
-      <div class="role"><b>Migration Expert</b> · DanDomain → Shopify · DanDomain → WP · WP cache &lt; 1s</div>
-      <div class="reviews">
-        <span class="stars">★★★★★</span>
-        <span>10+ years · 0 failed migrations</span>
-      </div>
-
-      <div class="price-row">
-        <span class="price">$Available</span>
-        <span class="was">$Booked</span>
-        <span class="save">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-          GMT+6 · Denmark hours OK
-        </span>
-      </div>
-
-      <div class="field">
-        <div class="label"><span>Migration type</span><span class="picked">DanDomain → Shopify selected</span></div>
-        <div class="pills" data-group="migration">
-          <span class="pill on hot">DanDomain → Shopify</span>
-          <span class="pill">DanDomain → WordPress</span>
-          <span class="pill">WordPress → Shopify</span>
-          <span class="pill">Shopify → WordPress</span>
-          <span class="pill">WooCommerce → Shopify</span>
-          <span class="pill">New build</span>
-        </div>
-      </div>
-
-      <div class="field">
-        <div class="label"><span>Stack</span><span class="picked">Shopify Liquid selected</span></div>
-        <div class="pills" data-group="stack">
-          <span class="pill on"><span class="glow"></span>Shopify<span class="sub">Liquid · OS 2.0</span></span>
-          <span class="pill">WordPress<span class="sub">^6.x</span></span>
-          <span class="pill">WooCommerce<span class="sub">^9.x</span></span>
-          <span class="pill">PHP<span class="sub">^8.x</span></span>
-          <span class="pill">Laravel<span class="sub">^11</span></span>
-          <span class="pill">React<span class="sub">^18</span></span>
-          <span class="pill">SvelteKit<span class="sub">^2.x</span></span>
-        </div>
-      </div>
-
-      <div class="field">
-        <div class="label"><span>Engagement</span><span class="picked">Hourly selected</span></div>
-        <div class="pills" data-group="eng">
-          <span class="pill">Discovery call (free)</span>
-          <span class="pill on">Hourly</span>
-          <span class="pill">Fixed-scope project</span>
-          <span class="pill">Retainer</span>
-        </div>
-      </div>
-
-      <div class="buy">
-        <div class="qty"><button>−</button><input value="1"><button>+</button></div>
-        <button class="add" onclick="document.getElementById('checkout').scrollIntoView({behavior:'smooth'})">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/><path d="M12 12v4M10 14h4"/></svg>
-          Add to cart · Book Shakir
-        </button>
-      </div>
-      <a class="buy-now" href="mailto:zaman.shakirdev@gmail.com?subject=Hire%20Shakir%20-%20Migration%20Project">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
-        Buy now · Email directly
+      <a class="card" href="https://hilltimes.com" target="_blank" rel="noopener">
+        <div class="top"><span class="badge wp">WORDPRESS</span><span class="yr">2022 · Ottawa</span></div>
+        <h3>The Hill Times</h3>
+        <p>News portal — custom theme + plugins, paid/free subscriptions at 100k+ user scale.</p>
+        <div class="st"><span>Custom Theme</span><span>Plugins</span><span>Subscriptions</span><span class="lk">hilltimes.com →</span></div>
       </a>
 
-      <div class="acc">
-        <details open>
-          <summary><span class="left"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg> Shipping &amp; availability</span><span class="chev">+</span></summary>
-          <div class="body">Timezone GMT+6 (Dhaka) — overlap with Denmark, EU and Singapore daily. Async-first, sync windows 14:00–22:00 GMT+6. Onboarding: free discovery call → scoped trial week → ongoing engagement. 30-day mutual exit clause.</div>
-        </details>
-        <details>
-          <summary><span class="left"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21h16M4 17l8-9 8 9M8 17v-4M16 17v-4"/></svg> Size chart — proficiency</span><span class="chev">+</span></summary>
-          <div class="body">
-            <table>
-              <tr><td>Shopify (Liquid · OS 2.0)</td><td><span class="bar-wrap"><span class="bar" style="width:94%"></span></span>expert</td></tr>
-              <tr><td>WordPress</td><td><span class="bar-wrap"><span class="bar" style="width:96%"></span></span>expert</td></tr>
-              <tr><td>WP Cache &amp; speed</td><td><span class="bar-wrap"><span class="bar" style="width:98%"></span></span>specialist</td></tr>
-              <tr><td>WooCommerce</td><td><span class="bar-wrap"><span class="bar" style="width:92%"></span></span>expert</td></tr>
-              <tr><td>DanDomain migrations</td><td><span class="bar-wrap"><span class="bar" style="width:90%"></span></span>specialist</td></tr>
-              <tr><td>PHP / OOP</td><td><span class="bar-wrap"><span class="bar" style="width:92%"></span></span>expert</td></tr>
-              <tr><td>JavaScript</td><td><span class="bar-wrap"><span class="bar" style="width:85%"></span></span>strong</td></tr>
-              <tr><td>Laravel</td><td><span class="bar-wrap"><span class="bar" style="width:75%"></span></span>strong</td></tr>
-              <tr><td>React</td><td><span class="bar-wrap"><span class="bar" style="width:68%"></span></span>working</td></tr>
-              <tr><td>SvelteKit</td><td><span class="bar-wrap"><span class="bar" style="width:72%"></span></span>working</td></tr>
-            </table>
-          </div>
-        </details>
-        <details>
-          <summary><span class="left"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg> Care instructions — how I work</span><span class="chev">+</span></summary>
-          <div class="body">Ship small, deploy often. <b>Always pull before push</b> on Shopify themes. Customer issues are sacred. Pixel-perfect frontend, clean OOP backend, singleton patterns where they belong. Cache strategy from day one. Patience beats clever hacks.</div>
-        </details>
-        <details>
-          <summary><span class="left"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l3 3 9-9"/><path d="M21 12a9 9 0 11-9-9"/></svg> Returns</span><span class="chev">+</span></summary>
-          <div class="body">Never had one. 30-day mutual exit. Knowledge transfer always included.</div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- MIGRATION -->
-  <section class="migrate rv" id="migration">
-    <div class="eyebrow">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.39 7.36H22l-6.18 4.49L18.21 21 12 16.5 5.79 21l2.39-7.15L2 9.36h7.61L12 2z"/></svg>
-      Migration services
-    </div>
-    <h2>Migrate from <span class="hl">DanDomain</span> to <span class="hl">Shopify</span> or <span class="hl">WordPress</span>.</h2>
-    <p class="lead">SEO equity preserved. Zero-downtime cutover. e-conomic / Business Central integrations re-wired.</p>
-
-    <div class="lanes">
-      <a class="lane bestseller" href="mailto:zaman.shakirdev@gmail.com?subject=DanDomain%20to%20Shopify%20Migration">
-        <div class="flow"><span class="from">DanDomain</span><span class="arr">→</span><span class="to shop">Shopify</span></div>
-        <h3>DanDomain → Shopify</h3>
-        <ul>
-          <li>Products, variants &amp; collections</li>
-          <li>Customers</li>
-          <li>301 redirect map</li>
-          <li>e-conomic / Business Central</li>
-          <li>Custom theme</li>
-        </ul>
-        <span class="ctapill">Free audit →</span>
+      <a class="card" href="https://triple-a.io" target="_blank" rel="noopener">
+        <div class="top"><span class="badge plugin">PLUGIN</span><span class="yr">2023–2025 · Singapore</span></div>
+        <h3>Crypto Gateway for Woo</h3>
+        <p>Sole developer on a WooCommerce payment gateway. Singleton OOP, 14 releases/yr, 800+ installs, 0 open issues.</p>
+        <div class="st"><span>PHP</span><span>WooCommerce</span><span>OOP</span><span>REST</span><span class="lk">triple-a.io →</span></div>
       </a>
 
-      <a class="lane" href="mailto:zaman.shakirdev@gmail.com?subject=DanDomain%20to%20WordPress%20Migration">
-        <div class="flow"><span class="from">DanDomain</span><span class="arr">→</span><span class="to wp">WordPress / Woo</span></div>
-        <h3>DanDomain → WordPress</h3>
-        <ul>
-          <li>WP + WooCommerce setup</li>
-          <li>Catalog + customer import</li>
-          <li>Custom theme &amp; blocks</li>
-          <li>Plugin stack tuned</li>
-          <li>SEO &amp; redirects preserved</li>
-        </ul>
-        <span class="ctapill">Discuss →</span>
+      <a class="card" href="https://skateontario.org" target="_blank" rel="noopener">
+        <div class="top"><span class="badge wp">WORDPRESS</span><span class="yr">2023 · Canada</span></div>
+        <h3>Skate Ontario</h3>
+        <p>Custom theme + plugin — member portal plus public-facing site.</p>
+        <div class="st"><span>Custom Theme</span><span>Plugin</span><span>Portal</span><span class="lk">skateontario.org →</span></div>
       </a>
 
-      <a class="lane" href="mailto:zaman.shakirdev@gmail.com?subject=WordPress%20to%20Shopify%20Migration">
-        <div class="flow"><span class="from wp">WordPress / Woo</span><span class="arr">→</span><span class="to shop">Shopify</span></div>
-        <h3>WordPress → Shopify</h3>
-        <ul>
-          <li>Product + variant mapping</li>
-          <li>Blog &amp; content migration</li>
-          <li>App stack recommendation</li>
-          <li>Theme rebuild · OS 2.0</li>
-          <li>SEO authority preserved</li>
-        </ul>
-        <span class="ctapill">Plan move →</span>
-      </a>
-    </div>
-
-    <div class="stats">
-      <div class="stat"><div class="num">10+</div><div class="lbl">Years</div></div>
-      <div class="stat"><div class="num">100%</div><div class="lbl">SEO kept</div></div>
-      <div class="stat"><div class="num">0</div><div class="lbl">Failed cutovers</div></div>
-      <div class="stat"><div class="num">1–6w</div><div class="lbl">Timeline</div></div>
-      <div class="stat"><div class="num">800+</div><div class="lbl">Plugin installs</div></div>
-    </div>
-  </section>
-
-  <!-- WP CACHE banner -->
-  <section class="cache rv" id="cache">
-    <div>
-      <div class="eb">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
-        WP Speed &amp; Cache Specialist
-      </div>
-      <h2>Any WordPress site under <span class="hl">1 second</span>.</h2>
-      <p>Real cache stack — page, object, fragment, edge — tuned to your hosting. Result: green Core Web Vitals.</p>
-      <div class="stack">
-        <span>Page cache</span><span>Object cache (Redis)</span><span>Fragment cache</span><span>Cloudflare edge</span><span>OPcache tuning</span><span>Critical CSS</span><span>Lazy-load</span><span>Image CDN</span>
-      </div>
-      <a class="cta" href="mailto:zaman.shakirdev@gmail.com?subject=Free%20WP%20speed%20audit">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-        Free speed audit
-      </a>
-    </div>
-    <div class="speedo">
-      <div style="font-size:11px;letter-spacing:1.5px;color:#67e8f9;font-weight:700;text-transform:uppercase;margin-bottom:10px">Before vs after</div>
-      <div class="row"><span class="k">First Contentful Paint</span><span><span class="bef">4.2s</span> → <span class="aft">0.7s</span></span></div>
-      <div class="row"><span class="k">Largest Contentful Paint</span><span><span class="bef">6.1s</span> → <span class="aft">0.9s</span></span></div>
-      <div class="row"><span class="k">Time to Interactive</span><span><span class="bef">5.8s</span> → <span class="aft">1.1s</span></span></div>
-      <div class="row"><span class="k">Server response (TTFB)</span><span><span class="bef">820ms</span> → <span class="aft">80ms</span></span></div>
-      <div class="row"><span class="k">PageSpeed Mobile</span><span><span class="bef">42</span> → <span class="aft">98 ✓</span></span></div>
-      <div class="gauge"></div>
-    </div>
-  </section>
-
-  <!-- process -->
-  <div class="sec-head">
-    <h2>How a migration runs <span class="eyetag">5 STEPS</span></h2>
-    <div class="sub">DanDomain to Shopify or WordPress — no mystery, no last-minute surprises.</div>
-  </div>
-  <div class="process rv">
-    <div class="step">
-      <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
-      <h3>Discovery audit</h3>
-      <p>Free 30-min call. Audit current DanDomain shop, integrations, traffic &amp; SEO.</p>
-      <div class="dur">⏱ Day 1 · Free</div>
-    </div>
-    <div class="step">
-      <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div>
-      <h3>Plan &amp; scope</h3>
-      <p>Fixed-scope quote. Redirect plan, data map, theme spec, integration list, go-live date.</p>
-      <div class="dur">⏱ Week 1</div>
-    </div>
-    <div class="step">
-      <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4"/></svg></div>
-      <h3>Build on staging</h3>
-      <p>Theme built on staging. Products &amp; customers imported. QA every page type.</p>
-      <div class="dur">⏱ Wks 2–4</div>
-    </div>
-    <div class="step">
-      <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 4.5l5.5 5.5L9 21l-6 1 1-6L14 4.5z"/></svg></div>
-      <h3>Cutover</h3>
-      <p>DNS + 301 redirects flipped. Zero downtime. Same-day smoke-tests. Daily monitoring.</p>
-      <div class="dur">⏱ Day 0</div>
-    </div>
-    <div class="step">
-      <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 7-7"/><path d="M14 8h7v7"/></svg></div>
-      <h3>Stabilise</h3>
-      <p>30 days of fixes, SEO tracking, ranking recovery, integration tweaks.</p>
-      <div class="dur">⏱ +30 days</div>
-    </div>
-  </div>
-
-  <!-- now shipping -->
-  <section class="building rv" id="building">
-    <div>
-      <div class="live">● Now shipping</div>
-      <h2>Cryptocurrency Payment Gateway for WooCommerce</h2>
-      <p>Sole developer on Triple-A's flagship WordPress plugin — Triple-A is MAS-licensed in Singapore, powering crypto payments for 20,000+ businesses worldwide. Singleton OOP refactor, 14 versions shipped in one year, zero open customer issues for 3 months running.</p>
-      <div class="meta">
-        <span><b>Built for</b> Triple-A · Singapore (MAS-licensed)</span>
-        <span><b>Stack</b> PHP · WordPress · WooCommerce · REST API</span>
-        <span><b>Status</b> Maintained &amp; supported</span>
-      </div>
-    </div>
-    <div class="stat">
-      <div class="row"><span>Active installs</span><span>800+</span></div>
-      <div class="row"><span>Releases / year</span><span>14</span></div>
-      <div class="row"><span>Open issues</span><span class="ok">0 · 3 months</span></div>
-      <div class="row"><span>Plugin version</span><span>v14.x</span></div>
-    </div>
-  </section>
-
-  <!-- trusted by w/ live favicons -->
-  <div class="sec-head">
-    <h2>Trusted by <span class="eyetag">8 LIVE</span></h2>
-    <div class="sub">Real Shopify stores &amp; WordPress sites I've shipped — click any card to visit the live site.</div>
-  </div>
-  <div class="trusted-by rv">
-    <a class="tbcard active" href="https://papirladen.dk" target="_blank" rel="noopener" data-metric="↑ 38% conversion" data-live="1"><span class="liveping"></span>
-      <div class="topr">
-        <div class="left-l">
-          <div class="fav"><img src="https://www.google.com/s2/favicons?domain=papirladen.dk&sz=128" alt="" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.textContent='P'"></div>
-          <div class="name-block"><div class="logo">Papirladen.dk</div><div class="country">🇩🇰 Denmark · since 1987</div></div>
-        </div>
-      </div>
-      <div class="role">B2B/B2C signup, Shopify Flow, Judge.me</div>
-      <div class="bot"><span class="stat">papirladen.dk →</span><span class="badge shopify">SHOPIFY</span></div>
-    </a>
-    <a class="tbcard" href="https://ovellie.dk" target="_blank" rel="noopener" data-metric="4.9★ Trustpilot" data-live="1"><span class="liveping"></span>
-      <div class="topr">
-        <div class="left-l">
-          <div class="fav"><img src="https://www.google.com/s2/favicons?domain=ovellie.dk&sz=128" alt="" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.textContent='O'"></div>
-          <div class="name-block"><div class="logo">Ovellie.dk</div><div class="country">🇩🇰 Denmark · 120+ brands</div></div>
-        </div>
-      </div>
-      <div class="role">Storefront + theme work · 4.9★ Trustpilot</div>
-      <div class="bot"><span class="stat">ovellie.dk →</span><span class="badge shopify">SHOPIFY</span></div>
-    </a>
-    <a class="tbcard" href="#projects" data-metric="1,449 LOC shipped">
-      <div class="topr">
-        <div class="left-l">
-          <div class="fav placeholder">Q</div>
-          <div class="name-block"><div class="logo">QLiving</div><div class="country">🇩🇰 Denmark · Horizon theme</div></div>
-        </div>
-      </div>
-      <div class="role">Horizon mod · 1,449 LOC</div>
-      <div class="bot"><span class="stat">★ Featured</span><span class="badge shopify">SHOPIFY</span></div>
-    </a>
-    <a class="tbcard" href="https://webkonsulenterne.dk" target="_blank" rel="noopener" data-metric="40+ client sites">
-      <div class="topr">
-        <div class="left-l">
-          <div class="fav"><img src="https://www.google.com/s2/favicons?domain=webkonsulenterne.dk&sz=128" alt="" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.textContent='W'"></div>
-          <div class="name-block"><div class="logo">Webkonsulenter</div><div class="country">🇩🇰 Denmark · agency</div></div>
-        </div>
-      </div>
-      <div class="role">Themes + WP + plugin suite</div>
-      <div class="bot"><span class="stat">webkonsulenterne.dk →</span><span class="badge shopify">SHOPIFY</span></div>
-    </a>
-    <a class="tbcard" href="https://byaagaard.com" target="_blank" rel="noopener" data-metric="80 yrs of brand" data-live="1"><span class="liveping"></span>
-      <div class="topr">
-        <div class="left-l">
-          <div class="fav"><img src="https://www.google.com/s2/favicons?domain=byaagaard.com&sz=128" alt="" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.textContent='Æ'"></div>
-          <div class="name-block"><div class="logo">Aagaard Jewellery</div><div class="country">🇩🇰 Denmark · since 1946</div></div>
-        </div>
-      </div>
-      <div class="role">Site build + maintenance</div>
-      <div class="bot"><span class="stat">byaagaard.com →</span><span class="badge wp">WORDPRESS</span></div>
-    </a>
-    <a class="tbcard" href="https://ewersenergi.dk" target="_blank" rel="noopener" data-metric="FCP < 1.0s">
-      <div class="topr">
-        <div class="left-l">
-          <div class="fav"><img src="https://www.google.com/s2/favicons?domain=ewersenergi.dk&sz=128" alt="" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.textContent='E'"></div>
-          <div class="name-block"><div class="logo">Ewers Energi</div><div class="country">🇩🇰 Denmark · biomass</div></div>
-        </div>
-      </div>
-      <div class="role">WP build + speed tuning</div>
-      <div class="bot"><span class="stat">ewersenergi.dk →</span><span class="badge wp">WORDPRESS</span></div>
-    </a>
-    <a class="tbcard" href="https://triple-a.io" target="_blank" rel="noopener" data-metric="800+ installs / 14 rel-yr" data-live="1"><span class="liveping"></span>
-      <div class="topr">
-        <div class="left-l">
-          <div class="fav"><img src="https://www.google.com/s2/favicons?domain=triple-a.io&sz=128" alt="" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.textContent='A'"></div>
-          <div class="name-block"><div class="logo">Triple-A.io</div><div class="country">🇸🇬 Singapore · MAS-licensed</div></div>
-        </div>
-      </div>
-      <div class="role">WP plugin · 800+ installs · 14 releases/yr</div>
-      <div class="bot"><span class="stat">triple-a.io →</span><span class="badge wp">WORDPRESS</span></div>
-    </a>
-    <a class="tbcard" href="https://hilltimes.com" target="_blank" rel="noopener" data-metric="100k+ subscribers">
-      <div class="topr">
-        <div class="left-l">
-          <div class="fav"><img src="https://www.google.com/s2/favicons?domain=hilltimes.com&sz=128" alt="" onerror="this.parentElement.classList.add('placeholder');this.remove();this.parentElement.textContent='H'"></div>
-          <div class="name-block"><div class="logo">The Hill Times</div><div class="country">🇨🇦 Ottawa · since 1989</div></div>
-        </div>
-      </div>
-      <div class="role">News portal · 100k+ subs</div>
-      <div class="bot"><span class="stat">hilltimes.com →</span><span class="badge wp">WORDPRESS</span></div>
-    </a>
-  </div>
-
-  <!-- tech tape -->
-  <div class="techtape rv" aria-hidden="true">
-    <div class="ttrow">
-      <span>Shopify Liquid</span><span>·</span>
-      <span>OS 2.0</span><span>·</span>
-      <span>WordPress</span><span>·</span>
-      <span>WooCommerce</span><span>·</span>
-      <span>PHP 8.x</span><span>·</span>
-      <span>Laravel 11</span><span>·</span>
-      <span>React</span><span>·</span>
-      <span>SvelteKit</span><span>·</span>
-      <span>Node.js</span><span>·</span>
-      <span>MySQL</span><span>·</span>
-      <span>Redis</span><span>·</span>
-      <span>Cloudflare</span><span>·</span>
-      <span>e-conomic API</span><span>·</span>
-      <span>Business Central</span><span>·</span>
-      <span>Judge.me</span><span>·</span>
-      <span>Klaviyo</span><span>·</span>
-      <span>Shopify Flow</span><span>·</span>
-      <span>Git</span><span>·</span>
-      <span>Shopify Liquid</span><span>·</span>
-      <span>OS 2.0</span><span>·</span>
-      <span>WordPress</span><span>·</span>
-      <span>WooCommerce</span><span>·</span>
-      <span>PHP 8.x</span><span>·</span>
-      <span>Laravel 11</span><span>·</span>
-      <span>React</span><span>·</span>
-      <span>SvelteKit</span><span>·</span>
-      <span>Node.js</span><span>·</span>
-      <span>MySQL</span><span>·</span>
-      <span>Redis</span><span>·</span>
-      <span>Cloudflare</span><span>·</span>
-      <span>e-conomic API</span><span>·</span>
-      <span>Business Central</span><span>·</span>
-      <span>Judge.me</span><span>·</span>
-      <span>Klaviyo</span><span>·</span>
-      <span>Shopify Flow</span><span>·</span>
-      <span>Git</span>
-    </div>
-  </div>
-
-  <!-- projects -->
-  <div class="sec-head" id="projects">
-    <h2>Product catalog <span class="eyetag">12 PRODUCTS</span></h2>
-    <div class="sub">Selected Shopify themes, WordPress sites and plugins shipped to production.</div>
-  </div>
-  <div class="tabs">
-    <button class="tab on" data-filter="all">All <span class="count">12</span></button>
-    <button class="tab" data-filter="shopify">Shopify <span class="count">4</span></button>
-    <button class="tab" data-filter="wp">WordPress <span class="count">5</span></button>
-    <button class="tab" data-filter="plugin">Plugins <span class="count">3</span></button>
-  </div>
-  <div class="projects rv">
-
-    <a class="pcard shopify" data-cat="shopify" href="https://papirladen.dk" target="_blank" rel="noopener">
-      <div class="image">
-        <span class="pill">★ Featured</span>
-        <span class="platform shopify">SHOPIFY</span>
-        <div class="glyph">P</div>
-        <div class="fav"><img src="https://www.google.com/s2/favicons?domain=papirladen.dk&sz=128" alt="" onerror="this.style.display='none'"></div>
-      </div>
-      <div class="body">
-        <h3>Papirladen.dk</h3>
-        <div class="yr">Shopify · Live · 🇩🇰 Denmark · since 1987</div>
-        <p>B2B/B2C signup w/ metafields · Flow tagging · Judge.me.</p>
-        <div class="stack"><span>Shopify</span><span>Liquid</span><span>Flow</span><span>Metafields</span><span>Judge.me</span></div>
-        <div class="meta-row"><b>Live store</b><span class="link">papirladen.dk →</span></div>
-      </div>
-    </a>
-    <a class="pcard shopify" data-cat="shopify" href="https://ovellie.dk" target="_blank" rel="noopener">
-      <div class="image">
-        <span class="platform shopify">SHOPIFY</span>
-        <div class="glyph">O</div>
-        <div class="fav"><img src="https://www.google.com/s2/favicons?domain=ovellie.dk&sz=128" alt="" onerror="this.style.display='none'"></div>
-      </div>
-      <div class="body">
-        <h3>Ovellie.dk</h3>
-        <div class="yr">Shopify · Live · 🇩🇰 Denmark · since 2015</div>
-        <p>120+ brands · 4.9★ Trustpilot · storefront + theme.</p>
-        <div class="stack"><span>Shopify</span><span>Liquid</span><span>Theme</span></div>
-        <div class="meta-row"><b>Live store</b><span class="link">ovellie.dk →</span></div>
-      </div>
-    </a>
-    <a class="pcard shopify" data-cat="shopify" href="#">
-      <div class="image"><span class="pill">Horizon mod</span><span class="platform shopify">SHOPIFY</span><div class="glyph">Q</div></div>
-      <div class="body">
-        <h3>QLiving Theme</h3>
-        <div class="yr">2026 · 🇩🇰 Denmark · Horizon</div>
-        <p>Horizon theme modernization · 1,449 LOC · GitHub Actions deploy.</p>
-        <div class="stack"><span>Shopify</span><span>Horizon</span><span>CSS</span><span>CI/CD</span></div>
-        <div class="meta-row"><b>1,449 LOC</b><span class="link">Case study →</span></div>
-      </div>
-    </a>
-    <a class="pcard shopify" data-cat="shopify" href="https://webkonsulenterne.dk" target="_blank" rel="noopener">
-      <div class="image">
-        <span class="platform shopify">SHOPIFY</span>
-        <div class="glyph">W</div>
-        <div class="fav"><img src="https://www.google.com/s2/favicons?domain=webkonsulenterne.dk&sz=128" alt="" onerror="this.style.display='none'"></div>
-      </div>
-      <div class="body">
-        <h3>Webkonsulenter</h3>
-        <div class="yr">Shopify · Agency · 🇩🇰 Denmark</div>
-        <p>Custom themes + app integrations + speed work.</p>
-        <div class="stack"><span>Shopify</span><span>Liquid</span><span>Apps</span></div>
-        <div class="meta-row"><b>Agency partner</b><span class="link">webkonsulenterne.dk →</span></div>
-      </div>
-    </a>
-
-    <a class="pcard plugin" data-cat="plugin" href="https://triple-a.io" target="_blank" rel="noopener">
-      <div class="image">
-        <span class="pill">★ 800+ installs</span>
-        <span class="platform plugin">PLUGIN</span>
-        <div class="glyph">₿</div>
-        <div class="fav"><img src="https://www.google.com/s2/favicons?domain=triple-a.io&sz=128" alt="" onerror="this.style.display='none'"></div>
-      </div>
-      <div class="body">
-        <h3>Crypto Payment Gateway for Woo</h3>
-        <div class="yr">2023 — 2025 · Triple-A · 🇸🇬</div>
-        <p>Sole dev · singleton OOP · 14 releases/yr · 0 open issues.</p>
-        <div class="stack"><span>PHP</span><span>WooCommerce</span><span>OOP</span><span>REST</span></div>
-        <div class="meta-row"><b>800+ installs</b><span class="link">triple-a.io →</span></div>
-      </div>
-    </a>
-    <a class="pcard plugin" data-cat="plugin" href="#">
-      <div class="image"><span class="platform plugin">PLUGIN</span><div class="glyph">⚙</div></div>
-      <div class="body">
+      <a class="card" href="#">
+        <div class="top"><span class="badge plugin">PLUGIN</span><span class="yr">ongoing · WK</span></div>
         <h3>WK Plugin Suite</h3>
-        <div class="yr">Webkonsulenter · ongoing</div>
-        <p>Cache manager · crawler · merger · cleaner · profit metrics.</p>
-        <div class="stack"><span>PHP</span><span>WordPress</span><span>WooCommerce</span></div>
-        <div class="meta-row"><b>10+ plugins</b><span class="link">View →</span></div>
-      </div>
-    </a>
-    <a class="pcard plugin" data-cat="plugin" href="#">
-      <div class="image"><span class="platform plugin">PLUGIN</span><div class="glyph">💳</div></div>
-      <div class="body">
-        <h3>BV E-conomic Dashboard</h3>
-        <div class="yr">Laravel · 21k+ invoices</div>
-        <p>E-conomic API sync · comments · filters · 35h delivered.</p>
-        <div class="stack"><span>Laravel</span><span>MySQL</span><span>e-conomic API</span></div>
-        <div class="meta-row"><b>21k+ invoices</b><span class="link">Case study →</span></div>
-      </div>
-    </a>
-
-    <a class="pcard wp" data-cat="wp" href="https://hilltimes.com" target="_blank" rel="noopener">
-      <div class="image">
-        <span class="pill">100k+ subs</span>
-        <span class="platform wp">WORDPRESS</span>
-        <div class="glyph">H</div>
-        <div class="fav"><img src="https://www.google.com/s2/favicons?domain=hilltimes.com&sz=128" alt="" onerror="this.style.display='none'"></div>
-      </div>
-      <div class="body">
-        <h3>The Hill Times News Portal</h3>
-        <div class="yr">2022 · 🇨🇦 Ottawa · since 1989</div>
-        <p>Custom theme + plugins · paid/free subs at 100k+ scale.</p>
-        <div class="stack"><span>WordPress</span><span>Elementor</span><span>Subscriptions</span></div>
-        <div class="meta-row"><b>100k+ users</b><span class="link">hilltimes.com →</span></div>
-      </div>
-    </a>
-    <a class="pcard wp" data-cat="wp" href="https://triple-a.io" target="_blank" rel="noopener">
-      <div class="image">
-        <span class="platform wp">WORDPRESS</span>
-        <div class="glyph">A</div>
-        <div class="fav"><img src="https://www.google.com/s2/favicons?domain=triple-a.io&sz=128" alt="" onerror="this.style.display='none'"></div>
-      </div>
-      <div class="body">
-        <h3>Triple-A Website</h3>
-        <div class="yr">2023 · 🇸🇬 Singapore</div>
-        <p>Figma → Elementor pixel-perfect · HubSpot CRM.</p>
-        <div class="stack"><span>WordPress</span><span>Elementor</span><span>HubSpot</span></div>
-        <div class="meta-row"><b>Pixel-perfect</b><span class="link">triple-a.io →</span></div>
-      </div>
-    </a>
-    <a class="pcard wp" data-cat="wp" href="https://skateontario.org" target="_blank" rel="noopener">
-      <div class="image"><span class="platform wp">WORDPRESS</span><div class="glyph">S</div><div class="fav"><img src="https://www.google.com/s2/favicons?domain=skateontario.org&sz=128" alt="" onerror="this.style.display='none'"></div></div>
-      <div class="body">
-        <h3>Skate Ontario Portal</h3>
-        <div class="yr">2023 · 🇨🇦 Canada</div>
-        <p>Custom theme + plugin · member portal + public site.</p>
-        <div class="stack"><span>WordPress</span><span>Custom Theme</span><span>Plugin</span></div>
-        <div class="meta-row"><b>Portal + Site</b><span class="link">skateontario.org →</span></div>
-      </div>
-    </a>
-    <a class="pcard wp" data-cat="wp" href="https://byaagaard.com" target="_blank" rel="noopener">
-      <div class="image">
-        <span class="platform wp">WORDPRESS</span>
-        <div class="glyph">Æ</div>
-        <div class="fav"><img src="https://www.google.com/s2/favicons?domain=byaagaard.com&sz=128" alt="" onerror="this.style.display='none'"></div>
-      </div>
-      <div class="body">
-        <h3>Aagaard Jewellery</h3>
-        <div class="yr">WordPress · 🇩🇰 since 1946</div>
-        <p>200+ retailers · WP build + speed + plugins.</p>
-        <div class="stack"><span>WordPress</span><span>PHP</span><span>WooCommerce</span></div>
-        <div class="meta-row"><b>Live site</b><span class="link">byaagaard.com →</span></div>
-      </div>
-    </a>
-    <a class="pcard wp" data-cat="wp" href="https://ewersenergi.dk" target="_blank" rel="noopener">
-      <div class="image">
-        <span class="platform wp">WORDPRESS</span>
-        <div class="glyph">E</div>
-        <div class="fav"><img src="https://www.google.com/s2/favicons?domain=ewersenergi.dk&sz=128" alt="" onerror="this.style.display='none'"></div>
-      </div>
-      <div class="body">
-        <h3>Ewers Energi</h3>
-        <div class="yr">WordPress · 🇩🇰 Denmark</div>
-        <p>WP build + lead capture + speed.</p>
-        <div class="stack"><span>WordPress</span><span>PHP</span></div>
-        <div class="meta-row"><b>Live site</b><span class="link">ewersenergi.dk →</span></div>
-      </div>
-    </a>
-  </div>
-
-  <!-- metrics -->
-  <div class="sec-head">
-    <h2>By the numbers <span class="eyetag">CAREER</span></h2>
-    <div class="sub">Receipts.</div>
-  </div>
-  <div class="metrics rv">
-    <div class="metric"><div class="big">10+</div><div class="lbl">Years</div><div class="blurb">CMS development</div></div>
-    <div class="metric"><div class="big">800+</div><div class="lbl">Installs</div><div class="blurb">WooCommerce plugin in production</div></div>
-    <div class="metric"><div class="big">&lt;1s</div><div class="lbl">FCP</div><div class="blurb">WP cache target — any site</div></div>
-    <div class="metric"><div class="big">100k+</div><div class="lbl">Users</div><div class="blurb">Largest WP portal shipped</div></div>
-  </div>
-
-  <!-- work history -->
-  <div class="sec-head" id="history">
-    <h2>Work history <span class="eyetag">10+ YRS</span></h2>
-    <div class="sub">A decade across full-time remote roles — from MVC web apps to Shopify themes and WordPress plugin product engineering.</div>
-  </div>
-  <div class="timeline rv">
-    <div class="role-item">
-      <div class="yr">Current · Remote · 🇩🇰 Denmark</div>
-      <h3>CMS Developer · Shopify &amp; WordPress</h3>
-      <div class="at">Webkonsulenter (WK) · Denmark</div>
-      <ul>
-        <li>Shopify theme work: Papirladen, Ovellie, QLiving (Horizon), Webkonsulenter, Aagaard.</li>
-        <li>WordPress sites &amp; plugins: Ewers Energi, internal WK plugin suite (cache manager, custom crawler, duplicate-product merger, autoloader cleaner, profit metrics).</li>
-        <li>WP cache &amp; speed engagements — sub-1s FCP across client sites.</li>
-        <li>BV E-conomic Dashboard (Laravel) — 21k+ invoices, auto-sync, collaboration.</li>
-      </ul>
-      <div class="stack"><span>Shopify</span><span>Liquid</span><span>WordPress</span><span>WooCommerce</span><span>PHP</span><span>Laravel</span><span>MySQL</span></div>
-    </div>
-    <div class="role-item archived">
-      <div class="yr">April 2023 — December 2025</div>
-      <h3>Software Engineer (Full-Time, Remote)</h3>
-      <div class="at">Triple-A · 🇸🇬 Singapore</div>
-      <ul>
-        <li>Sole developer on Cryptocurrency Payment Gateway for WooCommerce (800+ users worldwide).</li>
-        <li>Demo sites in WordPress &amp; SvelteKit.</li>
-        <li>Triple-A site in Elementor with pixel-perfect responsiveness &amp; HubSpot integration.</li>
-      </ul>
-      <div class="stack"><span>WordPress</span><span>PHP</span><span>JavaScript</span><span>WooCommerce</span><span>SvelteKit</span><span>REST API</span></div>
-    </div>
-    <div class="role-item archived">
-      <div class="yr">May 2019 — March 2023</div>
-      <h3>Software Engineer (Full-Time, Remote)</h3>
-      <div class="at">Grype Digital · 🇨🇦 Canada</div>
-      <ul>
-        <li>Delivered WordPress sites for North American clients (The Hill Times, Skate Ontario, TWUC).</li>
-        <li>Catchy frontends, secure backends, performance improvements.</li>
-      </ul>
-      <div class="stack"><span>WordPress</span><span>PHP</span><span>JavaScript</span><span>REST API</span></div>
-    </div>
-    <div class="role-item archived">
-      <div class="yr">June 2019 — May 2021</div>
-      <h3>Software Engineer (Full-Time)</h3>
-      <div class="at">Neural Semiconductor Ltd · 🇧🇩 Dhaka</div>
-      <ul>
-        <li>Built Assessment Center LMS UI + Laravel REST backend.</li>
-        <li>Frontend &amp; backend, React components.</li>
-      </ul>
-      <div class="stack"><span>PHP</span><span>Laravel</span><span>React</span><span>REST API</span></div>
-    </div>
-    <div class="role-item archived">
-      <div class="yr">November 2018 — May 2021</div>
-      <h3>Web Application Developer (Full-Time)</h3>
-      <div class="at">Sycorax Technology · 🇧🇩 Dhaka</div>
-      <ul>
-        <li>Frontend &amp; backend in MVC projects.</li>
-        <li>6+ projects from scratch to client-ready.</li>
-      </ul>
-      <div class="stack"><span>PHP</span><span>JavaScript</span><span>MySQL</span></div>
-    </div>
-  </div>
-
-  <!-- skills -->
-  <div class="sec-head">
-    <h2>Skills <span class="eyetag">GROUPED</span></h2>
-    <div class="sub">Daily-driver stack, strong reach, currently leveling up. Honest, not exhaustive.</div>
-  </div>
-  <div class="skillgrid rv">
-    <div class="skillcol daily">
-      <h3>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--shop)" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
-        Daily driver
-        <span class="tag" style="margin-left:auto">EXPERT</span>
-      </h3>
-      <div class="blurb">What I ship every day in production.</div>
-      <div class="row"><span class="name">Shopify · Liquid</span><span class="lvl">★★★★★</span></div>
-      <div class="row"><span class="name">WordPress</span><span class="lvl">★★★★★</span></div>
-      <div class="row"><span class="name">WooCommerce</span><span class="lvl">★★★★★</span></div>
-      <div class="row"><span class="name">PHP / OOP</span><span class="lvl">★★★★★</span></div>
-      <div class="row"><span class="name">WP cache &amp; speed</span><span class="lvl">★★★★★</span></div>
-    </div>
-    <div class="skillcol strong">
-      <h3>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#92400e" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        Strong reach
-        <span class="tag" style="margin-left:auto;color:#92400e;background:#fef3c7">STRONG</span>
-      </h3>
-      <div class="blurb">Comfortable shipping in production.</div>
-      <div class="row"><span class="name">JavaScript (ES2023)</span><span class="lvl">★★★★☆</span></div>
-      <div class="row"><span class="name">Laravel</span><span class="lvl">★★★★☆</span></div>
-      <div class="row"><span class="name">MySQL</span><span class="lvl">★★★★☆</span></div>
-      <div class="row"><span class="name">REST APIs</span><span class="lvl">★★★★☆</span></div>
-      <div class="row"><span class="name">Elementor / ACF</span><span class="lvl">★★★★☆</span></div>
-    </div>
-    <div class="skillcol learning">
-      <h3>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-        Leveling up
-        <span class="tag" style="margin-left:auto;color:#1e40af;background:#dbeafe">LEARNING</span>
-      </h3>
-      <div class="blurb">Used in real projects, pushing for expert.</div>
-      <div class="row"><span class="name">SvelteKit</span><span class="lvl">★★★☆☆</span></div>
-      <div class="row"><span class="name">React</span><span class="lvl">★★★☆☆</span></div>
-      <div class="row"><span class="name">Shopify Apps (Remix)</span><span class="lvl">★★★☆☆</span></div>
-      <div class="row"><span class="name">DSA / LeetCode</span><span class="lvl">★★★★☆</span></div>
-    </div>
-  </div>
-
-  <!-- GAME — Migrate the Cart -->
-
-  <!-- FAQ -->
-  <div class="sec-head">
-    <h2>FAQ</h2>
-  </div>
-  <div class="faq rv">
-    <details open>
-      <summary><span class="q"><span class="qnum">Q1</span>DanDomain → Shopify timeline?</span></summary>
-      <div class="body">1–6 weeks. 1,000-product shop usually 2–3 weeks. Fixed timeline up front.</div>
-    </details>
-    <details>
-      <summary><span class="q"><span class="qnum">Q2</span>Will SEO rankings survive?</span></summary>
-      <div class="body">URL-for-URL 301 map, preserved meta/schema, ported sitemap. Rankings hold or recover in 30–60 days.</div>
-    </details>
-    <details>
-      <summary><span class="q"><span class="qnum">Q3</span>WP → Shopify with custom plugins?</span></summary>
-      <div class="body">Mapped to Shopify apps, metafields, Functions or theme code. Variable products → variants. Blog moves with redirects.</div>
-    </details>
-    <details>
-      <summary><span class="q"><span class="qnum">Q4</span>How fast can my WP site go?</span></summary>
-      <div class="body">Sub-1s FCP. Page + object (Redis) + fragment + edge (Cloudflare) cache. OPcache, critical CSS, lazy-load.</div>
-    </details>
-    <details>
-      <summary><span class="q"><span class="qnum">Q5</span>Keep e-conomic / Business Central?</span></summary>
-      <div class="body">Yes. Direct app where it exists, custom connector otherwise. Klaviyo, GLS/PostNord, payments re-wired.</div>
-    </details>
-    <details>
-      <summary><span class="q"><span class="qnum">Q6</span>Location / hours?</span></summary>
-      <div class="body">Dhaka GMT+6. Daily overlap with Denmark, EU, Singapore. WhatsApp/Telegram +880 1738 790641.</div>
-    </details>
-  </div>
-
-  <!-- education -->
-  <div class="sec-head">
-    <h2>Education <span class="eyetag">B.SC CSE</span></h2>
-    <div class="sub">Computer Science fundamentals from one of Bangladesh's top engineering universities.</div>
-  </div>
-  <div class="edu">
-    <div class="crest">RUET</div>
-    <div>
-      <h3>B.Sc. in Computer Science &amp; Engineering</h3>
-      <div class="where">Rajshahi University of Engineering &amp; Technology · 🇧🇩 Bangladesh</div>
-    </div>
-    <div class="yrs">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-      2013 — 2017
-    </div>
-  </div>
-
-  <!-- CHECKOUT -->
-  <div class="sec-head" id="checkout">
-    <h2>Checkout <span class="eyetag">STEP 2 / 3</span></h2>
-    <div class="sub">You've added <b>1 service</b> to cart. Pick a contact channel and check out.</div>
-  </div>
-
-  <div class="checkout">
-    <div class="ck-form">
-      <div class="ck-stage">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
-        Customer information
-      </div>
-      <h2>Let's plan your migration.</h2>
-      <p class="lead">Free discovery call. Bring a DanDomain audit, a WooCommerce store you've outgrown, or a brand-new build — leave with a scoped plan, a redirect map and a fixed timeline.</p>
-
-      <div class="ck-section">
-        <h3>Project type <span class="step-n">step 1 of 3</span></h3>
-        <div class="ck-method">
-          <label class="on"><input type="radio" name="ptype" checked><div class="ml"><b>Migration</b><small>DanDomain / WP / Woo → Shopify or WP</small></div></label>
-          <label><input type="radio" name="ptype"><div class="ml"><b>New build</b><small>Custom Shopify or WordPress from scratch</small></div></label>
-          <label><input type="radio" name="ptype"><div class="ml"><b>Plugin / app</b><small>Custom WooCommerce or Shopify app</small></div></label>
-          <label><input type="radio" name="ptype"><div class="ml"><b>WP speed / cache</b><small>Audit + tune cache for &lt; 1s load</small></div></label>
-        </div>
-      </div>
-
-      <div class="ck-section">
-        <h3>Preferred contact channel <span class="step-n">step 2 of 3 — pick any</span></h3>
-        <div class="ck-channels">
-          <a class="ch" href="mailto:zaman.shakirdev@gmail.com?subject=Free%20migration%20discovery%20call">
-            <span class="ico em"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></span>
-            <span class="vv">Email<small>zaman.shakirdev@gmail.com</small></span>
-          </a>
-          <a class="ch" href="https://wa.me/8801738790641" target="_blank" rel="noopener">
-            <span class="ico wa"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.5 15.2L2 22l4.9-1.4A10 10 0 1012 2zm5.5 12.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.2 3.3 5.3 4.7 2.1.9 2.9.8 3.4.8.5 0 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg></span>
-            <span class="vv">WhatsApp<small>+880 1738 790641</small></span>
-          </a>
-          <a class="ch" href="https://t.me/+8801738790641" target="_blank" rel="noopener">
-            <span class="ico tg"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M21.5 3.5L2.5 11l5.5 2 2 6.5 3-3.5 5 4 4-16.5zm-4 4l-7 6.5-1-2.5 8-4z"/></svg></span>
-            <span class="vv">Telegram<small>+880 1738 790641</small></span>
-          </a>
-          <a class="ch" href="https://linkedin.com/in/shakir-uz-zaman" target="_blank" rel="noopener">
-            <span class="ico li"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM8 17H5.5v-7H8v7zM6.75 8.7a1.5 1.5 0 110-3 1.5 1.5 0 010 3zM18 17h-2.5v-3.4c0-2.1-2.5-1.9-2.5 0V17H10.5v-7H13v1.2c1.1-2 5-2.2 5 1.9V17z"/></svg></span>
-            <span class="vv">LinkedIn<small>linkedin.com/in/shakir-uz-zaman</small></span>
-          </a>
-          <a class="ch" href="https://github.com/zaman-shakir" target="_blank" rel="noopener">
-            <span class="ico gh"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 2A10 10 0 002 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.1-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.5-1.3.1-2.6 0 0 .8-.3 2.7 1a9.5 9.5 0 015 0c1.9-1.3 2.7-1 2.7-1 .6 1.3.2 2.3.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.8v2.6c0 .3.2.6.7.5A10 10 0 0022 12 10 10 0 0012 2z"/></svg></span>
-            <span class="vv">GitHub<small>github.com/zaman-shakir</small></span>
-          </a>
-          <a class="ch" href="https://leetcode.com/shakir-uz-zaman" target="_blank" rel="noopener">
-            <span class="ico lc"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M14 4l-9 9 9 9 2-2-7-7 7-7-2-2z"/><path d="M20 13H8v-2h12v2z"/></svg></span>
-            <span class="vv">LeetCode<small>shakir-uz-zaman</small></span>
-          </a>
-        </div>
-        <div class="ck-link">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span><b>Based in Dhaka, Bangladesh · GMT+6.</b> Sync windows 14:00–22:00 GMT+6 (10:00–18:00 CET). Async-first.</span>
-        </div>
-      </div>
-    </div>
-
-    <aside class="ck-summary">
-      <h3>Order summary <span class="pill-sm">1 ITEM</span></h3>
-      <div class="li">
-        <div class="thumb">S<span class="q">1</span></div>
-        <div class="body"><div class="n">Shakir Uz Zaman</div><div class="v">CMS Migration Specialist · DanDomain → Shopify · Hourly</div></div>
-        <div class="price"><b>$Available</b><span>trial week free</span></div>
-      </div>
-      <div class="li">
-        <div class="thumb" style="background:var(--wp-soft);color:var(--wp)">🎁</div>
-        <div class="body"><div class="n">Free discovery call</div><div class="v">30 min · scoped plan · no commitment</div></div>
-        <div class="price"><b>FREE</b></div>
-      </div>
-      <div class="discount">
-        <input placeholder="Discount code (complete Migration Quest → unlock FREE-AUDIT)" id="dcode">
-        <button id="dapply">Apply</button>
-      </div>
-      <div class="totals">
-        <div class="row"><span>Subtotal</span><span>$Available</span></div>
-        <div class="row"><span>Shipping <small style="color:var(--muted)">(remote · async)</small></span><span style="color:var(--shop);font-weight:600">FREE</span></div>
-        <div class="row"><span>Discovery call</span><span style="color:var(--shop);font-weight:600">FREE</span></div>
-        <div class="row total"><span>Total</span><span class="num">Let's talk</span></div>
-        <div class="pp">Fixed-scope quote after the free discovery call.</div>
-      </div>
-      <a class="pay-btn" href="mailto:zaman.shakirdev@gmail.com?subject=Free%20migration%20discovery%20call">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
-        Complete order · Book discovery call
+        <p>Internal WordPress plugins: cache manager, custom crawler, duplicate-product merger, autoloader cleaner, profit metrics.</p>
+        <div class="st"><span>PHP</span><span>WordPress</span><span>WooCommerce</span></div>
       </a>
-      <div class="secure">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-        Secure · NDA-friendly · Reply within 24 hours
-      </div>
-    </aside>
-  </div>
 
-</div>
+      <a class="card" href="https://byaagaard.com" target="_blank" rel="noopener">
+        <div class="top"><span class="badge wp">WORDPRESS</span><span class="yr">Denmark</span></div>
+        <h3>Aagaard Jewellery</h3>
+        <p>WordPress build, plugins and speed work for a brand with 200+ retailers.</p>
+        <div class="st"><span>WordPress</span><span>PHP</span><span>WooCommerce</span><span class="lk">byaagaard.com →</span></div>
+      </a>
+
+      <a class="card" href="https://ewersenergi.dk" target="_blank" rel="noopener">
+        <div class="top"><span class="badge wp">WORDPRESS</span><span class="yr">Denmark</span></div>
+        <h3>Ewers Energi</h3>
+        <p>WordPress build with lead capture and performance tuning.</p>
+        <div class="st"><span>WordPress</span><span>PHP</span><span class="lk">ewersenergi.dk →</span></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section id="performance">
+  <div class="wrap rv">
+    <div class="sec-label">performance</div>
+    <h2 class="sec-title">Making WordPress fast</h2>
+    <p class="lead">Speed is part of how I build, not an afterthought. I profile what's actually slow, then fix it at the right layer — from the database up to the browser. Goal every time: <b>sub-1-second First Contentful Paint and green Core Web Vitals</b>.</p>
+    <div class="perf">
+      <div class="pcol">
+        <div class="ph">Server &amp; cache</div>
+        <ul>
+          <li>Full-page caching</li>
+          <li>Object &amp; fragment caching</li>
+          <li>OPcache tuning</li>
+          <li>Cloudflare CDN</li>
+        </ul>
+      </div>
+      <div class="pcol">
+        <div class="ph">Database &amp; PHP</div>
+        <ul>
+          <li>Slow-query profiling</li>
+          <li>Indexing &amp; query rewrites</li>
+          <li>Fix N+1 &amp; heavy WP_Query</li>
+          <li>Reduce autoloaded options</li>
+        </ul>
+      </div>
+      <div class="pcol">
+        <div class="ph">Front-end</div>
+        <ul>
+          <li>Critical CSS &amp; defer JS</li>
+          <li>Lazy-load images</li>
+          <li>Asset minify &amp; bundle</li>
+          <li>Core Web Vitals (LCP/CLS/INP)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap rv">
+    <div class="sec-label">experience</div>
+    <h2 class="sec-title">Where I've worked</h2>
+    <div class="tl">
+      <div class="job">
+        <div class="when">Current · Remote · Denmark</div>
+        <h3>WordPress &amp; CMS Developer</h3>
+        <div class="at">Webkonsulenter (WK)</div>
+        <p>WordPress sites &amp; plugins (Ewers Energi, internal WK plugin suite), WP cache &amp; speed engagements at sub-1s FCP, plus Shopify theme work and a Laravel dashboard.</p>
+      </div>
+      <div class="job">
+        <div class="when">Apr 2023 — Dec 2025 · Remote · Singapore</div>
+        <h3>Software Engineer</h3>
+        <div class="at">Triple-A</div>
+        <p>Sole developer on the Cryptocurrency Payment Gateway for WooCommerce (800+ installs). WordPress demo sites and a pixel-perfect company site with HubSpot integration.</p>
+      </div>
+      <div class="job">
+        <div class="when">May 2019 — Mar 2023 · Remote · Canada</div>
+        <h3>Software Engineer</h3>
+        <div class="at">Grype Digital</div>
+        <p>Delivered WordPress sites for North American clients — The Hill Times, Skate Ontario, TWUC. Custom themes &amp; plugins, secure back-ends, performance.</p>
+      </div>
+      <div class="job">
+        <div class="when">2018 — 2021 · Dhaka</div>
+        <h3>Web Application Developer</h3>
+        <div class="at">Neural Semiconductor · Sycorax Technology</div>
+        <p>Full-stack PHP/Laravel and MVC web apps — LMS UI, REST back-ends, React components, multiple projects shipped from scratch to client-ready.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap rv">
+    <div class="contact">
+      <h2>Let's talk WordPress.</h2>
+      <p>Full-time role, contract, or a specific build — send a note and I'll reply with specifics.</p>
+      <div class="links">
+        <a class="btn primary" href="mailto:zaman.shakirdev@gmail.com?subject=WordPress%20Engineer%20role">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+          zaman.shakirdev@gmail.com
+        </a>
+        <a class="btn ghost" href="https://github.com/zaman-shakir" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn ghost" href="https://linkedin.com/in/shakir-uz-zaman" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="/assets/resume-wp.pdf" download>Résumé</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer>
-  <div class="ft">
-    <div>
-      <div class="brand">shakir<span class="dot">.</span>dev</div>
-      <p class="blurb">CMS migration expert. Shopify &amp; WordPress. DanDomain migrations &amp; WP cache a speciality. Ships globally.</p>
-    </div>
-    <div>
-      <h4>Migration</h4>
-      <ul>
-        <li><a href="#migration">DanDomain → Shopify</a></li>
-        <li><a href="#migration">DanDomain → WordPress</a></li>
-        <li><a href="#migration">WordPress → Shopify</a></li>
-        <li><a href="#cache">WP cache optimization</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Catalog</h4>
-      <ul>
-        <li><a href="#projects">Shopify themes</a></li>
-        <li><a href="#projects">WordPress sites</a></li>
-        <li><a href="#projects">Plugins</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Connect</h4>
-      <ul>
-        <li><a href="mailto:zaman.shakirdev@gmail.com">✉ Email</a></li>
-        <li><a href="https://wa.me/8801738790641" target="_blank" rel="noopener">📱 WhatsApp</a></li>
-        <li><a href="https://t.me/+8801738790641" target="_blank" rel="noopener">✈ Telegram</a></li>
-        <li><a href="https://linkedin.com/in/shakir-uz-zaman" target="_blank" rel="noopener">in LinkedIn</a></li>
-        <li><a href="https://github.com/zaman-shakir" target="_blank" rel="noopener">⌥ GitHub</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="copy">
-    <span>© 2026 Shakir Uz Zaman · Powered by Shakify</span>
-    <span>30-day satisfaction · No returns · Free coffee included</span>
-  </div>
+  <div class="wrap">shakir<span class="br">.</span>dev · <span id="snHint">steer the snake 🐍</span></div>
 </footer>
 
-<a class="scroll-hint" id="hint" href="#checkout">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg>
-  Checkout
-</a>
+<div id="toast">✓ Free WordPress site audit unlocked — email me to claim it.</div>
 
 <script>
-  // pill toggle
-  document.querySelectorAll('.pills').forEach(grp=>{
-    grp.addEventListener('click',e=>{
-      const p=e.target.closest('.pill'); if(!p) return;
-      grp.querySelectorAll('.pill').forEach(x=>x.classList.remove('on'));
-      p.classList.add('on');
-      const label = grp.previousElementSibling.querySelector('.picked');
-      if(label) label.textContent = p.firstChild.textContent.trim() + ' selected';
-    });
-  });
-  // qty
-  const qty=document.querySelector('.qty');
-  if(qty){const i=qty.querySelector('input'),b=qty.querySelectorAll('button');b[0].onclick=()=>i.value=Math.max(1,(+i.value-1));b[1].onclick=()=>i.value=(+i.value+1)}
-  // tabs
-  document.querySelectorAll('.tab').forEach(t=>{
-    t.addEventListener('click',()=>{
-      document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
-      t.classList.add('on');
-      const f=t.dataset.filter;
-      document.querySelectorAll('.pcard').forEach(c=>{c.style.display=(f==='all'||c.dataset.cat===f)?'flex':'none'});
-    });
-  });
-  // ck-method
-  document.querySelectorAll('.ck-method label').forEach(l=>{
-    l.addEventListener('click',()=>{document.querySelectorAll('.ck-method label').forEach(x=>x.classList.remove('on'));l.classList.add('on')});
-  });
-  // discount
-  const da=document.getElementById('dapply');
-  if(da)da.onclick=()=>{
-    const c=document.getElementById('dcode').value.trim().toUpperCase();
-    if(c==='FREE-AUDIT'||c==='FREEAUDIT'){da.textContent='✓ Unlocked';da.style.background='var(--shop)'}
-    else if(c==='NEWMIGRATE'){da.textContent='-10% ✓'}
-    else if(c){da.textContent='Invalid'}else{da.textContent='Apply'}
-  };
-  // scroll hint
-  const hint=document.getElementById('hint');
-  window.addEventListener('scroll',()=>{hint.classList.toggle('on',window.scrollY>700)});
-  // search modal
-  const m=document.getElementById('searchModal');
-  document.getElementById('searchBtn').onclick=()=>{m.classList.add('on');setTimeout(()=>document.getElementById('searchInput').focus(),50)};
-  document.getElementById('closeSearch').onclick=()=>m.classList.remove('on');
-  m.onclick=e=>{if(e.target===m)m.classList.remove('on')};
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')m.classList.remove('on')});
+/* ===== scroll reveal ===== */
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
-  // reveal on scroll
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});
-  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+/* ===== snake game (eats emoji food off the page text) ===== */
+(function(){
+  const GOAL=30, CELL=20;
+  const FOOD_TYPES=[
+    {points:1,weight:70,emoji:'🍔',color:'#e3b341'},
+    {points:3,weight:22,emoji:'🍵',color:'#3ad7c5'},
+    {points:5,weight:8, emoji:'⭐',color:'#58a6ff'}
+  ];
+  const cvs=document.getElementById('snCanvas'), ctx=cvs.getContext('2d');
+  const scoreEl=document.getElementById('snScore'), toast=document.getElementById('toast');
+  let W=0,H=0,cols=0,rows=0;
+  let snake=[],dir={x:1,y:0},nextDir={x:1,y:0},food=null;
+  let score=Math.min(GOAL,+(localStorage.getItem('wp-snake')||0));
+  let raf=0,last=0,speed=120,unlocked=localStorage.getItem('wp-snake-unlocked')==='1';
+  scoreEl.textContent=score;
 
-  // ============== THEME TOGGLE ==============
-  (function(){
-    const btn=document.getElementById('themeBtn'),icon=document.getElementById('themeIcon');
-    if(!btn)return;
-    const saved=localStorage.getItem('theme');
-    if(saved==='dark'){document.documentElement.setAttribute('data-theme','dark');icon.textContent='☀️'}
-    btn.addEventListener('click',()=>{
-      const isDark=document.documentElement.getAttribute('data-theme')==='dark';
-      if(isDark){document.documentElement.removeAttribute('data-theme');icon.textContent='🌙';localStorage.setItem('theme','light')}
-      else{document.documentElement.setAttribute('data-theme','dark');icon.textContent='☀️';localStorage.setItem('theme','dark')}
-    });
-  })();
+  function size(){
+    W=cvs.width=innerWidth; H=cvs.height=innerHeight;
+    cols=Math.floor(W/CELL); rows=Math.floor(H/CELL);
+  }
+  size(); addEventListener('resize',size);
 
-  // ============== SITE-WIDE SNAKE (body overlay, header strip HUD) ==============
-  (function(){
-    const cvs=document.createElement('canvas');cvs.id='snCanvas';document.body.appendChild(cvs);
-    const ctx=cvs.getContext('2d');
+  /* classic snake food: a standalone emoji on a random empty grid cell */
+  function pickType(){
+    const tot=FOOD_TYPES.reduce((a,b)=>a+b.weight,0); let r=Math.random()*tot;
+    for(const t of FOOD_TYPES){ if((r-=t.weight)<=0) return t; } return FOOD_TYPES[0];
+  }
+  function spawnFood(){
+    let x,y,tries=0;
+    do{
+      x=2+((Math.random()*(cols-4))|0);
+      y=3+((Math.random()*(rows-5))|0);   /* keep below the nav row */
+      tries++;
+    }while(snake.some(s=>s.x===x&&s.y===y)&&tries<40);
+    food={ x, y, type:pickType() };
+  }
+  function reset(){
+    const cx=Math.floor(cols/2),cy=Math.floor(rows/2);
+    snake=[{x:cx,y:cy},{x:cx-1,y:cy},{x:cx-2,y:cy}];
+    dir={x:1,y:0}; nextDir={x:1,y:0}; spawnFood();
+  }
 
-    const GOAL=30,CELL=24;
-    const SNAKE='#ff9900',SNAKE_DIM='rgba(255,153,0,';
-    const FOOD_TYPES=[
-      {color:'#ff5fa2',points:1,weight:70,glow:'#ff5fa2'},
-      {color:'#67e8f9',points:3,weight:22,glow:'#67e8f9'},
-      {color:'#a78bfa',points:5,weight:8,glow:'#a78bfa',star:true}
-    ];
-    const particles=[];
-    const pops=[];
-    let W=0,H=0,cols=0,rows=0;
-    let snake=[],dir={x:1,y:0},food=null,score=Math.min(GOAL,+(localStorage.getItem('snake-score')||0)),raf=0,lastTick=0,speed=130;
-    const scoreEl=document.getElementById('snScore');
-    if(scoreEl)scoreEl.textContent=score;
-
-    function resize(){
-      cvs.width=W=window.innerWidth;cvs.height=H=window.innerHeight;
-      cols=Math.floor(W/CELL);rows=Math.floor(H/CELL);
-    }
-    resize();
-    window.addEventListener('resize',()=>{resize();drawAll()});
-
-    function reset(){
-      snake=[{x:Math.floor(cols/2),y:Math.floor(rows/2)},{x:Math.floor(cols/2)-1,y:Math.floor(rows/2)},{x:Math.floor(cols/2)-2,y:Math.floor(rows/2)}];
-      dir={x:1,y:0};nextDir={x:1,y:0};score=0;speed=140;
-      scoreEl.textContent=0;lenEl.textContent=snake.length;barEl.style.width='0%';
+  function step(){
+    dir=nextDir;
+    const head={x:(snake[0].x+dir.x+cols)%cols, y:(snake[0].y+dir.y+rows)%rows};
+    snake.unshift(head);
+    if(food && head.x===food.x && head.y===food.y){
+      score=Math.min(GOAL,score+food.type.points);
+      scoreEl.textContent=score;
+      localStorage.setItem('wp-snake',score);
+      if(score>=GOAL) unlock();
       spawnFood();
+      if(snake.length>14) snake.pop();   /* cap length so it stays tidy */
+    } else {
+      snake.pop();
     }
+  }
+  function unlock(){
+    if(unlocked) return;
+    unlocked=true; localStorage.setItem('wp-snake-unlocked','1');
+    toast.classList.add('on');
+    const h=document.getElementById('snHint'); if(h)h.textContent='Free WP audit unlocked ✓';
+    setTimeout(()=>toast.classList.remove('on'),6000);
+  }
 
-    // find visible text nodes on screen, pick one letter to mark as target
-    function pickTextTarget(){
-      const candidates=[];
-      const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
-        acceptNode:n=>{
-          if(!n.nodeValue||!n.nodeValue.trim())return NodeFilter.FILTER_REJECT;
-          const p=n.parentElement;if(!p)return NodeFilter.FILTER_REJECT;
-          if(p.closest('#snHUD,#snCanvas,script,style,noscript'))return NodeFilter.FILTER_REJECT;
-          const r=p.getBoundingClientRect();
-          if(r.bottom<0||r.top>H||r.right<0||r.left>W)return NodeFilter.FILTER_REJECT;
-          if(r.width<10||r.height<10)return NodeFilter.FILTER_REJECT;
-          return NodeFilter.FILTER_ACCEPT;
-        }
-      });
-      let n;while((n=walker.nextNode()))candidates.push(n);
-      if(!candidates.length)return null;
-      // shuffle, try few
-      for(let i=0;i<20;i++){
-        const node=candidates[Math.floor(Math.random()*candidates.length)];
-        const txt=node.nodeValue;
-        const idxs=[];for(let j=0;j<txt.length;j++)if(/[A-Za-z0-9]/.test(txt[j]))idxs.push(j);
-        if(!idxs.length)continue;
-        const idx=idxs[Math.floor(Math.random()*idxs.length)];
-        try{
-          const range=document.createRange();range.setStart(node,idx);range.setEnd(node,idx+1);
-          const rect=range.getBoundingClientRect();
-          if(rect.width<2||rect.height<2)continue;
-          if(rect.top<60||rect.bottom>H-20||rect.left<20||rect.right>W-260)continue; // avoid HUD overlap
-          const span=document.createElement('span');span.className='snake-target';
-          range.surroundContents(span);
-          return {span,letter:txt[idx].toUpperCase()};
-        }catch(e){continue}
-      }
-      return null;
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    if(food){
+      const fx=food.x*CELL+CELL/2, fy=food.y*CELL+CELL/2, tt=Date.now()/220;
+      ctx.shadowColor=food.type.color; ctx.shadowBlur=16+Math.sin(tt)*4;
+      ctx.font=`${CELL*1.4}px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif`;
+      ctx.textAlign='center'; ctx.textBaseline='middle';
+      ctx.fillText(food.type.emoji,fx,fy);
+      ctx.shadowBlur=0;
+      ctx.fillStyle=food.type.color; ctx.font='bold 11px "JetBrains Mono",monospace';
+      ctx.fillText('+'+food.type.points,fx,fy-CELL*.85);
     }
-
-    function pickFoodType(){
-      const total=FOOD_TYPES.reduce((a,b)=>a+b.weight,0);
-      let r=Math.random()*total;
-      for(const t of FOOD_TYPES){if((r-=t.weight)<=0)return t}
-      return FOOD_TYPES[0];
-    }
-    function spawnFood(){
-      // clean prior target
-      if(food && food.span && food.span.parentNode){
-        const p=food.span.parentNode;while(food.span.firstChild)p.insertBefore(food.span.firstChild,food.span);p.removeChild(food.span);p.normalize();
-      }
-      const t=pickTextTarget();
-      if(!t){food=null;return}
-      const rect=t.span.getBoundingClientRect();
-      const ft=pickFoodType();
-      // restyle target outline to match food color
-      t.span.style.outlineColor=ft.color;t.span.style.background=ft.color.replace('1)',',.18)')||'';
-      food={x:Math.floor((rect.left+rect.width/2)/CELL),y:Math.floor((rect.top+rect.height/2)/CELL),letter:t.letter,span:t.span,rect,type:ft};
-    }
-
-    function updateFoodPos(){
-      // re-read rect on scroll
-      if(!food||!food.span||!food.span.isConnected){spawnFood();return}
-      const rect=food.span.getBoundingClientRect();
-      if(rect.bottom<0||rect.top>H){spawnFood();return}
-      food.rect=rect;food.x=Math.floor((rect.left+rect.width/2)/CELL);food.y=Math.floor((rect.top+rect.height/2)/CELL);
-    }
-
-    function drawAll(){
-      ctx.clearRect(0,0,W,H);
-
-      // food
-      if(food){
-        const fx=food.x*CELL+CELL/2,fy=food.y*CELL+CELL/2,c=food.type.color,t=Date.now()/200;
-        ctx.shadowColor=c;ctx.shadowBlur=22+Math.sin(t)*4;
-        if(food.type.star){
-          // 5-point star
-          ctx.fillStyle=c;ctx.beginPath();
-          for(let i=0;i<10;i++){const ang=(Math.PI*2*i)/10-Math.PI/2;const r=i%2?CELL*.22:CELL*.5;ctx.lineTo(fx+Math.cos(ang)*r,fy+Math.sin(ang)*r)}
-          ctx.closePath();ctx.fill();
-        } else {
-          ctx.fillStyle=c;
-          ctx.beginPath();ctx.arc(fx,fy,CELL*.45,0,Math.PI*2);ctx.fill();
-        }
-        ctx.shadowBlur=0;
-        ctx.fillStyle='rgba(255,255,255,.9)';
-        ctx.beginPath();ctx.arc(fx-CELL*.14,fy-CELL*.14,CELL*.1,0,Math.PI*2);ctx.fill();
-        // point label above
-        ctx.fillStyle=c;ctx.font=`bold ${CELL*.4}px Inter,system-ui`;ctx.textAlign='center';
-        ctx.fillText('+'+food.type.points,fx,fy-CELL*.7);
-      }
-
-      // snake body: orange round segments w/ digestion bulge
-      snake.forEach((s,i)=>{
-        const x=s.x*CELL+CELL/2,y=s.y*CELL+CELL/2;
-        if(i===0){
-          ctx.shadowColor=SNAKE;ctx.shadowBlur=18;
-          ctx.fillStyle=SNAKE;
-          ctx.beginPath();ctx.arc(x,y,CELL*.5,0,Math.PI*2);ctx.fill();
-          ctx.shadowBlur=0;
-          const ex=dir.x,ey=dir.y;
-          const e1x=x+ex*5+(ey?5:0)*(-1),e1y=y+ey*5+(ex?5:0);
-          const e2x=x+ex*5+(ey?5:0),e2y=y+ey*5+(ex?5:0)*(-1);
-          ctx.fillStyle='#fff';
-          ctx.beginPath();ctx.arc(e1x,e1y,3.5,0,Math.PI*2);ctx.fill();
-          ctx.beginPath();ctx.arc(e2x,e2y,3.5,0,Math.PI*2);ctx.fill();
-          ctx.fillStyle='#0c0c14';
-          ctx.beginPath();ctx.arc(e1x+ex,e1y+ey,1.8,0,Math.PI*2);ctx.fill();
-          ctx.beginPath();ctx.arc(e2x+ex,e2y+ey,1.8,0,Math.PI*2);ctx.fill();
-        } else {
-          const a=Math.max(.4,1-i/(snake.length*1.6));
-          let r=CELL*.42*(1-i*.012);r=Math.max(r,CELL*.22);
-          // digestion bulge — segment near digestPos puffs up
-          if(s.bulge){
-            r*=1.6;s.bulge*=.85;if(s.bulge<.05)delete s.bulge;
-            ctx.shadowColor=s.bulgeColor||SNAKE;ctx.shadowBlur=12;
-          }
-          ctx.fillStyle=SNAKE_DIM+a+')';
-          ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();
-          ctx.shadowBlur=0;
-        }
-      });
-
-      // particle bursts
-      for(let i=particles.length-1;i>=0;i--){
-        const p=particles[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.15;p.life-=.025;
-        if(p.life<=0){particles.splice(i,1);continue}
-        ctx.globalAlpha=p.life;ctx.fillStyle=p.c;
-        ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
-      }
-      ctx.globalAlpha=1;
-
-      // floating "+N" pops
-      for(let i=pops.length-1;i>=0;i--){
-        const p=pops[i];p.y-=1.5;p.life-=.018;
-        if(p.life<=0){pops.splice(i,1);continue}
-        ctx.globalAlpha=p.life;
-        ctx.font=`bold ${22}px Inter,system-ui`;ctx.textAlign='center';
-        ctx.fillStyle=p.c;ctx.fillText('+'+p.n,p.x,p.y);
-      }
-      ctx.globalAlpha=1;
-    }
-
-    function burst(x,y,color,count){
-      for(let i=0;i<count;i++){
-        const a=Math.random()*Math.PI*2,sp=2+Math.random()*4;
-        particles.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-2,r:2+Math.random()*3,c:color,life:1});
-      }
-    }
-
-    // user input → queued direction
-    let nextDir={x:1,y:0};
-    const KEY={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0],w:[0,-1],s:[0,1],a:[-1,0],d:[1,0],W:[0,-1],S:[0,1],A:[-1,0],D:[1,0]};
-    document.addEventListener('keydown',e=>{
-      if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
-      const m=KEY[e.key];if(!m)return;
-      if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key))e.preventDefault();
-      const [nx,ny]=m;if(nx===-dir.x&&ny===-dir.y)return;
-      nextDir={x:nx,y:ny};
+    snake.forEach((s,i)=>{
+      const x=s.x*CELL+CELL/2, y=s.y*CELL+CELL/2;
+      const head=i===0;
+      ctx.fillStyle=head?'#3ad7c5':`rgba(58,215,197,${0.85-i/snake.length*0.6})`;
+      if(head){ ctx.shadowColor='#3ad7c5'; ctx.shadowBlur=14; }
+      ctx.beginPath(); ctx.arc(x,y,CELL*(head?0.5:0.42),0,Math.PI*2); ctx.fill();
+      ctx.shadowBlur=0;
     });
-    let tx=0,ty=0;
-    document.addEventListener('touchstart',e=>{const t=e.touches[0];tx=t.clientX;ty=t.clientY},{passive:true});
-    document.addEventListener('touchend',e=>{
-      const t=e.changedTouches[0],dx=t.clientX-tx,dy=t.clientY-ty;
-      if(Math.abs(dx)<30&&Math.abs(dy)<30)return;
-      let nx,ny;if(Math.abs(dx)>Math.abs(dy)){nx=dx>0?1:-1;ny=0}else{nx=0;ny=dy>0?1:-1}
-      if(nx===-dir.x&&ny===-dir.y)return;
-      nextDir={x:nx,y:ny};
-    },{passive:true});
+  }
 
-    function tick(t){
-      raf=requestAnimationFrame(tick);
-      if(t-lastTick<speed)return;
-      lastTick=t;
-      updateFoodPos();
-      dir=nextDir;
-      const head={x:(snake[0].x+dir.x+cols)%cols,y:(snake[0].y+dir.y+rows)%rows};
-      if(snake.length>4 && snake.some(s=>s.x===head.x&&s.y===head.y)){
-        // soft reset on self-collision: keep playing, lose length
-        snake=[head,{x:head.x-dir.x,y:head.y-dir.y},{x:head.x-dir.x*2,y:head.y-dir.y*2}];
-        drawAll();return;
-      }
-      snake.unshift(head);
-      if(food && Math.abs(head.x-food.x)<=1 && Math.abs(head.y-food.y)<=1){
-        const pts=food.type.points,c=food.type.color;
-        score=Math.min(GOAL,score+pts);localStorage.setItem('snake-score',score);
-        if(scoreEl)scoreEl.textContent=score;
-        // visuals: burst + pop + bulge first segment
-        burst(food.x*CELL+CELL/2,food.y*CELL+CELL/2,c,12);
-        pops.push({x:food.x*CELL+CELL/2,y:food.y*CELL+CELL/2-10,n:pts,c,life:1});
-        snake[1] && (snake[1].bulge=1,snake[1].bulgeColor=c);
-        // audio beep
-        try{
-          const a=(window.AC=window.AC||new (window.AudioContext||window.webkitAudioContext)());
-          const o=a.createOscillator(),g=a.createGain();
-          o.frequency.value=pts===5?880:pts===3?660:520;
-          o.connect(g);g.connect(a.destination);g.gain.value=.08;
-          o.start();g.gain.exponentialRampToValueAtTime(.001,a.currentTime+.18);o.stop(a.currentTime+.2);
-        }catch(e){}
-        if(food.span && food.span.isConnected){
-          food.span.className='snake-eaten';food.span.style.outlineColor='';food.span.style.background='';food.span=null;
-        }
-        // grow extra for high-value food
-        for(let g=0;g<pts-1;g++)snake.push({...snake[snake.length-1]});
-        spawnFood();
-        if(speed>80)speed=Math.max(80,speed-1);
-        if(score>=GOAL)unlock();
-      } else {
-        snake.pop();
-      }
-      drawAll();
-    }
-
-    function unlock(){
-      localStorage.setItem('snake-unlocked','1');
-      const inp=document.getElementById('dcode');if(inp&&!inp.value){inp.value='FREE-AUDIT';inp.style.borderColor='#ff9900';inp.style.background='#fff7e6'}
-    }
-
-    function reset(){
-      snake=[{x:Math.floor(cols/2),y:Math.floor(rows/2)},{x:Math.floor(cols/2)-1,y:Math.floor(rows/2)},{x:Math.floor(cols/2)-2,y:Math.floor(rows/2)}];
-      dir={x:1,y:0};
-      spawnFood();
-    }
-
-    // boot — auto play forever
-    reset();cvs.classList.add('on');
+  function tick(ts){
     raf=requestAnimationFrame(tick);
+    if(ts-last>speed){ last=ts; step(); }
+    draw();
+  }
 
-    // restore unlock + carry-over score
-    if(localStorage.getItem('snake-unlocked')==='1')unlock();
-  })();
+  addEventListener('keydown',e=>{
+    const k=e.key.toLowerCase();
+    if(['arrowup','arrowdown','arrowleft','arrowright'].includes(k)) e.preventDefault();
+    if((k==='arrowup'||k==='w')&&dir.y===0)nextDir={x:0,y:-1};
+    else if((k==='arrowdown'||k==='s')&&dir.y===0)nextDir={x:0,y:1};
+    else if((k==='arrowleft'||k==='a')&&dir.x===0)nextDir={x:-1,y:0};
+    else if((k==='arrowright'||k==='d')&&dir.x===0)nextDir={x:1,y:0};
+  });
+
+  reset();
+  raf=requestAnimationFrame(tick);
+  if(unlocked){ const h=document.getElementById('snHint'); if(h)h.textContent='Free WP audit unlocked ✓'; }
+})();
 </script>
 </body>
 </html>
