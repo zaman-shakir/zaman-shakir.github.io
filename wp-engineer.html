@@ -1567,9 +1567,9 @@
     const GOAL=30,CELL=24;
     const SNAKE='#ff9900',SNAKE_DIM='rgba(255,153,0,';
     const FOOD_TYPES=[
-      {color:'#ff5fa2',points:1,weight:70,glow:'#ff5fa2'},
-      {color:'#67e8f9',points:3,weight:22,glow:'#67e8f9'},
-      {color:'#a78bfa',points:5,weight:8,glow:'#a78bfa',star:true}
+      {color:'#ff5fa2',points:1,weight:70,glow:'#ff5fa2',emoji:'🍔'},
+      {color:'#67e8f9',points:3,weight:22,glow:'#67e8f9',emoji:'🍵'},
+      {color:'#a78bfa',points:5,weight:8,glow:'#a78bfa',star:true,emoji:'⭐'}
     ];
     const particles=[];
     const pops=[];
@@ -1659,24 +1659,16 @@
     function drawAll(){
       ctx.clearRect(0,0,W,H);
 
-      // food
+      // food (emoji)
       if(food){
         const fx=food.x*CELL+CELL/2,fy=food.y*CELL+CELL/2,c=food.type.color,t=Date.now()/200;
-        ctx.shadowColor=c;ctx.shadowBlur=22+Math.sin(t)*4;
-        if(food.type.star){
-          // 5-point star
-          ctx.fillStyle=c;ctx.beginPath();
-          for(let i=0;i<10;i++){const ang=(Math.PI*2*i)/10-Math.PI/2;const r=i%2?CELL*.22:CELL*.5;ctx.lineTo(fx+Math.cos(ang)*r,fy+Math.sin(ang)*r)}
-          ctx.closePath();ctx.fill();
-        } else {
-          ctx.fillStyle=c;
-          ctx.beginPath();ctx.arc(fx,fy,CELL*.45,0,Math.PI*2);ctx.fill();
-        }
+        ctx.shadowColor=c;ctx.shadowBlur=18+Math.sin(t)*4;
+        ctx.font=`${CELL*1.05}px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",system-ui`;
+        ctx.textAlign='center';ctx.textBaseline='middle';
+        ctx.fillText(food.type.emoji,fx,fy);
         ctx.shadowBlur=0;
-        ctx.fillStyle='rgba(255,255,255,.9)';
-        ctx.beginPath();ctx.arc(fx-CELL*.14,fy-CELL*.14,CELL*.1,0,Math.PI*2);ctx.fill();
         // point label above
-        ctx.fillStyle=c;ctx.font=`bold ${CELL*.4}px Inter,system-ui`;ctx.textAlign='center';
+        ctx.fillStyle=c;ctx.font=`bold ${CELL*.4}px Inter,system-ui`;ctx.textBaseline='alphabetic';
         ctx.fillText('+'+food.type.points,fx,fy-CELL*.7);
       }
 
