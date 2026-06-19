@@ -197,7 +197,7 @@
   .rv.in{opacity:1;transform:none}
 
   /* ---- snake canvas overlay ---- */
-  #snCanvas{position:fixed;inset:0;z-index:1;pointer-events:none}
+  #snCanvas{position:fixed;inset:0;z-index:40;pointer-events:none}
   .sn-eat{background:linear-gradient(180deg,transparent 58%,rgba(58,215,197,.4) 58%);border-radius:2px;animation:eat .35s ease}
   @keyframes eat{0%{background-size:0 100%}100%{background-size:100% 100%}}
   .sn-target{outline:1.5px solid var(--acc);outline-offset:2px;border-radius:3px;background:rgba(58,215,197,.12)}
@@ -505,7 +505,7 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
     if(food){
       const fx=food.x*CELL+CELL/2, fy=food.y*CELL+CELL/2, tt=Date.now()/220;
       ctx.shadowColor=food.type.color; ctx.shadowBlur=16+Math.sin(tt)*4;
-      ctx.font=`${CELL*1.1}px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif`;
+      ctx.font=`${CELL*1.4}px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif`;
       ctx.textAlign='center'; ctx.textBaseline='middle';
       ctx.fillText(food.type.emoji,fx,fy);
       ctx.shadowBlur=0;
