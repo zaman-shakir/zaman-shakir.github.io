@@ -27,16 +27,28 @@ Multidots WordPress Engineer (https://careers.multidots.com/careers/wordpress-en
 - Update reward reveal text wherever FREE-AUDIT renders.
 
 ### 3. Copy retarget (reframe existing content, not fabricate)
-Candidate's real WP experience to feature: **9+ years**, custom themes/plugins, Gutenberg/ACF blocks, WooCommerce/Multisite. **Do NOT claim** WP Engine / Kinsta / WP VIP / Pantheon (no experience) — omit or frame as "eager to learn."
 
-| Section | WP Engineer version |
+**Reality of the live file:** `index.html` is an e-commerce-PDP-themed landing page selling *migration services* (DanDomain→Shopify/WP). It uses a product-page metaphor throughout: hero "speciality" cards, "Add to cart · Book Shakir", "Size chart — proficiency", migration lanes, "Product catalog" = projects, "Checkout" = contact. The retarget keeps the **PDP visual theme and all layout/CSS**, but reframes the *product being sold* from "migration services" to "**a WordPress Engineer (me)**".
+
+Candidate's real WP experience already present in the file (lead with these): **9+ years**; The Hill Times news portal (custom theme + plugins, 100k+ subscribers, paid/free subs); Crypto Payment Gateway for WooCommerce (sole dev, singleton OOP, 800+ installs, REST, 14 releases/yr, 0 open issues); WK Plugin Suite (cache manager, crawler, etc.); Triple-A site (Figma→pixel-perfect). **Do NOT claim** WP Engine / Kinsta / WP VIP / Pantheon (no experience) — omit or frame as "eager to learn."
+
+| Block (live line refs) | WP Engineer version |
 |---|---|
-| Intro / typing strings | "WordPress Engineer" · "Custom themes & plugins" · "Gutenberg & ACF blocks" · "PHP 7/8 · WP_Query · REST API" |
-| About | 9+ yrs WordPress. Core architecture, request lifecycle, actions/filters, custom themes+plugins, Gutenberg/ACF blocks, WooCommerce/Multisite. |
-| Experience | Reframe achievements toward WP: theme/plugin builds, block dev, WooCommerce, perf (caching, DB queries, assets). |
-| Projects | Lead with WP (custom plugins, Gutenberg/ACF blocks, WooCommerce/Multisite). Keep Shopify/Laravel as secondary "also worked with". Reframe existing project copy; real client names/details added by user later. |
-| Skills | PHP 7/8, OOP, design patterns · WP_Query, Template Hierarchy, Rewrite Rules, Cron, REST API · MySQL optimization · HTML5/CSS3/SCSS · JS ES6+, jQuery · Gutenberg, ACF · WooCommerce, Multisite · Git/PR workflow |
-| Resume link | Local `assets/resume-wp.pdf` (empty placeholder PDF committed to repo). Replace all Google Drive resume occurrences in this file with the local path. |
+| `<title>` (L6) | "Shakir Uz Zaman — WordPress Engineer · PHP 7/8 · Gutenberg · WooCommerce" |
+| Hero eyebrow (L605) + vendor tag (L645) | "WORDPRESS ENGINEER · 9+ YEARS · REMOTE WORLDWIDE" |
+| Hero speciality cards (L607-635) | Recast 3 cards as WP strengths: **01 Custom Themes & Plugins** (actions, filters, WP_Query, template hierarchy); **02 Gutenberg & ACF Blocks** (block dev, editorial UX); **03 WooCommerce & Performance** (caching, DB queries, assets, Core Web Vitals). |
+| `role` line (L647) | "**WordPress Engineer** · PHP 7/8 · Gutenberg · WooCommerce · REST API" |
+| Hero foot stats (L636-641) | Keep 9+ years, 800+ installs, 100k+ users, 0 failed — all true & WP-relevant. |
+| `Migration type` pills (L662-672) | Relabel to WP focus areas: Theme dev · Plugin dev · Gutenberg/ACF blocks · WooCommerce · Multisite · REST/headless. |
+| `Stack` pills (L674-685) | Lead WordPress + WooCommerce + PHP 8; keep Shopify/Laravel/React as secondary. |
+| Size-chart proficiency table (L716-728) | Reorder WP-first: WordPress, PHP/OOP, Gutenberg/ACF, WooCommerce, WP_Query/REST, MySQL opt, JS ES6+, SCSS, jQuery; Shopify/Laravel lower. |
+| Migration section (L744+) | Reframe heading/lead away from "DanDomain migration" → WP engineering services/strengths (or de-emphasize; keep layout). |
+| `Product catalog` projects (L1019-1190) | Reorder WP/plugin cards first; relabel default tab/copy so WordPress leads. Keep Shopify cards as secondary. |
+| Skills section (L1264+) | PHP 7/8, OOP, design patterns · WP_Query, Template Hierarchy, Rewrite Rules, Cron, REST API · MySQL optimization · HTML5/CSS3/SCSS · JS ES6+, jQuery · Gutenberg, ACF · WooCommerce, Multisite · Git/PR workflow. |
+| Checkout/contact (L1360+), `dcode` placeholder (L1432) | Reframe "migration" wording → "WordPress engagement". Discount placeholder → "...unlock Free WP audit". |
+| Resume link | Local `assets/resume-wp.pdf` (empty placeholder PDF committed to repo). If a resume link exists, point it local; if none exists, add one near hero/contact. |
+
+**Guiding rule:** keep every visual/CSS/layout element; change only text, pill labels, ordering, and the food/reward. When a phrase is migration-specific, rewrite to WP-engineering. Never invent clients — reuse the real ones already in the file.
 
 ## Non-goals
 
