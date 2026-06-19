@@ -548,7 +548,7 @@
       <a href="#checkout">Contact</a>
     </nav>
     <div class="icons">
-      <div class="snake-pill" title="Use arrows or WASD to guide the snake. Eat 30 letters to unlock FREE-AUDIT.">
+      <div class="snake-pill" title="Use arrows or WASD to guide the snake. Eat 30 to unlock your Free WP audit code.">
         <span class="snake-pill-dot"></span>
         <span><b id="snScore">0</b>/30 🐍</span>
       </div>
@@ -1429,7 +1429,7 @@
         <div class="price"><b>FREE</b></div>
       </div>
       <div class="discount">
-        <input placeholder="Discount code (complete Migration Quest → unlock FREE-AUDIT)" id="dcode">
+        <input placeholder="Code (finish the snake game → unlock Free WP audit)" id="dcode">
         <button id="dapply">Apply</button>
       </div>
       <div class="totals">
@@ -1528,8 +1528,8 @@
   const da=document.getElementById('dapply');
   if(da)da.onclick=()=>{
     const c=document.getElementById('dcode').value.trim().toUpperCase();
-    if(c==='FREE-AUDIT'||c==='FREEAUDIT'){da.textContent='✓ Unlocked';da.style.background='var(--shop)'}
-    else if(c==='NEWMIGRATE'){da.textContent='-10% ✓'}
+    if(c==='FREE-AUDIT'||c==='FREEAUDIT'){da.textContent='✓ Free WP audit unlocked';da.style.background='var(--shop)'}
+    else if(c==='NEWCLIENT'){da.textContent='-10% ✓'}
     else if(c){da.textContent='Invalid'}else{da.textContent='Apply'}
   };
   // scroll hint
