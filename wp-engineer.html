@@ -179,6 +179,18 @@
   .job .at{font-size:13.5px;color:var(--acc);margin-bottom:8px}
   .job p{font-size:14px;color:var(--mut);font-weight:300;max-width:680px}
 
+  /* ---- performance ---- */
+  .perf{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:720px){.perf{grid-template-columns:1fr}}
+  .pcol{border:1px solid var(--line);background:linear-gradient(180deg,var(--panel),var(--bg2));border-radius:13px;padding:20px 22px;transition:.22s}
+  .pcol:hover{border-color:var(--line2);transform:translateY(-3px)}
+  .ph{font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--acc);letter-spacing:.5px;margin-bottom:12px}
+  .ph::before{content:"› ";color:var(--dim)}
+  .pcol ul{list-style:none}
+  .pcol li{font-size:13.5px;color:var(--mut);font-weight:300;padding:5px 0;border-top:1px solid var(--line);display:flex;align-items:center;gap:9px}
+  .pcol li:first-child{border-top:0}
+  .pcol li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--acc);flex-shrink:0;box-shadow:0 0 6px var(--acc)}
+
   /* ---- contact ---- */
   .contact{
     border:1px solid var(--line);border-radius:16px;background:linear-gradient(160deg,var(--panel),var(--bg2));
@@ -219,6 +231,7 @@
     <div class="navlinks">
       <a href="#about">about</a>
       <a href="#work">work</a>
+      <a href="#performance">speed</a>
       <a href="#experience">experience</a>
       <a href="#contact">contact</a>
     </div>
@@ -269,11 +282,15 @@
       <span class="chip">WooCommerce</span>
       <span class="chip">Multisite</span>
       <span class="chip">MySQL optimization</span>
+      <span class="chip">Page-speed optimization</span>
+      <span class="chip">Caching · OPcache</span>
+      <span class="chip">Core Web Vitals</span>
       <span class="chip">HTML5 · CSS3 · SCSS</span>
       <span class="chip">JavaScript ES6+</span>
       <span class="chip">jQuery</span>
+      <span class="chip">Shopify · Liquid</span>
+      <span class="chip">Cloudflare</span>
       <span class="chip">Git · PR workflow</span>
-      <span class="chip">Core Web Vitals</span>
     </div>
   </div>
 </section>
@@ -326,6 +343,43 @@
         <div class="st"><span>WordPress</span><span>PHP</span><span class="lk">ewersenergi.dk →</span></div>
       </a>
 
+    </div>
+  </div>
+</section>
+
+<section id="performance">
+  <div class="wrap rv">
+    <div class="sec-label">performance</div>
+    <h2 class="sec-title">Making WordPress fast</h2>
+    <p class="lead">Speed is part of how I build, not an afterthought. I profile what's actually slow, then fix it at the right layer — from the database up to the browser. Goal every time: <b>sub-1-second First Contentful Paint and green Core Web Vitals</b>.</p>
+    <div class="perf">
+      <div class="pcol">
+        <div class="ph">Server &amp; cache</div>
+        <ul>
+          <li>Full-page caching</li>
+          <li>Object &amp; fragment caching</li>
+          <li>OPcache tuning</li>
+          <li>Cloudflare CDN</li>
+        </ul>
+      </div>
+      <div class="pcol">
+        <div class="ph">Database &amp; PHP</div>
+        <ul>
+          <li>Slow-query profiling</li>
+          <li>Indexing &amp; query rewrites</li>
+          <li>Fix N+1 &amp; heavy WP_Query</li>
+          <li>Reduce autoloaded options</li>
+        </ul>
+      </div>
+      <div class="pcol">
+        <div class="ph">Front-end</div>
+        <ul>
+          <li>Critical CSS &amp; defer JS</li>
+          <li>Lazy-load images</li>
+          <li>Asset minify &amp; bundle</li>
+          <li>Core Web Vitals (LCP/CLS/INP)</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
