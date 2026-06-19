@@ -19,7 +19,7 @@
   "@context":"https://schema.org",
   "@type":"Person",
   "name":"Shakir Uz Zaman",
-  "url":"https://zaman-shakir.github.io/wp-engineer.html",
+  "url":"https://zaman-shakir.github.io/",
   "jobTitle":"WordPress Engineer — Custom Themes, Plugins, Gutenberg Blocks, WooCommerce",
   "email":"mailto:zaman.shakirdev@gmail.com",
   "address":{"@type":"PostalAddress","addressLocality":"Dhaka","addressCountry":"BD"},
@@ -87,15 +87,39 @@
   .navlinks a:hover{color:var(--acc)}
   .navlinks a::before{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--acc);transition:width .25s}
   .navlinks a:hover::before{width:100%}
-  .snakehud{
-    font-family:var(--mono);font-size:11.5px;color:var(--dim);
-    display:inline-flex;align-items:center;gap:7px;
-    border:1px solid var(--line2);border-radius:99px;padding:4px 11px;
-    cursor:default;white-space:nowrap;
+  .navright{display:flex;align-items:center;gap:12px}
+  .snaketgl{
+    background:none;border:1px solid var(--line2);border-radius:99px;
+    display:inline-flex;align-items:center;gap:8px;padding:4px 6px 4px 11px;cursor:pointer;
+    font-family:var(--mono);color:var(--dim);transition:border-color .2s;
   }
+  .snaketgl:hover{border-color:var(--acc)}
+  .snakehud{font-size:11.5px;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
   .snakehud b{color:var(--acc);font-weight:700}
   .snakehud .dot{width:6px;height:6px;border-radius:50%;background:var(--acc);box-shadow:0 0 8px var(--acc);animation:pulse 1.5s infinite}
-  @media(max-width:760px){.navlinks{display:none}}
+  .tgllbl{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--bg);background:var(--acc);border-radius:99px;padding:2px 8px}
+  .snaketgl.paused .tgllbl{background:var(--line2);color:var(--mut)}
+  .snaketgl.paused .dot{animation:none;opacity:.4}
+  /* hamburger */
+  .burger{display:none;flex-direction:column;justify-content:center;gap:4px;width:34px;height:30px;background:none;border:1px solid var(--line2);border-radius:8px;cursor:pointer;padding:0 7px}
+  .burger span{display:block;height:2px;background:var(--ink);border-radius:2px;transition:.25s}
+  .burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+  @media(max-width:760px){
+    .burger{display:flex}
+    .navlinks{
+      position:absolute;top:62px;left:0;right:0;
+      flex-direction:column;gap:0;background:rgba(13,17,23,.97);
+      backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
+      padding:8px 0;transform:translateY(-8px);opacity:0;pointer-events:none;transition:.22s;
+    }
+    .navlinks.open{transform:none;opacity:1;pointer-events:auto}
+    .navlinks a{padding:13px 28px;font-size:14px}
+    .navlinks a::before{display:none}
+    .tgllbl{display:none}
+    .snaketgl{padding:4px 11px}
+  }
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 
   /* ---- hero ---- */
@@ -228,15 +252,21 @@
 <nav>
   <div class="wrap">
     <a href="#" class="logo"><span class="br">~/</span>shakir</a>
-    <div class="navlinks">
+    <div class="navlinks" id="navlinks">
       <a href="#about">about</a>
       <a href="#work">work</a>
       <a href="#performance">speed</a>
       <a href="#experience">experience</a>
       <a href="#contact">contact</a>
     </div>
-    <div class="snakehud" title="Arrows or WASD to steer the snake. Eat 30 🍔🍵⭐ off the page to unlock a Free WP audit.">
-      <span class="dot"></span><b id="snScore">0</b>/30 🐍
+    <div class="navright">
+      <button class="snaketgl" id="snToggle" title="Pause / resume the snake game" aria-label="Toggle snake game">
+        <span class="snakehud"><span class="dot"></span><b id="snScore">0</b>/30 🐍</span>
+        <span class="tgllbl" id="snTglLbl">off</span>
+      </button>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </nav>
@@ -533,13 +563,17 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
     });
   }
 
+  let paused=localStorage.getItem('wp-snake-paused')==='1';
+
   function tick(ts){
     raf=requestAnimationFrame(tick);
+    if(paused){ ctx.clearRect(0,0,W,H); return; }
     if(ts-last>speed){ last=ts; step(); }
     draw();
   }
 
   addEventListener('keydown',e=>{
+    if(paused) return;
     const k=e.key.toLowerCase();
     if(['arrowup','arrowdown','arrowleft','arrowright'].includes(k)) e.preventDefault();
     if((k==='arrowup'||k==='w')&&dir.y===0)nextDir={x:0,y:-1};
@@ -548,9 +582,35 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
     else if((k==='arrowright'||k==='d')&&dir.x===0)nextDir={x:1,y:0};
   });
 
+  /* pause / resume toggle */
+  const tgl=document.getElementById('snToggle'), tglLbl=document.getElementById('snTglLbl');
+  function applyPaused(){
+    if(tgl) tgl.classList.toggle('paused',paused);
+    if(tglLbl) tglLbl.textContent=paused?'on':'off';
+    if(tgl) tgl.title=paused?'Resume the snake game':'Pause the snake game';
+    if(paused) ctx.clearRect(0,0,W,H);
+  }
+  if(tgl) tgl.addEventListener('click',()=>{
+    paused=!paused; localStorage.setItem('wp-snake-paused',paused?'1':'0'); applyPaused();
+  });
+
   reset();
+  applyPaused();
   raf=requestAnimationFrame(tick);
   if(unlocked){ const h=document.getElementById('snHint'); if(h)h.textContent='Free WP audit unlocked ✓'; }
+
+  /* mobile menu */
+  const burger=document.getElementById('burger'), nl=document.getElementById('navlinks');
+  if(burger&&nl){
+    burger.addEventListener('click',()=>{
+      const open=nl.classList.toggle('open');
+      burger.classList.toggle('open',open);
+      burger.setAttribute('aria-expanded',open);
+    });
+    nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+      nl.classList.remove('open'); burger.classList.remove('open'); burger.setAttribute('aria-expanded','false');
+    }));
+  }
 })();
 </script>
 </body>
